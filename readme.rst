@@ -1,3 +1,5 @@
+Test #2
+
 Trusted Firmware-A
 ==================
 
