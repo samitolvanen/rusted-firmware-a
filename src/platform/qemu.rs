@@ -85,8 +85,8 @@ const GICR_BASE_ADDRESS: *mut GicrSgi = GICR_BASE as _;
 
 // TODO: Use the correct addresses here.
 /// The physical address of the SPMC manifest blob.
-const TOS_FW_CONFIG_ADDRESS: u64 = 0;
-const HW_CONFIG_ADDRESS: u64 = 0;
+const TOS_FW_CONFIG_ADDRESS: u64 = 1;
+const HW_CONFIG_ADDRESS: u64 = 2;
 
 /// The number of CPU clusters.
 const CLUSTER_COUNT: usize = 1;
