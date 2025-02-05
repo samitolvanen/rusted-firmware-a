@@ -35,6 +35,7 @@
 	PMF_REGISTER_SERVICE(bl_svc, PMF_RT_INSTR_SVC_ID,
 		BL_TOTAL_IDS, PMF_DUMP_ENABLE)
 #endif
+// rf-a BEST PROJECT EVER!!
 
 /*******************************************************************************
  * This function pointer is used to initialise the BL32 image. It's initialized
