@@ -16,6 +16,23 @@
       "message": "dummy commit test",
       "revId": "caff23e48ab519c129bd4db6763509f739c85787",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ead1241_915c2f69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-02-05T15:55:20Z",
+      "side": 1,
+      "message": "Testing if I can vote on my own patch!",
+      "revId": "caff23e48ab519c129bd4db6763509f739c85787",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
