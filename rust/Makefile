@@ -31,18 +31,33 @@ CARGO_FLAGS := --target $(TARGET) --no-default-features --features "$(FEATURES)"
 ifeq ($(DEBUG), 1)
 	BUILDTYPE := debug
 else
+	DEBUG=0
 	BUILDTYPE := release
 	CARGO_FLAGS += --release
 endif
 
 all: build build-bl33
 
+ifndef TFA
+  $(error $$TFA must point to your TF-A source repository)
+endif
+
 $(BL1):
-	ln -fsr ../build/$(PLAT)/$(BUILDTYPE)/bl1.bin $@
+	make -C $(TFA) PLAT=$(PLAT) DEBUG=$(DEBUG) bl1
+	mkdir -p target
+	ln -fsr $(TFA)/build/$(PLAT)/$(BUILDTYPE)/bl1.bin $@
+
 $(BL2):
-	ln -fsr ../build/$(PLAT)/$(BUILDTYPE)/bl2.bin $@
-$(FIP):
-	ln -fsr ../build/$(PLAT)/$(BUILDTYPE)/fip.bin $@
+	make -C $(TFA) PLAT=$(PLAT) DEBUG=$(DEBUG) bl2
+	mkdir -p target
+	ln -fsr $(TFA)/build/$(PLAT)/$(BUILDTYPE)/bl2.bin $@
+
+$(FIP): $(BL2) build build-bl33
+	make -C $(TFA) PLAT=$(PLAT) DEBUG=$(DEBUG) BL33=$(PWD)/$(BL33) fip
+	mkdir -p target
+	cp $(TFA)/build/$(PLAT)/$(BUILDTYPE)/fip.bin $@
+#	Replace existing BL31 image by RF-A into the FIP image.
+	$(TFA)/tools/fiptool/fiptool update --soc-fw $(BL31_BIN) $@
 
 build:
 	RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo build $(CARGO_FLAGS)

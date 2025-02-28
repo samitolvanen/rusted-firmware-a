@@ -16,9 +16,16 @@ $ cargo install cargo-binutils
 [Add your SSH public key](https://review.trustedfirmware.org/settings/#SSHKeys) then get the source:
 
 ```sh
+$ git clone ssh://$TF_USERNAME@review.trustedfirmware.org:29418/RF-A/rusted-firmware-a
+$ cd rusted-firmware-a
+```
+Also fetch the Trusted Firmware-A repository and record its path into the `TFA`
+environment:
+
+```sh
 $ git clone ssh://$TF_USERNAME@review.trustedfirmware.org:29418/TF-A/trusted-firmware-a
 $ cd trusted-firmware-a
-$ git checkout tfa-next
+$ export TFA=`pwd`
 ```
 
 ### Getting started with QEMU
@@ -31,23 +38,11 @@ $ sudo apt install qemu-system-arm
 
 ### Build and run in QEMU
 
-Build C BL1 and BL2 and Rust BL31:
-
-```sh
-$ CC=clang make PLAT=qemu RUST=1 DEBUG=1 NEED_BL32=yes
-```
-
-Build Rust BL31 and run in QEMU:
+Build C BL1 and BL2, Rust BL31 and run in QEMU:
 
 ```sh
 $ cd rust
 $ make DEBUG=1 qemu
-```
-
-Build and run in QEMU from the top level directory:
-
-```sh
-$ make PLAT=qemu RUST=1 run
 ```
 
 ### Debugging with QEMU
@@ -78,7 +73,7 @@ $ GDB_PORT=4096 make PLAT=qemu DEBUG=1 gdb
 (This could be useful if you needed to run many instances of QEMU, such as to
 run many tests in parallel.)
 
-## Getting started with FVP
+### Getting started with FVP
 
 Arm [FVP](https://trustedfirmware-a.readthedocs.io/en/latest/glossary.html#term-FVP)s are complete
 simulations of an Arm system, including processor, memory and peripherals. They enable software
@@ -93,8 +88,9 @@ to download this or any other FVP.
 
 ### Build and run in FVP
 
-Build and run in FVP from the top level directory:
+Build C BL1 and BL2, Rust BL31 and FIP, then run everything in FVP:
 
 ```sh
-$ make PLAT=fvp RUST=1 run
+$ cd rust
+$ make fvp
 ```
