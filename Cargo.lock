@@ -19,6 +19,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "683c4295f0608c531130ed6daf301785844c1f71eb126eb56343838968e728c5"
 
 [[package]]
+name = "arm-cci"
+version = "0.1.0"
+source = "git+https://review.trustedfirmware.org/rust-spmc/arm-cci.git?rev=refs%2Fchanges%2F48%2F41548%2F1#8faf1a488fe8737d935a348dc6d218551f1658c5"
+dependencies = [
+ "bitflags",
+ "safe-mmio",
+ "zerocopy",
+]
+
+[[package]]
 name = "arm-ffa"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -29,6 +39,32 @@ dependencies = [
  "uuid",
  "zerocopy",
  "zerocopy-derive",
+]
+
+[[package]]
+name = "arm-fvp-base-pac"
+version = "0.1.1"
+source = "git+https://review.trustedfirmware.org/rust-spmc/arm-fvp-base-pac?rev=refs%2Fchanges%2F80%2F41680%2F1#55bd5819147a2fdd29edf76958d7b0062ed860b5"
+dependencies = [
+ "arm-cci",
+ "arm-generic-timer",
+ "arm-gic",
+ "arm-pl011-uart",
+ "arm-sp805",
+ "bitflags",
+ "safe-mmio",
+ "spin 0.9.8",
+ "zerocopy",
+]
+
+[[package]]
+name = "arm-generic-timer"
+version = "0.1.0"
+source = "git+https://review.trustedfirmware.org/rust-spmc/arm-generic-timer.git?rev=refs%2Fchanges%2F49%2F41549%2F1#ca7478e7ea31bb641ca42298ecb2bb8643418666"
+dependencies = [
+ "bitflags",
+ "safe-mmio",
+ "zerocopy",
 ]
 
 [[package]]
@@ -64,6 +100,17 @@ dependencies = [
  "bitflags",
  "num_enum",
  "thiserror",
+]
+
+[[package]]
+name = "arm-sp805"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b51f04b17c58f653b74ade8f0f7bfdb01ae32cc1ffdface0802d01760b20f56d"
+dependencies = [
+ "bitflags",
+ "safe-mmio",
+ "zerocopy",
 ]
 
 [[package]]
@@ -185,6 +232,7 @@ version = "0.1.0"
 dependencies = [
  "aarch64-paging",
  "arm-ffa",
+ "arm-fvp-base-pac",
  "arm-gic",
  "arm-pl011-uart",
  "arm-psci",
