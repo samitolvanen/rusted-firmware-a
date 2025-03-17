@@ -39,6 +39,9 @@ spin = { version = "0.10.0", default-features = false, features = [
 arm-ffa = { version = "0.3.0", default-features = false }
 arm-gic = "0.6.0"
 
+# TODO: switch to 0.1.0 after publishing on crates.io
+arm-fvp-base-pac = { git = "https://git.trustedfirmware.org/rust-spmc/arm-fvp-base-pac.git", default-features = false }
+
 [dev-dependencies]
 arm-gic = { version = "0.6.0", features = ["fakes"] }
 
