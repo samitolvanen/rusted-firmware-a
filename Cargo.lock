@@ -32,6 +32,30 @@ dependencies = [
 ]
 
 [[package]]
+name = "arm-fvp-base-pac"
+version = "0.1.0"
+source = "git+https://git.trustedfirmware.org/rust-spmc/arm-fvp-base-pac.git#e01aea374d333535b1e59d208a42d7fb31ac92f9"
+dependencies = [
+ "arm-gic 0.1.0",
+ "arm-pl011-uart",
+ "arm-sp805",
+ "bitflags",
+ "safe-mmio",
+ "spin 0.9.8",
+ "zerocopy",
+]
+
+[[package]]
+name = "arm-gic"
+version = "0.1.0"
+source = "git+https://git.trustedfirmware.org/rust-spmc/arm-gic.git#3e1263014caabe1ba6189b7693ac4f0466d6e19f"
+dependencies = [
+ "bitflags",
+ "safe-mmio",
+ "zerocopy",
+]
+
+[[package]]
 name = "arm-gic"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -64,6 +88,17 @@ dependencies = [
  "bitflags",
  "num_enum",
  "thiserror",
+]
+
+[[package]]
+name = "arm-sp805"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b51f04b17c58f653b74ade8f0f7bfdb01ae32cc1ffdface0802d01760b20f56d"
+dependencies = [
+ "bitflags",
+ "safe-mmio",
+ "zerocopy",
 ]
 
 [[package]]
@@ -194,7 +229,8 @@ version = "0.1.0"
 dependencies = [
  "aarch64-paging",
  "arm-ffa",
- "arm-gic",
+ "arm-fvp-base-pac",
+ "arm-gic 0.6.0",
  "arm-pl011-uart",
  "arm-psci",
  "arrayvec",
@@ -211,7 +247,7 @@ version = "0.1.0"
 dependencies = [
  "aarch64-rt",
  "arm-ffa",
- "arm-gic",
+ "arm-gic 0.6.0",
  "arm-pl011-uart",
  "bitflags",
  "buddy_system_allocator",
