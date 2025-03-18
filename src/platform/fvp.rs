@@ -309,6 +309,10 @@ impl From<FvpPowerState> for usize {
     }
 }
 
+unsafe extern "C" {
+    pub unsafe fn bl31_warm_entrypoint();
+}
+
 pub struct FvpPsciPlatformImpl<'a> {
     power_controller: Mutex<FvpPowerController<'a>>,
     system: Mutex<FvpSystemPeripheral<'a>>,
@@ -514,6 +518,15 @@ impl PsciPlatformInterface for FvpPsciPlatformImpl<'_> {
     }
 
     fn power_domain_on(&self, mpidr: Mpidr) -> Result<(), ErrorCode> {
+        // Write warm boot entry point
+        unsafe {
+            core::ptr::write_volatile(
+                ARM_SHARED_RAM_BASE as *mut u64,
+                bl31_warm_entrypoint as *const () as u64,
+            );
+            core::arch::asm!("dsb st");
+        }
+
         let raw_mpidr: u32 = mpidr.try_into().map_err(ErrorCode::from)?;
 
         // Ensure that we do not cancel an inflight power off request for the

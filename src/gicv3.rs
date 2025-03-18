@@ -225,6 +225,16 @@ pub fn init() {
     );
 }
 
+/// Initializes the GIC CPU interface on the current core.
+///
+/// Should be called only on secondary cores, as the same init has already been done on the primary
+/// core by [`crate::gicv3::init()`].
+pub fn secondary_init() {
+    if let Err(e) = init_cpu_interface(&mut *GIC.get().unwrap().gic.lock()) {
+        panic!("Failed to init GIC CPU interface: {}", e);
+    }
+}
+
 fn current_redistributor_index() -> usize {
     GIC.get().unwrap().redistributor_indices[CoresImpl::core_index()]
 }
