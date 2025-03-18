@@ -9,7 +9,7 @@ use crate::{
 use core::arch::global_asm;
 
 /// The number of bytes of stack space to reserve for each core.
-const STACK_SIZE: usize = 0x2000;
+const STACK_SIZE: usize = 0x4000;
 
 global_asm!(
     include_str!("asm_macros_common.S"),
