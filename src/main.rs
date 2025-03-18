@@ -28,8 +28,9 @@ mod stacks;
 mod sysregs;
 
 use crate::platform::{Platform, PlatformImpl};
-use context::initialise_contexts;
+use context::{CoresImpl, initialise_contexts};
 use log::info;
+use percore::Cores;
 use services::Services;
 
 #[unsafe(no_mangle)]
@@ -58,6 +59,40 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
     );
 
     Services::get().run_loop();
+}
+
+#[unsafe(no_mangle)]
+extern "C" fn psci_warmboot_entrypoint() {
+    log::info!("Secondary entry on core #{}", CoresImpl::core_index());
+    pagetable::enable();
+    info!("MMU enabled");
+
+    gicv3::secondary_init();
+    info!("GIC configured.");
+
+    let services = Services::get();
+
+    let psci_entrypoint = services.psci.handle_cpu_boot();
+    let mut non_secure_entry_point = PlatformImpl::non_secure_entry_point();
+    non_secure_entry_point.pc = psci_entrypoint.entry_point_address() as usize;
+    // TODO: what's the exact state that Linux expects on secondary core boot?
+    non_secure_entry_point.args.fill(0);
+    non_secure_entry_point.args[0] = psci_entrypoint.context_id();
+
+    let mut secure_entry_point = PlatformImpl::secure_entry_point();
+    secure_entry_point.pc = services.spmd.secondary_ep();
+
+    #[cfg(feature = "rme")]
+    let realm_entry_point = PlatformImpl::realm_entry_point();
+
+    initialise_contexts(
+        &non_secure_entry_point,
+        &secure_entry_point,
+        #[cfg(feature = "rme")]
+        &realm_entry_point,
+    );
+
+    services.run_loop()
 }
 
 #[cfg(target_arch = "aarch64")]
