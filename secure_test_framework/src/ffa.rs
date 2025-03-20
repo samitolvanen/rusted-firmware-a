@@ -3,10 +3,12 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 use arm_ffa::{
-    DirectMsgArgs, Error, Feature, FfaError, Interface, MemOpBuf, MsgWaitFlags,
-    PartitionInfoGetFlags, RxTxAddr, SuccessArgs, TargetInfo, Uuid, Version,
+    ConsoleLogChars, ConsoleLogChars32, ConsoleLogChars64, DirectMsgArgs, Error, Feature, FfaError,
+    Interface, MemOpBuf, MsgWaitFlags, PartitionInfoGetFlags, RxTxAddr, SuccessArgs, TargetInfo,
+    Uuid, Version,
     memory_management::{Handle, MemReclaimFlags},
 };
+use core::fmt::{self, Write};
 use smccc::{arch, error::positive_or_error_32, smc64};
 
 /// The FF-A version which we implement here.
@@ -160,6 +162,50 @@ pub fn partition_info_get_regs(
         start_index,
         info_tag,
     })
+}
+
+/// Logs as many as possible of the given bytes to the console via FF-A.
+///
+/// On success returns the number of bytes which were logged.
+pub fn console_log(chars: &[u8], use_64bit: bool) -> Result<usize, FfaError> {
+    let count;
+    let console_log_chars;
+    if use_64bit {
+        let mut log_chars = ConsoleLogChars64::default();
+        count = log_chars.push(chars);
+        console_log_chars = ConsoleLogChars::Chars64(log_chars);
+    } else {
+        let mut log_chars = ConsoleLogChars32::default();
+        count = log_chars.push(chars);
+        console_log_chars = ConsoleLogChars::Chars32(log_chars);
+    };
+    match call(Interface::ConsoleLog {
+        chars: console_log_chars,
+    })
+    .unwrap()
+    {
+        Interface::Success { .. } => Ok(count),
+        Interface::Error {
+            error_code: FfaError::Retry,
+            error_arg: logged_count,
+            ..
+        } => Ok(logged_count.try_into().unwrap()),
+        Interface::Error { error_code, .. } => Err(error_code),
+        other => panic!("Got unexpected FF-A interface {:?}", other),
+    }
+}
+
+pub struct FfaConsoleLogger;
+
+impl Write for FfaConsoleLogger {
+    fn write_str(&mut self, s: &str) -> fmt::Result {
+        let mut bytes = s.as_bytes();
+        while !bytes.is_empty() {
+            let sent = console_log(bytes, false).map_err(|_| fmt::Error)?;
+            bytes = &bytes[sent..];
+        }
+        Ok(())
+    }
 }
 
 pub fn call(interface: Interface) -> Result<Interface, Error> {
