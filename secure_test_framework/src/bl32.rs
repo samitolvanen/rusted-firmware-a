@@ -15,25 +15,24 @@ mod framework;
 mod gicv3;
 mod heap;
 mod logger;
-mod platform;
 mod tests;
 mod util;
 
 use crate::{
     exceptions::set_exception_vector,
-    ffa::{call, direct_response, msg_wait},
+    ffa::{FfaConsoleLogger, call, direct_response, msg_wait},
     framework::{
         protocol::{ParseRequestError, Request, Response},
         run_secure_world_test, run_test_ffa_handler, run_test_helper,
     },
     gicv3::handle_group1_interrupt,
-    platform::{Platform, PlatformImpl},
     util::{NORMAL_WORLD_ID, SECURE_WORLD_ID, SPMC_DEFAULT_ID, SPMD_DEFAULT_ID, current_el},
 };
 use aarch64_rt::entry;
 use arm_ffa::{DirectMsgArgs, FfaError, Interface, SuccessArgsIdGet, Version};
 use core::panic::PanicInfo;
 use log::{error, info, warn};
+use spin::mutex::{SpinMutex, SpinMutexGuard};
 
 /// The version of FF-A which we support.
 const FFA_VERSION: arm_ffa::Version = arm_ffa::Version(1, 1);
@@ -41,10 +40,12 @@ const FFA_VERSION: arm_ffa::Version = arm_ffa::Version(1, 1);
 /// An unreasonably high FF-A version number.
 const HIGH_FFA_VERSION: arm_ffa::Version = arm_ffa::Version(1, 0xffff);
 
+static CONSOLE: SpinMutex<FfaConsoleLogger> = SpinMutex::new(FfaConsoleLogger);
+
 entry!(bl32_main, 4);
 fn bl32_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
-    let log_sink = PlatformImpl::make_log_sink();
-    logger::init(log_sink).unwrap();
+    let console: &'static mut FfaConsoleLogger = SpinMutexGuard::leak(CONSOLE.lock());
+    logger::init(console).unwrap();
 
     set_exception_vector();
     gicv3::init();
