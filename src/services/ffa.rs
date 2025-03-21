@@ -4,12 +4,13 @@
 
 use crate::{
     context::{PerCoreState, World},
+    logger::write_fmt,
     platform::{Platform, PlatformImpl, exception_free},
     services::{Service, owns},
     smccc::{OwningEntityNumber, SmcReturn},
 };
 use arm_ffa::{
-    DirectMsgArgs, FfaError, Interface, SecondaryEpRegisterAddr, SuccessArgsIdGet,
+    ConsoleLogChars, DirectMsgArgs, FfaError, Interface, SecondaryEpRegisterAddr, SuccessArgsIdGet,
     SuccessArgsSpmIdGet, TargetInfo, Version,
 };
 use core::{
@@ -172,6 +173,7 @@ impl Spmd {
                 target_info: TargetInfo::default(),
                 args: SuccessArgsSpmIdGet { id: Self::OWN_ID }.into(),
             },
+            Interface::ConsoleLog { chars } => console_log(chars),
             _ => {
                 warn!("Unsupported FF-A call from Secure World: {in_msg:x?}");
                 Interface::error(FfaError::NotSupported)
@@ -212,7 +214,8 @@ impl Spmd {
                 self.spmc_secondary_ep.store(secondary_ep, Relaxed);
                 Interface::success32_noargs()
             }
-            Interface::Features { .. }
+            Interface::ConsoleLog { .. }
+            | Interface::Features { .. }
             | Interface::IdGet
             | Interface::SpmIdGet
             | Interface::PartitionInfoGetRegs { .. } => {
@@ -258,7 +261,8 @@ impl Spmd {
                     *in_msg
                 }
             }
-            Interface::Features { .. }
+            Interface::ConsoleLog { .. }
+            | Interface::Features { .. }
             | Interface::IdGet
             | Interface::SpmIdGet
             | Interface::PartitionInfoGetRegs { .. } => {
@@ -405,5 +409,18 @@ impl Spmd {
         });
 
         (out_regs, World::Secure)
+    }
+}
+
+fn console_log(chars: &ConsoleLogChars) -> Interface {
+    let bytes = match chars {
+        ConsoleLogChars::Chars32(log_chars) => log_chars.bytes(),
+        ConsoleLogChars::Chars64(log_chars) => log_chars.bytes(),
+    };
+    if let Ok(s) = str::from_utf8(bytes) {
+        write_fmt(format_args!("{}", s));
+        Interface::success32_noargs()
+    } else {
+        Interface::error(FfaError::InvalidParameters)
     }
 }

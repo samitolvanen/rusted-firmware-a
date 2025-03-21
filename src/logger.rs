@@ -40,6 +40,11 @@ pub fn init(sink: LogSinkImpl) -> Result<(), SetLoggerError> {
     Ok(())
 }
 
+/// Writes the given format arguments directly to the logger, without any level prefix or newline.
+pub fn write_fmt(args: Arguments) {
+    LOGGER.get().unwrap().sink.write_fmt(args)
+}
+
 /// Gets a reference to the log sink, if it has been set.
 #[allow(unused)]
 pub fn get_log_sink() -> Option<&'static LogSinkImpl> {
