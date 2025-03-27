@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e84b2f_f8f0d356",
+        "filename": "rust/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-03-27T15:51:00Z",
+      "side": 1,
+      "message": "TODO: Need to pass `NEED_BL32\u003dyes` and `CC\u003dclang` for TF-A build.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "2cef11d6bebe867a8c8fa5bc690fd5fb7f85e217",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
