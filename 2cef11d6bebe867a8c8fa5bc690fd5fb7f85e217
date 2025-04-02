@@ -22,6 +22,30 @@
       },
       "revId": "2cef11d6bebe867a8c8fa5bc690fd5fb7f85e217",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c373f0_fa437024",
+        "filename": "rust/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-04-02T09:23:22Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a1e84b2f_f8f0d356",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "2cef11d6bebe867a8c8fa5bc690fd5fb7f85e217",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
