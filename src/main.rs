@@ -34,17 +34,30 @@ use crate::{
         CoresImpl, initialise_contexts, initialise_per_world_contexts, update_contexts_suspend,
     },
     cpu_extensions::initialise_el3_sysregs,
+    layout::{stacks_end, stacks_start},
     platform::{Platform, PlatformImpl},
     services::{Services, psci::WakeUpReason},
 };
 use log::{debug, info};
 use percore::Cores;
 
+unsafe extern "C" {
+    safe fn plat_get_my_stack() -> usize;
+}
+
 #[unsafe(no_mangle)]
 extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
     PlatformImpl::init_before_mmu();
     info!("Rust BL31 starting");
     info!("Parameters: {bl31_params:#0x} {platform_params:#0x}");
+
+    info!(
+        "Stacks from {:#0x} to {:#0x} ({} bytes)",
+        stacks_start(),
+        stacks_end(),
+        stacks_end() - stacks_start()
+    );
+    info!("My stack: {:#0x}", plat_get_my_stack());
 
     // Set up page table.
     pagetable::init();
@@ -75,6 +88,7 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
 extern "C" fn psci_warmboot_entrypoint() -> ! {
     pagetable::enable();
     debug!("Warmboot on core #{}", CoresImpl::core_index());
+    debug!("My stack: {:#0x}", plat_get_my_stack());
 
     let services = Services::get();
 

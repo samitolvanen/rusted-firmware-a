@@ -17,6 +17,8 @@ unsafe extern "C" {
     static __TEXT_END__: ();
     static __BSS2_START__: ();
     static __BSS2_END__: ();
+    static __STACKS_START__: ();
+    static __STACKS_END__: ();
 }
 
 /// Returns the address of the `__BL31_START__` symbol defined by the linker script.
@@ -57,4 +59,14 @@ pub fn bss2_start() -> usize {
 /// Returns the address of the `__BL31_SEC_DRAM_END__` symbol defined by the linker script.
 pub fn bss2_end() -> usize {
     (&raw const __BSS2_END__) as usize
+}
+
+/// Returns the address of the `__STACKS_START__` symbol defined by the linker script.
+pub fn stacks_start() -> usize {
+    (&raw const __STACKS_START__) as usize
+}
+
+/// Returns the address of the `__STACKS_END__` symbol defined by the linker script.
+pub fn stacks_end() -> usize {
+    (&raw const __STACKS_END__) as usize
 }
