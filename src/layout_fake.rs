@@ -33,3 +33,11 @@ pub fn bss2_start() -> usize {
 pub fn bss2_end() -> usize {
     0
 }
+
+pub fn stacks_start() -> usize {
+    0x5_0000
+}
+
+pub fn stacks_end() -> usize {
+    0x6_0000
+}
