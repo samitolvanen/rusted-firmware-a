@@ -3,13 +3,11 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 mod power_domain_tree;
-mod spmd_stub;
 
 use super::{Service, owns};
 use crate::{
     aarch64::{dsb_sy, wfi},
     context::{CoresImpl, World},
-    pagetable,
     platform::{Platform, PlatformImpl, PlatformPowerState, PsciPlatformImpl, plat_calc_core_pos},
     smccc::{FunctionId as SmcFunctionId, OwningEntityNumber, SmcReturn},
     sysregs::{MpidrEl1, read_isr_el1},
@@ -24,7 +22,6 @@ use core::fmt::{self, Debug, Formatter};
 use log::info;
 use percore::Cores;
 use power_domain_tree::{AncestorPowerDomains, CpuPowerNode, PowerDomainTree};
-use spmd_stub::SPMD;
 
 const FUNCTION_NUMBER_MIN: u16 = 0x0000;
 const FUNCTION_NUMBER_MAX: u16 = 0x001F;
@@ -179,11 +176,35 @@ pub trait PsciPlatformInterface {
     }
 }
 
+/// PSCI SPM interface
+///
+/// Contains the callbacks that the PSCI implementation uses to inform the Secure World about power
+/// management events. These are either forwarded by the SPMD to the SPMC (if it resides in another
+/// exception level) or handled by the SPMC in EL3.
+pub trait PsciSpmInterface {
+    /// Notify the SPM about a PSCI event. Should be forwarded by the SPMD to the SPMC if it resides
+    /// in a separate exception level, or handled by the SPMC in EL3.
+    fn forward_psci_event(&self, psci_request: &[u64; 4]) -> u64;
+
+    /// Notify the SPM that the current core was turned on for the first time or after CPU_OFF.
+    fn handle_wake_from_cpu_off(&self);
+
+    /// Notify the SPM that the current core woke up from suspend (CPU_SUSPEND, CPU_DEFAULT_SUSPEND
+    /// or SYSTEM_SUSPEND). Only applies for power down suspend states.
+    fn handle_wake_from_cpu_suspend(&self) -> SmcReturn;
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum PowerStateType {
     PowerDown,
     StandbyOrRetention,
     Run,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum WakeUpReason {
+    CpuOn(EntryPoint),
+    SuspendFinished(EntryPoint),
 }
 
 /// Object for storing platform-specific power state for multiple power levels.
@@ -529,8 +550,6 @@ impl Psci {
             AffinityInfo::Off => {}
         }
 
-        self.notify_spmd(Function::CpuOn { target_cpu, entry });
-
         cpu.set_affinity_info(AffinityInfo::OnPending);
 
         match self.platform.power_domain_on(target_cpu) {
@@ -546,12 +565,12 @@ impl Psci {
     }
 
     /// This function must be called when a CPU is powered up. It returns the non-secure entry
-    /// point.
-    #[allow(unused)]
-    pub fn handle_cpu_boot(&self) -> EntryPoint {
+    /// point and the reason why the CPU was powered up.
+    pub fn handle_cpu_boot(&self) -> WakeUpReason {
         let cpu_index = CoresImpl::core_index();
         let mut cpu = self.power_domain_tree.locked_cpu_node(cpu_index);
         let mut composite_state = PsciCompositePowerState::RUN;
+        let mut wake_from_suspend = false;
 
         let affinity_info = cpu.affinity_info();
         if affinity_info == AffinityInfo::Off {
@@ -573,8 +592,6 @@ impl Psci {
                     // Finishing CPU_ON
                     self.platform.power_domain_on_finish(&composite_state);
 
-                    SPMD.handle_cold_boot();
-
                     cpu.set_affinity_info(AffinityInfo::On);
                 } else {
                     // Waking up from suspend
@@ -584,10 +601,10 @@ impl Psci {
                         PowerStateType::PowerDown
                     );
 
-                    SPMD.handle_warm_boot();
-
                     self.platform.power_domain_suspend_finish(&composite_state);
                     cpu.clear_highest_affected_level();
+
+                    wake_from_suspend = true;
                 }
 
                 cpu.set_local_state(PlatformPowerState::RUN);
@@ -602,7 +619,13 @@ impl Psci {
         let entry_point = cpu.pop_entry_point();
         drop(cpu); // Unlock before possible panic
 
-        entry_point.expect("entry point not set for booting CPU")
+        let entry_point = entry_point.expect("entry point not set for booting CPU");
+
+        if wake_from_suspend {
+            WakeUpReason::SuspendFinished(entry_point)
+        } else {
+            WakeUpReason::CpuOn(entry_point)
+        }
     }
 
     /// Handles `AFFINITY_INFO` PSCI call.
@@ -923,7 +946,10 @@ impl Psci {
         let mut psci_request = [0; 4];
         function.copy_to_array(&mut psci_request);
 
-        let result = SPMD.handle_psci_event(&psci_request);
+        let result = super::Services::get()
+            .spmd
+            .forward_psci_event(&psci_request);
+
         match ReturnCode::try_from(result as i32) {
             Ok(ReturnCode::Success) => {
                 // Nothing to do
@@ -982,21 +1008,6 @@ pub fn try_get_cpu_index_by_mpidr(psci_mpidr: Mpidr) -> Option<usize> {
         Some(plat_calc_core_pos(mpidr.bits()))
     } else {
         None
-    }
-}
-
-#[unsafe(no_mangle)]
-extern "C" fn psci_warmboot_entrypoint() {
-    // TODO: Initialise scr_el3?
-    info!("psci_warmboot_entrypoint");
-    pagetable::enable();
-    info!("MMU enabled");
-    // TODO: Initialise context if this is the first time this CPU has run.
-    // TODO: Set up GIC redistributor
-    // TODO: Set next world appropriately.
-    // TODO: Call handle_cpu_boot and set non-secure entry point.
-    loop {
-        wfi();
     }
 }
 

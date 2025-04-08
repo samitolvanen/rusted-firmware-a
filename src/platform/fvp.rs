@@ -13,6 +13,7 @@ use crate::{
     logger::{self, LockedWriter},
     pagetable::{IdMap, MT_DEVICE, map_region},
     services::{
+        Services,
         arch::WorkaroundSupport,
         psci::{
             PlatformPowerStateInterface, PowerStateType, PsciCompositePowerState,
@@ -30,7 +31,7 @@ use arm_gic::{
     },
 };
 use arm_pl011_uart::{PL011Registers, Uart, UniqueMmioPointer};
-use arm_psci::{ErrorCode, Mpidr, PowerState};
+use arm_psci::{EntryPoint, ErrorCode, Mpidr, PowerState};
 use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
 use percore::Cores;
 
@@ -168,15 +169,18 @@ impl Platform for Fvp {
         todo!("Handle group0 interrupt {:?}", int_id)
     }
 
-    fn secure_entry_point() -> EntryPointInfo {
+    fn secure_entry_point(cold_boot: bool) -> EntryPointInfo {
         let core_linear_id = CoresImpl::core_index() as u64;
-        EntryPointInfo {
-            pc: 0x0600_0000,
-            #[cfg(feature = "sel2")]
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
-            #[cfg(not(feature = "sel2"))]
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL1H,
-            args: [
+        let services = Services::get();
+
+        let pc = if cold_boot {
+            services.spmd.primary_ep()
+        } else {
+            services.spmd.secondary_ep()
+        };
+
+        let args = if cold_boot {
+            [
                 TOS_FW_CONFIG_ADDRESS,
                 HW_CONFIG_ADDRESS,
                 0,
@@ -185,15 +189,38 @@ impl Platform for Fvp {
                 0,
                 0,
                 0,
-            ],
+            ]
+        } else {
+            [0; 8]
+        };
+
+        EntryPointInfo {
+            pc,
+            args,
+            #[cfg(feature = "sel2")]
+            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
+            #[cfg(not(feature = "sel2"))]
+            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL1H,
         }
     }
 
-    fn non_secure_entry_point() -> EntryPointInfo {
+    fn non_secure_entry_point(psci_entrypoint: Option<EntryPoint>) -> EntryPointInfo {
+        let pc = if let Some(psci_entrypoint) = psci_entrypoint {
+            psci_entrypoint.entry_point_address() as usize
+        } else {
+            0x8800_0000
+        };
+
+        let args = if let Some(psci_entrypoint) = psci_entrypoint {
+            [psci_entrypoint.context_id(), 0, 0, 0, 0, 0, 0, 0]
+        } else {
+            [NT_FW_CONFIG_ADDRESS, HW_CONFIG_ADDRESS_NS, 0, 0, 0, 0, 0, 0]
+        };
+
         EntryPointInfo {
-            pc: 0x8800_0000,
+            pc,
+            args,
             spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
-            args: [NT_FW_CONFIG_ADDRESS, HW_CONFIG_ADDRESS_NS, 0, 0, 0, 0, 0, 0],
         }
     }
 
