@@ -5,7 +5,7 @@
 use crate::{
     context::{PerCoreState, World},
     platform::{Platform, PlatformImpl, exception_free},
-    services::{Service, owns},
+    services::{Service, owns, psci::PsciSpmInterface},
     smccc::{OwningEntityNumber, SmcReturn},
 };
 use arm_ffa::{
@@ -419,5 +419,20 @@ impl Spmd {
         });
 
         (out_regs, World::Secure)
+    }
+}
+
+impl PsciSpmInterface for Spmd {
+    fn handle_psci_event(&self, _psci_request: &[u64; 4]) -> u64 {
+        // TODO: implement
+        0
+    }
+
+    fn handle_cold_boot(&self) {
+        // TODO: implement
+    }
+
+    fn handle_warm_boot(&self) {
+        // TODO: implement
     }
 }
