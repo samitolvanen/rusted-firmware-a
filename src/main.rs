@@ -27,9 +27,14 @@ mod smccc;
 mod stacks;
 mod sysregs;
 
-use crate::platform::{Platform, PlatformImpl};
-use context::initialise_contexts;
-use log::info;
+use crate::{
+    context::{World, cpu_state},
+    platform::{Platform, PlatformImpl},
+    services::psci::PsciSpmInterface,
+};
+use context::{CoresImpl, initialise_contexts};
+use log::{debug, info};
+use percore::{Cores, exception_free};
 use services::Services;
 
 #[unsafe(no_mangle)]
@@ -58,6 +63,66 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
     );
 
     Services::get().run_loop();
+}
+
+#[unsafe(no_mangle)]
+extern "C" fn psci_warmboot_entrypoint() {
+    pagetable::enable();
+    debug!("Warmboot on core #{}", CoresImpl::core_index());
+
+    let services = Services::get();
+
+    let (psci_entrypoint, wake_from_suspend) = services.psci.handle_cpu_boot();
+
+    if wake_from_suspend {
+        debug!("Wakeup from CPU_SUSPEND");
+
+        let swd_regs = services.spmd.handle_wake_from_cpu_suspend();
+
+        // TODO: instead of modifying the context directly, should we rather pass the initial gpregs
+        // of each world as arguments to run_loop()?
+        exception_free(|token| {
+            // TODO: implement suspend handling for Realm
+
+            let mut cpu_state = cpu_state(token);
+
+            cpu_state.context_mut(World::NonSecure).el3_state.elr_el3 =
+                psci_entrypoint.entry_point_address() as usize;
+            cpu_state.context_mut(World::NonSecure).gpregs.registers[..8].fill(0);
+            cpu_state.context_mut(World::NonSecure).gpregs.registers[0] =
+                psci_entrypoint.context_id();
+
+            cpu_state.context_mut(World::Secure).gpregs.registers[..18].fill(0);
+            cpu_state.context_mut(World::Secure).gpregs.registers[..18]
+                .copy_from_slice(swd_regs.values());
+        });
+    } else {
+        // Wakeup for the first time or after CPU_OFF
+        debug!("Wakeup from CPU_OFF");
+
+        // TODO: we're only using SPSR from the entry point, and rewriting the rest here. This could
+        // be improved to have a more granular way of initialising the context of each world.
+        let mut non_secure_entry_point = PlatformImpl::non_secure_entry_point();
+        non_secure_entry_point.pc = psci_entrypoint.entry_point_address() as usize;
+        non_secure_entry_point.args.fill(0);
+        non_secure_entry_point.args[0] = psci_entrypoint.context_id();
+
+        let mut secure_entry_point = PlatformImpl::secure_entry_point();
+        secure_entry_point.pc = services.spmd.secondary_ep();
+        services.spmd.handle_wake_from_cpu_off();
+
+        #[cfg(feature = "rme")]
+        let realm_entry_point = PlatformImpl::realm_entry_point();
+
+        initialise_contexts(
+            &non_secure_entry_point,
+            &secure_entry_point,
+            #[cfg(feature = "rme")]
+            &realm_entry_point,
+        );
+    }
+
+    services.run_loop()
 }
 
 #[cfg(all(target_arch = "aarch64", not(test)))]

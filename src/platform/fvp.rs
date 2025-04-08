@@ -16,7 +16,7 @@ use crate::{
         arch::WorkaroundSupport,
         psci::{
             PlatformPowerStateInterface, PowerStateType, PsciCompositePowerState,
-            PsciPlatformInterface, PsciPlatformOptionalFeatures,
+            PsciPlatformInterface, PsciPlatformOptionalFeatures, bl31_warm_entrypoint,
         },
     },
     sysregs::{IccSre, MpidrEl1, Spsr},
@@ -316,6 +316,15 @@ impl PsciPlatformInterface for FvpPsciPlatformImpl {
     }
 
     fn power_domain_on(&self, _mpidr: Mpidr) -> Result<(), ErrorCode> {
+        // Write warm boot entry point
+        unsafe {
+            core::ptr::write_volatile(
+                ARM_SHARED_RAM_BASE as *mut u64,
+                bl31_warm_entrypoint as *const () as u64,
+            );
+            core::arch::asm!("dsb st");
+        }
+
         todo!()
     }
 

@@ -5,12 +5,12 @@
 use crate::{
     context::{PerCoreState, World},
     platform::{Platform, PlatformImpl, exception_free},
-    services::{Service, owns},
+    services::{Service, owns, psci::PsciSpmInterface},
     smccc::{OwningEntityNumber, SmcReturn},
 };
 use arm_ffa::{
     DirectMsgArgs, FfaError, Interface, SecondaryEpRegisterAddr, SuccessArgsIdGet,
-    SuccessArgsSpmIdGet, TargetInfo, Version,
+    SuccessArgsSpmIdGet, TargetInfo, Version, WarmBootType,
 };
 use core::{
     cell::RefCell,
@@ -30,16 +30,18 @@ struct SpmdLocal {
 impl SpmdLocal {
     const fn new() -> Self {
         Self {
-            spmc_state: SpmcState::Boot,
+            spmc_state: SpmcState::Off,
         }
     }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum SpmcState {
+    Off,
     Boot,
     Runtime,
     SecureInterrupt,
+    // TODO: add Suspend state
 }
 
 /// Secure Partition Manager Dispatcher, defined by Arm Firmware Framework for A-Profile (FF-A)
@@ -73,6 +75,11 @@ impl Service for Spmd {
             }
         };
 
+        let spmc_state =
+            exception_free(|token| self.core_local.get().borrow(token).borrow().spmc_state);
+
+        assert_eq!(spmc_state, SpmcState::Runtime);
+
         let (out_msg, next_world) = self.handle_non_secure_call(&in_msg);
 
         out_msg.to_regs(version, out_regs.values_mut());
@@ -99,6 +106,7 @@ impl Service for Spmd {
             exception_free(|token| self.core_local.get().borrow(token).borrow().spmc_state);
 
         let (out_msg, next_world) = match spmc_state {
+            SpmcState::Off => panic!(),
             SpmcState::Boot => self.handle_secure_call_boot(&in_msg),
             SpmcState::Runtime => self.handle_secure_call_runtime(&in_msg),
             SpmcState::SecureInterrupt => self.handle_secure_call_interrupt(&in_msg),
@@ -137,6 +145,14 @@ impl Spmd {
             [const { ExceptionLock::new(RefCell::new(SpmdLocal::new())) };
                 PlatformImpl::CORE_COUNT],
         );
+
+        exception_free(|token| {
+            // This only runs once, on the primary core, at cold boot. Set the correct state before
+            // receiving the first message from SWd.
+            let mut spmd_state = core_local.get().borrow_mut(token);
+            assert_eq!(spmd_state.spmc_state, SpmcState::Off);
+            spmd_state.spmc_state = SpmcState::Boot;
+        });
 
         Self {
             spmc_id,
@@ -403,5 +419,37 @@ impl Spmd {
         });
 
         (out_regs, World::Secure)
+    }
+}
+
+impl PsciSpmInterface for Spmd {
+    fn forward_psci_event(&self, _psci_request: &[u64; 4]) -> u64 {
+        0
+    }
+
+    fn handle_wake_from_cpu_off(&self) {
+        exception_free(|token| {
+            let mut spmd_state = self.core_local.get().borrow_mut(token);
+            // TODO: set state to Off in forward_psci_event() when receiving a CPU_OFF message. Then
+            // we can uncomment the check below.
+            // assert_eq!(spmd_state.spmc_state, SpmcState::Off);
+            spmd_state.spmc_state = SpmcState::Boot;
+        });
+    }
+
+    fn handle_wake_from_cpu_suspend(&self) -> SmcReturn {
+        let msg = Interface::MsgSendDirectReq {
+            src_id: Self::OWN_ID,
+            dst_id: self.spmc_id,
+            args: DirectMsgArgs::PowerWarmBootReq {
+                // TODO: what is the use case for WarmBootType::ExitFromLowPower?
+                boot_type: WarmBootType::ExitFromSuspend,
+            },
+        };
+
+        let mut out_regs = SmcReturn::from([0u64; 18]);
+        msg.to_regs(self.spmc_version, out_regs.values_mut());
+
+        out_regs
     }
 }
