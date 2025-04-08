@@ -5,7 +5,7 @@
 use crate::{
     context::{PerCoreState, World},
     platform::{Platform, PlatformImpl, exception_free},
-    services::{Service, owns},
+    services::{Service, owns, psci::PsciSpmdInterface},
     smccc::{OwningEntityNumber, SmcReturn},
 };
 use arm_ffa::{
@@ -419,5 +419,24 @@ impl Spmd {
         });
 
         (out_regs, World::Secure)
+    }
+}
+
+impl PsciSpmdInterface for Spmd {
+    fn handle_psci_event(&self, _psci_request: &[u64; 4]) -> u64 {
+        // TODO: implement this
+        0
+    }
+
+    fn handle_cold_boot(&self) {
+        // TODO: what else should we do here?
+        exception_free(|token| {
+            // Reset core local state
+            *self.core_local.get().borrow_mut(token) = SpmdLocal::new();
+        });
+    }
+
+    fn handle_warm_boot(&self) {
+        // TODO: implement this
     }
 }

@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 mod power_domain_tree;
-mod spmd_stub;
 
 use super::{Service, owns};
 use crate::{
@@ -24,7 +23,6 @@ use core::fmt::{self, Debug, Formatter};
 use log::info;
 use percore::Cores;
 use power_domain_tree::{AncestorPowerDomains, CpuPowerNode, PowerDomainTree};
-use spmd_stub::SPMD;
 
 const FUNCTION_NUMBER_MIN: u16 = 0x0000;
 const FUNCTION_NUMBER_MAX: u16 = 0x001F;
@@ -177,6 +175,21 @@ pub trait PsciPlatformInterface {
     fn has_pending_interrupts(&self) -> bool {
         read_isr_el1() != 0
     }
+}
+
+/// PSCI SPMD interface
+///
+/// Contains the callbacks that the PSCI implementation uses to inform the Secure World about power
+/// management events.
+pub trait PsciSpmdInterface {
+    /// Notify the SPMC about a PSCI event.
+    fn handle_psci_event(&self, psci_request: &[u64; 4]) -> u64;
+
+    /// Notify the SPMC that the cold boot finished on the current core.
+    fn handle_cold_boot(&self);
+
+    /// Notify the SPMC that the warm boot finished on the current core.
+    fn handle_warm_boot(&self);
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -563,6 +576,8 @@ impl Psci {
             .highest_affected_level()
             .unwrap_or(PsciPlatformImpl::MAX_POWER_LEVEL);
 
+        let spmd: &dyn PsciSpmdInterface = &super::SERVICES.get().unwrap().spmd;
+
         self.power_domain_tree.with_ancestors_locked_to_max_level(
             &mut cpu,
             target_power_level,
@@ -573,7 +588,7 @@ impl Psci {
                     // Finishing CPU_ON
                     self.platform.power_domain_on_finish(&composite_state);
 
-                    SPMD.handle_cold_boot();
+                    spmd.handle_cold_boot();
 
                     cpu.set_affinity_info(AffinityInfo::On);
                 } else {
@@ -584,7 +599,7 @@ impl Psci {
                         PowerStateType::PowerDown
                     );
 
-                    SPMD.handle_warm_boot();
+                    spmd.handle_warm_boot();
 
                     self.platform.power_domain_suspend_finish(&composite_state);
                     cpu.clear_highest_affected_level();
@@ -923,7 +938,9 @@ impl Psci {
         let mut psci_request = [0; 4];
         function.copy_to_array(&mut psci_request);
 
-        let result = SPMD.handle_psci_event(&psci_request);
+        let spmd: &dyn PsciSpmdInterface = &super::SERVICES.get().unwrap().spmd;
+
+        let result = spmd.handle_psci_event(&psci_request);
         match ReturnCode::try_from(result as i32) {
             Ok(ReturnCode::Success) => {
                 // Nothing to do
