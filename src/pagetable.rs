@@ -6,6 +6,7 @@ use crate::{
     aarch64::{dsb_ish, dsb_sy, isb, tlbi_alle3},
     layout::{bl_code_base, bl_code_end, bl_ro_data_base, bl_ro_data_end, bl31_end, bl31_start},
     platform::{Platform, PlatformImpl},
+    stacks::unmap_stack_guards,
     sysregs::{
         SctlrEl3, read_sctlr_el3, write_mair_el3, write_sctlr_el3, write_tcr_el3, write_ttbr0_el3,
     },
@@ -178,6 +179,7 @@ fn init_page_table(pages: &'static mut [PageTable]) -> IdMap {
         &MemoryRegion::new(bl_ro_data_base(), bl_ro_data_end()),
         MT_RO_DATA,
     );
+    unmap_stack_guards(&mut idmap);
 
     // Corresponds to `plat_regions` in C TF-A.
     PlatformImpl::map_extra_regions(&mut idmap);
@@ -188,9 +190,9 @@ fn init_page_table(pages: &'static mut [PageTable]) -> IdMap {
 /// Adds the given region to the page table with the given attributes, logging it first.
 pub fn map_region(idmap: &mut IdMap, region: &MemoryRegion, attributes: Attributes) {
     debug!("Mapping {region} as {attributes:?}.");
-    idmap
-        .map_range(region, attributes)
-        .expect("Error mapping memory range");
+    if let Err(e) = idmap.map_range(region, attributes) {
+        panic!("Error mapping memory range: {e}");
+    }
 }
 
 /// # Safety

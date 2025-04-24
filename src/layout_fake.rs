@@ -7,7 +7,7 @@ pub fn bl31_start() -> usize {
 }
 
 pub fn bl31_end() -> usize {
-    0x10_0000
+    0x20_0000
 }
 
 pub fn bl_code_base() -> usize {
