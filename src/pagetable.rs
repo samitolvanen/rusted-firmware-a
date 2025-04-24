@@ -9,6 +9,7 @@ use crate::{
         bss2_start,
     },
     platform::{Platform, PlatformImpl},
+    stacks::unmap_stack_guards,
 };
 use aarch64_paging::{
     MapError, Mapping,
@@ -203,6 +204,8 @@ fn init_page_table(pages: &'static mut [PageTable]) -> IdMap {
         );
     }
 
+    unmap_stack_guards(&mut idmap);
+
     // Corresponds to `plat_regions` in C TF-A.
     PlatformImpl::map_extra_regions(&mut idmap);
 
@@ -212,9 +215,9 @@ fn init_page_table(pages: &'static mut [PageTable]) -> IdMap {
 /// Adds the given region to the page table with the given attributes, logging it first.
 pub fn map_region(idmap: &mut IdMap, region: &MemoryRegion, attributes: Attributes) {
     debug!("Mapping {region} as {attributes:?}.");
-    idmap
-        .map_range(region, attributes)
-        .expect("Error mapping memory range");
+    if let Err(e) = idmap.map_range(region, attributes) {
+        panic!("Error mapping memory range: {e}");
+    }
 }
 
 /// # Safety
