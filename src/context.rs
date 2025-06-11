@@ -4,7 +4,7 @@
 
 #[cfg(feature = "sel2")]
 use crate::sysregs::{
-    HcrEl2, IccSre, read_actlr_el2, read_afsr0_el2, read_afsr1_el2, read_amair_el2,
+    HcrEl2, IccSre, SctlrEl2, read_actlr_el2, read_afsr0_el2, read_afsr1_el2, read_amair_el2,
     read_cnthctl_el2, read_cntvoff_el2, read_cptr_el2, read_elr_el2, read_esr_el2, read_far_el2,
     read_hacr_el2, read_hcr_el2, read_hpfar_el2, read_hstr_el2, read_icc_sre_el2, read_ich_hcr_el2,
     read_ich_vmcr_el2, read_mair_el2, read_mdcr_el2, read_sctlr_el2, read_sp_el2, read_spsr_el2,
@@ -337,7 +337,7 @@ struct El2Sysregs {
     ich_vmcr_el2: u64,
     mair_el2: u64,
     mdcr_el2: u64,
-    sctlr_el2: u64,
+    sctlr_el2: SctlrEl2,
     spsr_el2: Spsr,
     sp_el2: u64,
     tcr_el2: u64,
@@ -372,7 +372,7 @@ impl El2Sysregs {
         ich_vmcr_el2: 0,
         mair_el2: 0,
         mdcr_el2: 0,
-        sctlr_el2: 0,
+        sctlr_el2: SctlrEl2::empty(),
         spsr_el2: Spsr::empty(),
         sp_el2: 0,
         tcr_el2: 0,
@@ -633,10 +633,21 @@ fn initialise_common(context: &mut CpuContext, entry_point: &EntryPointInfo) {
         context.el3_state.scr_el3 |= ScrEl3::EEL2;
         // TODO: Initialise the rest of the context.el2_sysregs too.
         context.el2_sysregs.icc_sre_el2 = IccSre::DIB | IccSre::DFB | IccSre::EN | IccSre::SRE;
+        context.el2_sysregs.sctlr_el2 = SctlrEl2::RES1;
+
+        // SCTLR_EL2.EE: Set to one if the entry point info specifies that the image is big endian.
+        if entry_point.big_endian {
+            context.el2_sysregs.sctlr_el2 |= SctlrEl2::EE;
+        }
     }
     #[cfg(not(feature = "sel2"))]
     {
         context.el1_sysregs.sctlr_el1 = SctlrEl1::RES1;
+
+        // SCTLR_EL1.EE: Set to one if the entry point info specifies that the image is big endian.
+        if entry_point.big_endian {
+            context.el1_sysregs.sctlr_el1 |= SctlrEl1::EE;
+        }
     }
 }
 
@@ -652,9 +663,15 @@ fn initialise_nonsecure(context: &mut CpuContext, entry_point: &EntryPointInfo) 
 fn initialise_secure(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     initialise_common(context, entry_point);
 
-    // Enable Secure EL1 access to timer registers.
-    // Otherwise they would be accessible only at EL3.
-    context.el3_state.scr_el3 |= ScrEl3::ST;
+    #[cfg(not(feature = "sel2"))]
+    {
+        // SCR_EL3.ST: Set to one to disable trapping of Secure EL1 accesses to the Counter-timer
+        // Physical Secure timer registers to EL3, if specified by the entry point info. If Secure
+        // EL2 is enabled, the behavior is always as if the value of this field was one.
+        if entry_point.s_timer {
+            context.el3_state.scr_el3 |= ScrEl3::ST;
+        }
+    }
 
     gicv3::set_routing_model(&mut context.el3_state.scr_el3, World::Secure);
 }
@@ -671,6 +688,10 @@ fn initialise_realm(context: &mut CpuContext, entry_point: &EntryPointInfo) {
 /// Information about the entry point for a next stage (e.g. BL32 or BL33).
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct EntryPointInfo {
+    /// Set if the image is big endian.
+    pub big_endian: bool,
+    /// Set to enable access to the secure timer from Secure EL1 images.
+    pub s_timer: bool,
     /// The entry point address.
     pub pc: usize,
     /// The `spsr_el3` value to set before `eret`, to set the appropriate PSTATE.

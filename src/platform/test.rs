@@ -69,6 +69,8 @@ impl Platform for TestPlatform {
 
     fn secure_entry_point() -> EntryPointInfo {
         EntryPointInfo {
+            big_endian: false,
+            s_timer: false,
             pc: 0x4000_0000,
             #[cfg(feature = "sel2")]
             spsr: Spsr::M_AARCH64_EL2H,
@@ -80,6 +82,8 @@ impl Platform for TestPlatform {
 
     fn non_secure_entry_point() -> EntryPointInfo {
         EntryPointInfo {
+            big_endian: false,
+            s_timer: false,
             pc: 0x6000_0000,
             spsr: Spsr::M_AARCH64_EL2H,
             args: Default::default(),
@@ -89,6 +93,8 @@ impl Platform for TestPlatform {
     #[cfg(feature = "rme")]
     fn realm_entry_point() -> EntryPointInfo {
         EntryPointInfo {
+            big_endian: false,
+            s_timer: false,
             pc: 0x2000_0000,
             spsr: Spsr::M_AARCH64_EL2H,
             args: Default::default(),

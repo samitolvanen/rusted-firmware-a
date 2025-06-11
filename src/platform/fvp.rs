@@ -160,6 +160,8 @@ impl Platform for Fvp {
     fn secure_entry_point() -> EntryPointInfo {
         let core_linear_id = CoresImpl::core_index() as u64;
         EntryPointInfo {
+            big_endian: false,
+            s_timer: true,
             pc: 0x0600_0000,
             #[cfg(feature = "sel2")]
             spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
@@ -180,6 +182,8 @@ impl Platform for Fvp {
 
     fn non_secure_entry_point() -> EntryPointInfo {
         EntryPointInfo {
+            big_endian: false,
+            s_timer: false,
             pc: 0x8800_0000,
             spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
             args: Default::default(),
@@ -190,6 +194,8 @@ impl Platform for Fvp {
     fn realm_entry_point() -> EntryPointInfo {
         let core_linear_id = CoresImpl::core_index() as u64;
         EntryPointInfo {
+            big_endian: false,
+            s_timer: false,
             pc: 0xfdc0_0000,
             spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
             args: [

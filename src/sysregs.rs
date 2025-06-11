@@ -294,7 +294,7 @@ read_write_sysreg!(mdscr_el1, u64, safe read_mdscr_el1, safe write_mdscr_el1);
 read_write_sysreg!(par_el1, u64, safe read_par_el1, safe write_par_el1);
 read_write_sysreg!(scr_el3, u64: ScrEl3, safe read_scr_el3, safe write_scr_el3);
 read_write_sysreg!(sctlr_el1, u64: SctlrEl1, safe read_sctlr_el1, safe write_sctlr_el1);
-read_write_sysreg!(sctlr_el2, u64, safe read_sctlr_el2, safe write_sctlr_el2);
+read_write_sysreg!(sctlr_el2, u64: SctlrEl2, safe read_sctlr_el2, safe write_sctlr_el2);
 read_write_sysreg! {
     /// # Safety
     ///
@@ -414,6 +414,17 @@ bitflags! {
     pub struct SctlrEl1: u64 {
         /// RES1 bits in the `sctlr_el1` register.
         const RES1 = (1 << 29) | (1 << 28) | (1 << 23) | (1 << 22) | (1 << 20) | (1 << 11);
+        /// Endianness of data accesses at EL1.
+        const EE = 1 << 25;
+    }
+
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    pub struct SctlrEl2: u64 {
+        /// RES1 bits in the `sctlr_el2` register.
+        const RES1 = (1 << 29) | (1 << 28) | (1 << 23) | (1 << 22) | (1 << 18) | (1 << 16) |
+                     (1 << 11) | (1 << 5) | (1 << 4);
+        /// Endianness of data accesses at EL2.
+        const EE = 1 << 25;
     }
 
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
