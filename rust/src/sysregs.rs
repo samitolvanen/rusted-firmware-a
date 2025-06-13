@@ -129,6 +129,10 @@ macro_rules! write_sysreg {
                     options(nostack),
                     value = in(reg) value,
                 );
+                asm!(
+                    "nop",
+                    options(nomem, nostack, preserves_flags),
+                );
             }
         }
     };
