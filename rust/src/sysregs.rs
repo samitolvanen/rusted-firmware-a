@@ -129,6 +129,11 @@ macro_rules! write_sysreg {
                     options(nostack),
                     value = in(reg) value,
                 );
+                asm!(
+                    "nop",
+                    // tell the compiler this doesn't touch memory or the stack
+                    options(nomem, nostack, preserves_flags),
+                );
             }
         }
     };
