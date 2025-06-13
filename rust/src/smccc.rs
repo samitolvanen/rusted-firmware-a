@@ -4,6 +4,7 @@
 
 //! Types and helpers related to the SMC Calling Convention.
 
+use core::arch::asm;
 use core::fmt::{self, Debug, Display, Formatter};
 
 const FAST_CALL: u32 = 0x8000_0000;
@@ -210,6 +211,13 @@ impl From<u32> for SmcReturn {
 
 impl From<i32> for SmcReturn {
     fn from(value: i32) -> Self {
+        unsafe {
+            asm!(
+                "nop",
+                // asd
+                options(nomem, nostack, preserves_flags),
+            );
+        }
         Self::from(value as u64)
     }
 }
