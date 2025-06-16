@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57dea7c0_73d28761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-06-16T16:04:19Z",
+      "side": 1,
+      "message": "STAGING_UNSAFE_RUN_CI",
+      "revId": "88e994fb69fac87ccde810c77d1cd88dcd348cdf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
