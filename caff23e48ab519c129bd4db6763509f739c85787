@@ -34,5 +34,36 @@
       "revId": "caff23e48ab519c129bd4db6763509f739c85787",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Submittable",
+        "description": {},
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Owner-Review\u003dMAX,user\u003dnon_uploader AND -label:Code-Owner-Review\u003dMIN AND label:Maintainer-Review\u003dMAX,user\u003dnon_uploader AND -label:Maintainer-Review\u003dMIN AND label:Verified\u003dMAX AND -label:Verified\u003dMIN AND label:Unsafe-Review\u003dMAX AND -label:Unsafe-Review\u003dMIN"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Owner-Review=MAX,user=non_uploader AND -label:Code-Owner-Review=MIN AND label:Maintainer-Review=MAX,user=non_uploader AND -label:Maintainer-Review=MIN AND label:Verified=MAX AND -label:Verified=MIN AND label:Unsafe-Review=MAX AND -label:Unsafe-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":["label:Code-Owner-Review=MAX,user=non_uploader","label:Maintainer-Review=MAX,user=non_uploader","label:Verified=MAX"],"failingAtoms":["label:Code-Owner-Review=MIN","label:Maintainer-Review=MIN","label:Verified=MIN","label:Unsafe-Review=MAX","label:Unsafe-Review=MIN"]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "caff23e48ab519c129bd4db6763509f739c85787",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    }
   ]
 }
