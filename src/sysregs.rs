@@ -269,12 +269,12 @@ read_write_sysreg!(hpfar_el2, u64, safe read_hpfar_el2, safe write_hpfar_el2);
 read_write_sysreg!(hstr_el2, u64, safe read_hstr_el2, safe write_hstr_el2);
 read_write_sysreg!(icc_sre_el1, u64: IccSre, safe read_icc_sre_el1, safe write_icc_sre_el1);
 read_write_sysreg!(icc_sre_el2, u64: IccSre, safe read_icc_sre_el2, safe write_icc_sre_el2);
-write_sysreg! {
+read_write_sysreg! {
     /// # Safety
     ///
     /// The SRE bit of `icc_sre_el3` must not be changed from 1 to 0, as this can result in
     /// unpredictable behaviour.
-    icc_sre_el3, u64: IccSre, write_icc_sre_el3
+    icc_sre_el3, u64: IccSre, safe read_icc_sre_el3, write_icc_sre_el3
 }
 read_write_sysreg!(ich_hcr_el2, u64, safe read_ich_hcr_el2, safe write_ich_hcr_el2);
 read_write_sysreg!(ich_vmcr_el2, u64, safe read_ich_vmcr_el2, safe write_ich_vmcr_el2);
