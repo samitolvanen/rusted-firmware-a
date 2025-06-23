@@ -33,6 +33,23 @@
       "message": "STAGING_UNSAFE_RUN_CI",
       "revId": "a133cca9f2824613d6b43ee244dab4027706cf1a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf27be5d_75076f3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-06-23T11:46:55Z",
+      "side": 1,
+      "message": "STAGING_UNSAFE_RUN_CI",
+      "revId": "a133cca9f2824613d6b43ee244dab4027706cf1a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ],
   "submitRequirementResults": [
