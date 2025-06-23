@@ -7,7 +7,7 @@ use crate::{
     aarch64::{dsb_sy, sev, wfi},
     context::{CoresImpl, EntryPointInfo},
     debug::DEBUG,
-    gicv3::{GicConfig, InterruptConfig},
+    gicv3::{GIC, GicConfig, InterruptConfig},
     logger::{self, HybridLogger, LockedWriter, inmemory::PerCoreMemoryLogger},
     pagetable::{IdMap, MT_DEVICE, disable_mmu_el3, map_region},
     semihosting::{AdpStopped, semihosting_exit},
@@ -288,7 +288,6 @@ impl PsciPlatformInterface for QemuPsciPlatformImpl {
     }
 
     fn power_domain_off(&self, _target_state: &PsciCompositePowerState) {
-        todo!()
     }
 
     fn power_domain_power_down_wfi(&self, _target_state: &PsciCompositePowerState) -> ! {

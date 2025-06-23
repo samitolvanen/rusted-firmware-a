@@ -9,6 +9,7 @@ use super::{Service, owns};
 use crate::{
     aarch64::{dsb_sy, wfi},
     context::{CoresImpl, World},
+    gicv3::{GIC, disable_cpu_interface},
     pagetable,
     platform::{Platform, PlatformImpl, PlatformPowerState, PsciPlatformImpl, plat_calc_core_pos},
     smccc::{FunctionId as SmcFunctionId, OwningEntityNumber, SmcReturn},
@@ -499,7 +500,13 @@ impl Psci {
                 self.notify_spmd(Function::CpuOff);
                 cpu.set_local_state(PlatformPowerState::OFF);
                 composite_state.coordinate_state(cpu_index, &mut ancestors);
-                self.platform.power_domain_off(&composite_state);
+                //self.platform.power_domain_off(&composite_state);
+                let mut gic = GIC
+                    .get()
+                    .expect("GIC must be initialized before CPU interface is disabled.")
+                    .gic
+                    .lock();
+                disable_cpu_interface(&mut gic).expect("CPU interface already disabled.");
             });
 
         cpu.set_affinity_info(AffinityInfo::Off);
