@@ -21,6 +21,9 @@ fn build_libtfa(platform_builder: &dyn Builder) {
     if env::var("CARGO_FEATURE_RME").as_deref() == Ok("1") {
         build.define("ENABLE_RME", Some("1"));
     }
+    if env::var("CARGO_CFG_BTI").as_deref() == Ok("1") {
+        build.define("ENABLE_BTI", Some("1"));
+    }
     build
         .define("CRASH_REPORTING", Some("1"))
         .define("ENABLE_ASSERTIONS", Some("1"))
@@ -60,6 +63,7 @@ fn main() {
         "cargo::rustc-check-cfg=cfg(platform, values(\"{}\"))",
         PLATFORMS.join("\", \""),
     );
+    println!("cargo::rustc-check-cfg=cfg(bti)");
 
     if env::var("CARGO_CFG_TARGET_OS").unwrap() == "none" {
         let platform = env::var("CARGO_CFG_PLATFORM").expect("Missing platform name");
