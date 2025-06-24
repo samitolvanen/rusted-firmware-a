@@ -49,3 +49,7 @@ unreadable_literal = "deny"
 [lints.rust]
 missing_docs = "deny"
 unsafe_op_in_unsafe_fn = "deny"
+
+[profile.dev]
+# If we aren't at least this optimized, `libcore` outgrows our linker script.
+opt-level = 1
