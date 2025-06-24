@@ -46,6 +46,21 @@ CARGO_FEATURE_FLAGS := --no-default-features --features "$(FEATURES)"
 
 TARGET_RUSTFLAGS = --cfg platform=\"${PLAT}\"
 
+# Whether to build core and compiler_builtins. Primarily needed for special sanitizers or
+# optimizations. Requires a nightly Cargo.
+BUILD_STD ?= 0
+
+# Whether to enable BTI support in EL3. Flagged out only because it requires a nightly compiler.
+BTI_EL3?= 0
+ifeq ($(BTI_EL3), 1)
+	BUILD_STD = 1
+	TARGET_RUSTFLAGS += -Zbranch-protection=bti --cfg bti
+endif
+
+ifeq ($(BUILD_STD), 1)
+	CARGO_FLAGS += -Zbuild-std=core,compiler_builtins,panic_abort,alloc
+endif
+
 TARGET_CARGO := RUSTFLAGS="$(TARGET_RUSTFLAGS)" $(CARGO)
 STF_CARGO := RUSTFLAGS="$(TARGET_RUSTFLAGS) -C link-args=-znostart-stop-gc" $(CARGO)
 
@@ -76,7 +91,7 @@ build:
 	$(OBJCOPY) $(BL31_ELF) -O binary $(BL31_BIN)
 
 build-stf:
-	$(STF_CARGO) build --package rf-a-secure-test-framework $(CARGO_FLAGS)
+	$(STF_CARGO) build --package rf-a-secure-test-framework $(CARGO_FLAGS) -vvv
 $(BL32): build-stf
 	$(OBJCOPY) target/$(TARGET)/$(BUILDTYPE)/bl32 -O binary $@
 $(BL33): build-stf
