@@ -30,3 +30,11 @@ criteria = ["safe-to-deploy", "ub-risk-2"]
 [[exemptions.shlex]]
 version = "1.3.0"
 criteria = "safe-to-deploy"
+
+[[exemptions.zerocopy]]
+version = "0.8.26"
+criteria = ["safe-to-deploy", "ub-risk-2"]
+
+[[exemptions.zerocopy-derive]]
+version = "0.8.26"
+criteria = ["safe-to-deploy", "ub-risk-2"]
