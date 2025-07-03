@@ -33,17 +33,8 @@ pub struct Arch;
 impl Service for Arch {
     owns!(OwningEntityNumber::ARM_ARCHITECTURE);
 
-    fn handle_non_secure_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
-        (Self::handle_common_smc(regs), World::NonSecure)
-    }
-
-    fn handle_secure_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
-        (Self::handle_common_smc(regs), World::Secure)
-    }
-
-    #[cfg(feature = "rme")]
-    fn handle_realm_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
-        (Self::handle_common_smc(regs), World::Realm)
+    fn handle_smc(&self, regs: &[u64; 18], world: World) -> (SmcReturn, World) {
+        (Self::handle_common_smc(regs), world)
     }
 }
 
