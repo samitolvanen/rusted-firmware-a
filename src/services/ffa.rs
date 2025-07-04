@@ -3,7 +3,8 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 use crate::{
-    context::{PerCoreState, World},
+    context::{PerCoreState, World, switch_world},
+    exceptions::{RunResult, enter_world},
     platform::{Platform, PlatformImpl, exception_free},
     services::{Service, owns, psci::PsciSpmInterface},
     smccc::{OwningEntityNumber, SmcReturn},
@@ -12,6 +13,7 @@ use arm_ffa::{
     DirectMsgArgs, FfaError, Interface, SecondaryEpRegisterAddr, SuccessArgsIdGet,
     SuccessArgsSpmIdGet, TargetInfo, Version, WarmBootType,
 };
+use arm_psci::ErrorCode::Denied as PsciDenied;
 use core::{
     cell::RefCell,
     sync::atomic::{AtomicUsize, Ordering::Relaxed},
@@ -467,8 +469,38 @@ impl Spmd {
 }
 
 impl PsciSpmInterface for Spmd {
-    fn forward_psci_request(&self, _psci_request: &[u64; 4]) -> u64 {
-        0
+    fn forward_psci_request(&self, psci_request: &[u64; 4]) -> u64 {
+        let version = self.spmc_version;
+        let mut out_regs = SmcReturn::from([0u64; 18]);
+
+        let msg = Interface::MsgSendDirectReq {
+            src_id: Self::OWN_ID,
+            dst_id: self.spmc_id,
+            args: DirectMsgArgs::PowerPsciReq64 {
+                params: *psci_request,
+            },
+        };
+
+        msg.to_regs(version, out_regs.values_mut());
+
+        switch_world(World::NonSecure, World::Secure);
+
+        let ret: i32 = match enter_world(&out_regs, World::Secure) {
+            RunResult::Smc { regs } => match Interface::from_regs(version, &regs) {
+                Ok(Interface::MsgSendDirectResp {
+                    src_id,
+                    dst_id: Self::OWN_ID,
+                    args: DirectMsgArgs::PowerPsciResp { psci_status },
+                }) if src_id == self.spmc_id => psci_status,
+                _ => panic!(),
+            },
+            RunResult::Interrupt => PsciDenied.into(),
+            RunResult::SysregTrap { .. } => PsciDenied.into(),
+        };
+
+        switch_world(World::Secure, World::NonSecure);
+
+        ret as u64
     }
 
     fn notify_cpu_off(&self) {
