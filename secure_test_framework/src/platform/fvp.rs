@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-use super::Platform;
+use super::{Platform, read_mpidr_el1};
 use arm_pl011_uart::{PL011Registers, Uart, UniqueMmioPointer};
 use core::{arch::naked_asm, fmt::Write, ptr::NonNull};
 use spin::{
@@ -73,5 +73,22 @@ unsafe impl Platform for Fvp {
             MPIDR_AFFINITY_BITS = const MPIDR_AFFINITY_BITS,
             FVP_MAX_PE_PER_CPU = const FVP_MAX_PE_PER_CPU,
         );
+    }
+
+    fn mpidr_for_core(core_index: usize) -> u64 {
+        assert!(core_index < Self::CORE_COUNT);
+
+        let aff0 = (core_index % FVP_MAX_PE_PER_CPU) as u64;
+        let aff1 = ((core_index / FVP_MAX_PE_PER_CPU) % FVP_MAX_CPUS_PER_CLUSTER) as u64;
+        let aff2 = (core_index / FVP_MAX_PE_PER_CPU / FVP_MAX_CPUS_PER_CLUSTER) as u64;
+
+        let mpidr_unshifted =
+            aff0 << MPIDR_AFF0_SHIFT | aff1 << MPIDR_AFF1_SHIFT | aff2 << MPIDR_AFF2_SHIFT;
+
+        if read_mpidr_el1() & MPIDR_MT_MASK != 0 {
+            mpidr_unshifted
+        } else {
+            mpidr_unshifted << MPIDR_AFFINITY_BITS
+        }
     }
 }
