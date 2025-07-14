@@ -13,6 +13,7 @@ license = "BSD-3-Clause"
 [dependencies]
 aarch64-rt = { version = "0.2.2", default-features = false, features = [
   "exceptions",
+  "psci",
 ] }
 arm-ffa = "0.3.0"
 arm-psci = "0.1.3"
