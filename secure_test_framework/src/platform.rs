@@ -39,6 +39,11 @@ pub unsafe trait Platform {
     ///
     /// For an invalid MPIDR value no guarantees are made about the return value.
     extern "C" fn core_position(mpidr: u64) -> usize;
+
+    /// Given a linear core index, returns the corresponding MPIDR value.
+    ///
+    /// This is the inverse function of `core_position`.
+    fn mpidr_for_core(core_index: usize) -> u64;
 }
 
 fn read_mpidr_el1() -> u64 {
