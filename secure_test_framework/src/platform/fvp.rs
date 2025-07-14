@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 use super::Platform;
-use crate::sysregs::MpidrEl1;
+use crate::sysregs::{MpidrEl1, read_mpidr_el1};
 use arm_pl011_uart::{PL011Registers, Uart, UniqueMmioPointer};
 use core::{arch::naked_asm, fmt::Write, ptr::NonNull};
 use spin::{
@@ -69,5 +69,23 @@ unsafe impl Platform for Fvp {
             MPIDR_AFFINITY_BITS = const MpidrEl1::AFFINITY_BITS,
             FVP_MAX_PE_PER_CPU = const FVP_MAX_PE_PER_CPU,
         );
+    }
+
+    fn psci_mpidr_for_core(core_index: usize) -> u64 {
+        assert!(core_index < Self::CORE_COUNT);
+
+        let aff0 = (core_index % FVP_MAX_PE_PER_CPU) as u64;
+        let aff1 = ((core_index / FVP_MAX_PE_PER_CPU) % FVP_MAX_CPUS_PER_CLUSTER) as u64;
+        let aff2 = (core_index / FVP_MAX_PE_PER_CPU / FVP_MAX_CPUS_PER_CLUSTER) as u64;
+
+        let mpidr_unshifted = aff0 << MpidrEl1::AFF0_SHIFT
+            | aff1 << MpidrEl1::AFF1_SHIFT
+            | aff2 << MpidrEl1::AFF2_SHIFT;
+
+        if read_mpidr_el1() & MpidrEl1::MT != MpidrEl1::empty() {
+            mpidr_unshifted
+        } else {
+            mpidr_unshifted << MpidrEl1::AFFINITY_BITS
+        }
     }
 }
