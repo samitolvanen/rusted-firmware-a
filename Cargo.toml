@@ -37,6 +37,7 @@ spin = { version = "0.10.0", default-features = false, features = [
 ] }
 arm-ffa = { version = "0.3.0", default-features = false }
 arm-gic = "0.6.0"
+safe-mmio = "0.2"
 
 [dev-dependencies]
 arm-gic = { version = "0.6.0", features = ["fakes"] }
@@ -46,6 +47,7 @@ cc = "=1.2.16"
 
 [features]
 default = ["sel2"]
+errata_2384374 = []
 rme = []
 sel2 = []
 max_log_error = ["log/max_level_error"]
