@@ -61,11 +61,20 @@ fn setup_linker(platform: &String) {
     println!("cargo:rerun-if-changed={}", linker_name);
 }
 
+fn setup_ffa_disp_cfg() {
+    // Let the build environment choose the FFA_DISP. Default to `spmd`.
+    println!("cargo:rerun-if-env-changed=FFA_DISP");
+    let spd = env::var("FFA_DISP").unwrap_or("spmd".to_string());
+    println!("cargo:rustc-cfg=ffa_disp=\"{}\"", spd);
+}
+
 fn main() {
     println!(
         "cargo::rustc-check-cfg=cfg(platform, values(\"{}\"))",
         PLATFORMS.join("\", \""),
     );
+
+    setup_ffa_disp_cfg();
 
     if env::var("CARGO_CFG_TARGET_OS").unwrap() == "none" {
         let platform = env::var("CARGO_CFG_PLATFORM").expect("Missing platform name");

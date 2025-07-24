@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 pub mod arch;
+#[cfg(ffa_disp = "spmd")]
 pub mod ffa;
 pub mod psci;
 #[cfg(feature = "rme")]
@@ -80,6 +81,7 @@ static SERVICES: Once<Services> = Once::new();
 pub struct Services {
     pub arch: arch::Arch,
     pub psci: psci::Psci,
+    #[cfg(ffa_disp = "spmd")]
     pub spmd: ffa::Spmd,
     #[cfg(feature = "rme")]
     pub rmmd: rmmd::Rmmd,
@@ -97,6 +99,7 @@ impl Services {
         Self {
             arch: arch::Arch::new(),
             psci: psci::Psci::new(PlatformImpl::psci_platform().unwrap()),
+            #[cfg(ffa_disp = "spmd")]
             spmd: ffa::Spmd::new(),
             #[cfg(feature = "rme")]
             rmmd: rmmd::Rmmd::new(),
