@@ -198,7 +198,8 @@ pub fn disable_cpu_interface(gic: &mut GicV3) -> Result<(), GICRError> {
     // Ensure visibility of system register writes.
     dsb_sy();
 
-    // TODO: enable errata wa 2384374
+    #[cfg(feature = "errata_2384374")]
+    errata_2384374_wa_apply(gic);
 
     gic.redistributor_mark_core_asleep(current_redistributor_index())?;
     Ok(())
@@ -301,4 +302,18 @@ pub fn handle_group0_interrupt() {
 
     GicV3::end_interrupt(int_id, InterruptGroup::Group0);
     debug!("Group 0 interrupt {:?} EOI", int_id);
+}
+
+/// Apply part 2 of GIC600 errata 2384374 as per:
+/// https://developer.arm.com/documentation/sden892601/latest/.
+#[cfg(feature = "errata_2384374")]
+fn errata_2384374_wa_apply(gic: &mut GicV3) {
+    use arm_gic::gicv3::registers::GicrCtlr;
+    use safe_mmio::field;
+
+    let mut gicr = gic.gicr_ptr(current_redistributor_index());
+    let mut gicr_ctlr_ptr = field!(gicr, ctlr);
+    let gicr_ctlr = gicr_ctlr_ptr.read();
+    gicr_ctlr_ptr.write(gicr_ctlr | GicrCtlr::DPG0 | GicrCtlr::DPG1NS | GicrCtlr::DPG1S);
+    gicr_ctlr_ptr.write(gicr_ctlr & !(GicrCtlr::DPG0 | GicrCtlr::DPG1NS | GicrCtlr::DPG1S));
 }
