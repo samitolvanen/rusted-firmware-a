@@ -84,7 +84,9 @@ pub trait Platform {
     /// MMU is enabled.
     ///
     /// Any logs sent before this is called will be ignored.
-    fn init_before_mmu();
+    ///
+    /// arg0-arg3 are the first four function arguments passed to bl31_main.
+    fn init_before_mmu(arg0: u64, arg1: u64, arg2: u64, arg3: u64);
 
     /// Maps device memory and any other regions specific to the platform, before the MMU is
     /// enabled.
