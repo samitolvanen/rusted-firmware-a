@@ -33,10 +33,10 @@ use log::info;
 use services::Services;
 
 #[unsafe(no_mangle)]
-extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
-    PlatformImpl::init_before_mmu();
+extern "C" fn bl31_main(arg0: u64, arg1: u64, arg2: u64, arg3: u64) -> ! {
+    PlatformImpl::init_before_mmu(arg0, arg1, arg2, arg3);
     info!("Rust BL31 starting");
-    info!("Parameters: {bl31_params:#0x} {platform_params:#0x}");
+    info!("Parameters: {arg0:#0x} {arg1:#0x} {arg2:#0x} {arg3:#0x}");
 
     // Set up page table.
     pagetable::init();
