@@ -129,7 +129,7 @@ impl Platform for Fvp {
         ],
     };
 
-    fn init_before_mmu() {
+    fn init_before_mmu(_arg0: u64, _arg1: u64, _arg2: u64, _arg3: u64) {
         // SAFETY: `PL011_BASE_ADDRESS` is the base address of a PL011 device, and nothing else
         // accesses that address range. The address remains valid after turning on the MMU
         // because of the identity mapping of the `V2M_MAP_IOFPGA` region.

@@ -53,7 +53,7 @@ impl Platform for TestPlatform {
         interrupts_config: &[],
     };
 
-    fn init_before_mmu() {
+    fn init_before_mmu(_arg0: u64, _arg1: u64, _arg2: u64, _arg3: u64) {
         logger::init(StdOutSink).expect("Failed to initialise logger");
     }
 
