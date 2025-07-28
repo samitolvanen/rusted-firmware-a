@@ -11,6 +11,8 @@ authors = [
   "Okash Khawaja <okash@google.com>",
 ]
 rust-version = "1.88"
+license = "BSD-3-Clause"
+license-file = "LICENSE-BSD3"
 
 [profile.dev]
 opt-level = "s"
