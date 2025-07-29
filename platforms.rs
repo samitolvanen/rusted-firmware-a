@@ -5,7 +5,6 @@
 mod fvp;
 mod qemu;
 
-use cc::Build;
 use fvp::FvpBuilder;
 use qemu::QemuBuilder;
 use std::error::Error;
@@ -15,9 +14,10 @@ pub const PLATFORMS: [&str; 2] = [QemuBuilder::PLAT_NAME, FvpBuilder::PLAT_NAME]
 type BuildResult = Result<(), Box<dyn Error>>;
 
 pub trait Builder {
-    /// Sets up platform-specific configurations (code generation, file inclusions, `cc::Build`
-    /// definitions, etc.).
-    fn configure_build(&self, build: &mut Build) -> BuildResult;
+    /// Sets up platform-specific configurations (code generation, file inclusions, etc.).
+    fn configure_build(&self) -> BuildResult {
+        Ok(())
+    }
 }
 
 pub fn get_builder(platform: &str) -> Result<Box<dyn Builder>, Box<dyn Error>> {
