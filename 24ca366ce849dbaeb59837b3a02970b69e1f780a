@@ -33,6 +33,23 @@
       "message": "RUN_UNSAFE_CI",
       "revId": "24ca366ce849dbaeb59837b3a02970b69e1f780a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ae99a3_8160de98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-07-30T12:02:16Z",
+      "side": 1,
+      "message": "Original patch in `trusted-firmware-a`: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40797\n\nIt had an MR from @qwandor@google.com",
+      "revId": "24ca366ce849dbaeb59837b3a02970b69e1f780a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
