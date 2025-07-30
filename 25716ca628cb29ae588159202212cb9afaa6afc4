@@ -16,6 +16,24 @@
       "message": "C TF-A indeed supported multiple dispatchers, but that is one of the features that is now considered as legacy and won\u0027t be moved to RF-A. The only supported use case upstream is the FF-A SPMD, with one exception: an optional EL3 SPMC implementation will be added soon (gated by a feature flag), which is also planned to be deprecated in the future (after some years?), in favour of having a S-EL2 SPMC in the system.",
       "revId": "25716ca628cb29ae588159202212cb9afaa6afc4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5070af7f_bf9f2cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-07-30T16:57:08Z",
+      "side": 1,
+      "message": "This was not meant to go for review. I needed to commit some of my local options. I\u0027ll abandon it.",
+      "parentUuid": "5d01a9a9_36b7ab53",
+      "revId": "25716ca628cb29ae588159202212cb9afaa6afc4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
