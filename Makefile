@@ -18,6 +18,14 @@ FEATURES ?= sel2
 PLATFORMS_AVAILABLE := fvp qemu
 PLAT := $(filter $(PLATFORMS_AVAILABLE), $(MAKECMDGOALS))
 
+# Find the platform file and extract the vendor path.
+PLATFORM_FILE := $(shell find platforms -name "$(PLAT).rs" -print -quit)
+VENDOR_PATH :=
+ifneq ($(PLATFORM_FILE),)
+	PLATFORM_DIR := $(dir $(PLATFORM_FILE))
+	VENDOR_PATH := $(patsubst %/,%,$(patsubst platforms/%,%,$(PLATFORM_DIR)))
+endif
+
 ifndef PLAT
   ifneq ($(MAKECMDGOALS),$(filter $(MAKECMDGOALS),clean clippy-test help list_platforms))
     $(info error: environment variable PLAT=<xxx> is required. Options are:)
@@ -39,6 +47,10 @@ endif
 
 TARGET := aarch64-unknown-none-softfloat
 CARGO_FLAGS += --target $(TARGET) --no-default-features --features "$(FEATURES)"
+RUSTCFG_FLAGS := --cfg platform=\"${PLAT}\"
+ifneq ($(VENDOR_PATH),)
+	RUSTCFG_FLAGS += --cfg vendor_path=\"${VENDOR_PATH}\"
+endif
 
 all: $(PLAT)-build
 
@@ -62,28 +74,29 @@ $(FIP): $(BL2) build $(BL32) $(BL33)
 	$(TFA)/tools/fiptool/fiptool update --soc-fw $(BL31_BIN) $@
 
 build:
-	RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo build $(CARGO_FLAGS)
-	RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo objcopy $(CARGO_FLAGS) -- -O binary $(BL31_BIN)
+	RUSTFLAGS="$(RUSTCFG_FLAGS)" cargo build $(CARGO_FLAGS)
+	RUSTFLAGS="$(RUSTCFG_FLAGS)" cargo objcopy $(CARGO_FLAGS) -- -O binary $(BL31_BIN)
 	ln -fsr target/$(TARGET)/$(BUILDTYPE)/rf-a-bl31 $(BL31_ELF)
 
 build-stf:
-	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" cargo build --package rf-a-secure-test-framework --target $(TARGET)
+	RUSTFLAGS="$(RUSTCFG_FLAGS) -C link-args=-znostart-stop-gc" cargo build --package rf-a-secure-test-framework --target $(TARGET)
 $(BL32): build-stf
 	mkdir -p target
-	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" cargo objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl32 -- -O binary $@
+	RUSTFLAGS="$(RUSTCFG_FLAGS) -C link-args=-znostart-stop-gc" cargo objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl32 -- -O binary $@
 $(BL33): build-stf
 	mkdir -p target
-	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" cargo objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl33 -- -O binary $@
+	RUSTFLAGS="$(RUSTCFG_FLAGS) -C link-args=-znostart-stop-gc" cargo objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl33 -- -O binary $@
 
 clippy-test:
 	cargo clippy --tests --features "$(FEATURES)"
 
 cargo-doc:
-	RUSTDOCFLAGS="-D warnings --cfg platform=\"${PLAT}\"" RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo doc --target $(TARGET) --no-deps  \
+	RUSTDOCFLAGS="-D warnings $(RUSTCFG_FLAGS)" RUSTFLAGS="$(RUSTCFG_FLAGS)" cargo doc --target $(TARGET) --no-deps  \
 	--features "$(FEATURES)"
 
 clippy:
-	RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo clippy $(CARGO_FLAGS)
+	RUSTFLAGS="$(RUSTCFG_FLAGS)" cargo clippy $(CARGO_FLAGS)
+
 
 QEMU = qemu-system-aarch64
 GDB_PORT ?= 1234
