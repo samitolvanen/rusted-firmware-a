@@ -16,6 +16,23 @@
       "message": "RUN_CI",
       "revId": "6ef1c48574d2db2ba91fa09dd26f9cac8895e3c4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8dc0089_7ad153f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-07-30T12:03:51Z",
+      "side": 1,
+      "message": "Original patch in `trusted-firmware-a`: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40760/\n\nIt had a CO from @sandrine.afsa@arm.com and an MR from @qwandor@google.com",
+      "revId": "6ef1c48574d2db2ba91fa09dd26f9cac8895e3c4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
