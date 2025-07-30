@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d54cf6e_b481fd62",
+        "filename": "Cargo.toml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2025-07-30T11:12:28Z",
+      "side": 1,
+      "message": "The `license` and `license-file` fields are mutually exclusive. We can remove the `license-file` key so that tools can continue to advertise the project\u0027s BSD-3-Clause, but maintain the `LICENSE` file for tools that will show it.\n\n```\n❯ cargo new dummy\n    Creating binary (application) `dummy` package\nnote: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n❯ sed -i \u0027/^\\[package\\]/a license \u003d \"BSD-3-Clause\"\u0027 dummy/Cargo.toml\n❯ sed -i \u0027/^\\[package\\]/a license-file \u003d \"LICENSE\"\u0027 dummy/Cargo.toml\n❯ cargo check --manifest-path dummy/Cargo.toml\nwarning: only one of `license` or `license-file` is necessary\n`license` should be used if the package license can be expressed with a standard SPDX expression.\n`license-file` should be used if the package uses a non-standard license.\nSee https://doc.rust-lang.org/cargo/reference/manifest.html#the-license-and-license-file-fields for more information.\n    Checking dummy v0.1.0 (/private/tmp/dummy)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.46s\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56875d56_bf07653b",
+        "filename": "LICENSE",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2025-07-30T11:12:28Z",
+      "side": 1,
+      "message": "It\u0027s a big nitpick and I recognise it\u0027s not a priority, but there are some subtle syntactic differences from the SPDX BSD-3 license file that might make it a bit more challenging for some tools to recognise this file as BSD-3.\n\nI recommend grabbing the one from the SPDX website and just filling in the `\u003cvar\u003e` parts, leaving alone anything else: https://spdx.org/licenses/BSD-3-Clause.txt",
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166551c2_abe00b2a",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2025-07-30T11:12:28Z",
+      "side": 1,
+      "message": "the (to clarify it\u0027s not just a derivative of it)",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9de062_be3480ca",
+        "filename": "secure_test_framework/Cargo.toml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2025-07-30T11:12:28Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 27
+      },
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
