@@ -16,6 +16,23 @@
       "message": "RUN_CI",
       "revId": "24ca366ce849dbaeb59837b3a02970b69e1f780a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf3c89c_b06b43c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-07-30T11:55:28Z",
+      "side": 1,
+      "message": "RUN_UNSAFE_CI",
+      "revId": "24ca366ce849dbaeb59837b3a02970b69e1f780a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
