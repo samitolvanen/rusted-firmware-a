@@ -1,0 +1,34 @@
+{
+  "comments": [],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Submittable",
+        "description": {},
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader AND -label:Code-Review\u003dMIN AND label:Verified\u003dMAX AND -label:Verified\u003dMIN AND label:Unsafe-Review\u003dMAX AND -label:Unsafe-Review\u003dMIN"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader AND -label:Code-Review=MIN AND label:Verified=MAX AND -label:Verified=MIN AND label:Unsafe-Review=MAX AND -label:Unsafe-Review=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Verified=MAX","label:Unsafe-Review=MAX"],"failingAtoms":["label:Code-Review=MIN","label:Verified=MIN","label:Unsafe-Review=MIN"]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "ab9164b397311032b998e86f7be9df63f4dd39a8",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    }
+  ]
+}
