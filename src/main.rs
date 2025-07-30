@@ -45,7 +45,7 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
     // Set up GIC.
     gicv3::init();
     info!("GIC configured.");
-
+    // asd a
     let non_secure_entry_point = PlatformImpl::non_secure_entry_point();
     let secure_entry_point = PlatformImpl::secure_entry_point();
     #[cfg(feature = "rme")]
