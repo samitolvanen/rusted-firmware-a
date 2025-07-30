@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc5108a_9971a3e0",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-30T20:13:47Z",
+      "side": 1,
+      "message": "https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41359 removes the platform build scripts, check the source files under `src/platforms` instead.",
+      "revId": "92b096051fcda998033afedabbfa297aa31b6c94",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd4c0de_55d561c7",
+        "filename": "build.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-30T20:13:47Z",
+      "side": 1,
+      "message": "Nit: add a use statement for `PathBuf` rather than using the full module path here.",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 43
+      },
+      "revId": "92b096051fcda998033afedabbfa297aa31b6c94",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffa0a87f_07cbb841",
+        "filename": "build.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-30T20:13:47Z",
+      "side": 1,
+      "message": "Does this work? I thought you needed to specific `values(any())` to avoid lint errors on specifying a value.",
+      "revId": "92b096051fcda998033afedabbfa297aa31b6c94",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
