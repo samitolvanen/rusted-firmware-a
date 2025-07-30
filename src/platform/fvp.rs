@@ -4,7 +4,7 @@
 
 include!("../../platforms/fvp/config.rs");
 
-use super::Platform;
+use super::{DummyService, Platform};
 use crate::{
     context::{CoresImpl, EntryPointInfo},
     debug::DEBUG,
@@ -12,6 +12,7 @@ use crate::{
     logger::{self, LockedWriter},
     pagetable::{IdMap, MT_DEVICE, map_region},
     services::{
+        DummyService,
         arch::WorkaroundSupport,
         psci::{
             PlatformPowerStateInterface, PowerStateType, PsciCompositePowerState,
@@ -99,6 +100,8 @@ impl Platform for Fvp {
     type LogSinkImpl = LockedWriter<Uart<'static>>;
     type PsciPlatformImpl = FvpPsciPlatformImpl;
 
+    type PlatformServiceImpl = DummyService;
+
     const GIC_CONFIG: GicConfig = GicConfig {
         interrupts_config: &[
             (
@@ -149,6 +152,10 @@ impl Platform for Fvp {
                 false,
             )
         }
+    }
+
+    fn create_service() -> Self::PlatformServiceImpl {
+        DummyService
     }
 
     fn handle_group0_interrupt(int_id: IntId) {
