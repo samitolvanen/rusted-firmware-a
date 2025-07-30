@@ -4,7 +4,8 @@
 
 use arm_ffa::{
     DirectMsgArgs, Error, Feature, FfaError, Interface, MemOpBuf, MsgWaitFlags,
-    PartitionInfoGetFlags, RxTxAddr, SuccessArgs, TargetInfo, Uuid, Version,
+    PartitionInfoGetFlags, RxTxAddr, SecondaryEpRegisterAddr, SuccessArgs, TargetInfo, Uuid,
+    Version,
     memory_management::{Handle, MemReclaimFlags},
 };
 use smccc::{arch, error::positive_or_error_32, smc64};
@@ -172,4 +173,12 @@ fn call_raw(interface: Interface) -> [u64; 18] {
     let mut regs = [0; 18];
     interface.to_regs(FFA_VERSION, &mut regs);
     smc64(function_id.into(), regs[1..].try_into().unwrap())
+}
+
+// SAFETY: The caller guarantees that `addr` is a valid secondary entry point where it's safe for
+// RF-A to jump to.
+pub unsafe fn secondary_ep_register(addr: u64) -> Result<Interface, Error> {
+    call(Interface::SecondaryEpRegister {
+        entrypoint: SecondaryEpRegisterAddr::Addr64(addr),
+    })
 }

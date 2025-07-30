@@ -28,10 +28,13 @@ use crate::{
     },
     gicv3::handle_group1_interrupt,
     platform::{Platform, PlatformImpl},
-    util::{NORMAL_WORLD_ID, SECURE_WORLD_ID, SPMC_DEFAULT_ID, SPMD_DEFAULT_ID, current_el},
+    util::{
+        NORMAL_WORLD_ID, SECURE_WORLD_ID, SPMC_DEFAULT_ID, SPMD_DEFAULT_ID, current_el,
+        expect_ffa_success,
+    },
 };
 use aarch64_rt::entry;
-use arm_ffa::{DirectMsgArgs, FfaError, Interface, SuccessArgsIdGet, Version};
+use arm_ffa::{DirectMsgArgs, FfaError, Interface, SuccessArgs, SuccessArgsIdGet, Version};
 use core::panic::PanicInfo;
 use log::{error, info, warn};
 
@@ -95,6 +98,9 @@ fn bl32_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
             res => panic!("Unexpected response for FFA_SPM_ID_GET: {:?}", res),
         }
     };
+
+    // Test while on boot mode.
+    test_ffa_secondary_ep_register().unwrap();
 
     let mut current_test_index = None;
 
@@ -238,4 +244,20 @@ fn panic(info: &PanicInfo) -> ! {
     loop {
         let _ = direct_response(SECURE_WORLD_ID, NORMAL_WORLD_ID, Response::Panic.into());
     }
+}
+
+fn test_ffa_secondary_ep_register() -> Result<(), ()> {
+    // SAFETY: 0x0600_0000 is a valid address as this is the address we are currently using as a
+    // primary entrypoint.
+    // TODO: change to the desired secondary ep address
+    let args = unsafe {
+        expect_ffa_interface!(
+            expect_ffa_success,
+            "SECONDARY_EP_REGISTER failed",
+            ffa::secondary_ep_register(0x0600_0000)
+        )
+    };
+
+    expect_eq!(args, SuccessArgs::Args32([0, 0, 0, 0, 0, 0]));
+    Ok(())
 }
