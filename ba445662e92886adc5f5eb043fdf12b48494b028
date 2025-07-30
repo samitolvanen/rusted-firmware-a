@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be75af10_1f87d825",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-07-30T12:39:10Z",
+      "side": 1,
+      "message": "Original patch from `trusted-firmware-a`: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40798",
+      "revId": "ba445662e92886adc5f5eb043fdf12b48494b028",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
