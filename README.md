@@ -41,14 +41,17 @@ $ sudo apt install qemu-system-arm
 Build C BL1 and BL2 and Rust BL31:
 
 ```sh
-$ make TFA_FLAGS="CC=clang NEED_BL32=yes NEED_BL31=no" \
-    PLAT=qemu DEBUG=1 all
+$ make -C $TFA PLAT=qemu FVP_TRUSTED_SRAM_SIZE=512 CC=clang NEED_BL32=yes NEED_BL31=no DEBUG=1 \
+    bl1 bl2
+$ make PLAT=qemu BL1="$TFA/build/qemu/debug/bl1.bin" BL2="$TFA/build/qemu/debug/bl2.bin" DEBUG=1 all
 ```
 
 Build Rust BL31 and run in QEMU:
 
 ```sh
-$ make DEBUG=1 qemu
+$ make -C $TFA PLAT=qemu FVP_TRUSTED_SRAM_SIZE=512 CC=clang NEED_BL32=yes NEED_BL31=no DEBUG=1 \
+    bl1 bl2
+$ make PLAT=qemu DEBUG=1 BL1="$TFA/build/qemu/debug/bl1.bin" BL2="$TFA/build/qemu/debug/bl2.bin" qemu
 ```
 
 ### Debugging with QEMU
@@ -56,13 +59,14 @@ $ make DEBUG=1 qemu
 To connect GDB to QEMU:
 
 ```sh
-$ make PLAT=qemu DEBUG=1 qemu-wait
+$ make PLAT=qemu DEBUG=1 BL1="$TFA/build/qemu/debug/bl1.bin" BL2="$TFA/build/qemu/debug/bl2.bin" \
+    qemu-wait
 ```
 
 Then, in a separate terminal window, attach `gdb`:
 
 ```sh
-$ make PLAT=qemu DEBUG=1 gdb
+$ make PLAT=qemu DEBUG=1 BL1="$TFA/build/qemu/debug/bl1.bin" BL2="$TFA/build/qemu/debug/bl2.bin" gdb
 ```
 
 If you want QEMU's `gdb` listener listen on a port other than the default (which
@@ -70,10 +74,12 @@ is 1234), specify the `GDB_PORT` environment variable in both `make`
 invocations:
 
 ```sh
-$ GDB_PORT=4096 make PLAT=qemu DEBUG=1 qemu-wait
+$ GDB_PORT=4096 make PLAT=qemu DEBUG=1 BL1="$TFA/build/qemu/debug/bl1.bin" \
+    BL2="$TFA/build/qemu/debug/bl2.bin" qemu-wait
 
 # In your 2nd terminal, of course:
-$ GDB_PORT=4096 make PLAT=qemu DEBUG=1 gdb
+$ GDB_PORT=4096 make PLAT=qemu DEBUG=1 BL1="$TFA/build/qemu/debug/bl1.bin" \
+    BL2="$TFA/build/qemu/debug/bl2.bin"gdb
 ```
 
 (This could be useful if you needed to run many instances of QEMU, such as to
@@ -99,16 +105,22 @@ to download this or any other FVP.
 Build C BL1 and BL2, Rust BL31 and FIP, then run everything in FVP:
 
 ```sh
-$ make TFA_FLAGS="FVP_TRUSTED_SRAM_SIZE=512 SPD=spmd SPMD_SPM_AT_SEL2=0 NEED_BL31=no" \
-    DEBUG=1 fvp
+$ make -C $TFA PLAT=fvp FVP_TRUSTED_SRAM_SIZE=512 SPD=spmd SPMD_SPM_AT_SEL2=0 NEED_BL31=no DEBUG=1 \
+    bl1 bl2
+$ make PLAT=fvp BL1="$TFA/build/fvp/debug/bl1.bin" BL2="$TFA/build/fvp/debug/bl2.bin" DEBUG=1 all
+$ make -C $TFA PLAT=fvp FVP_TRUSTED_SRAM_SIZE=512 SPD=spmd SPMD_SPM_AT_SEL2=0 NEED_BL31=no DEBUG=1 \
+    BL32="$(pwd)/target/bl32.bin" BL33="$(pwd)/target/bl33.bin" fip
+$ $TFA/tools/fiptool/fiptool update --soc-fw "$(pwd)/target/bl31.bin" --out \
+    "$TFA/build/fvp/debug/fip.bin" "$TFA/build/fvp/debug/fip.bin"
+$ make PLAT=fvp DEBUG=1 BL1="$TFA/build/fvp/debug/bl1.bin" BL2="$TFA/build/fvp/debug/bl2.bin" \
+    FIP="$TFA/build/fvp/debug/fip.bin" fvp
 ```
 
 **Note 1:** In the above command, the user may notice that we use `SPMD_SPM_AT_SEL2=0` even though
 the project is enabling S-EL2 using the default `sel2` feature.
-The `rusted-firmware-a` project is currently leveraging on the `trusted-firmware-a` project's build
-system and the latter requires a SP layout file for building with `SPMD_SPM_AT_SEL2=1`. We currently
-use the temporary workaround of building with `SPMD_SPM_AT_SEL2=0` to avoid using this sp layout
-file.
+The `trusted-firmware-a` project's build system requires an SP layout file for building with
+`SPMD_SPM_AT_SEL2=1`. We currently use the temporary workaround of building with
+`SPMD_SPM_AT_SEL2=0` to avoid using this sp layout file.
 
 **Note 2:** By default, TF-A considers that the Base FVP platform has 256 kB of Trusted SRAM.
 Actually it can simulate up to 512 kB of Trusted SRAM, which is the configuration we use for RF-A
@@ -120,8 +132,15 @@ build flag is required to stop TF-A from complaining that RF-A does not fit.
 Build C BL1 and BL2 with RME support, Rust BL31 with RME support and FIP:
 
 ```sh
-$ make TFA_FLAGS="FVP_TRUSTED_SRAM_SIZE=512 ENABLE_RME=1 NEED_BL31=no" \
-    FEATURES=rme DEBUG=1 fvp
+$ make -C $TFA PLAT=fvp FVP_TRUSTED_SRAM_SIZE=512 ENABLE_RME=1 NEED_BL31=no DEBUG=1 bl1 bl2
+$ make PLAT=fvp FEATURES=sel2,rme BL1="$TFA/build/fvp/debug/bl1.bin" \
+    BL2="$TFA/build/fvp/debug/bl2.bin" DEBUG=1 all
+$ make -C $TFA PLAT=fvp FVP_TRUSTED_SRAM_SIZE=512 ENABLE_RME=1 NEED_BL31=no DEBUG=1 \
+    BL32="$(pwd)/target/bl32.bin" BL33="$(pwd)/target/bl33.bin" fip
+$ $TFA/tools/fiptool/fiptool update --soc-fw "$(pwd)/target/bl31.bin" --out \
+    "$TFA/build/fvp/debug/fip.bin" "$TFA/build/fvp/debug/fip.bin"
+$ make PLAT=fvp FEATURES=sel2,rme DEBUG=1 BL1="$TFA/build/fvp/debug/bl1.bin" \
+    BL2="$TFA/build/fvp/debug/bl2.bin" FIP="$TFA/build/fvp/debug/fip.bin" fvp
 ```
 
 Running the FVP with RME through RF-A build system is not supported at this time.
