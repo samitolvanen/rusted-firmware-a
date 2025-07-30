@@ -50,6 +50,23 @@
       "message": "Original patch in trusted-firmware-a: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40827\n\nIt had CO from @sandrine.afsa@arm.com and CR from @qwandor@google.com",
       "revId": "fb402a637452c2e5d6781d504ee8429623d64b38",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfee59ed_6fe6b66f",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-30T12:22:09Z",
+      "side": 1,
+      "message": "This isn\u0027t called anywhere and shouldn\u0027t be part of this commit.",
+      "revId": "fb402a637452c2e5d6781d504ee8429623d64b38",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
