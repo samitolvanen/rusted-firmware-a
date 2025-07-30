@@ -16,6 +16,23 @@
       "message": "Original review thread: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40182",
       "revId": "d72841f356647087241854e724bc84b7bd2061bf",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd22fd61_8c9b7865",
+        "filename": "src/services/arch.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-07-30T16:28:05Z",
+      "side": 1,
+      "message": "The original purpose of the `handle_common_smc()` function was to have the common logic at a single place that can be called from all handlers. Now that there are no multiple handlers anymore, the logic could be just moved here.",
+      "revId": "d72841f356647087241854e724bc84b7bd2061bf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
