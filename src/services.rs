@@ -182,9 +182,7 @@ impl Services {
 
         if step_to_next_instr {
             exception_free(|token| {
-                cpu_state(token)
-                    .context_mut(world)
-                    .skip_lower_el_instruction();
+                cpu_state(token)[world].skip_lower_el_instruction();
             })
         }
     }
