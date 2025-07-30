@@ -37,14 +37,15 @@ $ sudo apt install qemu-system-arm
 Build C BL1 and BL2 and Rust BL31:
 
 ```sh
-$ make TFA_FLAGS="CC=clang NEED_BL32=yes NEED_BL31=no" \
-    PLAT=qemu DEBUG=1 all
+$ make -C $TFA PLAT=qemu FVP_TRUSTED_SRAM_SIZE=512 CC=clang NEED_BL32=yes NEED_BL31=no DEBUG=1 \
+    bl1 bl2
+$ make PLAT=qemu DEBUG=1 all
 ```
 
 Build Rust BL31 and run in QEMU:
 
 ```sh
-$ make DEBUG=1 qemu
+$ PLAT=qemu ./build-and-run.sh
 ```
 
 ## Debugging with QEMU
@@ -95,16 +96,14 @@ to download this or any other FVP.
 Build C BL1 and BL2, Rust BL31 and FIP, then run everything in FVP:
 
 ```sh
-$ make TFA_FLAGS="FVP_TRUSTED_SRAM_SIZE=512 SPD=spmd SPMD_SPM_AT_SEL2=0 NEED_BL31=no" \
-    DEBUG=1 fvp
+$ PLAT=fvp ./build-and-run.sh
 ```
 
 **Note 1:** In the above command, the user may notice that we use `SPMD_SPM_AT_SEL2=0` even though
 the project is enabling S-EL2 using the default `sel2` feature.
-The `rusted-firmware-a` project is currently leveraging on the `trusted-firmware-a` project's build
-system and the latter requires a SP layout file for building with `SPMD_SPM_AT_SEL2=1`. We currently
-use the temporary workaround of building with `SPMD_SPM_AT_SEL2=0` to avoid using this sp layout
-file.
+The `rusted-firmware-a` project's build system requires an SP layout file for building with
+`SPMD_SPM_AT_SEL2=1`. We currently use the temporary workaround of building with
+`SPMD_SPM_AT_SEL2=0` to avoid using this sp layout file.
 
 **Note 2:** By default, TF-A considers that the Base FVP platform has 256 kB of Trusted SRAM.
 Actually it can simulate up to 512 kB of Trusted SRAM, which is the configuration we use for RF-A
@@ -116,8 +115,7 @@ build flag is required to stop TF-A from complaining that RF-A does not fit.
 Build C BL1 and BL2 with RME support, Rust BL31 with RME support and FIP:
 
 ```sh
-$ make TFA_FLAGS="FVP_TRUSTED_SRAM_SIZE=512 ENABLE_RME=1 NEED_BL31=no" \
-    FEATURES=rme DEBUG=1 fvp
+$ PLAT=fvp RME=1 ./build-and-run.sh
 ```
 
 Running the FVP with RME through RF-A build system is not supported at this time.
