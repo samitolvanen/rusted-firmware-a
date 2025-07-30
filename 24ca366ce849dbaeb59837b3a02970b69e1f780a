@@ -50,6 +50,23 @@
       "message": "Original patch in `trusted-firmware-a`: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40797\n\nIt had an MR from @qwandor@google.com",
       "revId": "24ca366ce849dbaeb59837b3a02970b69e1f780a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61375c76_fd310488",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-30T12:20:15Z",
+      "side": 1,
+      "message": "Add an extra `/` to make this a Rustdoc comment.",
+      "revId": "24ca366ce849dbaeb59837b3a02970b69e1f780a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
