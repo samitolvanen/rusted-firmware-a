@@ -33,6 +33,23 @@
       "message": "RUN_UNSAFE_CI",
       "revId": "fb402a637452c2e5d6781d504ee8429623d64b38",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba4d5fd_2eae87f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-07-30T12:01:13Z",
+      "side": 1,
+      "message": "Original patch in trusted-firmware-a: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40827\n\nIt had CO from @sandrine.afsa@arm.com and CR from @qwandor@google.com",
+      "revId": "fb402a637452c2e5d6781d504ee8429623d64b38",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
