@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fa0b35_5a99bece",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-07-31T07:24:18Z",
+      "side": 1,
+      "message": "what if we say that the \"flat\" platforms/(pixel or google) is our platform from upstream POV?",
+      "revId": "92b096051fcda998033afedabbfa297aa31b6c94",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fc5108a_9971a3e0",
