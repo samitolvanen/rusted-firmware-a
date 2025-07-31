@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91d305b_8259add8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-07-31T14:59:18Z",
+      "side": 1,
+      "message": "Re-push of: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/39261",
+      "revId": "4727d3bc666c47059ddf4b9690c861fe7840d074",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
