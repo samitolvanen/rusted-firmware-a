@@ -14,6 +14,18 @@ pub const PLATFORMS: [&str; 2] = [QemuBuilder::PLAT_NAME, FvpBuilder::PLAT_NAME]
 type BuildResult = Result<(), Box<dyn Error>>;
 
 pub trait Builder {
+    /// Base address of the BL31 binary.
+    ///
+    /// Provided to platform-independent linker script via
+    /// defined BL31_BASE symbol.
+    fn bl31_base(&self) -> u64;
+
+    /// Size of the BL31 binary.
+    ///
+    /// Provided to platform-independent linker script via
+    /// defined BL31_SIZE symbol.
+    fn bl31_size(&self) -> u64;
+
     /// Sets up platform-specific configurations (code generation, file inclusions, etc.).
     fn configure_build(&self) -> BuildResult {
         Ok(())
