@@ -54,6 +54,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "484e1513_f2a40b26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-07-31T07:35:57Z",
+      "side": 1,
+      "message": "\u003e what if we say that the \"flat\" platforms/(pixel or google) is our platform from upstream POV?\n\nIt would be nice to be able to structure Google\u0027s code for different SOC categories and sival/non sival ones. That structure helped sival teams to be able to work in parallel, and also have code reuse across P22-24, and P25+\n\n\u003e I think flat hierarchy is more friendly for code-reuse across downstream SOCs\n\nOn top of the sival issue, I am not sure if that would be the best from a code organisation pov. Code shared between different platforms should best be isolated from the other orthoganal platforms.",
+      "parentUuid": "6b18b484_e93d1d6c",
+      "revId": "92b096051fcda998033afedabbfa297aa31b6c94",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fc5108a_9971a3e0",
