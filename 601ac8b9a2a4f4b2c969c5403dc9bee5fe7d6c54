@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77fb5d88_82de33d2",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T11:11:02Z",
+      "side": 1,
+      "message": "This needs to be implemented in assembly such that it can be called before the stack is set up, right? I think the only way to do that with a trait like this is for it to be a naked function, so the trait needs to be unsafe with a safety requirement that the implementer use naked functions for these, which must meet some specified requirements (I guess not using the stack, not modifying certain registers).",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49fb946_a9a8ffe6",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T11:11:02Z",
+      "side": 1,
+      "message": "I guess either will work, but `repr(transparent)` seems more appropriate.",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee60f7d7_112f3979",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T11:11:02Z",
+      "side": 1,
+      "message": "This could be a constant on `CpuOpsFunction`.",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2728ee55_111b2b0a",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T11:11:02Z",
+      "side": 1,
+      "message": "You should be able to generate the initialiser directly through repetition in the macro without needing the recursion in `cpu_ops!`.",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27f29da_ac2263a6",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T11:11:02Z",
+      "side": 1,
+      "message": "I think at least some of them must be, because they need to be called before the Rust stack is set up.",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f499fc2f_43bd4299",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T11:11:02Z",
+      "side": 1,
+      "message": "Why do you need the transmute here?",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
