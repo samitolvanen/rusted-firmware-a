@@ -56,3 +56,7 @@ fn foo_helper(args: [u64; 3]) -> Result<[u64; 4], ()> {
 In this case, the test starts with `test_foo` being run in the normal world BL33, but calls to
 `helper` will result in `foo_helper` being run in the secure world BL32 with the given arguments.
 This can be used to write tests where components in both worlds need to communicate.
+
+--------------
+
+*Copyright The Rusted Firmware-A Contributors*
