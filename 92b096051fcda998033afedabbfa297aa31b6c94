@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "225cc34c_9f5a6eb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-07-31T07:24:51Z",
+      "side": 1,
+      "message": "then whatever happens in the \"nested\" submodules is a downstream decision",
+      "parentUuid": "f4fa0b35_5a99bece",
+      "revId": "92b096051fcda998033afedabbfa297aa31b6c94",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fc5108a_9971a3e0",
