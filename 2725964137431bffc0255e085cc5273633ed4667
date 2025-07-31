@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65e56f6_56fe8771",
+        "filename": "src/cpu.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T15:11:04Z",
+      "side": 1,
+      "message": "These are safety requirements for the implementer, not the caller. So it\u0027s the `Cpu` trait that needs to be unsafe.",
+      "revId": "2725964137431bffc0255e085cc5273633ed4667",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697e9363_e69b1120",
+        "filename": "src/cpu.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T15:11:04Z",
+      "side": 1,
+      "message": "Will these functions be called from assembly or from Rust? If the latter, then they don\u0027t need to be `extern \"C\"`.",
+      "revId": "2725964137431bffc0255e085cc5273633ed4667",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4228a1_92ee7afa",
+        "filename": "src/cpu.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T15:11:04Z",
+      "side": 1,
+      "message": "These unsafe impls need safety comments.",
+      "revId": "2725964137431bffc0255e085cc5273633ed4667",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c23b84c_3eeff6dd",
+        "filename": "src/cpu.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T15:11:04Z",
+      "side": 1,
+      "message": "I think `empty` would be a better name for this.",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "2725964137431bffc0255e085cc5273633ed4667",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}

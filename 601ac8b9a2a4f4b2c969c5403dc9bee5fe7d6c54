@@ -107,6 +107,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c0cf8a_3273b65b",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T15:11:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b30e4f27_f893f163",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee60f7d7_112f3979",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "I removed the `CpuOpsFunction` type.",
       "parentUuid": "ee60f7d7_112f3979",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80e7951_21cf7b1b",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-07-31T15:11:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a72adafa_b6b80b3d",
       "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
