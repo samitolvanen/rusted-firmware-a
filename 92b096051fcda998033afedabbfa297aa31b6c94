@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b18b484_e93d1d6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-07-31T07:25:50Z",
+      "side": 1,
+      "message": "I think flat hierarchy is more friendly for code-reuse across downstream SOCs",
+      "parentUuid": "225cc34c_9f5a6eb5",
+      "revId": "92b096051fcda998033afedabbfa297aa31b6c94",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fc5108a_9971a3e0",
         "filename": "Makefile",
         "patchSetId": 2
