@@ -19,9 +19,9 @@ use crate::{
 use arm_gic::{IntId, gicv3::GicV3};
 #[cfg(not(test))]
 pub use percore::exception_free;
-pub use selected_platform::PlatformImpl;
 #[cfg(test)]
 pub use selected_platform::exception_free;
+pub use selected_platform::{CPU_OPS, PlatformImpl};
 
 /// For platforms that do not want to implement any custom SMC handlers.
 pub struct DummyService;
