@@ -41,6 +41,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6470ba_a1b12176",
+        "filename": "Cargo.toml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-07-31T14:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d54cf6e_b481fd62",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56875d56_bf07653b",
@@ -54,6 +78,24 @@
       "writtenOn": "2025-07-30T11:12:28Z",
       "side": 1,
       "message": "It\u0027s a big nitpick and I recognise it\u0027s not a priority, but there are some subtle syntactic differences from the SPDX BSD-3 license file that might make it a bit more challenging for some tools to recognise this file as BSD-3.\n\nI recommend grabbing the one from the SPDX website and just filling in the `\u003cvar\u003e` parts, leaving alone anything else: https://spdx.org/licenses/BSD-3-Clause.txt",
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bd7991_07fbe2ef",
+        "filename": "LICENSE",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-07-31T14:01:17Z",
+      "side": 1,
+      "message": "The only difference I could spot was the numbering of bullet points so I\u0027ve changed that.",
+      "parentUuid": "56875d56_bf07653b",
       "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -81,6 +123,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91f4436a_46e477f3",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-07-31T14:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "166551c2_abe00b2a",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d9de062_be3480ca",
@@ -94,6 +160,30 @@
       "writtenOn": "2025-07-30T11:12:28Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 27
+      },
+      "revId": "bcc99565bf02135f24cab9a3d605821ed089bfba",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01577e99_6d7c9eba",
+        "filename": "secure_test_framework/Cargo.toml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-07-31T14:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9de062_be3480ca",
       "range": {
         "startLine": 8,
         "startChar": 0,
