@@ -33,6 +33,23 @@
       "message": "RUN_UNSAFE_CI",
       "revId": "bdb6c8dd83f41cdd0b4b6c38543300a43921e7fe",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f42e0ec4_25649150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-01T09:36:50Z",
+      "side": 1,
+      "message": "unsafe review failure is a false positive.\n\nJamie and Snehal do not have CR+2 permissions yet, so we agreed that I\u0027ll click it instead",
+      "revId": "bdb6c8dd83f41cdd0b4b6c38543300a43921e7fe",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
