@@ -2,6 +2,10 @@
 #
 # SPDX-License-Identifier: BSD-3-Clause
 
+# Path to the Rust toolchain binaries.
+RUST_TOOLCHAIN_PATH ?=
+CARGO := $(if $(RUST_TOOLCHAIN_PATH),$(RUST_TOOLCHAIN_PATH)/)cargo
+
 BL1 := target/bl1.bin
 BL2 := target/bl2.bin
 BL31_BIN := target/bl31.bin
@@ -62,28 +66,28 @@ $(FIP): $(BL2) build $(BL32) $(BL33)
 	$(TFA)/tools/fiptool/fiptool update --soc-fw $(BL31_BIN) $@
 
 build:
-	RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo build $(CARGO_FLAGS)
-	RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo objcopy $(CARGO_FLAGS) -- -O binary $(BL31_BIN)
+	RUSTFLAGS="--cfg platform=\"${PLAT}\"" $(CARGO) build $(CARGO_FLAGS)
+	RUSTFLAGS="--cfg platform=\"${PLAT}\"" $(CARGO) objcopy $(CARGO_FLAGS) -- -O binary $(BL31_BIN)
 	ln -fsr target/$(TARGET)/$(BUILDTYPE)/rf-a-bl31 $(BL31_ELF)
 
 build-stf:
-	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" cargo build --package rf-a-secure-test-framework --target $(TARGET)
+	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" $(CARGO) build --package rf-a-secure-test-framework --target $(TARGET)
 $(BL32): build-stf
 	mkdir -p target
-	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" cargo objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl32 -- -O binary $@
+	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" $(CARGO) objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl32 -- -O binary $@
 $(BL33): build-stf
 	mkdir -p target
-	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" cargo objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl33 -- -O binary $@
+	RUSTFLAGS="--cfg platform=\"${PLAT}\" -C link-args=-znostart-stop-gc" $(CARGO) objcopy --package rf-a-secure-test-framework --target $(TARGET) --bin bl33 -- -O binary $@
 
 clippy-test:
-	cargo clippy --tests --features "$(FEATURES)"
+	$(CARGO) clippy --tests --features "$(FEATURES)"
 
 cargo-doc:
-	RUSTDOCFLAGS="-D warnings --cfg platform=\"${PLAT}\"" RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo doc --target $(TARGET) --no-deps  \
+	RUSTDOCFLAGS="-D warnings --cfg platform=\"${PLAT}\"" RUSTFLAGS="--cfg platform=\"${PLAT}\"" $(CARGO) doc --target $(TARGET) --no-deps  \
 	--features "$(FEATURES)"
 
 clippy:
-	RUSTFLAGS="--cfg platform=\"${PLAT}\"" cargo clippy $(CARGO_FLAGS)
+	RUSTFLAGS="--cfg platform=\"${PLAT}\"" $(CARGO) clippy $(CARGO_FLAGS)
 
 QEMU = qemu-system-aarch64
 GDB_PORT ?= 1234
@@ -130,7 +134,7 @@ fvp: $(BL1) $(FIP)
 	  -C bp.flashloader0.fname=$(FIP)
 
 clean:
-	cargo clean
+	$(CARGO) clean
 	rm -f target/*.bin
 
 list_platforms:
@@ -162,7 +166,7 @@ help:
 	@echo "  all          	Build all binaries for the specified platform."
 	@echo "  build       	Build BL31 for the specified platform."
 	@echo "  build-stf   	Build the Secure Test Framework."
-	@echo "  cargo-doc   	Run `cargo doc` checks for the given platform"
+	@echo "  cargo-doc   	Run \`cargo doc\` checks for the given platform"
 	@echo "  clean        	Clean the build for all platforms."
 	@echo "  clippy       	Lint the Rust source tree for the specified platform."
 	@echo "  clippy-test 	Lint the Rust source tree for the test configuration."
