@@ -584,7 +584,7 @@ pub fn cpu_state(token: ExceptionFree) -> RefMut<CpuState> {
 /// Initialises all CPU contexts for this CPU, ready for first boot.
 pub fn initialise_contexts(
     non_secure_entry_point: &EntryPointInfo,
-    secure_entry_point: &EntryPointInfo,
+    secure_entry_point: Option<&EntryPointInfo>,
     #[cfg(feature = "rme")] realm_entry_point: &EntryPointInfo,
 ) {
     exception_free(|token| {
@@ -593,7 +593,11 @@ pub fn initialise_contexts(
             cpu_state.context_mut(World::NonSecure),
             non_secure_entry_point,
         );
-        initialise_secure(cpu_state.context_mut(World::Secure), secure_entry_point);
+
+        if let Some(secure_ep_info) = secure_entry_point {
+            initialise_secure(cpu_state.context_mut(World::Secure), secure_ep_info);
+        }
+
         #[cfg(feature = "rme")]
         initialise_realm(cpu_state.context_mut(World::Realm), realm_entry_point);
     });

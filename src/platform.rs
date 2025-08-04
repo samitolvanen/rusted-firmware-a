@@ -113,7 +113,7 @@ pub trait Platform {
     fn handle_group0_interrupt(int_id: IntId);
 
     /// Returns the entry point for the secure world, i.e. BL32.
-    fn secure_entry_point() -> EntryPointInfo;
+    fn secure_entry_point() -> Option<EntryPointInfo>;
 
     /// Returns the entry point for the non-secure world, i.e. BL33.
     fn non_secure_entry_point() -> EntryPointInfo;

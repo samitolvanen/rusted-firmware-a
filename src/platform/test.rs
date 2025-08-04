@@ -73,15 +73,15 @@ impl Platform for TestPlatform {
         panic!("Received group 0 interrupt {:?}", int_id)
     }
 
-    fn secure_entry_point() -> EntryPointInfo {
-        EntryPointInfo {
+    fn secure_entry_point() -> Option<EntryPointInfo> {
+        Some(EntryPointInfo {
             pc: 0x4000_0000,
             #[cfg(feature = "sel2")]
             spsr: Spsr::M_AARCH64_EL2H,
             #[cfg(not(feature = "sel2"))]
             spsr: Spsr::M_AARCH64_EL1H,
             args: Default::default(),
-        }
+        })
     }
 
     fn non_secure_entry_point() -> EntryPointInfo {
