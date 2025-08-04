@@ -52,12 +52,12 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
     let realm_entry_point = PlatformImpl::realm_entry_point();
     initialise_contexts(
         &non_secure_entry_point,
-        &secure_entry_point,
+        secure_entry_point.as_ref(),
         #[cfg(feature = "rme")]
         &realm_entry_point,
     );
 
-    Services::get().run_loop();
+    Services::get().run_loop(secure_entry_point.is_some());
 }
 
 #[cfg(target_arch = "aarch64")]

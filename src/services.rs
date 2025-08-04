@@ -217,14 +217,16 @@ impl Services {
     /// overwriting the contents of GP regs that have already been set by initialise_contexts() in
     /// `bl31_main()`. This method doesn't return, it should be called on each core as the last step
     /// of the boot process, i.e. after setting up MMU, GIC, etc.
-    pub fn run_loop(&self) -> ! {
+    pub fn run_loop(&self, start_in_swd: bool) -> ! {
         let mut current_world = World::Secure;
 
-        info!("Booting Secure World");
-        set_initial_world(World::Secure);
-        // TODO: implement separate boot loop for Secure World
-        let (_, next_world) = self.per_world_loop(SmcReturn::EMPTY, World::Secure);
-        assert_eq!(next_world, World::NonSecure);
+        if start_in_swd {
+            info!("Booting Secure World");
+            set_initial_world(World::Secure);
+            // TODO: implement separate boot loop for Secure World
+            let (_, next_world) = self.per_world_loop(SmcReturn::EMPTY, World::Secure);
+            assert_eq!(next_world, World::NonSecure);
+        }
 
         #[cfg(feature = "rme")]
         {

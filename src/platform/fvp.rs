@@ -163,9 +163,9 @@ impl Platform for Fvp {
         todo!("Handle group0 interrupt {:?}", int_id)
     }
 
-    fn secure_entry_point() -> EntryPointInfo {
+    fn secure_entry_point() -> Option<EntryPointInfo> {
         let core_linear_id = CoresImpl::core_index() as u64;
-        EntryPointInfo {
+        Some(EntryPointInfo {
             pc: 0x0600_0000,
             #[cfg(feature = "sel2")]
             spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
@@ -181,7 +181,7 @@ impl Platform for Fvp {
                 0,
                 0,
             ],
-        }
+        })
     }
 
     fn non_secure_entry_point() -> EntryPointInfo {
