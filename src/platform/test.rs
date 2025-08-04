@@ -40,6 +40,8 @@ const CORES_PER_CLUSTER_LAST: usize = 4;
 /// A fake platform for unit tests.
 pub struct TestPlatform;
 
+pub type PlatformImpl = TestPlatform;
+
 impl Platform for TestPlatform {
     const CORE_COUNT: usize = 13;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;

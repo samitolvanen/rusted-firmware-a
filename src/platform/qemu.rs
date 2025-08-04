@@ -99,6 +99,8 @@ const SEL1_TIMER_ID: IntId = IntId::ppi(13);
 /// The aarch64 'virt' machine of the QEMU emulator.
 pub struct Qemu;
 
+pub type PlatformImpl = Qemu;
+
 impl Platform for Qemu {
     const CORE_COUNT: usize = CLUSTER_COUNT * MAX_CPUS_PER_CLUSTER;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
