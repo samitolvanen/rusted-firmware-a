@@ -2,6 +2,18 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+#[cfg(not(feature = "sel2"))]
+use crate::sysregs::{
+    CsselrEl1, SctlrEl1, read_actlr_el1, read_afsr0_el1, read_afsr1_el1, read_amair_el1,
+    read_contextidr_el1, read_cpacr_el1, read_csselr_el1, read_elr_el1, read_esr_el1, read_far_el1,
+    read_mair_el1, read_mdccint_el1, read_mdscr_el1, read_par_el1, read_sctlr_el1, read_sp_el1,
+    read_spsr_el1, read_tcr_el1, read_tpidr_el0, read_tpidr_el1, read_tpidrro_el0, read_ttbr0_el1,
+    read_ttbr1_el1, read_vbar_el1, write_actlr_el1, write_afsr0_el1, write_afsr1_el1,
+    write_amair_el1, write_contextidr_el1, write_cpacr_el1, write_csselr_el1, write_elr_el1,
+    write_esr_el1, write_far_el1, write_mair_el1, write_mdccint_el1, write_mdscr_el1,
+    write_par_el1, write_sctlr_el1, write_sp_el1, write_spsr_el1, write_tcr_el1, write_tpidr_el0,
+    write_tpidr_el1, write_tpidrro_el0, write_ttbr0_el1, write_ttbr1_el1, write_vbar_el1,
+};
 #[cfg(feature = "sel2")]
 use crate::sysregs::{
     HcrEl2, IccSre, is_feat_vhe_present, read_actlr_el2, read_afsr0_el2, read_afsr1_el2,
@@ -16,18 +28,6 @@ use crate::sysregs::{
     write_icc_sre_el2, write_ich_hcr_el2, write_mair_el2, write_mdcr_el2, write_sctlr_el2,
     write_sp_el2, write_spsr_el2, write_tcr_el2, write_tpidr_el2, write_ttbr0_el2, write_ttbr1_el2,
     write_vbar_el2, write_vmpidr_el2, write_vpidr_el2, write_vtcr_el2, write_vttbr_el2,
-};
-#[cfg(not(feature = "sel2"))]
-use crate::sysregs::{
-    SctlrEl1, read_actlr_el1, read_afsr0_el1, read_afsr1_el1, read_amair_el1, read_contextidr_el1,
-    read_cpacr_el1, read_csselr_el1, read_elr_el1, read_esr_el1, read_far_el1, read_mair_el1,
-    read_mdccint_el1, read_mdscr_el1, read_par_el1, read_sctlr_el1, read_sp_el1, read_spsr_el1,
-    read_tcr_el1, read_tpidr_el0, read_tpidr_el1, read_tpidrro_el0, read_ttbr0_el1, read_ttbr1_el1,
-    read_vbar_el1, write_actlr_el1, write_afsr0_el1, write_afsr1_el1, write_amair_el1,
-    write_contextidr_el1, write_cpacr_el1, write_csselr_el1, write_elr_el1, write_esr_el1,
-    write_far_el1, write_mair_el1, write_mdccint_el1, write_mdscr_el1, write_par_el1,
-    write_sctlr_el1, write_sp_el1, write_spsr_el1, write_tcr_el1, write_tpidr_el0, write_tpidr_el1,
-    write_tpidrro_el0, write_ttbr0_el1, write_ttbr1_el1, write_vbar_el1,
 };
 use crate::{
     aarch64::isb,
@@ -199,7 +199,7 @@ struct El1Sysregs {
     sctlr_el1: SctlrEl1,
     tcr_el1: u64,
     cpacr_el1: u64,
-    csselr_el1: u64,
+    csselr_el1: CsselrEl1,
     sp_el1: u64,
     esr_el1: Esr,
     ttbr0_el1: u64,
@@ -228,7 +228,7 @@ impl El1Sysregs {
         sctlr_el1: SctlrEl1::empty(),
         tcr_el1: 0,
         cpacr_el1: 0,
-        csselr_el1: 0,
+        csselr_el1: CsselrEl1::empty(),
         sp_el1: 0,
         esr_el1: Esr::empty(),
         ttbr0_el1: 0,
