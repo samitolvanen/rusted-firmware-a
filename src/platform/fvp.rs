@@ -26,8 +26,12 @@ use crate::{
 };
 use aarch64_paging::paging::{MemoryRegion, VirtualAddress};
 use arm_fvp_base_pac::{
-    MemoryMap, Peripherals, PhysicalInstance,
+    MemoryMap, Peripherals, PhysicalInstance, TzcFilter, TzcNsaid,
     arm_generic_timer::{CntAcr, CntControlBase, CntCtlBase, GenericTimerControl, GenericTimerCtl},
+    arm_tzc::{
+        ActionRegister, GateKeeperStatus, RegionAttributes, RegionIDAccess, SecureAccess, Tzc,
+        TzcRegisters,
+    },
     power_controller::{FvpPowerController, FvpPowerControllerRegisters, SystemStatus},
     system::{FvpSystemPeripheral, FvpSystemRegisters, SystemConfigFunction},
 };
@@ -44,6 +48,7 @@ use arm_sysregs::{MpidrEl1, read_mpidr_el1};
 use core::{
     arch::{global_asm, naked_asm},
     mem::offset_of,
+    ops::RangeInclusive,
     ptr::NonNull,
 };
 use percore::Cores;
@@ -93,6 +98,33 @@ const DEVICE_REGIONS: [MemoryRegion; 4] = [
 ];
 
 const V2M_IOFPGA_UART1_BASE: usize = 0x1c0a_0000;
+
+const TZC_FILTERS: [usize; 1] = [TzcFilter::DEFAULT];
+const TZC_NSAIDS: [usize; 4] = [
+    TzcNsaid::DEFAULT,
+    TzcNsaid::PCI,
+    TzcNsaid::APPLICATION_PROCESSORS,
+    TzcNsaid::VIRTIO,
+];
+const NS_DEV_ACCESS: RegionIDAccess = RegionIDAccess::new(&TZC_NSAIDS, &TZC_NSAIDS);
+
+#[cfg(not(feature = "rme"))]
+const TZC_REGIONS: [(RangeInclusive<usize>, SecureAccess, RegionIDAccess); 7] = [
+    (MemoryMap::DRAM0, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM1, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM2, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM3, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM4, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM5, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM6, SecureAccess::NONE, NS_DEV_ACCESS),
+];
+#[cfg(feature = "rme")]
+const TZC_REGIONS: [(RangeInclusive<usize>, SecureAccess, RegionIDAccess); 3] = [
+    // TODO: Align memory regions with GPT.
+    (MemoryMap::DRAM0, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM1, SecureAccess::NONE, NS_DEV_ACCESS),
+    (MemoryMap::DRAM2, SecureAccess::NONE, NS_DEV_ACCESS),
+];
 
 // TODO: These addresses should be parsed from FW_CONFIG
 /// The physical address of the SPMC manifest blob.
@@ -189,9 +221,11 @@ unsafe impl Platform for Fvp {
             peripherals.system,
             peripherals.refclk_cntcontrol,
             peripherals.ap_refclk_cntctl,
+            peripherals.trustzone_controller,
         );
 
         psci_platform.init_generic_timer();
+        psci_platform.enable_tzc();
 
         *FVP_PSCI_PLATFORM_IMPL.lock() = Some(psci_platform);
 
@@ -444,6 +478,7 @@ pub struct FvpPsciPlatformImpl<'a> {
     system: SpinMutex<FvpSystemPeripheral<'a>>,
     timer_control: SpinMutex<GenericTimerControl<'a>>,
     timer_ctl: SpinMutex<GenericTimerCtl<'a>>,
+    tzc: SpinMutex<Tzc<'a>>,
 }
 
 impl FvpPsciPlatformImpl<'_> {
@@ -455,6 +490,7 @@ impl FvpPsciPlatformImpl<'_> {
         system: PhysicalInstance<FvpSystemRegisters>,
         timer_control: PhysicalInstance<CntControlBase>,
         timer_ctl: PhysicalInstance<CntCtlBase>,
+        tzc: PhysicalInstance<TzcRegisters>,
     ) -> Self {
         Self {
             power_controller: SpinMutex::new(FvpPowerController::new(map_peripheral(
@@ -463,6 +499,7 @@ impl FvpPsciPlatformImpl<'_> {
             system: SpinMutex::new(FvpSystemPeripheral::new(map_peripheral(system))),
             timer_control: SpinMutex::new(GenericTimerControl::new(map_peripheral(timer_control))),
             timer_ctl: SpinMutex::new(GenericTimerCtl::new(map_peripheral(timer_ctl))),
+            tzc: SpinMutex::new(Tzc::new(map_peripheral(tzc))),
         }
     }
 
@@ -511,6 +548,44 @@ impl FvpPsciPlatformImpl<'_> {
         write_cntfrq_el0(frequency.into());
     }
 
+    /// Configures and enables TrustZone Controller.
+    fn enable_tzc(&self) {
+        let mut tzc = self.tzc.lock();
+
+        let build_config = tzc.build_configuration();
+
+        // Disable all filters
+        for filter in 1..build_config.number_of_filters() {
+            tzc.gate_keeper_mut(filter)
+                .unwrap()
+                .request(GateKeeperStatus::Closed);
+        }
+
+        // Set region 0 to no access
+        let mut region0 = tzc.region_mut(0).unwrap();
+        region0.set_region_attributes(RegionAttributes::new(SecureAccess::NONE, &TZC_FILTERS));
+        region0.set_region_id_access(RegionIDAccess::NONE);
+
+        for (index, (addr, attr, id_access)) in TZC_REGIONS.iter().enumerate() {
+            let mut region = tzc.region_mut(index + 1).unwrap();
+
+            region.set_region_base_address((*addr.start()) as u64);
+            region.set_region_top_address((*addr.end()) as u64);
+            region.set_region_attributes(RegionAttributes::new(*attr, &TZC_FILTERS));
+            region.set_region_id_access(*id_access);
+        }
+
+        // Raise an exception if a NS device tries to access secure memory.
+        tzc.set_action(ActionRegister::TZCINTLOW_DECERR);
+
+        // Enable all filters
+        for filter in 1..build_config.number_of_filters() {
+            tzc.gate_keeper_mut(filter)
+                .unwrap()
+                .request(GateKeeperStatus::Opened);
+        }
+    }
+
     fn save_system_power_domain() {
         let mut context = GIC_CONTEXT.lock();
 
@@ -529,7 +604,7 @@ impl FvpPsciPlatformImpl<'_> {
         Gic::get().distributor_restore(&context.distributor_context);
         Gic::get().redistributor_restore(&context.redistributor_context);
 
-        // TODO: plat_arm_security_setup();
+        self.enable_tzc();
 
         self.init_generic_timer();
     }
