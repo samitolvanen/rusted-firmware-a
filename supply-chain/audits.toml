@@ -280,6 +280,11 @@ criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-2"]
 delta = "0.3.1 -> 0.3.2"
 notes = "No significant change, only metadata and clippy fix."
 
+[[audits.arm-pl011-uart]]
+who = "Imre Kis <imre.kis@arm.com>"
+criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
+delta = "0.3.2 -> 0.4.0"
+
 [[audits.arm-psci]]
 who = "Andrew Walbran <qwandor@google.com>"
 criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
@@ -307,6 +312,11 @@ who = "Andrew Walbran <qwandor@google.com>"
 criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
 delta = "0.1.1 -> 0.1.2"
 notes = "No substantial changes, only a lint fix."
+
+[[audits.arm-tzc]]
+who = "Imre Kis <imre.kis@arm.com>"
+criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
+version = "0.1.0"
 
 [[audits.autocfg]]
 who = "Andrew Walbran <qwandor@google.com>"
