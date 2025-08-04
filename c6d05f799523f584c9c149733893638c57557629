@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50904ae7_e6180b5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-04T14:07:51Z",
+      "side": 1,
+      "message": "I had the refactor the platform selection in the previous commit to be able to access CPU_OPS from the platform module.\nI also introduced new commit on top of this for implementing the cache flush operation on power down for the AEM generic CPU.",
+      "revId": "c6d05f799523f584c9c149733893638c57557629",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
