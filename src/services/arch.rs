@@ -3,12 +3,13 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 use crate::{
-    context::World,
+    context::{World, world_context},
     services::{Service, owns},
     smccc::{
         FunctionId, INVALID_PARAMETER, NOT_SUPPORTED, OwningEntityNumber, SUCCESS, SmcReturn,
         SmcccCallType,
     },
+    sysregs::ScrEl3,
 };
 
 use crate::platform::{Platform, PlatformImpl};
@@ -24,8 +25,25 @@ const SMCCC_ARCH_WORKAROUND_1: u32 = 0x8000_8000;
 const SMCCC_ARCH_WORKAROUND_2: u32 = 0x8000_7FFF;
 const SMCCC_ARCH_WORKAROUND_3: u32 = 0x8000_3FFF;
 const SMCCC_ARCH_WORKAROUND_4: u32 = 0x8000_0004;
+const SMCCC_ARCH_FEATURE_AVAILABILITY: u32 = 0x8000_0003;
 
 pub const SMCCC_VERSION_1_5: i32 = 0x0001_0005;
+
+// Opcodes for the arch feature availability SMC
+const SCR_EL3_OPCODE: u64 = 0x1e_1100;
+
+// Mask for "active low" features in SCR_EL3 (enabled when the bit is 0)
+const SCR_EL3_ACTIVE_LOW_MASK: ScrEl3 = ScrEl3::from_bits_truncate(
+    ScrEl3::IRQ.bits()
+        | ScrEl3::FIQ.bits()
+        | ScrEl3::EA.bits()
+        | ScrEl3::SMD.bits()
+        | ScrEl3::TWI.bits()
+        | ScrEl3::TWE.bits(),
+);
+
+const SCR_EL3_ARCH_FEATS_MASK: ScrEl3 =
+    ScrEl3::from_bits_truncate(0xFFFF_FFFF_FFFF_FFFF).difference(ScrEl3::RES1);
 
 /// Arm architecture SMCs.
 pub struct Arch;
@@ -34,16 +52,19 @@ impl Service for Arch {
     owns!(OwningEntityNumber::ARM_ARCHITECTURE);
 
     fn handle_non_secure_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
-        (Self::handle_common_smc(regs), World::NonSecure)
+        (
+            Self::handle_common_smc(regs, World::NonSecure),
+            World::NonSecure,
+        )
     }
 
     fn handle_secure_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
-        (Self::handle_common_smc(regs), World::Secure)
+        (Self::handle_common_smc(regs, World::Secure), World::Secure)
     }
 
     #[cfg(feature = "rme")]
     fn handle_realm_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
-        (Self::handle_common_smc(regs), World::Realm)
+        (Self::handle_common_smc(regs, World::Realm), World::Realm)
     }
 }
 
@@ -52,7 +73,7 @@ impl Arch {
         Self
     }
 
-    fn handle_common_smc(regs: &[u64; 18]) -> SmcReturn {
+    fn handle_common_smc(regs: &[u64; 18], world: World) -> SmcReturn {
         let mut function = FunctionId(regs[0] as u32);
         function.clear_sve_hint();
 
@@ -65,6 +86,7 @@ impl Arch {
             SMCCC_ARCH_WORKAROUND_1 => arch_workaround_1().into(),
             SMCCC_ARCH_WORKAROUND_2 => arch_workaround_2(regs[1] as u32).into(),
             SMCCC_ARCH_WORKAROUND_3 => arch_workaround_3().into(),
+            SMCCC_ARCH_FEATURE_AVAILABILITY => arch_feature_availability(regs[1], world),
             _ => NOT_SUPPORTED.into(),
         }
     }
@@ -139,4 +161,41 @@ fn arch_workaround_3() {
     if PlatformImpl::arch_workaround_3_supported() == WorkaroundSupport::Required {
         PlatformImpl::arch_workaround_3()
     }
+}
+
+fn arch_feature_availability(bitmask_selector: u64, world: World) -> SmcReturn {
+    let context = world_context(world);
+
+    // SAFETY: The world context pointer is guaranteed to be valid for the
+    // duration of the SMC handler. This converts it to a safe reference.
+    let context = unsafe { &*world_context(world) };
+
+    // TODO: Read reg features per the opcode
+    // This is a simple boilerplate that returns success with a zero bitmask,
+    // indicating no extra features are enabled by the firmware.
+
+    let (feat_bitmask, check) = match bitmask_selector {
+        SCR_EL3_OPCODE => {
+            let scr = context.el3_state.scr_el3;
+            let arch_feat_mask = scr & !ScrEl3::RES1;
+            let chck = arch_feat_mask & !SCR_EL3_ARCH_FEATS_MASK;
+            let mut features = arch_feat_mask & SCR_EL3_ARCH_FEATS_MASK;
+            features ^= SCR_EL3_ACTIVE_LOW_MASK;
+            (features.bits(), chck.bits())
+        }
+
+        _ => return [INVALID_PARAMETER as u64, 0u64].into(),
+    };
+
+    assert_eq!(
+        check, 0,
+        "Unexpected bits {:#x} set in register with opcode {:#x}",
+        check, bitmask_selector
+    );
+
+    // Per the spec, on success this returns:
+    // x0 = SUCCESS (0)
+    // x1 = feat_bitmask
+    // Return SUCCESS in x0 and the calculated bitmask in x1.
+    [SUCCESS as u64, feat_bitmask].into()
 }
