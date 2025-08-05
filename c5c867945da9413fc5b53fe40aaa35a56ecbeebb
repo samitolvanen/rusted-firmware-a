@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e2fbe2_a7861369",
+        "filename": "src/services.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-05T11:17:07Z",
+      "side": 1,
+      "message": "By adding this function, now there are two ways of implementing services for different worlds. Either by implementing the `handle_*_smc` functions or implementing a custom match in `handle_smc`. C TF-A had the latter and it had problems with incorrect assumptions like if the world is not secure, then it must be the normal world. However it can also be realm, where the given call was not permitted.\nThe reason for separating the functions per world is to avoid any unwanted crosstalk between the SMC handlers of different worlds. If a service works the same from any world, it can still implement the handler in a common function and call it from all the `handle_*_smc` functions.",
+      "revId": "c5c867945da9413fc5b53fe40aaa35a56ecbeebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
