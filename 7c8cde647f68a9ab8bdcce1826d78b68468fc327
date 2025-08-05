@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb7e13c_d38bda5a",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000801
+      },
+      "writtenOn": "2025-08-05T08:38:06Z",
+      "side": 1,
+      "message": "`bl cpu_reset_handler` is needed for warm entrypoint",
+      "revId": "7c8cde647f68a9ab8bdcce1826d78b68468fc327",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
