@@ -16,6 +16,24 @@
       "message": "Jamie has https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41458 btw.",
       "revId": "d01c4e915e7eee7c64849611d44133257147e75f",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e77a4a42_8583a2b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-05T16:53:20Z",
+      "side": 1,
+      "message": "Looks like we were trying to achieve slightly different things, my aim was to be able to pick up prebuilt cargo/rustc binaries not on the PATH. Might need some changes to make both of these things possible.",
+      "parentUuid": "f60eb390_dde5ac2f",
+      "revId": "d01c4e915e7eee7c64849611d44133257147e75f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
