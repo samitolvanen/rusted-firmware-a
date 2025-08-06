@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c778b35f_dc099dad",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-06T15:51:54Z",
+      "side": 1,
+      "message": "Please hide this repeating pattern into a private member function:\n`fn get_spm() -\u003e \u0026\u0027static impl PsciSpmInterface`\nThis ensures that it actually implements the trait and it might come handy if we need to have an EL3 SPMC.",
+      "range": {
+        "startLine": 590,
+        "startChar": 20,
+        "endLine": 590,
+        "endChar": 46
+      },
+      "revId": "c24d568793ae3b9b2630e5b9c7d73027cbe83ca1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
