@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6616d21b_2c049753",
+        "filename": "secure_test_framework/src/ffa.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-06T17:10:18Z",
+      "side": 1,
+      "message": "This is a safety requirement, so should be formatted as the safety section of a Rustdoc comment, like:\n\n```rust\n/// # Safety\n///\n/// `addr` must be a valid secondary entry point...\n```",
+      "revId": "26b8d5d7eb7d7650047ad5cf50cae909e105bf7a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
