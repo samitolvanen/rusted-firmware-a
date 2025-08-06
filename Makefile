@@ -91,11 +91,11 @@ build:
 	$(OBJCOPY) $(BL31_ELF) -O binary $(BL31_BIN)
 
 build-stf:
-	$(STF_CARGO) build --package rf-a-secure-test-framework $(CARGO_FLAGS)
+	$(STF_CARGO) build --package rf-a-secure-test-framework $(CARGO_FLAGS) --release
 $(BL32): build-stf
-	$(OBJCOPY) target/$(TARGET)/$(BUILDTYPE)/bl32 -O binary $@
+	$(OBJCOPY) target/$(TARGET)/release/bl32 -O binary $@
 $(BL33): build-stf
-	$(OBJCOPY) target/$(TARGET)/$(BUILDTYPE)/bl33 -O binary $@
+	$(OBJCOPY) target/$(TARGET)/release/bl33 -O binary $@
 
 clippy-test:
 	$(CARGO) clippy --tests --features "$(FEATURES)"
