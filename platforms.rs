@@ -8,7 +8,7 @@ mod qemu;
 use cc::Build;
 use fvp::FvpBuilder;
 use qemu::QemuBuilder;
-use std::error::Error;
+use std::{error::Error, path::PathBuf};
 
 pub const PLATFORMS: [&str; 2] = [QemuBuilder::PLAT_NAME, FvpBuilder::PLAT_NAME];
 
@@ -42,4 +42,13 @@ pub fn get_builder(platform: &str) -> Result<Box<dyn Builder>, Box<dyn Error>> {
         )
         .into()),
     }
+}
+
+pub fn add_linker_script(path: PathBuf) {
+    println!("cargo:rustc-link-arg=-T{}", path.display());
+    println!("cargo:rerun-if-changed={}", path.display());
+}
+
+pub fn define_linker_symbol<T: std::fmt::Display>(name: &str, value: T) {
+    println!("cargo:rustc-link-arg=--defsym={}={}", name, value);
 }
