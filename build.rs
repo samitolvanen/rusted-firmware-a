@@ -10,6 +10,9 @@ use cc::Build;
 use platforms::{Builder, PLATFORMS, add_linker_script, define_linker_symbol, get_builder};
 use std::{env, path::PathBuf};
 
+/// One page of memory has 4KiB.
+const PAGE_SIZE: usize = 0x1000;
+
 fn build_libtfa(platform_builder: &dyn Builder) {
     // SAFETY: The build script is single-threaded.
     unsafe {
@@ -44,6 +47,7 @@ fn build_libtfa(platform_builder: &dyn Builder) {
 fn setup_linker(builder: &dyn Builder) {
     define_linker_symbol("BL31_BASE", builder.bl31_base());
     define_linker_symbol("BL31_SIZE", builder.bl31_size());
+    define_linker_symbol("PAGE_SIZE", PAGE_SIZE);
 
     add_linker_script(PathBuf::from("bl31.ld"));
 }
