@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 pub mod aem_generic;
+pub mod qemu_max;
 
 use crate::{platform::CPU_OPS, sysregs::read_midr_el1};
 
