@@ -33,6 +33,23 @@
       "message": "Original patch from `trusted-firmware-a`: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/40723\n\nIt had a CO from @sandrine.afsa@arm.com and an MR from @qwandor@google.com",
       "revId": "c5b3bdd2a3b981a14ec47b06a02053e99b81335a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a93b5b1_dcc62519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-06T07:58:16Z",
+      "side": 1,
+      "message": "RUN_CI",
+      "revId": "c5b3bdd2a3b981a14ec47b06a02053e99b81335a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
