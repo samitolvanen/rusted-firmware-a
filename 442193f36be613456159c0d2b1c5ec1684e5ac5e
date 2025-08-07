@@ -33,6 +33,23 @@
       "message": "From the spec in `18.2.4 Power Management messages`\n\n\u003e The SPMD denies a request from the SPMC to switch to the Normal world during message processing.\n\nMaybe we should introduce `SpmcState::PsciHandling` or something similar, so we can have `handle_secure_call_psci()` that gets called while a PSCI message processing is in progress. This could limit the message types accepted by the SPMD, and ensure that in never returns to NWd while in this state. @imre.kis@arm.com?",
       "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bcf588f_a0a70afb",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-07T21:19:43Z",
+      "side": 1,
+      "message": "This breaks the PSCI unit tests, I\u0027ll fix that when the reviewers agree on this new signature.",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
