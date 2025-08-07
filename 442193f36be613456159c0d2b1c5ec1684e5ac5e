@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96f312e7_92dab954",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-07T21:17:50Z",
+      "side": 1,
+      "message": "This is probably not necessary and could be replaced by a \"PSCI message handling in progress\" state, as described in the comment below?",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ee249c_5dcb7164",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-07T21:17:50Z",
+      "side": 1,
+      "message": "From the spec in `18.2.4 Power Management messages`\n\n\u003e The SPMD denies a request from the SPMC to switch to the Normal world during message processing.\n\nMaybe we should introduce `SpmcState::PsciHandling` or something similar, so we can have `handle_secure_call_psci()` that gets called while a PSCI message processing is in progress. This could limit the message types accepted by the SPMD, and ensure that in never returns to NWd while in this state. @imre.kis@arm.com?",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
