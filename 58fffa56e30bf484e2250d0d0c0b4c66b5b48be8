@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b339d1_4a71c3fe",
+        "filename": "build.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T14:43:52Z",
+      "side": 1,
+      "message": "Nit: `Path::new(\"bl31.ld\")` should also work.",
+      "range": {
+        "startLine": 16,
+        "startChar": 22,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "58fffa56e30bf484e2250d0d0c0b4c66b5b48be8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
