@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "859a709b_eb1d8786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-07T13:55:41Z",
+      "side": 1,
+      "message": "Missing the sign-off",
+      "revId": "b09650dad6be4dc0673fdee304d434d986d4c6c8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
