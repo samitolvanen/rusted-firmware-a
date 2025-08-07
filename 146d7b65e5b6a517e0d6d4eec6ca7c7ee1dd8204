@@ -33,6 +33,23 @@
       "message": "RUN_CI",
       "revId": "146d7b65e5b6a517e0d6d4eec6ca7c7ee1dd8204",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4e1dcf_5d8a6894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T14:58:54Z",
+      "side": 1,
+      "message": "No unsafe Rust code is being touched here, not sure why CI isn\u0027t setting Unsafe-Review+1.",
+      "revId": "146d7b65e5b6a517e0d6d4eec6ca7c7ee1dd8204",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
