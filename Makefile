@@ -24,17 +24,10 @@ ifndef PLAT
   endif
 endif
 
-ifndef BL1
+ifndef TFA
   ifneq ($(MAKECMDGOALS),$(filter $(MAKECMDGOALS),cargo-doc clean clippy clippy-test help list_features list_platforms))
-    $(info error: environment variable BL1=<xxx> is required.)
-    $(error Please run `make BL1=<path/to/bl1.bin>`)
-  endif
-endif
-
-ifndef BL2
-  ifneq ($(MAKECMDGOALS),$(filter $(MAKECMDGOALS),cargo-doc clean clippy clippy-test help list_features list_platforms))
-    $(info error: environment variable BL2=<xxx> is required.)
-    $(error Please run `make BL2=<path/to/bl2.bin>`)
+    $(info error: environment variable TFA=<xxx> is required.)
+    $(error Please run `make TFA=<path/to/trusted-firmware-a>`)
   endif
 endif
 
@@ -51,6 +44,10 @@ endif
 
 TARGET := aarch64-unknown-none-softfloat
 CARGO_FLAGS += --target $(TARGET) --no-default-features --features "$(FEATURES)"
+
+BL1 := $(TFA)/build/$(PLAT)/$(BUILDTYPE)/bl1.bin
+BL2 := $(TFA)/build/$(PLAT)/$(BUILDTYPE)/bl2.bin
+FIP := $(TFA)/build/$(PLAT)/$(BUILDTYPE)/fip.bin
 
 all: $(PLAT)-build
 
