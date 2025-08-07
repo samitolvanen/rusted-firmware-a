@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39604996_f7638155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-07T15:59:24Z",
+      "side": 1,
+      "message": "I had to rework this patch, because it was incompatible with platform having nested modules, like in I59487ff593b98f649b2db08e819ebeff7a018e93.",
+      "revId": "b6becd8a6f5706c7e89959c50e7bca7a7f176157",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
