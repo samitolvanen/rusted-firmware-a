@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef2015c_1063bb3c",
+        "filename": "platforms.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T13:35:50Z",
+      "side": 1,
+      "message": "This could be `\u0026Path` to be a little more flexible.",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "4d556e209bf2966304b7ed2083c63815f1993f1a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d248bebe_e9f7cd47",
+        "filename": "platforms.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T13:35:50Z",
+      "side": 1,
+      "message": "Add a `use` statement for `Display` rather than using the full path here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "4d556e209bf2966304b7ed2083c63815f1993f1a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb452b08_3c942e09",
+        "filename": "platforms.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T13:35:50Z",
+      "side": 1,
+      "message": "What happens if the name or value contain spaces or other special characters? Is some escaping necessary?",
+      "revId": "4d556e209bf2966304b7ed2083c63815f1993f1a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
