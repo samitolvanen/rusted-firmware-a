@@ -121,6 +121,24 @@
       "parentUuid": "5b13c388_0c6c94f6",
       "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac5ba3e_47ee3d94",
+        "filename": "README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T14:10:22Z",
+      "side": 1,
+      "message": "Everyone writing their own scripts doesn\u0027t seem like a good developer experience. If we\u0027re removing the integration from the RF-A Makefile (which is reasonable) then I really think we should be providing it somewhere else in a consistent way, like we agreed before.\n\nGetting started with RF-A should ideally be as simple as checking out a single repository (with submodules or similar for TF-A and RF-A itself) and running a single command (either a script or a make command or something equivalent), which should build everything necessary for the chosen platform and run the tests (at least for QEMU and FVP).",
+      "parentUuid": "7f9b9665_ed663f21",
+      "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
