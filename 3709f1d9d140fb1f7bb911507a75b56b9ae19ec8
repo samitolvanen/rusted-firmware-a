@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd66ff94_1e057e9c",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-07T20:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d8e9466_412d4735",
+      "range": {
+        "startLine": 82,
+        "startChar": 31,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "3709f1d9d140fb1f7bb911507a75b56b9ae19ec8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bb7b887_e6d86abc",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-08-06T14:16:48Z",
       "side": 1,
       "message": "This should either be regular comment or an actual TODO. Or removed.",
+      "revId": "3709f1d9d140fb1f7bb911507a75b56b9ae19ec8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76b9cde_44f7b251",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-07T20:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bb7b887_e6d86abc",
       "revId": "3709f1d9d140fb1f7bb911507a75b56b9ae19ec8",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
