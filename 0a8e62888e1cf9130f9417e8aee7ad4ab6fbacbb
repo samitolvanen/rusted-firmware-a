@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c7f65a_242fd3ff",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-07T08:36:40Z",
+      "side": 1,
+      "message": "For both FVP and QEMU, I was thinking I can just specify the build directory or I could use the $TFA variable internally.",
+      "range": {
+        "startLine": 54,
+        "startChar": 25,
+        "endLine": 54,
+        "endChar": 96
+      },
+      "revId": "0a8e62888e1cf9130f9417e8aee7ad4ab6fbacbb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
