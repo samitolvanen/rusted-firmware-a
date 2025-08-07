@@ -16,6 +16,24 @@
       "message": "Optional: just `cfg(not(test))` is enough I guess.",
       "revId": "59c0d33655eb5a22aa7bd27af4577cd2ed5b9031",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e0d453d_6b4eb848",
+        "filename": "src/context.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-07T20:37:29Z",
+      "side": 1,
+      "message": "True, but since the assembly code is target arch specific anyway, to me it makes sense to indicate that with this cfg as well. But I don\u0027t insist, if you think that\u0027s better then I\u0027ll replace it.",
+      "parentUuid": "6f29b24b_ec60eb7c",
+      "revId": "59c0d33655eb5a22aa7bd27af4577cd2ed5b9031",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
