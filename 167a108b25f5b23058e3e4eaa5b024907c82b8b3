@@ -16,6 +16,24 @@
       "message": "Why? If you\u0027re wanting to use different page sizes, there are going to be a bunch of other issues.",
       "revId": "167a108b25f5b23058e3e4eaa5b024907c82b8b3",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3688eb55_5b0e8066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-07T14:25:31Z",
+      "side": 1,
+      "message": "I want to reuse the PAGE_SIZE symbol in a platform-specific linker script, not customize PAGE_SIZE.",
+      "parentUuid": "a67f4d46_f8fe83ad",
+      "revId": "167a108b25f5b23058e3e4eaa5b024907c82b8b3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
