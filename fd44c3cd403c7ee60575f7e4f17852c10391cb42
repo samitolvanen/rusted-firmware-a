@@ -33,6 +33,23 @@
       "message": "RUN_CI",
       "revId": "fd44c3cd403c7ee60575f7e4f17852c10391cb42",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4d78ee_1f743ab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T15:10:09Z",
+      "side": 1,
+      "message": "No unsafe Rust code is being added here, not sure why CI isn\u0027t voting Unsafe-Review+1.",
+      "revId": "fd44c3cd403c7ee60575f7e4f17852c10391cb42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
