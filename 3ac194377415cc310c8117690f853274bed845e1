@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31106a72_4037cbc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-08-07T13:14:17Z",
+      "side": 1,
+      "message": "You\u0027ll need sth like:\n```\ndiff --git a/src/context.rs b/src/context.rs\nindex e3215a472..41b6fb581 100644\n--- a/src/context.rs\n+++ b/src/context.rs\n@@ -32,7 +32,7 @@ use crate::{\n     gicv3,\n     platform::{Platform, PlatformImpl, exception_free, plat_calc_core_pos},\n     smccc::SmcReturn,\n-    sysregs::{Esr, ScrEl3, Spsr, read_mpidr_el1, read_scr_el3, write_scr_el3},\n+    sysregs::{CsselrEl1, Esr, ScrEl3, Spsr, read_mpidr_el1, read_scr_el3, write_scr_el3},\n };\n use core::{\n     cell::{RefCell, RefMut},\n@@ -206,7 +206,7 @@ struct El1Sysregs {\n     sctlr_el1: SctlrEl1,\n     tcr_el1: u64,\n     cpacr_el1: u64,\n-    csselr_el1: u64,\n+    csselr_el1: CsselrEl1,\n     sp_el1: u64,\n     esr_el1: Esr,\n     ttbr0_el1: u64,\n@@ -235,7 +235,7 @@ impl El1Sysregs {\n         sctlr_el1: SctlrEl1::empty(),\n         tcr_el1: 0,\n         cpacr_el1: 0,\n-        csselr_el1: 0,\n+        csselr_el1: CsselrEl1::empty(),\n         sp_el1: 0,\n         esr_el1: Esr::empty(),\n         ttbr0_el1: 0,\n```",
+      "revId": "3ac194377415cc310c8117690f853274bed845e1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e331d240_fdf1157e",
         "filename": "src/sysregs.rs",
         "patchSetId": 6
