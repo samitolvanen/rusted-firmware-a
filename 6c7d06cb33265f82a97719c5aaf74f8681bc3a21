@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "699804a2_ddfeda06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T13:47:19Z",
+      "side": 1,
+      "message": "Where is this integration script?",
+      "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d52ea8d8_8072d914",
@@ -14,6 +31,40 @@
       "writtenOn": "2025-08-07T13:38:17Z",
       "side": 1,
       "message": "STAGING_RUN_CI",
+      "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0854d04_67ed3381",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T13:47:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these `qemu` and `fvp` targets be part of the integration script, rather than here?",
+      "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b13c388_0c6c94f6",
+        "filename": "README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T13:47:19Z",
+      "side": 1,
+      "message": "Having to run 5 different commands in the right order rather than one seems like a step backwards. Shouldn\u0027t the integration script take care of all this, so it\u0027s a single command?",
       "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
