@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f29b24b_ec60eb7c",
+        "filename": "src/context.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-07T13:55:25Z",
+      "side": 1,
+      "message": "Optional: just `cfg(not(test))` is enough I guess.",
+      "revId": "59c0d33655eb5a22aa7bd27af4577cd2ed5b9031",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
