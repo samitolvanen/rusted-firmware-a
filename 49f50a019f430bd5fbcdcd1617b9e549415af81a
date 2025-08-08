@@ -46,6 +46,30 @@
       },
       "revId": "49f50a019f430bd5fbcdcd1617b9e549415af81a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ae437a_6781d163",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-08-08T17:47:24Z",
+      "side": 1,
+      "message": "my bad, I had read the diff incorrectly. LGTM!",
+      "parentUuid": "63e575e8_3050fa40",
+      "range": {
+        "startLine": 397,
+        "startChar": 27,
+        "endLine": 397,
+        "endChar": 30
+      },
+      "revId": "49f50a019f430bd5fbcdcd1617b9e549415af81a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
