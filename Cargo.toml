@@ -4,7 +4,11 @@
 
 [workspace]
 resolver = "3"
-members = ["secure_test_framework", "arm-sysregs"]
+members = [
+  "secure_test_framework",
+  "arm-sysregs",
+  "tools/memory_usage_analyser",
+]
 
 [package]
 name = "rf-a-bl31"

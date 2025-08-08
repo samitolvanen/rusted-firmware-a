@@ -17,6 +17,9 @@ ub-risk-2-thorough = "ub-risk-2-thorough"
 ub-risk-3 = "ub-risk-3"
 ub-risk-4 = "ub-risk-4"
 
+[policy.memory-usage-analyser]
+criteria = []
+
 [policy.rf-a-bl31]
 criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-2"]
 
