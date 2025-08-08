@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d0d449_25218a71",
+        "filename": "src/cpu/qemu_max.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-08T09:57:28Z",
+      "side": 1,
+      "message": "Please run rustfmt on the file, the static check does not like the `use` order:",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "e25db749d1b625ce631ec6362eeae85328ecf9dc",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
