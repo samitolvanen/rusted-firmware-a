@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b640e34_1c512d1d",
+        "filename": "src/platform/test.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-08T18:49:12Z",
+      "side": 1,
+      "message": "what does it give us if the next line is a panic?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 9
+      },
+      "revId": "d93a4b6fc5a37ed491c56a5c303b7d43f32ba468",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
