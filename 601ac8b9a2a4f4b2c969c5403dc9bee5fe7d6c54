@@ -72,6 +72,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "642be87b_33596e26",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0c99770a_da10f6ca",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e49fb946_a9a8ffe6",
@@ -213,6 +231,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c4e912_0b75d85c",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ddd40666_74ac80b3",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e27f29da_ac2263a6",
@@ -248,6 +284,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a336db6c_21bf714a",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0c43ac59_9e1038b1",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f499fc2f_43bd4299",
@@ -279,6 +333,24 @@
       "side": 1,
       "message": "It is a non-trivial conversion, from `*const fn()` to `fn()` so we have to use transmute. The other way would be the this, using an extra indirection:\n\n    let func \u003d (\u0026raw const ops.reset_handler) as *const fn();\n    unsafe {\n        (*func)();\n    }",
       "parentUuid": "f499fc2f_43bd4299",
+      "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9704d0_0e18da0e",
+        "filename": "src/cpu.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "I think the issue is that you shouldn\u0027t be using `*const fn()` in the first place, see my other comments.",
+      "parentUuid": "8c465391_684d3779",
       "revId": "601ac8b9a2a4f4b2c969c5403dc9bee5fe7d6c54",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }

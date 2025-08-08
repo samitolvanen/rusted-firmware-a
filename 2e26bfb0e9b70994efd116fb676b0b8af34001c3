@@ -116,6 +116,30 @@
       },
       "revId": "2e26bfb0e9b70994efd116fb676b0b8af34001c3",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cac1ae4_c4b1adb1",
+        "filename": "src/cpu.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "It also doesn\u0027t need to be distributed, so I think the approach taken by this macro is reasonable.",
+      "parentUuid": "741f33e5_215f55d3",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "2e26bfb0e9b70994efd116fb676b0b8af34001c3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

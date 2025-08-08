@@ -1,0 +1,300 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1274476_b974aaf9",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "I think `*const fn()` means a pointer to a function pointer, so these should just be `fn()`. Likewise `reset_handler` should just be `extern \"C\" fn()\u0027.\n\nThis will mean that they can\u0027t be null, so you\u0027ll need to either provide some dummy functions for the empty value or wrap them in an `Option`.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ba6b27_702cf9f4",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Fixing the types of the function pointers should make these impls unnecessary too.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e7e6405_7ce348c3",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "I think it\u0027s simpler just to use `ptr::null()` for all these values without adding the `NULL` constant.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "136ac795_efec67ef",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Just use `cpu_ops_count!` inline on the next line rather than adding this extra constant to the module namespace.",
+      "range": {
+        "startLine": 103,
+        "startChar": 14,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53ee262_f9408bb2",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Rather than relying on this final empty item, could you just pass `CPU_OPS_COUNT` or `CPU_OPS.len()` into the assembly code?",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d6b8d5_8cc9e060",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "I guess `no_mangle` isn\u0027t needed in this case, because unit tests won\u0027t have any assembly code calling this.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce088ce_05160bf1",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "You can use a for loop:\n\n```rust\nfor ops in \u0026CPU_OPS {\n  ...\n}\n```",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a7d1be_5bba7850",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "This transmute shouldn\u0027t be necessary, it\u0027s because `reset_handler` has the wrong type.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24f9a2b_1cb8f24f",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Be consistent about spaces vs. tabs.",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 12
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bbe2b7_295bb369",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "This loop looks very similar to the one in the test version of `cpu_reset_handler`. Let\u0027s factor out a helper function to find the `CpuOps` for the current CPU.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f849454_bbe1437e",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "How does this build in unit test builds on non-aarch64 hosts?",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340c0860_d0b17bdd",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "Add a use statement for this rather than using the full path here.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761d4e6b_e217b088",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "If you want to keep these logs make them a lower verbosity level, `debug` or `trace`.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d61e03d_8a1daf21",
+        "filename": "src/platform.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "How about making `CPU_OPS` a constant on the `Platform` trait? It would need to be a static slice reference rather than an array but I think that would work. Something like `const CPU_OPS: \u0026\u0027static [CpuOps];`.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc1e7db_38b8e01d",
+        "filename": "src/platform/test.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "anything",
+      "range": {
+        "startLine": 347,
+        "startChar": 85,
+        "endLine": 347,
+        "endChar": 92
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30136d2_da9301a5",
+        "filename": "src/platform/test.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-08T14:28:21Z",
+      "side": 1,
+      "message": "What happens if the unit tests are built for a non-aarch64 host?",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
