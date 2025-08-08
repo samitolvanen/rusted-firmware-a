@@ -12,6 +12,8 @@ OBJCOPY ?= rust-objcopy
 
 # cargo features to enable. See Cargo.toml for available features.
 FEATURES ?= sel2
+NIGHTLY ?= 0
+EMIT_STACK_SIZES ?= 0
 
 .PHONY: all cargo-doc clean clippy clippy-test build build-stf list_platforms list_features
 
@@ -56,6 +58,15 @@ endif
 
 ifeq ($(BUILD_STD), 1)
 	CARGO_FLAGS += -Zbuild-std=core,compiler_builtins,alloc
+	NIGHTLY = 1
+endif
+
+ifeq ($(EMIT_STACK_SIZES), 1)
+	TARGET_RUSTFLAGS += -Zemit-stack-sizes -C strip=none
+	NIGHTLY = 1
+endif
+
+ifeq ($(NIGHTLY), 1)
 	CARGO ?= cargo +nightly
 else
 	CARGO ?= cargo
@@ -63,6 +74,7 @@ endif
 
 TARGET_CARGO := RUSTFLAGS="$(TARGET_RUSTFLAGS) -C target-feature=+vh" $(CARGO)
 STF_CARGO := RUSTFLAGS="$(TARGET_RUSTFLAGS) -C link-args=-znostart-stop-gc" $(CARGO)
+HOST_CARGO := cargo
 
 all: images
 
@@ -87,6 +99,9 @@ cargo-doc:
 
 clippy:
 	$(TARGET_CARGO) clippy $(CARGO_FLAGS)
+
+memory-usage-analyser: build
+	$(HOST_CARGO) run --package memory-usage-analyser -- --input $(BL31_ELF) $(ANALYSER_FLAGS)
 
 images: $(BL32) $(BL33) build
 

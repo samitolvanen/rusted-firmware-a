@@ -1,0 +1,19 @@
+# Copyright The Rusted Firmware-A Contributors.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+[package]
+name = "memory-usage-analyser"
+authors = ["Imre Kis <imre.kis@arm.com>"]
+description = "Gathers the code size/stack usage of each function of the ELF file."
+edition = "2024"
+license = "BSD-3-Clause"
+version = "0.1.0"
+
+[dependencies]
+clap = { version = "4.5.50", features = ["derive"] }
+csv = "1.4.0"
+rustc-demangle = "0.1.26"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+stack-sizes = "0.5.0"
