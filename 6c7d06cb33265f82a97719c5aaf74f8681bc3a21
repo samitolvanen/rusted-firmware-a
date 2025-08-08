@@ -157,6 +157,24 @@
       "parentUuid": "4ac5ba3e_47ee3d94",
       "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f77d74f_951f3825",
+        "filename": "README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-08T09:27:03Z",
+      "side": 1,
+      "message": "Btw can we reduce the commands to these?\n```\n# Build RF-A and STF\nmake PLAT\u003dfvp DEBUG\u003d1 all\n\n# Build BL1 and BL2 from TF-A, and create the FIP.\nmake -C $TFA PLAT\u003dfvp FVP_TRUSTED_SRAM_SIZE\u003d512 SPD\u003dspmd SPMD_SPM_AT_SEL2\u003d0 DEBUG\u003d1 \\\n    BL31\u003d\"$(pwd)/target/bl31.bin\" BL32\u003d\"$(pwd)/target/bl32.bin\" BL33\u003d\"$(pwd)/target/bl33.bin\" all fip\n\n# Launch on FVP\nmake PLAT\u003dfvp DEBUG\u003d1 fvp\n```",
+      "parentUuid": "c8cbab93_1026861d",
+      "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
