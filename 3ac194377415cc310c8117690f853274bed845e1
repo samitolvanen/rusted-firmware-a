@@ -51,6 +51,24 @@
       "message": "Typo on this line, remove unnecessary space. Also, you might have to change the type of `self.csselr_el1` in context.rs (lines 266 and 294).",
       "revId": "3ac194377415cc310c8117690f853274bed845e1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cce1812_6c04fefb",
+        "filename": "src/sysregs.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-08T11:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e331d240_fdf1157e",
+      "revId": "3ac194377415cc310c8117690f853274bed845e1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
