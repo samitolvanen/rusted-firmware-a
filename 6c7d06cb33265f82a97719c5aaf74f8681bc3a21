@@ -139,6 +139,24 @@
       "parentUuid": "7f9b9665_ed663f21",
       "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8cbab93_1026861d",
+        "filename": "README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-08T09:23:51Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to move this into a separate script for now. Regarding the integration repo, recently in internal discussions we have started questioning whether we\u0027re willing to accept the additional maintenance effort for that. Even if it starts as a simple script, it is likely to evolve and increase in scope during the years, and probably end up as yet another tool next to the already existing ones. Partners will use Yocto, Buildroot, etc or their own integration system anyway, and RF-A is just another component there. We already provide the CI scripts which can be used as a reference on how to build everything. Also, we plan to add RF-A support to [Shrinkwrap](https://gitlab.arm.com/tooling/shrinkwrap), which is a simple integration system that can build various A-profile reference configurations (3 world, 4 world, etc). It already has support for the existing TF-A tests, we can add STF as well.",
+      "parentUuid": "4ac5ba3e_47ee3d94",
+      "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
