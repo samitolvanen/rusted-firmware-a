@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd79a87_e38b722f",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-08-08T15:14:38Z",
+      "side": 1,
+      "message": "Nit: We seem to be using a mix of Err and Interface::error(). Is that okay?",
+      "range": {
+        "startLine": 397,
+        "startChar": 27,
+        "endLine": 397,
+        "endChar": 30
+      },
+      "revId": "49f50a019f430bd5fbcdcd1617b9e549415af81a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
