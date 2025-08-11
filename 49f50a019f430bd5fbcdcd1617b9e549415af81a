@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41097acd_f5fb8d44",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-11T10:15:40Z",
+      "side": 1,
+      "message": "Please take a look at https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41632\n\nWith that, I don\u0027t think `interface_from_regs()` and `interface_to_regs()` are necessary anymore.",
+      "revId": "49f50a019f430bd5fbcdcd1617b9e549415af81a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872415e0_f1988d88",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-11T10:15:40Z",
+      "side": 1,
+      "message": "This adds another layer of conversion, why is this necessary? Previously if this method returned `Interface::error`, the caller would just convert that to `SmcReturn` and return. Now we have an extra step of making it `Err()` and an extra helper function for converting it back to `Interface::error`",
+      "revId": "49f50a019f430bd5fbcdcd1617b9e549415af81a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd79a87_e38b722f",
         "filename": "src/services/ffa.rs",
         "patchSetId": 6
