@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3351c715_d420f3f9",
+        "filename": "src/aarch64.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f48c4d12_0444458f",
+      "revId": "a0837208ea66b941fb162f1fdf91482546961d02",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1e89c5b_7830a42d",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-08T15:21:54Z",
       "side": 1,
       "message": "Is this this also assuming that e.g. no atomics are accessed after `power_down_level0` returns?",
+      "revId": "a0837208ea66b941fb162f1fdf91482546961d02",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af1c80c_6d60d567",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:21:29Z",
+      "side": 1,
+      "message": "I am having internal discussions about the potential cache coherency and related issues. The PSCI code releases the locks after calling this function, that might be problematic. However, C TF-A does the same here: https://github.com/ARM-software/arm-trusted-firmware/blob/1ba0d3306e7ecdbd1c8e6e18f6d6d618f8bd3060/lib/psci/psci_off.c#L119\nIt calls the power down functions in line 119, then releases the locks in line 143.\nI will address these issues in a separate patch if needed.",
+      "parentUuid": "c1e89c5b_7830a42d",
       "revId": "a0837208ea66b941fb162f1fdf91482546961d02",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
