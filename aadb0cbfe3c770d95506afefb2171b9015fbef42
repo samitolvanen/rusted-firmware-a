@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67ddd94_f172df53",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "I refactored this as requested, it looks better indeed. I removed `CpuOps::empty`, so we don\u0027t need to handle the case of empty function pointers.",
+      "parentUuid": "a1274476_b974aaf9",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3ba6b27_702cf9f4",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f993a72_df3d0899",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3ba6b27_702cf9f4",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e7e6405_7ce348c3",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-08T14:28:21Z",
       "side": 1,
       "message": "I think it\u0027s simpler just to use `ptr::null()` for all these values without adding the `NULL` constant.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8516e406_97ce2fe2",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "By changing the lookup to a length-based iteration I was able to eliminated this function.",
+      "parentUuid": "5e7e6405_7ce348c3",
       "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -75,6 +129,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3266697_79f390dc",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "136ac795_efec67ef",
+      "range": {
+        "startLine": 103,
+        "startChar": 14,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c53ee262_f9408bb2",
@@ -88,6 +166,24 @@
       "writtenOn": "2025-08-08T14:28:21Z",
       "side": 1,
       "message": "Rather than relying on this final empty item, could you just pass `CPU_OPS_COUNT` or `CPU_OPS.len()` into the assembly code?",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c801fa1_500ad2fb",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53ee262_f9408bb2",
       "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -109,6 +205,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38121b9d_7649aab1",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done, also removed `no_mangle` and `extern \"C\"` from the `cpu_power_down` definition, because we only call it from Rust code.",
+      "parentUuid": "69d6b8d5_8cc9e060",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce088ce_05160bf1",
@@ -126,6 +240,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f562bc2_092f62ba",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Changed it into an iterator based helper.",
+      "parentUuid": "0ce088ce_05160bf1",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2a7d1be_5bba7850",
@@ -139,6 +271,24 @@
       "writtenOn": "2025-08-08T14:28:21Z",
       "side": 1,
       "message": "This transmute shouldn\u0027t be necessary, it\u0027s because `reset_handler` has the wrong type.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82760505_ac90703c",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a7d1be_5bba7850",
       "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -166,6 +316,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c6fe79_68ea7b37",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b24f9a2b_1cb8f24f",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 12
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7bbe2b7_295bb369",
@@ -183,6 +357,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a0fbdc_6c8d05d9",
+        "filename": "src/cpu.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7bbe2b7_295bb369",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f849454_bbe1437e",
@@ -196,6 +388,24 @@
       "writtenOn": "2025-08-08T14:28:21Z",
       "side": 1,
       "message": "How does this build in unit test builds on non-aarch64 hosts?",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f16ba9_da5604a7",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "If the module isn\u0027t used in the build, its assembly isn\u0027t compiled at all, so it doesn\u0027t affect test builds. However, the safe way to do this is to have a cfg guard for the CPU modules.",
+      "parentUuid": "5f849454_bbe1437e",
       "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -223,6 +433,54 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4408b5e9_a96ecd61",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "340c0860_d0b17bdd",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ada25c_f0a70b27",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "340c0860_d0b17bdd",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "761d4e6b_e217b088",
@@ -240,6 +498,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e8f8ab8_d6813c99",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "I removed them, the next commit changes these function anyway.",
+      "parentUuid": "761d4e6b_e217b088",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d61e03d_8a1daf21",
@@ -253,6 +529,24 @@
       "writtenOn": "2025-08-08T14:28:21Z",
       "side": 1,
       "message": "How about making `CPU_OPS` a constant on the `Platform` trait? It would need to be a static slice reference rather than an array but I think that would work. Something like `const CPU_OPS: \u0026\u0027static [CpuOps];`.",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26eb85a_1a009da5",
+        "filename": "src/platform.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "This raises some issues when passing `PlatformImpl::CPU_OPS` slice to assembly.\nIf we pass it as a `sym`, the assembly code will get a fat pointer of the slice. I don\u0027t think we should rely on the binary representation of the slice.\nThe other way is to pass it as a const, however `slice::as_ptr()` returns a pointer and pointers cannot be cast to integers during const eval.",
+      "parentUuid": "3d61e03d_8a1daf21",
       "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -280,6 +574,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356d149d_5a855a52",
+        "filename": "src/platform/test.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc1e7db_38b8e01d",
+      "range": {
+        "startLine": 347,
+        "startChar": 85,
+        "endLine": 347,
+        "endChar": 92
+      },
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a30136d2_da9301a5",
@@ -293,6 +611,24 @@
       "writtenOn": "2025-08-08T14:28:21Z",
       "side": 1,
       "message": "What happens if the unit tests are built for a non-aarch64 host?",
+      "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a13950_5668d00e",
+        "filename": "src/platform/test.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T12:12:41Z",
+      "side": 1,
+      "message": "Currently this works by chance, because x86_64 also has a ret instruction.\nI changed to safety requirements of the trait to allow empty functions as well. It will generate a single return instruction for the given architecture.",
+      "parentUuid": "a30136d2_da9301a5",
       "revId": "aadb0cbfe3c770d95506afefb2171b9015fbef42",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
