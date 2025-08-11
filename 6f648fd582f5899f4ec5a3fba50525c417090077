@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd11c307_601d1c45",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-11T10:18:58Z",
+      "side": 1,
+      "message": "nit: IMO this code could just go into `handle_secure_call_common()`, the separate function is not necessary",
+      "revId": "6f648fd582f5899f4ec5a3fba50525c417090077",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
