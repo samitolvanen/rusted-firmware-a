@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a359368c_82b4bf6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-11T14:47:13Z",
+      "side": 1,
+      "message": "Please wrap the commit message body at 72 chars here and in the following commits.",
+      "revId": "c4d5e97aaf634201435f1d1db7901b0f24885473",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
