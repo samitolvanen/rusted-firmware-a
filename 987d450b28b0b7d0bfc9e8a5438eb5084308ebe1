@@ -1,0 +1,9 @@
+Code-Review+2: Jeremi Miller <jeremimiller@google.com>
+Verified+1: ci-bot
+Unsafe-Review+1: Andrew Walbran <qwandor@google.com>
+Submitted-by: Andrew Walbran <qwandor@google.com>
+Submitted-at: Mon, 11 Aug 2025 09:39:15 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41663
+Comments-Total: 3
+Project: RF-A/rusted-firmware-a
+Branch: refs/heads/main
