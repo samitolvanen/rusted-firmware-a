@@ -43,6 +43,7 @@ spin = { version = "0.10.0", default-features = false, features = [
 ] }
 arm-ffa = { version = "0.3.0", default-features = false }
 arm-gic = "0.6.0"
+zerocopy = { version = "0.8.26", features = ["derive"] }
 
 [dev-dependencies]
 arm-gic = { version = "0.6.0", features = ["fakes"] }
