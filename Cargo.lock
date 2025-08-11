@@ -193,6 +193,7 @@ dependencies = [
  "log",
  "percore",
  "spin 0.10.0",
+ "zerocopy",
 ]
 
 [[package]]
