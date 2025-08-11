@@ -16,6 +16,23 @@
       "message": "RUN_CI",
       "revId": "987d450b28b0b7d0bfc9e8a5438eb5084308ebe1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb34b1f7_d1a3865e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-11T09:39:11Z",
+      "side": 1,
+      "message": "No unsafe code is being changed.",
+      "revId": "987d450b28b0b7d0bfc9e8a5438eb5084308ebe1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
