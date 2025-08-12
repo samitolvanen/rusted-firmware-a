@@ -18,6 +18,7 @@ use crate::{
             PlatformPowerStateInterface, PowerStateType, PsciCompositePowerState,
             PsciPlatformInterface, PsciPlatformOptionalFeatures,
         },
+        trng::TrngPlatformInterface,
     },
     sysregs::{IccSre, MpidrEl1, Spsr},
 };
@@ -105,6 +106,7 @@ impl Platform for Fvp {
 
     type LogSinkImpl = LockedWriter<Uart<'static>>;
     type PsciPlatformImpl = FvpPsciPlatformImpl;
+    type TrngPlatformImpl = FvpTrngPlatformImpl;
 
     type PlatformServiceImpl = DummyService;
 
@@ -332,6 +334,12 @@ impl PsciPlatformInterface for FvpPsciPlatformImpl {
     fn system_reset(&self) -> ! {
         todo!()
     }
+}
+
+pub struct FvpTrngPlatformImpl;
+
+impl TrngPlatformInterface for FvpTrngPlatformImpl {
+    // FVP does not have a TRNG
 }
 
 global_asm!(
