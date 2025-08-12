@@ -52,6 +52,24 @@
       "parentUuid": "418ef60f_57109641",
       "revId": "29686e94bc65eb1908b611aa6f004e080f2cb13f",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316e48ff_67128aef",
+        "filename": "src/platform_helpers.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-08-12T15:26:06Z",
+      "side": 1,
+      "message": "Yeah, my bad. Fixed",
+      "parentUuid": "155bf5c5_c2c0ff69",
+      "revId": "29686e94bc65eb1908b611aa6f004e080f2cb13f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
