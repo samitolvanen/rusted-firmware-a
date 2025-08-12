@@ -14,7 +14,9 @@ use crate::{
     gicv3,
     logger::LogSink,
     pagetable::IdMap,
-    services::{Service, arch::WorkaroundSupport, psci::PsciPlatformInterface},
+    services::{
+        Service, arch::WorkaroundSupport, psci::PsciPlatformInterface, trng::TrngPlatformInterface,
+    },
     smccc::FunctionId,
     sysregs::MpidrEl1,
 };
@@ -42,6 +44,7 @@ impl Service for DummyService {
 pub type LogSinkImpl = <PlatformImpl as Platform>::LogSinkImpl;
 
 pub type PsciPlatformImpl = <PlatformImpl as Platform>::PsciPlatformImpl;
+pub type TrngPlatformImpl = <PlatformImpl as Platform>::TrngPlatformImpl;
 pub type PlatformPowerState = <PsciPlatformImpl as PsciPlatformInterface>::PlatformPowerState;
 
 pub type PlatformServiceImpl = <PlatformImpl as Platform>::PlatformServiceImpl;
@@ -76,6 +79,9 @@ pub trait Platform {
 
     /// Platform dependent PsciPlatformInterface implementation type.
     type PsciPlatformImpl: PsciPlatformInterface;
+
+    /// Platform dependent TrngPlatformInterface implementation type.
+    type TrngPlatformImpl: TrngPlatformInterface;
 
     /// Service that handles platform-specific SMC calls.
     type PlatformServiceImpl: Service;

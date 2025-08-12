@@ -18,10 +18,12 @@ use crate::{
             PsciPlatformInterface, PsciPlatformOptionalFeatures, bl31_warm_entrypoint,
             try_get_cpu_index_by_mpidr,
         },
+        trng::TrngPlatformInterface,
     },
     sysregs::{IccSre, MpidrEl1, Spsr},
 };
 use aarch64_paging::paging::MemoryRegion;
+use arm_ffa::Uuid;
 use arm_gic::{
     IntId, Trigger,
     gicv3::{
@@ -109,6 +111,7 @@ impl Platform for Qemu {
     type LogSinkImpl =
         HybridLogger<&'static PerCoreMemoryLogger<LOG_BUFFER_SIZE>, LockedWriter<Uart<'static>>>;
     type PsciPlatformImpl = QemuPsciPlatformImpl;
+    type TrngPlatformImpl = QemuTrngPlatformImpl;
 
     type PlatformServiceImpl = DummyService;
 
@@ -344,6 +347,18 @@ impl PsciPlatformInterface for QemuPsciPlatformImpl {
 
     fn system_reset(&self) -> ! {
         todo!()
+    }
+}
+
+pub struct QemuTrngPlatformImpl;
+
+impl TrngPlatformInterface for QemuTrngPlatformImpl {
+    const TRNG_UUID: Uuid = Uuid::nil();
+
+    fn entropy_setup() {}
+
+    fn get_entropy() -> Option<u64> {
+        None
     }
 }
 
