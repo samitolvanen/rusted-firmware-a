@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a32be957_7a61e921",
+        "filename": "src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-12T15:54:52Z",
+      "side": 1,
+      "message": "This should also return `!` to ensure it never returns.",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3da6b5df_f838c60e",
         "filename": "src/main.rs",
         "patchSetId": 4
@@ -181,6 +198,23 @@
         "endLine": 437,
         "endChar": 11
       },
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0ae118_ed5d8c50",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-12T15:54:52Z",
+      "side": 1,
+      "message": "Two out of three methods on this trait are actually called from the main module rather than the psci module, is that still considered part of the PSCI implementation?",
       "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
