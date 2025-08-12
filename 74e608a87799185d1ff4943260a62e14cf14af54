@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d27f33_3dc4f37f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-12T16:33:59Z",
+      "side": 1,
+      "message": "n",
+      "revId": "74e608a87799185d1ff4943260a62e14cf14af54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21f116a_49bc1417",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-12T16:33:59Z",
+      "side": 1,
+      "message": "Can you also add some tests for the service as a whole? I.e. construct a new `Trng` with a fake `TrngPlatform`, and test how it handles some SMC calls.",
+      "revId": "74e608a87799185d1ff4943260a62e14cf14af54",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
