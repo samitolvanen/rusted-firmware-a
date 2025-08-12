@@ -33,6 +33,24 @@
       "message": "Are empty functions guaranteed not to use the stack? I can\u0027t see why they should, but maybe they could still have some compiler-generated prelude checking the stack pointer or something.\n\nI think we should instead make an exception for unit tests, something like:\n\n\"Except in unit-test-only builds for the host, the `reset_handler` function must be implemented as a naked function... \"",
       "revId": "ae718b52b4430feb7bb77858b0c250d42396c3fa",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2063275_a51e90c5",
+        "filename": "src/cpu.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-12T18:35:07Z",
+      "side": 1,
+      "message": "I was concerned about this too. I checked several configurations on godbolt.org earlier, like enabling BTI, stack protector and using different optimization levels, etc.\nAn empty function without any parameters always resulted in a single ret instruction. If the function had a parameter and the code was compiled using -O0, it pushed the parameter to the stack just to discard it in the next instruction.\nSo by experience it should be OK, but I wasn\u0027t able to find any guarantees from the compiler\u0027s side that this will always be true.\nI am changing the safety comment to be on the safe side.",
+      "parentUuid": "6c7546da_50f04f5b",
+      "revId": "ae718b52b4430feb7bb77858b0c250d42396c3fa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
