@@ -121,6 +121,10 @@ fvp: $(BL1) $(FIP)
 	FVP_Base_RevC-2xAEMvA \
 	  -C cluster0.has_arm_v8-4=1 \
 	  -C cluster1.has_arm_v8-4=1 \
+	  -C cluster0.has_sve=1 \
+	  -C cluster1.has_sve=1 \
+	  -C cluster0.sve.has_sme=1 \
+	  -C cluster1.sve.has_sme=1 \
 	  -C bp.vis.disable_visualisation=1 \
 	  -C bp.pl011_uart0.unbuffered_output=1 \
 	  -C bp.pl011_uart0.out_file=- \

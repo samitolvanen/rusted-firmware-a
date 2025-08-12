@@ -34,7 +34,7 @@ use crate::{
     gicv3,
     platform::{Platform, PlatformImpl, exception_free, plat_calc_core_pos},
     smccc::SmcReturn,
-    sysregs::{Esr, ScrEl3, Spsr, read_mpidr_el1, write_scr_el3},
+    sysregs::{Esr, ScrEl3, Spsr, cptr_el3, read_mpidr_el1, write_scr_el3},
 };
 use arm_psci::EntryPoint;
 use core::{
@@ -477,13 +477,6 @@ struct PerWorldContext {
     zcr_el3: u64,
 }
 
-impl PerWorldContext {
-    const EMPTY: Self = Self {
-        cptr_el3: 0,
-        zcr_el3: 0,
-    };
-}
-
 pub type CrashBuf = [u64; CPU_DATA_CRASH_BUF_COUNT];
 
 #[derive(Clone, Debug)]
@@ -526,8 +519,24 @@ struct CpuOps {
 const _: () = assert!(size_of::<CpuOps>() % align_of::<CpuOps>() == 0);
 
 #[unsafe(export_name = "per_world_context")]
-static PER_WORLD_CONTEXT: PerWorld<PerWorldContext> =
-    PerWorld([PerWorldContext::EMPTY; CPU_DATA_CONTEXT_NUM]);
+static PER_WORLD_CONTEXT: PerWorld<PerWorldContext> = PerWorld::<PerWorldContext>([
+    // Secure world context
+    PerWorldContext {
+        cptr_el3: cptr_el3::TAM | cptr_el3::TTA | cptr_el3::ESM | cptr_el3::EZ,
+        zcr_el3: 0xF,
+    },
+    // Normal world context
+    PerWorldContext {
+        cptr_el3: cptr_el3::ESM | cptr_el3::EZ,
+        zcr_el3: 0xF,
+    },
+    // Realm world context
+    #[cfg(feature = "rme")]
+    PerWorldContext {
+        cptr_el3: cptr_el3::TAM | cptr_el3::TTA | cptr_el3::ESM | cptr_el3::EZ,
+        zcr_el3: 0xF,
+    },
+]);
 
 #[unsafe(export_name = "percpu_data")]
 static mut PERCPU_DATA: [CpuData; PlatformImpl::CORE_COUNT] =
