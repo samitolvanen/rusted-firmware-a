@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ee58da_7df7da9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-12T14:58:47Z",
+      "side": 1,
+      "message": "Looks good apart from one safety comment.",
+      "revId": "ae718b52b4430feb7bb77858b0c250d42396c3fa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7546da_50f04f5b",
+        "filename": "src/cpu.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-12T14:58:47Z",
+      "side": 1,
+      "message": "Are empty functions guaranteed not to use the stack? I can\u0027t see why they should, but maybe they could still have some compiler-generated prelude checking the stack pointer or something.\n\nI think we should instead make an exception for unit tests, something like:\n\n\"Except in unit-test-only builds for the host, the `reset_handler` function must be implemented as a naked function... \"",
+      "revId": "ae718b52b4430feb7bb77858b0c250d42396c3fa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
