@@ -24,3 +24,8 @@ endfunc plat_panic_handler
 func plat_handle_el3_ea
 	b	report_unhandled_exception
 endfunc plat_handle_el3_ea
+
+	.weak	plat_cold_boot_handler
+func plat_cold_boot_handler
+	ret
+endfunc plat_cold_boot_handler
