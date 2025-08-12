@@ -352,3 +352,104 @@ fn is_trng_fid(smc_fid: u32) -> bool {
         ARM_TRNG_VERSION | ARM_TRNG_FEATURES | ARM_TRNG_GET_UUID | ARM_TRNG_RND32 | ARM_TRNG_RND64
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn pack_entropy_less_than_word() {
+        let mut pool = EntropyPool::new();
+        let mut out = [0u64; 1];
+
+        let nbits = 23;
+        pool.pack_entropy(nbits, &mut out).unwrap();
+        assert_eq!(out[0], (1u64 << nbits).wrapping_sub(1));
+        assert_eq!(pool.entropy_bit_size, BITS_PER_WORD - nbits);
+        assert_eq!(pool.entropy_bit_index, nbits);
+    }
+
+    #[test]
+    fn pack_entropy_one_word() {
+        let mut pool = EntropyPool::new();
+        let mut out = [0u64; 2];
+
+        let nbits = 64;
+        pool.pack_entropy(nbits, &mut out).unwrap();
+        assert_eq!(out[0], u64::MAX);
+        assert_eq!(out[1], 0); // Not enough bits for out[1].
+        assert_eq!(pool.entropy_bit_size, 0);
+        assert_eq!(pool.entropy_bit_index, nbits % BITS_IN_POOL);
+    }
+
+    #[test]
+    fn pack_entropy_multiple_words() {
+        let mut pool = EntropyPool::new();
+        let mut out = [0u64; 3];
+
+        let nbits = 192;
+        pool.pack_entropy(nbits, &mut out).unwrap();
+        assert_eq!(out[0], u64::MAX);
+        assert_eq!(out[1], u64::MAX);
+        assert_eq!(out[2], u64::MAX);
+        assert_eq!(pool.entropy_bit_size, 0);
+        assert_eq!(pool.entropy_bit_index, nbits % BITS_IN_POOL);
+    }
+
+    #[test]
+    fn pack_entropy_unaligned_requests() {
+        let mut pool = EntropyPool::new();
+        let mut out = [0u64; 1];
+
+        // Request 30 bits first.
+        let nbits0 = 30;
+        pool.pack_entropy(nbits0, &mut out).unwrap();
+        assert_eq!(out[0], (1u64 << nbits0).wrapping_sub(1));
+        assert_eq!(pool.entropy_bit_size, BITS_PER_WORD - nbits0);
+        assert_eq!(pool.entropy_bit_index, nbits0);
+
+        // Request another 50 bits.
+        out[0] = 0;
+        let nbits1 = 50;
+        pool.pack_entropy(nbits1, &mut out).unwrap();
+        assert_eq!(out[0], (1u64 << nbits1).wrapping_sub(1));
+        assert_eq!(pool.entropy_bit_size, BITS_PER_WORD * 2 - nbits0 - nbits1);
+        assert_eq!(pool.entropy_bit_index, (nbits0 + nbits1) % BITS_IN_POOL);
+    }
+
+    #[test]
+    fn pack_entropy_wraps_around_pool() {
+        let mut pool = EntropyPool {
+            entropy: [u64::MAX; WORDS_IN_POOL],
+            entropy_bit_index: BITS_IN_POOL - 32, // Start 32 bits from the end
+            entropy_bit_size: BITS_IN_POOL,
+        };
+
+        let mut out = [0u64; 2];
+        let nbits = 64;
+        // This request will take 32 bits from the last word and 32 from the first.
+        pool.pack_entropy(nbits, &mut out).unwrap();
+
+        assert_eq!(out[0], u64::MAX);
+        assert_eq!(
+            pool.entropy_bit_index,
+            (BITS_IN_POOL - 32 + nbits) % BITS_IN_POOL
+        );
+        assert_eq!(pool.entropy_bit_size, BITS_IN_POOL - nbits);
+    }
+
+    #[test]
+    fn pack_entropy_all_bits() {
+        let mut pool = EntropyPool::new();
+        let mut out = [0u64; 4];
+
+        let nbits = BITS_IN_POOL;
+        pool.pack_entropy(nbits, &mut out).unwrap();
+        assert_eq!(out[0], u64::MAX);
+        assert_eq!(out[1], u64::MAX);
+        assert_eq!(out[2], u64::MAX);
+        assert_eq!(out[3], u64::MAX);
+        assert_eq!(pool.entropy_bit_size, 0);
+        assert_eq!(pool.entropy_bit_index, 0);
+    }
+}
