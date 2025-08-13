@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362ba8ab_7f4fa777",
+        "filename": "src/dram.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-13T11:54:13Z",
+      "side": 1,
+      "message": "what if it was just\n```\nstatic mut RAW: core::mem::MaybeUninit\u003c$t\u003e \u003d $crate::dram::const_zeroed();\n```\n?\n\nwhy do we need the unsafe cell here?",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 80
+      },
+      "revId": "30d436ad3be02798be04c56c296f4c2fc96c3a86",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
