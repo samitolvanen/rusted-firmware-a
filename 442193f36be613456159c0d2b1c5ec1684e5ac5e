@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c604a3d3_1a554749",
+        "filename": "src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c32349ec_1b4c41f8",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a32be957_7a61e921",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2325e0_5bacdd1c",
+        "filename": "src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32be957_7a61e921",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da6b5df_f838c60e",
@@ -48,6 +84,30 @@
       "writtenOn": "2025-08-08T12:07:30Z",
       "side": 1,
       "message": "1..8",
+      "range": {
+        "startLine": 91,
+        "startChar": 69,
+        "endLine": 91,
+        "endChar": 72
+      },
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa1198c_c3293b22",
+        "filename": "src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da6b5df_f838c60e",
       "range": {
         "startLine": 91,
         "startChar": 69,
@@ -81,6 +141,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6014f7e_fcceb3c8",
+        "filename": "src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b081ce6_a4e88130",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 95,
+        "endChar": 80
+      },
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad5872b0_3e81fe1b",
@@ -94,6 +178,30 @@
       "writtenOn": "2025-08-08T12:07:30Z",
       "side": 1,
       "message": "Please move this into a function of `context`.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27bf8028_20e9f8d4",
+        "filename": "src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad5872b0_3e81fe1b",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -127,6 +235,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a59e07_a92926aa",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabc88e9_34773472",
+      "range": {
+        "startLine": 319,
+        "startChar": 6,
+        "endLine": 326,
+        "endChar": 9
+      },
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96f312e7_92dab954",
@@ -140,6 +272,24 @@
       "writtenOn": "2025-08-07T21:17:50Z",
       "side": 1,
       "message": "This is probably not necessary and could be replaced by a \"PSCI message handling in progress\" state, as described in the comment below?",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ec3aef_84ab128f",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96f312e7_92dab954",
       "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -179,6 +329,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "593192ff_c6043a8b",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3025b43d_e06d95e9",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26502253_e24b8448",
@@ -192,6 +360,30 @@
       "writtenOn": "2025-08-08T12:07:30Z",
       "side": 1,
       "message": "Please introduce `local_state` and `set_local_state` functions for accessing this variable, because it is a recurring pattern.",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 11
+      },
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756230e6_50eda0c9",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "The state switch should happen in a single exception_free block, so having a separate setter/getter doesn\u0027t seem correct to me. I\u0027ve added `switch_spmc_local_state()` to make the state switch in a single step, let me know what you think.",
+      "parentUuid": "26502253_e24b8448",
       "range": {
         "startLine": 431,
         "startChar": 0,
@@ -221,6 +413,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df143f10_518f8471",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Fair point. This more or less resembles what was the `spd_pm_ops_t` in C TF-A. Should I rename to something similar? Like `SpmPowerManagement` or similar. Also probably it\u0027s better to move the trait definition to `ffa.rs`",
+      "parentUuid": "2a0ae118_ed5d8c50",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d232bed4_8a99046d",
         "filename": "src/services/psci.rs",
         "patchSetId": 4
@@ -232,6 +442,24 @@
       "writtenOn": "2025-08-08T12:07:30Z",
       "side": 1,
       "message": "`handle_wake_by_cpu_on` sounds better to me because the CPU_ON call triggers it regardless of the previous events.",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e0e1a3_1e9b2869",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d232bed4_8a99046d",
       "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -249,6 +477,24 @@
       "writtenOn": "2025-08-08T12:07:30Z",
       "side": 1,
       "message": "`handle_wake_from_suspend` would be better, because waking up from the `CPU_SUSPEND`, `CPU_DEFAULT_SUSPEND` and `SYSTEM_SUSPEND` calls will result in this callback. Please update the comment accordingly and also include that this only applies for power down suspend states.",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c810110_ec604642",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ff0bdf_7a29c069",
       "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -288,6 +534,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b961dfa1_f320efd5",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f316a89_c74057aa",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c5045a3_ddb360b3",
@@ -301,6 +565,24 @@
       "writtenOn": "2025-08-08T12:07:30Z",
       "side": 1,
       "message": "Do we hit this limit?",
+      "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f955853_04bad47a",
+        "filename": "src/stacks.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 1,
+      "message": "Leftover, removed.",
+      "parentUuid": "8c5045a3_ddb360b3",
       "revId": "442193f36be613456159c0d2b1c5ec1684e5ac5e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }

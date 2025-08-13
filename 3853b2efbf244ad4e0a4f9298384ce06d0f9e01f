@@ -16,6 +16,24 @@
       "message": "Why was this here before, but is no longer needed?",
       "revId": "3853b2efbf244ad4e0a4f9298384ce06d0f9e01f",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "966e64fd_2e946842",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-13T13:21:36Z",
+      "side": 0,
+      "message": "The SPMC shouldn\u0027t be notified about this type of PSCI event, I\u0027ve added more detailed explanation to the commit msg",
+      "parentUuid": "d8f477a6_8358e1d5",
+      "revId": "3853b2efbf244ad4e0a4f9298384ce06d0f9e01f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
