@@ -4,6 +4,13 @@
 
 //! Safe abstractions for storing data in DRAM sections.
 
+use crate::{
+    context::PerCoreState,
+    platform::{Platform, PlatformImpl},
+};
+use core::{cell::RefCell, mem::MaybeUninit};
+use percore::{ExceptionLock, PerCore};
+use spin::{Lazy, mutex::SpinMutex};
 use zerocopy::FromZeros;
 
 /// Creates a zeroed instance of the given type.
@@ -53,6 +60,13 @@ macro_rules! zeroed_mut {
 }
 pub(crate) use zeroed_mut;
 
+zeroed_mut!(FOO, u64, unsafe(link_section = ".bss.dram"));
+
+zeroed_mut! {
+    /// Some comment.
+    pub BAR, u64, unsafe(link_section = ".bss.dram")
+}
+
 /// Declares a static lazily-initialised `$t` which may reside in zero-initialised memory.
 ///
 /// For example:
@@ -91,6 +105,70 @@ macro_rules! lazy_indirect {
         });
     };
 }
+
+lazy_indirect!(
+    LAZY_PERCORE2,
+    PerCoreState<u64>,
+    PerCore::new([const { ExceptionLock::new(RefCell::new(0)) }; PlatformImpl::CORE_COUNT]),
+    unsafe(link_section = ".bss.dram")
+);
+
+lazy_indirect!(LAZY_MUTEX2, SpinMutex<u64>, SpinMutex::new(64));
+
+lazy_indirect! {
+    /// Some comment
+    pub LAZY_MUTEX3, SpinMutex<u64>, SpinMutex::new(64), unsafe(link_section = ".bss.dram")
+}
+
+// Four cases, depending on whether:
+// 1. T is FromZeros, or needs to be initialised (and so a Lazy is required)
+// 2. We want &T, or SpinMutex<&mut T>. (Or we could put the mutex in DRAM, so T=SpinMutex<U>)
+
+// The mutex is in SRAM, value is zero-initialised in DRAM.
+static ZEROED: SpinMutex<&mut u64> = {
+    static mut RAW: u64 = const_zeroed();
+    SpinMutex::new({
+        // SAFETY: This is the only place where we create a reference to the contents of this
+        // `SyncUnsafeCell`.
+        let r = unsafe { &mut *&raw mut RAW };
+        r
+    })
+};
+
+// The mutex is in SRAM, lazily initialised after contents is initialised in DRAM.
+static LAZY_WRAPPER: Lazy<SpinMutex<&mut u64>> = {
+    static mut RAW: MaybeUninit<u64> = const_zeroed();
+    Lazy::new(|| {
+        // SAFETY: This is the only place where we create a reference to the contents of this
+        // `SyncUnsafeCell`, and it only happens once during the initialisation of the `Lazy`.
+        let maybe_uninit = unsafe { &mut *&raw mut RAW };
+        SpinMutex::new(maybe_uninit.write(42))
+    })
+};
+
+// No need for a mutex. Value is in DRAM, lazily initialised.
+static LAZY_PERCORE: Lazy<&PerCoreState<u64>> = {
+    static mut RAW: MaybeUninit<PerCoreState<u64>> = const_zeroed();
+    Lazy::new(|| {
+        // SAFETY: This is the only place where we create a reference to the contents of this
+        // `SyncUnsafeCell`, and it only happens once during the initialisation of the `Lazy`.
+        let maybe_uninit = unsafe { &mut *&raw mut RAW };
+        maybe_uninit.write(PerCore::new(
+            [const { ExceptionLock::new(RefCell::new(0)) }; PlatformImpl::CORE_COUNT],
+        ))
+    })
+};
+
+// The mutex is in DRAM, lazily initialised with its contents.
+static LAZY_MUTEX: Lazy<&SpinMutex<u64>> = {
+    static mut RAW: MaybeUninit<SpinMutex<u64>> = const_zeroed();
+    Lazy::new(|| {
+        // SAFETY: This is the only place where we create a reference to the contents of this
+        // `SyncUnsafeCell`, and it only happens once during the initialisation of the `Lazy`.
+        let maybe_uninit = unsafe { &mut *&raw mut RAW };
+        maybe_uninit.write(SpinMutex::new(42))
+    })
+};
 
 #[cfg(test)]
 mod tests {
