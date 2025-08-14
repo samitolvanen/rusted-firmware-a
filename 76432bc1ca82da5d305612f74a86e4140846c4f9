@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc09d45d_9103aa72",
+        "filename": "src/dram.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-08-14T19:11:50Z",
+      "side": 1,
+      "message": "The Sync propagating property of of `SyncUnsafeCell` is never leveraged in the code - I think if you delete this line it will build fine.\n\nYou call `.get()` and then convert it to a `\u0026mut T`, so the only thing that the mutex actually requires to be sync is `T`, it shouldn\u0027t care at all about the cell you\u0027re using, because it doesn\u0027t wrap the cell, it wraps a reference to something inside the cell.",
+      "revId": "76432bc1ca82da5d305612f74a86e4140846c4f9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13001871_1868a6b7",
+        "filename": "src/dram.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-08-14T19:11:50Z",
+      "side": 1,
+      "message": "I think using an `UnsafeCell` here is either unnecessary or insufficient.\n\nIf you will only ever access these from Rust, then you can just use a regular `static mut` and allow the warning in this one block. If you really don\u0027t want to allow the lint, you can use `\u0026raw mut` and cast to a reference. The lint doesn\u0027t really apply here because the static is scoped to this const expression, so you don\u0027t need to worry about someone creating another reference to it. (This is the \"unnecessary\" case.)\n\nIf you are doing this because you intend to access it from asm code *and* rust, you need to avoid ever producing the `\u0026mut` you\u0027ve wrapped, and instead all operations need to be done by pointer. (This is the \"insufficient\" case.)\n\nThis is because the core function of `UnsafeCell` is to tell Rust that the aliasing rules for references *outside* the `UnsafeCell` (e.g. `\u0026RAW`) don\u0027t apply to the contents of the wrapped data. You extract the pointer from *inside* `UnsafeCell`, and convert that `*mut $t` into a `\u0026mut $t` - that reference does not have an `UnsafeCell`, and so has no special rules.",
+      "revId": "76432bc1ca82da5d305612f74a86e4140846c4f9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
