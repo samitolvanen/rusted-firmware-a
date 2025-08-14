@@ -22,6 +22,30 @@
       },
       "revId": "30d436ad3be02798be04c56c296f4c2fc96c3a86",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79da2683_5c3da559",
+        "filename": "src/dram.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-14T10:23:25Z",
+      "side": 1,
+      "message": "`static mut` variables are discouraged in modern Rust, `UnsafeCell` provides a less bug-prone equivalent.",
+      "parentUuid": "362ba8ab_7f4fa777",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 80
+      },
+      "revId": "30d436ad3be02798be04c56c296f4c2fc96c3a86",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
