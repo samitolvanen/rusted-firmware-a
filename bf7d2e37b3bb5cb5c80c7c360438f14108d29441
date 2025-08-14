@@ -16,6 +16,92 @@
       "message": "RUN_CI",
       "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b44e7d_7f3d1802",
+        "filename": "src/main.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-14T08:11:07Z",
+      "side": 1,
+      "message": "Remove this line, this function is called in line 93 too.",
+      "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef5686c_2782a70f",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-14T08:11:07Z",
+      "side": 1,
+      "message": "Is this still unused?",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 20
+      },
+      "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7a946f_1c0b4a54",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-14T08:11:07Z",
+      "side": 1,
+      "message": "Is this still unused?",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 20
+      },
+      "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368d1cc5_f9c6daa3",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-14T08:11:07Z",
+      "side": 1,
+      "message": "The SPMD should not parse the `psci_request`, if it needs to be notified on this event, the trait should have a separate function for this.",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 73
+      },
+      "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
