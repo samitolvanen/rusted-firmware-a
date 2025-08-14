@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb5314d_14888fde",
+        "filename": "src/dram.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-08-14T19:49:28Z",
+      "side": 1,
+      "message": "As previously, I don\u0027t think the `UnsafeCell` is actually buying you anything here, and you can just use a `MaybeUninit\u003cT\u003e` directly.",
+      "revId": "37d598580e446c22253668eaadccd9b6a61cd135",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
