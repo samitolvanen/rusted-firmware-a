@@ -35,6 +35,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26dc620e_13251e7b",
+        "filename": "src/main.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-14T08:54:21Z",
+      "side": 1,
+      "message": "Oops thanks, some rebasing issue.",
+      "parentUuid": "18b44e7d_7f3d1802",
+      "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ef5686c_2782a70f",
@@ -58,6 +76,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee0d053_de3188f6",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-14T08:54:21Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "1ef5686c_2782a70f",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 20
+      },
+      "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c7a946f_1c0b4a54",
@@ -71,6 +113,30 @@
       "writtenOn": "2025-08-14T08:11:07Z",
       "side": 1,
       "message": "Is this still unused?",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 20
+      },
+      "revId": "bf7d2e37b3bb5cb5c80c7c360438f14108d29441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa95a94_c482065d",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-14T08:54:21Z",
+      "side": 1,
+      "message": "No, removed the attribute",
+      "parentUuid": "2c7a946f_1c0b4a54",
       "range": {
         "startLine": 173,
         "startChar": 4,
