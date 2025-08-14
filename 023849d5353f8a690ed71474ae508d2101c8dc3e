@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91214da3_d0abb898",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-14T07:11:08Z",
+      "side": 1,
+      "message": "TrngPlatformImpl could have its own layer of caching (e.g. always asking hardware for 1024 bits). Optimal pool size can be platform-specific so maybe this platform-independent EntropyPool is redundant?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb94d005_26b42e4a",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-14T07:11:08Z",
+      "side": 1,
+      "message": "could we always return [u64; 3] here, where lower nbits are filled with entropy and upper 64*3-nbits are zeros?\n\nand give this [u64; 3] type a name",
+      "range": {
+        "startLine": 107,
+        "startChar": 72,
+        "endLine": 107,
+        "endChar": 74
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287e970c_8492bab7",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-14T07:11:08Z",
+      "side": 1,
+      "message": "so entropy pool is sth like a RingBufferQueue\u003cBit\u003e?",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272396c4_8f5f5bff",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-14T07:11:08Z",
+      "side": 1,
+      "message": "Maybe you could implement into for u128 -\u003e SmcReturn conversion?",
+      "range": {
+        "startLine": 297,
+        "startChar": 12,
+        "endLine": 297,
+        "endChar": 51
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b9c1f5_0d5b8d0b",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-14T07:11:08Z",
+      "side": 1,
+      "message": "if we request e.g. 50 bits of entropy, are the remaining 14 upper bits guaranteed by pack_entropy to be 0?",
+      "range": {
+        "startLine": 317,
+        "startChar": 36,
+        "endLine": 317,
+        "endChar": 42
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f35c0f_88e4f1f7",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-14T07:11:08Z",
+      "side": 1,
+      "message": "iirc the intention here is to spread the entropy bits in 3 cells of at most 32 bits each.\n\nlets write a function that \"spreads\" `ent` as described into `[u32; 3]` to make this logic more readable.",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 9
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eab5093_03cee191",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-14T07:11:08Z",
+      "side": 1,
+      "message": "same here: please fill the discarded upper bits with 0s and always return ent[2], ent[1], ent[0]",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 61
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
