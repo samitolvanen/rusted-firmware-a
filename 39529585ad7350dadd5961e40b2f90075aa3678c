@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8076ad_fba45a19",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-14T10:43:14Z",
+      "side": 1,
+      "message": "These two matches can be flattened into a single one. The only valid case is when the SPMC sends an PowerPsciResp and the `src_id` matches thej SPMD ID. In all other cases this function should panic (this matches TF-A\u0027s behavior too).",
+      "revId": "39529585ad7350dadd5961e40b2f90075aa3678c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
