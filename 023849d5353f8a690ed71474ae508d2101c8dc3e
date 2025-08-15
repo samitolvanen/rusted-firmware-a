@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdb43c6c_61ba2c1d",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-15T13:00:08Z",
+      "side": 1,
+      "message": "What do you mean by \"C var\" here?",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 20
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "272396c4_8f5f5bff",
         "filename": "src/services/trng.rs",
         "patchSetId": 5
