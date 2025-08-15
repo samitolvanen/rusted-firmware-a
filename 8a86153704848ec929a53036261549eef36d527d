@@ -22,6 +22,30 @@
       },
       "revId": "8a86153704848ec929a53036261549eef36d527d",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1197e2de_943f9045",
+        "filename": "doc/CONTRIBUTING.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-15T11:05:05Z",
+      "side": 1,
+      "message": "That would be nice, but currently isn\u0027t true. Added anyway.",
+      "parentUuid": "fa7e8350_468e076b",
+      "range": {
+        "startLine": 13,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "8a86153704848ec929a53036261549eef36d527d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
