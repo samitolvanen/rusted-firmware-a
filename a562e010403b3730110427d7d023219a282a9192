@@ -1,0 +1,10 @@
+Verified+1: ci-bot
+Code-Review+1: Tomás Agustín González Orlando <tomasagustin.gonzalezorlando@arm.com>
+Code-Review+2: Andrew Walbran <qwandor@google.com>
+Unsafe-Review+1: Andrew Walbran <qwandor@google.com>
+Submitted-by: Bálint Dobszay <balint.dobszay@arm.com>
+Submitted-at: Fri, 15 Aug 2025 15:27:04 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41339
+Comments-Total: 6
+Project: RF-A/rusted-firmware-a
+Branch: refs/heads/main
