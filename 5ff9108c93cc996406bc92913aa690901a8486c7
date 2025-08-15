@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fec29e1_e5dd68b5",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00c7de1_29fb5c6e",
+      "revId": "5ff9108c93cc996406bc92913aa690901a8486c7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87931bbb_895cbfaf",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6193cb_c740e942",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87931bbb_895cbfaf",
+      "revId": "5ff9108c93cc996406bc92913aa690901a8486c7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe6379c8_cf0ee5dc",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-15T13:00:08Z",
       "side": 1,
       "message": "Are realms allowed to request entropy?",
+      "revId": "5ff9108c93cc996406bc92913aa690901a8486c7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0239e52f_55e5c455",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe6379c8_cf0ee5dc",
       "revId": "5ff9108c93cc996406bc92913aa690901a8486c7",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }

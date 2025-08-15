@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88a228f_6451c916",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6323ed64_2fedce96",
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f915eccf_36f9687e",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1eb6849_036222cf",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f915eccf_36f9687e",
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91214da3_d0abb898",
@@ -48,6 +84,30 @@
       "writtenOn": "2025-08-14T07:11:08Z",
       "side": 1,
       "message": "TrngPlatformImpl could have its own layer of caching (e.g. always asking hardware for 1024 bits). Optimal pool size can be platform-specific so maybe this platform-independent EntropyPool is redundant?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7766e74_9ca355d5",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "I think the entropy pool is useful anyway, since the SMCs allow any arbitrary number of bits to be requested, and the bit pool allows those bits to be gradually consumed without throwing away partial words. It\u0027s also nice to avoid too much duplication in platforms, but clearly only requesting 64-bits at a time could be inefficient. So, instead what I\u0027ve done is changed the platform trait to allow the platform to specify how many words to request from the TRNG each time. That should make it possible to avoid any buffering inside platform code.",
+      "parentUuid": "91214da3_d0abb898",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -83,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1070f71d_32eceb96",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "I think it would make the function interface a little too rigid. e.g. if someone wants to add much larger TRNG requests.",
+      "parentUuid": "eb94d005_26b42e4a",
+      "range": {
+        "startLine": 107,
+        "startChar": 72,
+        "endLine": 107,
+        "endChar": 74
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "287e970c_8492bab7",
         "filename": "src/services/trng.rs",
         "patchSetId": 5
@@ -94,6 +178,30 @@
       "writtenOn": "2025-08-14T07:11:08Z",
       "side": 1,
       "message": "so entropy pool is sth like a RingBufferQueue\u003cBit\u003e?",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2940c73_4d0462c6",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Yep",
+      "parentUuid": "287e970c_8492bab7",
       "range": {
         "startLine": 119,
         "startChar": 8,
@@ -127,6 +235,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3dfd93_14abb0fe",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Oops, bad copypaste from TF-A",
+      "parentUuid": "bdb43c6c_61ba2c1d",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 20
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc07b123_0339c40f",
@@ -140,6 +272,24 @@
       "writtenOn": "2025-08-15T15:05:13Z",
       "side": 1,
       "message": "nit: `handle_common_smc`?",
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30c589a_68cff0ba",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc07b123_0339c40f",
       "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -184,6 +334,48 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "579a7296_b52e8723",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272396c4_8f5f5bff",
+      "range": {
+        "startLine": 297,
+        "startChar": 12,
+        "endLine": 297,
+        "endChar": 51
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f437a39_042ad102",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Implemented it correctly in `From\u003cUuid\u003e for SmcReturn` (I hope).",
+      "parentUuid": "332548f2_5d62fda1",
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7b9c1f5_0d5b8d0b",
@@ -197,6 +389,30 @@
       "writtenOn": "2025-08-14T07:11:08Z",
       "side": 1,
       "message": "if we request e.g. 50 bits of entropy, are the remaining 14 upper bits guaranteed by pack_entropy to be 0?",
+      "range": {
+        "startLine": 317,
+        "startChar": 36,
+        "endLine": 317,
+        "endChar": 42
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4844d468_97dc0323",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Yep, pack_entropy already makes sure the rest of the slice is zeroed, so this match is redundant. Removed it.",
+      "parentUuid": "e7b9c1f5_0d5b8d0b",
       "range": {
         "startLine": 317,
         "startChar": 36,
@@ -230,6 +446,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5423be80_7d296ef1",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Yep, but specifically it is to match the SMC32 return spec on page 15 of https://developer.arm.com/documentation/den0098/1-0. (i.e. lowest bits of entropy in highest register!). Now that I\u0027ve removed the match statement, I think the correspondence to the spec is fairly clear, so I\u0027m going to keep it like this. Added a comment to clarify.",
+      "parentUuid": "12f35c0f_88e4f1f7",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 9
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eab5093_03cee191",
@@ -243,6 +483,30 @@
       "writtenOn": "2025-08-14T07:11:08Z",
       "side": 1,
       "message": "same here: please fill the discarded upper bits with 0s and always return ent[2], ent[1], ent[0]",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 61
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65cac83_5a712864",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-15T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eab5093_03cee191",
       "range": {
         "startLine": 342,
         "startChar": 0,
