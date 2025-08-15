@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6323ed64_2fedce96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T15:05:13Z",
+      "side": 1,
+      "message": "Please add a link to the spec",
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f915eccf_36f9687e",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T15:05:13Z",
+      "side": 1,
+      "message": "Is there a specific reason for depending on this, re-exported by `arm-ffa`? If not, I think this should rather depend on `Uuid` from the `uuid` crate",
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91214da3_d0abb898",
         "filename": "src/services/trng.rs",
         "patchSetId": 5
@@ -95,6 +129,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc07b123_0339c40f",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T15:05:13Z",
+      "side": 1,
+      "message": "nit: `handle_common_smc`?",
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "272396c4_8f5f5bff",
         "filename": "src/services/trng.rs",
         "patchSetId": 5
@@ -112,6 +163,23 @@
         "endLine": 297,
         "endChar": 51
       },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332548f2_5d62fda1",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T15:05:13Z",
+      "side": 1,
+      "message": "According to the spec this should return 4 32-bit registers",
       "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
