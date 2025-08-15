@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31fe692_e17f2db7",
+        "filename": "src/context.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T17:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f9cf7f1_d9343940",
+      "revId": "8d46a09e7bb306889ddf16fdc69fdac8f5f327c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10d2a6c6_533b8d20",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8648058a_e7cfd693",
+        "filename": "src/main.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T17:03:33Z",
+      "side": 1,
+      "message": "I\u0027ve talked to the maintainers and this is the info I got:\n\n\u003e On the secondary core, hafnium does not expect anything to be passed by earlier bootloader:\n\u003e https://git.trustedfirmware.org/plugins/gitiles/hafnium/hafnium/+/refs/tags/v2.13/src/arch/aarch64/hypervisor/hypervisor_entry.S#138\n\u003e\n\u003e On primary core, it expects the pointer to SPMC manifest fdt\n\u003e https://git.trustedfirmware.org/plugins/gitiles/hafnium/hafnium/+/refs/tags/v2.13/src/arch/aarch64/hypervisor/hypervisor_entry.S#51\n\nIIRC the arguments we use now on the primary core were indeed required once, but it looks like not anymore. I\u0027ll add a separate patch to update that.",
+      "parentUuid": "10d2a6c6_533b8d20",
+      "revId": "8d46a09e7bb306889ddf16fdc69fdac8f5f327c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f8f2609_f378f425",
         "filename": "src/services/ffa.rs",
         "patchSetId": 9
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-14T13:28:41Z",
       "side": 1,
       "message": "What about ID_GET, FEATURES and so on?",
+      "revId": "8d46a09e7bb306889ddf16fdc69fdac8f5f327c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4d96e7_91dc3041",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T17:03:33Z",
+      "side": 1,
+      "message": "Those are not valid responses to a direct request message. We can be sure that if we end up in this handler, then `handle_wake_from_cpu_suspend()` was called before, so we\u0027ve entered SWd with a direct request.",
+      "parentUuid": "1f8f2609_f378f425",
       "revId": "8d46a09e7bb306889ddf16fdc69fdac8f5f327c5",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
