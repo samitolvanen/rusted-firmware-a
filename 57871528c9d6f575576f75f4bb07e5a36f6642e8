@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ca3ac8_5f46836f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T11:48:22Z",
+      "side": 1,
+      "message": "I\u0027ve just realised that Sandrine already started the contribution section here: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41339/3/README.md#9\n\nBut what you\u0027ve written in this patch is more-or-less the same, so I\u0027d say let\u0027s keep this one as-is and I\u0027ve remove that section from hers.",
+      "revId": "57871528c9d6f575576f75f4bb07e5a36f6642e8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
