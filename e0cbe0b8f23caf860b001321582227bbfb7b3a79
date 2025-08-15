@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07075e0f_7345ed22",
+        "filename": "supply-chain/audits.toml",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-15T14:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "501ebb9f_8b1ca80a",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "e0cbe0b8f23caf860b001321582227bbfb7b3a79",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c15ae055_6745e875",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-08-15T14:31:35Z",
       "side": 1,
       "message": "nit: shouldn\u0027t this be a delta, as we already have 0.6.0?",
+      "revId": "e0cbe0b8f23caf860b001321582227bbfb7b3a79",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f406253_c3767233",
+        "filename": "supply-chain/audits.toml",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-15T14:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c15ae055_6745e875",
       "revId": "e0cbe0b8f23caf860b001321582227bbfb7b3a79",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
