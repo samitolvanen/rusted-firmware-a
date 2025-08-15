@@ -16,6 +16,24 @@
       "message": "Can you do also do a cargo vet audit for the diff, either in this change or a follow-up? We\u0027re almost clean on cargo vet, and it would be good to get that presubmit in before the release.",
       "revId": "f77076d4684c2e515ae33f4dcf4d555f9d6face9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "331fb658_28d33bd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-15T14:45:35Z",
+      "side": 1,
+      "message": "Done in the previous commits.",
+      "parentUuid": "19c9f0e5_69b03218",
+      "revId": "f77076d4684c2e515ae33f4dcf4d555f9d6face9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
