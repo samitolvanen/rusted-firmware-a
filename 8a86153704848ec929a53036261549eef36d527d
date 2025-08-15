@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7e8350_468e076b",
+        "filename": "doc/CONTRIBUTING.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-15T10:23:32Z",
+      "side": 1,
+      "message": "And `PLAT\u003dfvp`",
+      "range": {
+        "startLine": 13,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "8a86153704848ec929a53036261549eef36d527d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
