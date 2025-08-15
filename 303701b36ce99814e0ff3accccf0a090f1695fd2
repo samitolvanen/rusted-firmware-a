@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58da29e_d08d3f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-15T15:42:23Z",
+      "side": 1,
+      "message": "We can submit this once https://review.trustedfirmware.org/c/ci/tf-a-ci-scripts/+/37953 is in.",
+      "revId": "303701b36ce99814e0ff3accccf0a090f1695fd2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
