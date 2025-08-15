@@ -116,6 +116,24 @@
       "parentUuid": "13001871_1868a6b7",
       "revId": "76432bc1ca82da5d305612f74a86e4140846c4f9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250eb230_ad98f121",
+        "filename": "src/dram.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-08-15T17:55:01Z",
+      "side": 1,
+      "message": "That access is fine as long as it is only zeroing it - if you ever attempt to *initialize* that memory, you may get UB, since the `\u0026mut $t` is constructed at const-time, which means that it can assume that the initial value is all zeroes (e.g. if the compiler can see no writes, then it can say the read returns zeroes, regardless of what you\u0027ve put in memory).\n\nFor the second part, the tl;dr is that I think a using interior mutability is extremely helpful iff you don\u0027t keep around references to their interior.\n\nTypes using interior mutability are encouraged, but you don\u0027t get any of the benefits unless you don\u0027t keep the reference materialized. The act of turning the `*mut $t` from `get()` into `\u0026mut $t` turns this into the equivalent of a `static mut` with extra steps, because the `\u0026mut $t` exists forever - any future mutation of the pointee other than through that reference is now illegal, and creating a read-only reference not through that reference is illegal.\n\nThe normal win of using `static FOO: UnsafeSyncCell\u003cT\u003e;` is that you can do `FOO.get()` with impunity. Accessing a `static` implicitly creates a reference to it, and if someone else has a mutable reference, that\u0027s instant UB.\n\nThe point of avoiding `static mut` is because determining whether you can create a reference to it requires global reasoning. In this case, the `static` is explicitly scoped in an expression that will be evaluated exactly once, so you don\u0027t actually need global reasoning. There\u0027s no *chance* for anyone else to trigger the instant UB.\n\nIf you wanted to do avoid keeping around references (which makes it so that the cell will actually do something), your lock would protect some kind of `struct Wrap\u003cT\u003e(UnsafeSyncCell\u003cT\u003e);` which had a `Deref` implementation that called `.get()` and created the reference then. This would have the added benefit that as long as you could figure out that the Rust code wasn\u0027t accessing it (for example, by taking the lock), you\u0027d be free to have asm code edit it without visibly consuming the borrow.",
+      "parentUuid": "475fa0c9_8babdc72",
+      "revId": "76432bc1ca82da5d305612f74a86e4140846c4f9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
