@@ -8,7 +8,7 @@ use crate::{
     context::EntryPointInfo,
     cpu::Cpu,
     define_cpu_ops,
-    gicv3::GicConfig,
+    gicv3::{Gic, GicConfig},
     logger::{self, LogSink},
     pagetable::{IdMap, MT_DEVICE, disable_mmu_el3, map_region},
     services::{
@@ -22,7 +22,7 @@ use crate::{
     sysregs::{MpidrEl1, Spsr},
 };
 use aarch64_paging::paging::MemoryRegion;
-use arm_gic::{IntId, gicv3::GicV3};
+use arm_gic::IntId;
 use arm_psci::{Cookie, ErrorCode, HwState, Mpidr, PowerState, SystemOff2Type};
 use core::fmt;
 use percore::ExceptionFree;
@@ -66,7 +66,7 @@ impl Platform for TestPlatform {
         map_region(idmap, &DEVICE0, MT_DEVICE);
     }
 
-    unsafe fn create_gic() -> GicV3<'static> {
+    unsafe fn create_gic() -> Gic<'static> {
         unimplemented!();
     }
 
