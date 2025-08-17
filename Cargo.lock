@@ -248,7 +248,7 @@ dependencies = [
  "aarch64-paging",
  "arm-ffa",
  "arm-fvp-base-pac",
- "arm-gic 0.6.1",
+ "arm-gic 0.7.0",
  "arm-pl011-uart",
  "arm-psci",
  "arrayvec",
