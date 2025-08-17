@@ -247,7 +247,7 @@ dependencies = [
  "aarch64-paging",
  "arm-ffa",
  "arm-fvp-base-pac",
- "arm-gic 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "arm-gic 0.6.1 (git+https://review.trustedfirmware.org/arm-firmware-crates/arm-gic)",
  "arm-pl011-uart",
  "arm-psci",
  "arrayvec",
