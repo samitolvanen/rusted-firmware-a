@@ -122,6 +122,8 @@ fvp: $(BL1) $(FIP)
 	  -C cluster0.has_arm_v8-4=1 \
 	  -C cluster1.has_arm_v8-4=1 \
 	  -C bp.vis.disable_visualisation=1 \
+	  -C gic_distributor.extended-ppi-count=64 \
+	  -C gic_distributor.extended-spi-count=1024 \
 	  -C bp.pl011_uart0.unbuffered_output=1 \
 	  -C bp.pl011_uart0.out_file=- \
 	  -C bp.terminal_0.start_telnet=0 \

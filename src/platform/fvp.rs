@@ -37,6 +37,10 @@ use arm_gic::{
     IntId, Trigger,
     gicv3::{
         Group, SecureIntGroup,
+        distributor::{
+            GicDistributorContext, distributor_context_size, distributor_extended_context_size,
+        },
+        redistributor::{GicRedistributorContext, redistributor_context_size},
         registers::{Gicd, GicrSgi},
     },
 };
@@ -383,6 +387,25 @@ impl From<FvpPowerState> for usize {
     }
 }
 
+struct FvpGicContext {
+    distributor_context: GicDistributorContext<
+        { distributor_context_size(988) },
+        { distributor_extended_context_size(1024) },
+    >,
+    redistributor_context: GicRedistributorContext<{ redistributor_context_size(96) }>,
+}
+
+impl FvpGicContext {
+    const fn new() -> Self {
+        Self {
+            distributor_context: GicDistributorContext::new(),
+            redistributor_context: GicRedistributorContext::new(),
+        }
+    }
+}
+
+static GIC_CONTEXT: SpinMutex<FvpGicContext> = SpinMutex::new(FvpGicContext::new());
+
 pub struct FvpPsciPlatformImpl<'a> {
     power_controller: SpinMutex<FvpPowerController<'a>>,
     system: SpinMutex<FvpSystemPeripheral<'a>>,
@@ -520,23 +543,25 @@ impl FvpPsciPlatformImpl<'_> {
     }
 
     fn gic_cpu_interface_enable(&self) {
-        // TODO: implement enable_gic_cpu_interface
+        Gic::get().cpu_interface_enable();
     }
     fn gic_cpu_interface_disable(&self) {
-        // TODO: implement disable_gic_cpu_interface
+        Gic::get().cpu_interface_disable();
     }
 
     fn gic_redistributor_enable(&self) {
-        // TODO: implement enable_gic_redistributor
+        Gic::get().redistributor_init(&Fvp::GIC_CONFIG);
     }
 
     fn gic_redistributor_disable(&self) {
-        // TODO: implement disable_gic_redistributor
+        Gic::get().redistributor_off();
     }
 
     fn save_system_power_domain(&self) {
-        // TODO: implement save_system_power_domain
-        // plat_arm_gic_save();
+        let mut context = GIC_CONTEXT.lock();
+
+        Gic::get().redistributor_save(&mut context.redistributor_context);
+        Gic::get().distributor_save(&mut context.distributor_context);
 
         log::logger().flush();
 
@@ -545,9 +570,13 @@ impl FvpPsciPlatformImpl<'_> {
     }
 
     fn restore_system_power_domain(&self) {
-        // TODO: implement restore_system_power_domain
-        // plat_arm_gic_resume();
-        // plat_arm_security_setup();
+        let context = GIC_CONTEXT.lock();
+
+        Gic::get().distributor_restore(&context.distributor_context);
+        Gic::get().redistributor_restore(&context.redistributor_context);
+
+        // TODO: plat_arm_security_setup();
+
         self.init_generic_timer();
     }
 }
