@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e824d3c_0cccb2c1",
+        "filename": "doc/getting-started.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-18T11:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a80853d_f118ed49",
+      "revId": "d2f93781b198a51565fd07f61aa3696b8ad661a5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "729d48ff_bac79d59",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-08-18T11:20:18Z",
       "side": 1,
       "message": "\"low-level\" is a bit ambiguous, it would be clearer to say \"Rustdoc documentation\" I guess.",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "d2f93781b198a51565fd07f61aa3696b8ad661a5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1c172e_809f442f",
+        "filename": "doc/getting-started.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-18T11:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "729d48ff_bac79d59",
       "range": {
         "startLine": 129,
         "startChar": 10,
