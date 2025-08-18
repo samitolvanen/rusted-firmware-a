@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36db1d4e_89e678cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-08-18T15:46:19Z",
+      "side": 1,
+      "message": "Updated the commit message.",
+      "parentUuid": "c2134324_57d078bf",
+      "revId": "3c768850cb333431fa1fc729832fe34c6dee60ee",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e93b9fe4_080b096b",
         "filename": "src/context.S",
         "patchSetId": 1
