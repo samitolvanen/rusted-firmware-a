@@ -33,6 +33,24 @@
       "message": "Why the change from x9 to x8? Is there some conflict we missed before?",
       "revId": "3c768850cb333431fa1fc729832fe34c6dee60ee",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc2b1a9_9e8f9820",
+        "filename": "src/context.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-08-18T15:06:40Z",
+      "side": 1,
+      "message": "You\u0027re right this might not be relevant to this change, I was just confused about using x9 here when the macro prototype says x9 is clobbered:\nhttps://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41989/1/src/context.S#130\neffectively this line https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41989/1/src/context.S#142 resolves in `mov x9, x9` which looked a bit strange at first sight, but looking closer this might be harmless.",
+      "parentUuid": "e93b9fe4_080b096b",
+      "revId": "3c768850cb333431fa1fc729832fe34c6dee60ee",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
