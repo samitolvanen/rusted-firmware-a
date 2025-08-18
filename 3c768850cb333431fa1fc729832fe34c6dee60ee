@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2134324_57d078bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-18T15:35:09Z",
+      "side": 1,
+      "message": "In C TF-A the correct instruction (`ubfx`) was used for the whole time. We also had it in `el3_common_macros.S`, when the file was deleted it still contained the right one: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41359/5/include/arch/aarch64/el3_common_macros.S#b60\n\nDuring one asm -\u003e Rust code moving, the wrong version of the macro was introduced, and we have been using that ever since: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/38597/13/rust/src/context.S#116\n\nIt was depending on `x9` being 0 before calling the macro, as it\u0027s just overwriting the bottom bit of whatever was already there in `x9`",
+      "parentUuid": "5945cbea_9d59ee8c",
+      "revId": "3c768850cb333431fa1fc729832fe34c6dee60ee",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e93b9fe4_080b096b",
         "filename": "src/context.S",
         "patchSetId": 1
