@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9afabe14_58f28c21",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-19T13:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a89801b_dcbb44a1",
+      "revId": "55d1f550cd78a8c83c39d087686c7fcc687d10ac",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe88b4b9_956f9bdc",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "003dbc53_4d4f0863",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-19T13:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe88b4b9_956f9bdc",
+      "revId": "55d1f550cd78a8c83c39d087686c7fcc687d10ac",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6e429f9_52ea996f",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-19T11:42:13Z",
       "side": 1,
       "message": "What\u0027s the default implementation? Add a link in the Rustdoc here.",
+      "revId": "55d1f550cd78a8c83c39d087686c7fcc687d10ac",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0679d7ae_6ef9a06a",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-08-19T13:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e429f9_52ea996f",
       "revId": "55d1f550cd78a8c83c39d087686c7fcc687d10ac",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
