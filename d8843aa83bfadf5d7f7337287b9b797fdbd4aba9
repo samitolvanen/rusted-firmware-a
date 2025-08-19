@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749fde20_8ef14c4e",
+        "filename": "src/services/arch.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-19T15:49:54Z",
+      "side": 1,
+      "message": "Why do you need to convert these constants to bits and back again?",
+      "revId": "d8843aa83bfadf5d7f7337287b9b797fdbd4aba9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26a68bb_f9f12fd5",
+        "filename": "src/services/arch.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-19T15:49:54Z",
+      "side": 1,
+      "message": "This is never used.",
+      "revId": "d8843aa83bfadf5d7f7337287b9b797fdbd4aba9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919b4bf1_96580ace",
+        "filename": "src/services/arch.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-19T15:49:54Z",
+      "side": 1,
+      "message": "Don\u0027t use `world_context` here, it is only intended for a raw pointer to be passed to assembly code. Use `cpu_state(token)[world]` to get it safely.",
+      "revId": "d8843aa83bfadf5d7f7337287b9b797fdbd4aba9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8442d8f9_4a102348",
+        "filename": "src/services/arch.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-19T15:49:54Z",
+      "side": 1,
+      "message": "I think you can write this as `scr - ScrEl3::RES1`.",
+      "range": {
+        "startLine": 180,
+        "startChar": 33,
+        "endLine": 180,
+        "endChar": 52
+      },
+      "revId": "d8843aa83bfadf5d7f7337287b9b797fdbd4aba9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb4d749_c2cc6847",
+        "filename": "src/services/arch.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-19T15:49:54Z",
+      "side": 1,
+      "message": "So this will panic if there are any bits set in `SCR_EL3` that aren\u0027t RES1 or included as constants in our `sysregs` module? Is that what we want?",
+      "revId": "d8843aa83bfadf5d7f7337287b9b797fdbd4aba9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
