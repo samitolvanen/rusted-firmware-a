@@ -118,6 +118,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e1898f_16db31a6",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-19T08:58:04Z",
+      "side": 1,
+      "message": "nice!",
+      "parentUuid": "a7766e74_9ca355d5",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb94d005_26b42e4a",
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "I think it would make the function interface a little too rigid. e.g. if someone wants to add much larger TRNG requests.",
       "parentUuid": "eb94d005_26b42e4a",
+      "range": {
+        "startLine": 107,
+        "startChar": 72,
+        "endLine": 107,
+        "endChar": 74
+      },
+      "revId": "023849d5353f8a690ed71474ae508d2101c8dc3e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2d59c1_ccda654a",
+        "filename": "src/services/trng.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-19T08:58:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1070f71d_32eceb96",
       "range": {
         "startLine": 107,
         "startChar": 72,
