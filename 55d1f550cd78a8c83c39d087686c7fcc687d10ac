@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a89801b_dcbb44a1",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-19T12:46:23Z",
+      "side": 1,
+      "message": "nit: FVP Base RevC (which we use) does have a TRNG peripheral, so this should rather be a TODO",
+      "revId": "55d1f550cd78a8c83c39d087686c7fcc687d10ac",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe88b4b9_956f9bdc",
         "filename": "src/platform/qemu.rs",
         "patchSetId": 8
