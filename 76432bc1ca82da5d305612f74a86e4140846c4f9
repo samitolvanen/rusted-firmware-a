@@ -134,6 +134,24 @@
       "parentUuid": "475fa0c9_8babdc72",
       "revId": "76432bc1ca82da5d305612f74a86e4140846c4f9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02fe7ad_9a981ff9",
+        "filename": "src/dram.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-19T12:36:02Z",
+      "side": 1,
+      "message": "I`ve changed this to use a `static mut`.",
+      "parentUuid": "250eb230_ad98f121",
+      "revId": "76432bc1ca82da5d305612f74a86e4140846c4f9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
