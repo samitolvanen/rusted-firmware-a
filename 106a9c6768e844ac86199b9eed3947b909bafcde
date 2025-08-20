@@ -16,6 +16,24 @@
       "message": "Suggestions for better names for the module and macro are welcome.",
       "revId": "106a9c6768e844ac86199b9eed3947b909bafcde",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "476dc4d5_405658b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-20T10:22:26Z",
+      "side": 1,
+      "message": "Sticking with the current names for now.",
+      "parentUuid": "0cbaa2f5_ff31b2b4",
+      "revId": "106a9c6768e844ac86199b9eed3947b909bafcde",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
