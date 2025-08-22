@@ -11,6 +11,7 @@ use crate::{
     context::{CoresImpl, EntryPointInfo},
     cpu::{aem_generic::AemGeneric, define_cpu_ops},
     debug::DEBUG,
+    errata_framework::define_errata_list,
     gicv3::{Gic, GicConfig, InterruptConfig},
     logger::{self, LockedWriter},
     naked_asm,
@@ -163,6 +164,7 @@ fn map_peripheral<T>(physical_instance: PhysicalInstance<T>) -> UniqueMmioPointe
 static FVP_PSCI_PLATFORM_IMPL: SpinMutex<Option<FvpPsciPlatformImpl>> = SpinMutex::new(None);
 
 define_cpu_ops!(AemGeneric);
+define_errata_list!();
 
 /// Fixed Virtual Platform
 pub struct Fvp;
