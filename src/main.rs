@@ -15,6 +15,7 @@ mod cpu_extensions;
 mod crash_console;
 mod debug;
 mod dram;
+mod errata_framework;
 mod exceptions;
 mod gicv3;
 #[cfg_attr(test, path = "layout_fake.rs")]
@@ -143,6 +144,7 @@ mod asm {
         DIT_BIT = const Dit::DIT.bits(),
         plat_cold_boot_handler = sym PlatformImpl::cold_boot_handler,
         PAGE_TABLE_ADDR = sym PAGE_TABLE_ADDR,
+        apply_reset_errata = sym errata_framework::apply_reset_errata,
     );
 
     /// This macro wraps a naked_asm block with `bti`, or any other universal
