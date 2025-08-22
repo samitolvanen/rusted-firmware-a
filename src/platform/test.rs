@@ -8,6 +8,7 @@ use crate::{
     context::EntryPointInfo,
     cpu::{Cpu, define_cpu_ops},
     cpu_extensions::CpuExtension,
+    errata_framework::define_errata_list,
     gicv3::{Gic, GicConfig},
     logger::{self, LogSink},
     pagetable::{
@@ -44,6 +45,7 @@ const CORES_PER_CLUSTER: usize = 3;
 const CORES_PER_CLUSTER_LAST: usize = 4;
 
 define_early_mapping!([]);
+define_errata_list!();
 
 /// A fake platform for unit tests.
 pub struct TestPlatform;
