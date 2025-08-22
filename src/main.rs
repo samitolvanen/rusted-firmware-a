@@ -15,6 +15,7 @@ mod cpu_extensions;
 mod crash_console;
 mod debug;
 mod dram;
+mod errata_framework;
 mod exceptions;
 mod gicv3;
 #[cfg_attr(test, path = "layout_fake.rs")]
