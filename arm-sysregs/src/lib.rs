@@ -845,11 +845,15 @@ impl MidrEl1 {
     pub const REVISION_MASK: u64 = 0xf << Self::REVISION_SHIFT;
     /// Position of the lowest bit in the Revision field.
     pub const REVISION_SHIFT: u32 = 0;
+    /// Length of the Revision field.
+    pub const REVISION_LEN: u32 = 4;
 
     /// Mask for the Variant field.
     pub const VARIANT_MASK: u64 = 0xf << Self::VARIANT_SHIFT;
     /// Position of the lowest bit in the Variant field.
     pub const VARIANT_SHIFT: u32 = 20;
+    /// Length of the Variant field.
+    pub const VARIANT_LEN: u32 = 4;
 
     /// Returns a new MidrEl1.
     pub const fn new(bits: u64) -> Self {
