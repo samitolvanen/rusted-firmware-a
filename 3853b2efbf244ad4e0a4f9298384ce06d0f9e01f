@@ -34,6 +34,24 @@
       "parentUuid": "d8f477a6_8358e1d5",
       "revId": "3853b2efbf244ad4e0a4f9298384ce06d0f9e01f",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48e4629_d17a7ec7",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-25T21:38:17Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "966e64fd_2e946842",
+      "revId": "3853b2efbf244ad4e0a4f9298384ce06d0f9e01f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
