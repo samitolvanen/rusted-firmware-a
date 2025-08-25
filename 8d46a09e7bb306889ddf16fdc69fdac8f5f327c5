@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7354878e_b03f0049",
+        "filename": "src/main.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-08-25T16:20:12Z",
+      "side": 1,
+      "message": "\u003e Is there any TEE other than OP-TEE that actually supports this migration path?\n\nI knew of one I cannot name here, although I don\u0027t believe this is still relevant for RF-A and I\u0027m fine eliding impdef behaviors.\n\n\u003e I\u0027m not sure why? Hafnium can keep the same boot protocol towards the S-EL1 test SPs.\n\ncorrect",
+      "parentUuid": "7cc52074_b4ae8984",
+      "revId": "8d46a09e7bb306889ddf16fdc69fdac8f5f327c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f8f2609_f378f425",
         "filename": "src/services/ffa.rs",
         "patchSetId": 9
