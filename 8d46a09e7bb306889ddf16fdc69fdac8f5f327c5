@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cc52074_b4ae8984",
+        "filename": "src/main.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-08-25T15:33:37Z",
+      "side": 1,
+      "message": "\u003e I believe this was mostly for configs without secure virtualisation e.g. S-EL1 SPMC.\n\u003e Moving forward same TEE would be migrated under Hafnium seamlessly as latter provides same info through x4 at the SPMC/SP boundary\n\nI see. Is there any TEE other than OP-TEE that actually supports this migration path? I.e. that it can act either as a S-EL1 SPMC or S-EL1 SP depending on availability of secure virtualization.\n\n\u003e however when secure virtualisation is used the boot protocol between SPMD/SPMC and SPMC/SP would then differ slightly\n\nI think that\u0027s okay, it\u0027s only a TEE like OP-TEE that would care about both (but actually OP-TEE doesn\u0027t care about it in either case).\n\n\u003e Note also the usage in tf-a-tests test partitions that will have to be amended\n\nI\u0027m not sure why? Hafnium can keep the same boot protocol towards the S-EL1 test SPs.\n\nBtw I\u0027m okay with keeping the core ID in x4 if we have a strong requirement by an SPMC. I just didn\u0027t want to automatically copy this behaviour from TF-A because it looked like yet another case of impdef legacy, that we shouldn\u0027t keep unless it\u0027s absolutely necessary.",
+      "parentUuid": "d3911ef4_4537145d",
+      "revId": "8d46a09e7bb306889ddf16fdc69fdac8f5f327c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f8f2609_f378f425",
         "filename": "src/services/ffa.rs",
         "patchSetId": 9
