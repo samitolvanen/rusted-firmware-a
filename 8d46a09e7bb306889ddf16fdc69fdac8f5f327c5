@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3911ef4_4537145d",
+        "filename": "src/main.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-08-25T14:51:42Z",
+      "side": 1,
+      "message": "\u003e Yes it\u0027s still present in TF-A, but it seems to be unused in Hafnium\n\nI believe this was mostly for configs without secure virtualisation e.g. S-EL1 SPMC.\nMoving forward same TEE would be migrated under Hafnium seamlessly as latter provides same info through x4 at the SPMC/SP boundary\n\n\u003e this doesn\u0027t sound like something we should care about in RF-A?\n\nYes this looks an impdef legacy thing we might want to drop, however when secure virtualisation is used the boot protocol between SPMD/SPMC and SPMC/SP would then differ slightly.\nNote also the usage in tf-a-tests test partitions that will have to be amended:\nhttps://git.trustedfirmware.org/plugins/gitiles/TF-A/tf-a-tests/+/refs/heads/master/spm/cactus/aarch64/cactus_entrypoint.S#47",
+      "parentUuid": "0f3324ef_9aefcb49",
+      "revId": "8d46a09e7bb306889ddf16fdc69fdac8f5f327c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f8f2609_f378f425",
         "filename": "src/services/ffa.rs",
         "patchSetId": 9
