@@ -22,6 +22,30 @@
       },
       "revId": "355a5451e7fb7308f00f686ecf4698f4e3fc9946",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da709f5_b4432b6a",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-26T16:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55383d4f_77a256be",
+      "range": {
+        "startLine": 469,
+        "startChar": 30,
+        "endLine": 469,
+        "endChar": 39
+      },
+      "revId": "355a5451e7fb7308f00f686ecf4698f4e3fc9946",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

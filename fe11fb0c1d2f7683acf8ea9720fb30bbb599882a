@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc1c84f_861ce1fe",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-26T16:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60e8c942_f1336065",
+      "revId": "fe11fb0c1d2f7683acf8ea9720fb30bbb599882a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccd067d4_25240895",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-14T13:37:00Z",
       "side": 1,
       "message": "Not handling this seems surprising, why not?",
+      "revId": "fe11fb0c1d2f7683acf8ea9720fb30bbb599882a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e81e34_e739132a",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-26T16:55:07Z",
+      "side": 1,
+      "message": "I want to confirm with both @Imre.Kiss and you:\n\nShould I handle both `Interrupt` and `SysregTrap` by\n1. looping over until I get some other result.\n2. Returning PsciDenied as we are currently doing.\n3. panicking\n\nI was thinking `PsciDenied` was okay for this case but given Andrew\u0027s (and Imre\u0027s on saying \"anything else should panic following C-TF-A\") comments it may be better to discuss.",
+      "parentUuid": "ccd067d4_25240895",
       "revId": "fe11fb0c1d2f7683acf8ea9720fb30bbb599882a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
