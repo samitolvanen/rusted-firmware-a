@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "355a1ab8_a832f98d",
+        "filename": "src/aarch64.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-26T15:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "638789ee_2a3a3fac",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "82a4abf208af37a0bb5cc19ddea437343d977b19",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9cd5409_744deb79",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-26T11:36:02Z",
       "side": 1,
       "message": "Why do we need the shift here?",
+      "range": {
+        "startLine": 163,
+        "startChar": 25,
+        "endLine": 163,
+        "endChar": 46
+      },
+      "revId": "82a4abf208af37a0bb5cc19ddea437343d977b19",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a950ad_fdd459e8",
+        "filename": "src/aarch64.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-26T15:43:22Z",
+      "side": 1,
+      "message": "The level field is in bits [3:1] of the DC CISW instruction argument: https://developer.arm.com/documentation/ddi0601/2025-06/AArch64-Instructions/DC-CISW--Data-or-unified-Cache-line-Clean-and-Invalidate-by-Set-Way",
+      "parentUuid": "d9cd5409_744deb79",
       "range": {
         "startLine": 163,
         "startChar": 25,
