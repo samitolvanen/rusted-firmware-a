@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9ae06b_689220fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T10:22:24Z",
+      "side": 1,
+      "message": "Rebased, can I get fresh reviews?",
+      "revId": "05fc0dea45cff9167a04712cb9ae11757c0e2f29",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
