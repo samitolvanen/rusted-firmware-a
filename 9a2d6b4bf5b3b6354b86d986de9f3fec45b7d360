@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762c1cbe_8da90130",
+        "filename": "secure_test_framework/src/bl32.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T11:13:30Z",
+      "side": 1,
+      "message": "Please handle all of the following variants: \n\n    DirectMsgArgs::PowerPsciReq32\n    DirectMsgArgs::PowerPsciReq64\n    DirectMsgArgs::PowerWarmBootReq",
+      "revId": "9a2d6b4bf5b3b6354b86d986de9f3fec45b7d360",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
