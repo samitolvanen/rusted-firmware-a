@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ce67bc_48573e89",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T15:46:49Z",
+      "side": 1,
+      "message": "This could be `DEVICE_REGIONS.iter().any(|region| ...)`.",
+      "revId": "cc677cafae570762529644f9c8c238186034d2fa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
