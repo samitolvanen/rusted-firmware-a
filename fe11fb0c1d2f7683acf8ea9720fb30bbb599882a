@@ -87,6 +87,24 @@
       "parentUuid": "46e81e34_e739132a",
       "revId": "fe11fb0c1d2f7683acf8ea9720fb30bbb599882a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de0fbfa4_fd388648",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-27T08:45:25Z",
+      "side": 1,
+      "message": "Hopefully this is now resolved.",
+      "parentUuid": "1577e16c_07c654e4",
+      "revId": "fe11fb0c1d2f7683acf8ea9720fb30bbb599882a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

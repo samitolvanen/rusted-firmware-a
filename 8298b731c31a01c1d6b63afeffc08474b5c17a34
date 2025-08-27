@@ -16,6 +16,24 @@
       "message": "We should probably return `Interface::error(FfaError::Denied)` instead",
       "revId": "8298b731c31a01c1d6b63afeffc08474b5c17a34",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf431de_5cee1771",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-27T08:45:25Z",
+      "side": 1,
+      "message": "That was originally the case (it was PsciDenied which is more appropriate since we are returning `psci_status`, but still). Imre said otherwise and this matches C-TFA\u0027s behaviour.",
+      "parentUuid": "a820acdd_773e3614",
+      "revId": "8298b731c31a01c1d6b63afeffc08474b5c17a34",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
