@@ -87,6 +87,24 @@
       "parentUuid": "3af1c80c_6d60d567",
       "revId": "a0837208ea66b941fb162f1fdf91482546961d02",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9622c0d3_83fd2bef",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:58:51Z",
+      "side": 1,
+      "message": "AFAIK, this is safe, because it flushes the caches and the platform supports hardware-assisted coherency. C TF-A only requires extra steps (i.e. invalidating certain memory ranges) when the platform does support HW coherency.\nWe decided at the beginning that RF-A only supports platforms with HW coherency.\nFor future platform we will see whether they restrict this function to be only called at a known step of the power down sequence.",
+      "parentUuid": "e53850c1_a08df6e3",
+      "revId": "a0837208ea66b941fb162f1fdf91482546961d02",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

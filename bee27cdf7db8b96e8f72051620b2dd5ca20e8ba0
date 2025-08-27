@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6168e1_3df3974a",
+        "filename": "src/sysregs.rs",
+        "patchSetId": 18
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:58:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "208084b7_f520973d",
+      "revId": "bee27cdf7db8b96e8f72051620b2dd5ca20e8ba0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca779ea8_5e412ee9",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-27T13:02:03Z",
       "side": 1,
       "message": "This seems like a bad idea, as it will silently convert an invalid value like 12345 to a bogus `CacheLevel`. Either implement `TryFrom` instead, or `From\u003cu8\u003e`. Though what does it mean if the field\u0027s value is 255? Is it possible to have a cache level 256? Or you could remove the trait implementation entirely, and just construct the appropriate value directly in `CsselrEl1::level`.",
+      "revId": "bee27cdf7db8b96e8f72051620b2dd5ca20e8ba0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66d5a7c_24c2e118",
+        "filename": "src/sysregs.rs",
+        "patchSetId": 18
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:58:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca779ea8_5e412ee9",
       "revId": "bee27cdf7db8b96e8f72051620b2dd5ca20e8ba0",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
