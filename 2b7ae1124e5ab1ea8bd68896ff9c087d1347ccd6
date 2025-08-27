@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8d0f5a_36988404",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T17:13:34Z",
+      "side": 1,
+      "message": "arm-fvp-base-pac depends on spin 0.9 and this causes missing audits for autocfg, scopeguard, lock_api. I made a patch to update the spin dependency of the PAC crate: https://review.trustedfirmware.org/c/arm-firmware-crates/arm-fvp-base-pac/+/42264",
+      "revId": "2b7ae1124e5ab1ea8bd68896ff9c087d1347ccd6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
