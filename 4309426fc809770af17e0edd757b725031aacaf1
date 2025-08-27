@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5124c6b2_55cfdc6e",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50f578e_81d2e18a",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1203fa3c_ac6d9792",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-08-27T11:43:18Z",
       "side": 1,
       "message": "physical",
+      "range": {
+        "startLine": 116,
+        "startChar": 21,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4227a8d9_32532ed0",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1203fa3c_ac6d9792",
       "range": {
         "startLine": 116,
         "startChar": 21,
@@ -64,6 +106,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8a47bd_c12f45da",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b225c13_68bad76c",
+      "range": {
+        "startLine": 117,
+        "startChar": 57,
+        "endLine": 117,
+        "endChar": 68
+      },
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fae4cb2_bc8a737f",
@@ -77,6 +143,24 @@
       "writtenOn": "2025-08-27T11:43:18Z",
       "side": 1,
       "message": "This is only true if `physical_instance` is within that region. You could check that with an assertion here.",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb7d8f0_759b8211",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:08:36Z",
+      "side": 1,
+      "message": "I refactored a device region handling and added a function for checking if a `PhysicalIntance` is included in any of the regions.",
+      "parentUuid": "7fae4cb2_bc8a737f",
       "revId": "4309426fc809770af17e0edd757b725031aacaf1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -98,6 +182,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "710aec26_be8b3f65",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0211aec0_a3e1675d",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b998f1d_1f52a095",
@@ -111,6 +213,24 @@
       "writtenOn": "2025-08-27T11:43:18Z",
       "side": 1,
       "message": "This could just be `value as usize`, couldn\u0027t it?",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcf563d_49e30412",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-08-27T14:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b998f1d_1f52a095",
       "revId": "4309426fc809770af17e0edd757b725031aacaf1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
