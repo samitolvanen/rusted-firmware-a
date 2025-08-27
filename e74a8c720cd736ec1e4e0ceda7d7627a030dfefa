@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fda9af_d118a757",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T10:48:17Z",
+      "side": 1,
+      "message": "This could at least do with a panic message. Though maybe it would be better to return an error to the secure world rather than panicking?",
+      "revId": "e74a8c720cd736ec1e4e0ceda7d7627a030dfefa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "528391d7_24ed56ec",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T10:48:17Z",
+      "side": 1,
+      "message": "Add a panic message here too.",
+      "revId": "e74a8c720cd736ec1e4e0ceda7d7627a030dfefa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
