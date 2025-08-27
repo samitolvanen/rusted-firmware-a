@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50f578e_81d2e18a",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T11:43:18Z",
+      "side": 1,
+      "message": "Elsewhere we use `spin::mutex::SpinMutex`, let\u0027s be consistent.",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1203fa3c_ac6d9792",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T11:43:18Z",
+      "side": 1,
+      "message": "physical",
+      "range": {
+        "startLine": 116,
+        "startChar": 21,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b225c13_68bad76c",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T11:43:18Z",
+      "side": 1,
+      "message": "peripherals",
+      "range": {
+        "startLine": 117,
+        "startChar": 57,
+        "endLine": 117,
+        "endChar": 68
+      },
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fae4cb2_bc8a737f",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T11:43:18Z",
+      "side": 1,
+      "message": "This is only true if `physical_instance` is within that region. You could check that with an assertion here.",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0211aec0_a3e1675d",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T11:43:18Z",
+      "side": 1,
+      "message": "Rather than casting `bl31_warm_entrypoint` here, could you make `WARM_ENTRYPOINT_FIELD` have the appropriate type?",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b998f1d_1f52a095",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-27T11:43:18Z",
+      "side": 1,
+      "message": "This could just be `value as usize`, couldn\u0027t it?",
+      "revId": "4309426fc809770af17e0edd757b725031aacaf1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
