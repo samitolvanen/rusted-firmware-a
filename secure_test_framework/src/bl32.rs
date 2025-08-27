@@ -32,6 +32,7 @@ use crate::{
 };
 use aarch64_rt::entry;
 use arm_ffa::{DirectMsgArgs, FfaError, Interface, SuccessArgsIdGet, Version};
+use arm_psci::ReturnCode;
 use core::panic::PanicInfo;
 use log::{error, info, warn};
 
@@ -164,10 +165,11 @@ fn handle_direct_message(
             }
         }
     } else if src_id == spmd_id && dst_id == spmc_id {
-        let DirectMsgArgs::VersionReq { version } = args else {
-            panic!("Received unexpected direct message type from SPMD.");
-        };
-        handle_version_request(version)
+        match args {
+            DirectMsgArgs::VersionReq { version } => handle_version_request(version),
+            DirectMsgArgs::PowerPsciReq64 { params } => handle_psci_request(params),
+            _ => panic!("Received unexpected direct message type from SPMD."),
+        }
     } else {
         panic!("Unexpected source ID ({src_id:#x}) or destination ID ({dst_id:#x})");
     }
@@ -189,6 +191,12 @@ fn handle_version_request(version: Version) -> DirectMsgArgs {
 
     DirectMsgArgs::VersionResp {
         version: Some(out_version),
+    }
+}
+
+fn handle_psci_request(_params: [u64; 4]) -> DirectMsgArgs {
+    DirectMsgArgs::PowerPsciResp {
+        psci_status: (ReturnCode::Success).into(),
     }
 }
 
