@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8370b3_79ad6c78",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-28T09:18:36Z",
+      "side": 1,
+      "message": "does it have to be platform specific?",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 40
+      },
+      "revId": "1db3dec6712bdbd66d4a4922e038d253b2346962",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6541b6b6_003d4ad4",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-28T09:18:36Z",
+      "side": 1,
+      "message": "is this needed? I know that with our interrupt routing config G1NS interrupts are not routed until we return to NS world, but maybe it would still wake up the core?",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 41
+      },
+      "revId": "1db3dec6712bdbd66d4a4922e038d253b2346962",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
