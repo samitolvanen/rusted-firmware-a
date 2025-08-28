@@ -379,15 +379,37 @@ impl Spmd {
                     args: SuccessArgsIdGet { id: Self::NS_EP_ID }.into(),
                 }
             }
-            Interface::SpmIdGet => Interface::Success {
-                target_info: TargetInfo::default(),
-                args: SuccessArgsSpmIdGet { id: self.spmc_id }.into(),
-            },
+            Interface::SpmIdGet => {
+                if self.spmc_version == Version(1, 0) {
+                    Interface::error(FfaError::NotSupported)
+                } else {
+                    Interface::Success {
+                        target_info: TargetInfo::default(),
+                        args: SuccessArgsSpmIdGet { id: self.spmc_id }.into(),
+                    }
+                }
+            }
             Interface::MsgSendDirectReq { src_id, .. } => {
                 // Validate source endpoint ID
                 // TODO: create a function to check this
                 if *src_id & 0x8000 != 0 {
                     Interface::error(FfaError::InvalidParameters)
+                } else {
+                    // Forward to SWd
+                    next_world = World::Secure;
+                    *in_msg
+                }
+            }
+            Interface::MsgSend2 { .. }
+            | Interface::NotificationBitmapCreate { .. }
+            | Interface::NotificationBitmapDestroy { .. }
+            | Interface::NotificationBind { .. }
+            | Interface::NotificationUnbind { .. }
+            | Interface::NotificationSet { .. }
+            | Interface::NotificationGet { .. }
+            | Interface::NotificationInfoGet { .. } => {
+                if self.spmc_version < Version(1, 1) {
+                    Interface::error(FfaError::NotSupported)
                 } else {
                     // Forward to SWd
                     next_world = World::Secure;
