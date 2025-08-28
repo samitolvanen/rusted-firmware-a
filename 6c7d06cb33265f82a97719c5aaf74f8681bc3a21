@@ -175,6 +175,24 @@
       "parentUuid": "c8cbab93_1026861d",
       "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f28ed25d_34597605",
+        "filename": "README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-28T09:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f77d74f_951f3825",
+      "revId": "6c7d06cb33265f82a97719c5aaf74f8681bc3a21",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
