@@ -43,6 +43,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "arm-ffa"
+version = "0.3.1"
+source = "git+https://review.trustedfirmware.org/arm-firmware-crates/arm-ffa?rev=refs%2Fchanges%2F06%2F42206%2F2#17e1b4888dc5dcfbd6edab745bf6ac0d64f05831"
+dependencies = [
+ "num_enum",
+ "thiserror",
+ "uuid",
+ "zerocopy",
+ "zerocopy-derive",
+]
+
+[[package]]
 name = "arm-fvp-base-pac"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -245,7 +257,7 @@ name = "rf-a-bl31"
 version = "0.1.0"
 dependencies = [
  "aarch64-paging",
- "arm-ffa",
+ "arm-ffa 0.3.1 (git+https://review.trustedfirmware.org/arm-firmware-crates/arm-ffa?rev=refs%2Fchanges%2F06%2F42206%2F2)",
  "arm-fvp-base-pac",
  "arm-gic 0.6.1 (git+https://review.trustedfirmware.org/arm-firmware-crates/arm-gic?rev=refs%2Fchanges%2F96%2F39696%2F19)",
  "arm-pl011-uart",
@@ -264,7 +276,7 @@ name = "rf-a-secure-test-framework"
 version = "0.1.0"
 dependencies = [
  "aarch64-rt",
- "arm-ffa",
+ "arm-ffa 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "arm-gic 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "arm-pl011-uart",
  "arm-psci",
