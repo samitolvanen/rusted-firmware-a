@@ -417,7 +417,14 @@ impl Spmd {
             | Interface::MemLend { .. }
             | Interface::MemShare { .. }
             | Interface::MemRetrieveReq { .. }
-            | Interface::MemReclaim { .. } => {
+            | Interface::MemReclaim { .. }
+            | Interface::NotificationBitmapCreate { .. }
+            | Interface::NotificationBitmapDestroy { .. }
+            | Interface::NotificationBind { .. }
+            | Interface::NotificationUnbind { .. }
+            | Interface::NotificationSet { .. }
+            | Interface::NotificationGet { .. }
+            | Interface::NotificationInfoGet { .. } => {
                 // Forward to SWd
                 next_world = World::Secure;
                 *in_msg

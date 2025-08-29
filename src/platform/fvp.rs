@@ -113,6 +113,17 @@ const RMM_SHARED_AREA_BASE_ADDRESS: u64 = 0;
 const SEL2_TIMER_ID: IntId = IntId::ppi(4);
 const SEL1_TIMER_ID: IntId = IntId::ppi(13);
 
+const fn secure_sgi_configuration(index: u32) -> (IntId, InterruptConfig) {
+    (
+        IntId::sgi(index),
+        InterruptConfig {
+            priority: 0x00,
+            group: Group::Secure(SecureIntGroup::Group1S),
+            trigger: Trigger::Edge,
+        },
+    )
+}
+
 fn device_regions_include<T>(physical_instance: &PhysicalInstance<T>) -> bool {
     let start = physical_instance.pa();
     let end = start + size_of::<T>() - 1;
@@ -170,6 +181,14 @@ impl Platform for Fvp {
                     trigger: Trigger::Level,
                 },
             ),
+            secure_sgi_configuration(8),
+            secure_sgi_configuration(9),
+            secure_sgi_configuration(10),
+            secure_sgi_configuration(11),
+            secure_sgi_configuration(12),
+            secure_sgi_configuration(13),
+            secure_sgi_configuration(14),
+            secure_sgi_configuration(15),
         ],
     };
 
