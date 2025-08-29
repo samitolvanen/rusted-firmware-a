@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df40437_10e2dc67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-29T10:58:51Z",
+      "side": 1,
+      "message": "Verified with:\nhttps://ci.trustedfirmware.org/job/rf-a-main/408/\non:\nhttps://review.trustedfirmware.org/c/ci/tf-a-ci-scripts/+/41208",
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
