@@ -42,7 +42,7 @@ spin = { version = "0.10.0", default-features = false, features = [
   "once",
   "spin_mutex",
 ] }
-arm-ffa = { version = "0.3.1", default-features = false }
+arm-ffa = { git = "https://review.trustedfirmware.org/arm-firmware-crates/arm-ffa", rev = "refs/changes/06/42206/2", default-features = false }
 arm-fvp-base-pac = { version = "0.1.3", default-features = false }
 arm-gic = { git = "https://review.trustedfirmware.org/arm-firmware-crates/arm-gic", rev = "refs/changes/22/42922/1" }
 uuid = { version = "1.18.0", default-features = false }
