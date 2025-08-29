@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2833c8_26e53c83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-08-29T11:33:04Z",
+      "side": 1,
+      "message": "I can fix the test failure by removing https://git.trustedfirmware.org/plugins/gitiles/RF-A/rusted-firmware-a/+/refs/heads/main/secure_test_framework/src/tests/ffa_spmd.rs#710 \nIs this what I should do?",
+      "revId": "7b8b158d25f71c1a09b963a59d5040c498b64ff5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
