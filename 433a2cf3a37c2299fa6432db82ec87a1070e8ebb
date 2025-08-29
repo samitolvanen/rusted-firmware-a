@@ -241,6 +241,30 @@
       },
       "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39eedd4_58ab765e",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-29T12:53:16Z",
+      "side": 1,
+      "message": "Apologies, done.",
+      "parentUuid": "caa8b072_3c14100f",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
