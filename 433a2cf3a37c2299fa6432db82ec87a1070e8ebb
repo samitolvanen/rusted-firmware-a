@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96d39a7f_2dcc1861",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-29T12:37:00Z",
+      "side": 1,
+      "message": "Right, the user needs to define `PLAT` manually now, as there are no longer targets for each platform. So this line seems superfluous.",
+      "parentUuid": "98309741_c74d3dea",
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "020d8784_67481adf",
         "filename": "Makefile",
         "patchSetId": 10
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5376e583_3dc35f4c",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7297aa4_00684b0d",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-29T12:37:00Z",
+      "side": 1,
+      "message": "You haven\u0027t changed anything here.",
+      "parentUuid": "493be95e_2e111c05",
       "range": {
         "startLine": 40,
         "startChar": 25,

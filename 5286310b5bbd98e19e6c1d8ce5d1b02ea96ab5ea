@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e9d572_ca4e31af",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-29T12:37:00Z",
+      "side": 1,
+      "message": "Why does `PLAT` need to be part of the target name? Could this just be `images` or something?",
+      "revId": "5286310b5bbd98e19e6c1d8ce5d1b02ea96ab5ea",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
