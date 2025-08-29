@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f518dced_093cc52d",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-29T14:52:05Z",
+      "side": 1,
+      "message": "This assertion fails when I try it, it seems to be `QemuPowerState::PowerDown` instead. Any idea why?",
+      "revId": "c93e2f74fea22c7ab9cac80be9c79d2191ca83ce",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
