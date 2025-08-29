@@ -16,6 +16,63 @@
       "message": "Verified with:\nhttps://ci.trustedfirmware.org/job/rf-a-main/408/\non:\nhttps://review.trustedfirmware.org/c/ci/tf-a-ci-scripts/+/41208",
       "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4cdcc9b_8240079d",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-29T11:43:12Z",
+      "side": 1,
+      "message": "I think this can go now that we no longer have `qemu` and `fvp` targets in the makefile.",
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020d8784_67481adf",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-29T11:43:12Z",
+      "side": 1,
+      "message": "Why are these dependencies in a different order than those of `qemu-build`? And why do we need two different targets?",
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5376e583_3dc35f4c",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-08-29T11:43:12Z",
+      "side": 1,
+      "message": "Does this do anything for the QEMU build?",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
