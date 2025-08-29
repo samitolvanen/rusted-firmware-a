@@ -413,6 +413,12 @@ impl Spmd {
             | Interface::PartitionInfoGet { .. }
             | Interface::PartitionInfoGetRegs { .. }
             | Interface::NotificationBitmapCreate { .. }
+            | Interface::NotificationBitmapDestroy { .. }
+            | Interface::NotificationBind { .. }
+            | Interface::NotificationUnbind { .. }
+            | Interface::NotificationSet { .. }
+            | Interface::NotificationGet { .. }
+            | Interface::NotificationInfoGet { .. }
             | Interface::Run { .. }
             | Interface::MemDonate { .. }
             | Interface::MemLend { .. }
