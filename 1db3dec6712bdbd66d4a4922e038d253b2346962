@@ -48,6 +48,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "982a6369_c358ec44",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-08-29T09:53:43Z",
+      "side": 1,
+      "message": "I had only a quick look at the CL and was under an impression that these functions were added to PsciPlatformInterface, sorry!",
+      "parentUuid": "a8903e80_72972188",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 40
+      },
+      "revId": "1db3dec6712bdbd66d4a4922e038d253b2346962",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6541b6b6_003d4ad4",
