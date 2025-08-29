@@ -36,7 +36,7 @@ use arm_fvp_base_pac::{
 use arm_gic::{
     IntId, Trigger,
     gicv3::{
-        Group, SecureIntGroup,
+        Group, HIGHEST_S_PRIORITY, SecureIntGroup,
         distributor::{
             GicDistributorContext, distributor_context_size, distributor_extended_context_size,
         },
@@ -120,6 +120,17 @@ const SEL2_TIMER_ID: IntId = IntId::ppi(4);
 const SEL1_TIMER_ID: IntId = IntId::ppi(13);
 const NONSECURE_TIMER_ID: IntId = IntId::ppi(14);
 
+const fn secure_sgi_configuration(index: u32) -> (IntId, InterruptConfig) {
+    (
+        IntId::sgi(index),
+        InterruptConfig {
+            priority: HIGHEST_S_PRIORITY,
+            group: Group::Secure(SecureIntGroup::Group1S),
+            trigger: Trigger::Edge,
+        },
+    )
+}
+
 fn device_regions_include<T>(physical_instance: &PhysicalInstance<T>) -> bool {
     let start = physical_instance.pa();
     let end = start + size_of::<T>() - 1;
@@ -181,6 +192,14 @@ unsafe impl Platform for Fvp {
                 },
             ),
             (NONSECURE_TIMER_ID, InterruptConfig::DEFAULT),
+            secure_sgi_configuration(8),
+            secure_sgi_configuration(9),
+            secure_sgi_configuration(10),
+            secure_sgi_configuration(11),
+            secure_sgi_configuration(12),
+            secure_sgi_configuration(13),
+            secure_sgi_configuration(14),
+            secure_sgi_configuration(15),
         ],
     };
 
