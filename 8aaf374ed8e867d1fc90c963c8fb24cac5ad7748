@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87931c5a_70da1880",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-08-29T15:41:31Z",
+      "side": 1,
+      "message": "CI results suggest we need to enable SVE on the model because we query SVE in CPTR_EL3 for secure world and attempts restoring the per world ZCR_EL3 sys reg.",
+      "revId": "8aaf374ed8e867d1fc90c963c8fb24cac5ad7748",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
