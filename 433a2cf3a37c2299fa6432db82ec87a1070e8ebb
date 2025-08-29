@@ -71,6 +71,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6401903_1e9ffab5",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-29T12:45:02Z",
+      "side": 1,
+      "message": "You are right. Done.",
+      "parentUuid": "96d39a7f_2dcc1861",
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "020d8784_67481adf",
@@ -167,6 +185,30 @@
       "side": 1,
       "message": "You haven\u0027t changed anything here.",
       "parentUuid": "493be95e_2e111c05",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "433a2cf3a37c2299fa6432db82ec87a1070e8ebb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f2e840_987e8bd6",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-08-29T12:45:02Z",
+      "side": 1,
+      "message": "yes I have, please check again? Sometimes the UI fails to reflect the last patch set when it\u0027s reviewed very quickly from the time it has been submitted for review.",
+      "parentUuid": "f7297aa4_00684b0d",
       "range": {
         "startLine": 40,
         "startChar": 25,
