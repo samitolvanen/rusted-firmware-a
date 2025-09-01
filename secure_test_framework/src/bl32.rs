@@ -16,25 +16,30 @@ mod gicv3;
 mod heap;
 mod logger;
 mod platform;
+mod secondary;
 mod tests;
 mod util;
 
 use crate::{
     exceptions::set_exception_vector,
-    ffa::{call, direct_response, msg_wait},
+    ffa::{call, direct_response, msg_wait, secondary_ep_register},
     framework::{
         protocol::{ParseRequestError, Request, Response},
         run_secure_world_test, run_test_ffa_handler, run_test_helper,
     },
     gicv3::handle_group1_interrupt,
     platform::{Platform, PlatformImpl},
-    util::{NORMAL_WORLD_ID, SECURE_WORLD_ID, SPMC_DEFAULT_ID, SPMD_DEFAULT_ID, current_el},
+    secondary::secondary_entry,
+    util::{
+        NORMAL_WORLD_ID, SECURE_WORLD_ID, SPMC_DEFAULT_ID, SPMD_DEFAULT_ID, current_el,
+        expect_ffa_success,
+    },
 };
 use aarch64_rt::entry;
 use arm_ffa::{DirectMsgArgs, FfaError, Interface, SuccessArgsIdGet, Version, WarmBootType};
 use arm_psci::ReturnCode;
 use core::panic::PanicInfo;
-use log::{error, info, warn};
+use log::{debug, error, info, warn};
 
 /// The version of FF-A which we support.
 const FFA_VERSION: arm_ffa::Version = arm_ffa::Version(1, 1);
@@ -97,6 +102,15 @@ fn bl32_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
         }
     };
 
+    // Register secondary core entry point.
+    expect_ffa_success(
+        // SAFETY: secondary_entry is a valid secondary entry point that will set up the stack for
+        // Rust code to run.
+        unsafe { secondary_ep_register(secondary_entry as u64) }
+            .expect("FFA_SECONDARY_EP_REGISTER failed"),
+    )
+    .unwrap();
+
     let mut current_test_index = None;
 
     // Wait for the first test index.
@@ -141,6 +155,13 @@ fn bl32_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
     }
 }
 
+extern "C" fn secondary_main() -> ! {
+    set_exception_vector();
+    info!("BL32 secondary core starting");
+
+    loop {}
+}
+
 /// Handles a direct message request and returns a response to send back.
 fn handle_direct_message(
     src_id: u16,
@@ -174,6 +195,28 @@ fn handle_direct_message(
         }
     } else {
         panic!("Unexpected source ID ({src_id:#x}) or destination ID ({dst_id:#x})");
+    }
+}
+
+/// Handles a direct message request on the secondary CPU and returns a response to send back.
+fn secondary_handle_direct_message(
+    src_id: u16,
+    dst_id: u16,
+    args: DirectMsgArgs,
+    spmc_id: u16,
+    spmd_id: u16,
+) -> DirectMsgArgs {
+    if src_id == spmd_id && dst_id == spmc_id {
+        match args {
+            DirectMsgArgs::PowerPsciReq32 { params } => handle_psci_request32(params),
+            DirectMsgArgs::PowerPsciReq64 { params } => handle_psci_request64(params),
+            DirectMsgArgs::PowerWarmBootReq { boot_type } => handle_warm_boot_request(boot_type),
+            _ => panic!("Received unexpected direct message type from SPMD on secondary CPU."),
+        }
+    } else {
+        panic!(
+            "Unexpected source ID ({src_id:#x}) or destination ID ({dst_id:#x}) on secondary CPU."
+        );
     }
 }
 
