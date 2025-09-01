@@ -34,6 +34,24 @@
       "parentUuid": "eb2833c8_26e53c83",
       "revId": "7b8b158d25f71c1a09b963a59d5040c498b64ff5",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6abff98a_76a2ddbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-01T11:34:09Z",
+      "side": 1,
+      "message": "Don\u0027t know why that test was there in the first place. The next one also looks wrong (for bitmap destroy)",
+      "parentUuid": "fb75f077_d53d6fbe",
+      "revId": "7b8b158d25f71c1a09b963a59d5040c498b64ff5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
