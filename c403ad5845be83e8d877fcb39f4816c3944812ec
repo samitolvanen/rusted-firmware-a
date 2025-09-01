@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5b5843_4224b5d6",
+        "filename": "Cargo.toml",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Make sure this is released before merging this change.",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540fa386_ae85396a",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Why not `SpinMutex` like it was before, and is everywhere else?",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b85aa2_b240919c",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Are users expected to use this directly, or `Gic::get()`? If the latter then this doesn\u0027t need to be public.",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edfb0d67_2b3f231c",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Having this `Once` in the array inside `GicRedistributorRegistry` isn\u0027t very nice, as it\u0027s an implementation detail of this `new` method. How about instead, use an `Option` here, and then before returning `Self { redistributors }` you can map through the array to unwrap each element.\n\nThat way if for some reason a redistributor is missing for some core you get the failure immediately when `new` is called rather than later when you try to use it.",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0962c5e6_8042b671",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Typo: propagates",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d5bde05_7e399a36",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Typo, but actually this method doesn\u0027t do any initialisation.",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabdf068_3a8b5267",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Add a Rustdoc comment for this struct.",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ff8244_de64a271",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Could this be a `UniqueMmioPointer`?",
+      "range": {
+        "startLine": 132,
+        "startChar": 28,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b759326_d8db5bd9",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Typo: specified",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28821385_5c799fbc",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-01T16:15:54Z",
+      "side": 1,
+      "message": "Add an extra `/` to make this a Rustdoc comment.",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 6
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
