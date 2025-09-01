@@ -74,33 +74,15 @@ fn bl32_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
     // Negotiate the FF-A version we actually support. This must happen before any other FF-A calls.
     assert_eq!(ffa::version(FFA_VERSION), Ok(FFA_VERSION));
 
-    let spmc_id = {
-        match ffa::id_get().expect("FFA_ID_GET failed") {
-            Interface::Success { args, .. } => SuccessArgsIdGet::try_from(args).unwrap().id,
-            Interface::Error {
-                error_code: FfaError::NotSupported,
-                ..
-            } => {
-                warn!("FFA_ID_GET not supported");
-                SPMC_DEFAULT_ID
-            }
-            res => panic!("Unexpected response for FFA_ID_GET: {:?}", res),
-        }
-    };
+    let spmc_id = get_spmc_id();
+    let spmd_id = get_spmd_id();
 
-    let spmd_id = {
-        match ffa::spm_id_get().expect("FFA_SPM_ID_GET failed") {
-            Interface::Success { args, .. } => SuccessArgsIdGet::try_from(args).unwrap().id,
-            Interface::Error {
-                error_code: FfaError::NotSupported,
-                ..
-            } => {
-                warn!("FFA_SPM_ID_GET not supported");
-                SPMD_DEFAULT_ID
-            }
-            res => panic!("Unexpected response for FFA_SPM_ID_GET: {:?}", res),
-        }
-    };
+    // Register secondary core entry point.
+    expect_ffa_success(
+        unsafe { secondary_ep_register(secondary_entry as u64) }
+            .expect("FFA_SECONDARY_EP_REGISTER failed"),
+    )
+    .unwrap();
 
     // Register secondary core entry point.
     expect_ffa_success(
@@ -159,10 +141,72 @@ extern "C" fn secondary_main() -> ! {
     set_exception_vector();
     info!("BL32 secondary core starting");
 
-    loop {}
+    let spmc_id = get_spmc_id();
+    let spmd_id = get_spmd_id();
+
+    let mut message = msg_wait(None).unwrap();
+
+    loop {
+        debug!("BL32 secondary CPU got {message:?}");
+
+        let response = match message {
+            Interface::MsgSendDirectReq {
+                src_id,
+                dst_id,
+                args,
+            } => {
+                let response_args =
+                    secondary_handle_direct_message(src_id, dst_id, args, spmc_id, spmd_id);
+                Interface::MsgSendDirectResp {
+                    src_id: dst_id,
+                    dst_id: src_id,
+                    args: response_args,
+                }
+            }
+            _ => panic!("Unexpected FF-A message on BL32 secondary CPU: {message:?}"),
+        };
+
+        message = call(response).unwrap();
+    }
 }
 
-/// Handles a direct message request and returns a response to send back.
+/// Calls `FFA_ID_GET` to get the SPMC ID (i.e. our ID).
+///
+/// Returns `SPMC_DEFAULT_ID` if the `FFA_ID_GET` call returns `NOT_SUPPORTED`, or panics on any
+/// other error.
+fn get_spmc_id() -> u16 {
+    match ffa::id_get().expect("FFA_ID_GET failed") {
+        Interface::Success { args, .. } => SuccessArgsIdGet::try_from(args).unwrap().id,
+        Interface::Error {
+            error_code: FfaError::NotSupported,
+            ..
+        } => {
+            warn!("FFA_ID_GET not supported");
+            SPMC_DEFAULT_ID
+        }
+        res => panic!("Unexpected response for FFA_ID_GET: {:?}", res),
+    }
+}
+
+/// Calls `FFA_SPM_ID_GET` to get the SPMD ID.
+///
+/// Returns `SPMD_DEFAULT_ID` if the `FFA_SPM_ID_GET` call returns `NOT_SUPPORTED`, or panics on any
+/// other error.
+fn get_spmd_id() -> u16 {
+    match ffa::spm_id_get().expect("FFA_SPM_ID_GET failed") {
+        Interface::Success { args, .. } => SuccessArgsIdGet::try_from(args).unwrap().id,
+        Interface::Error {
+            error_code: FfaError::NotSupported,
+            ..
+        } => {
+            warn!("FFA_SPM_ID_GET not supported");
+            SPMD_DEFAULT_ID
+        }
+        res => panic!("Unexpected response for FFA_SPM_ID_GET: {:?}", res),
+    }
+}
+
+/// Handles a direct message request on the primary CPU and returns a response to send back.
 fn handle_direct_message(
     src_id: u16,
     dst_id: u16,
