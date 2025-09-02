@@ -299,6 +299,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79cb6622_ae00804d",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "427fa373_3373eed8",
+      "range": {
+        "startLine": 132,
+        "startChar": 28,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b759326_d8db5bd9",
