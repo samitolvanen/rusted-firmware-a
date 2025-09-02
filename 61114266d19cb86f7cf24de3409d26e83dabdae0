@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f800cf_06f7bf21",
+        "filename": "build-and-run.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-02T07:49:19Z",
+      "side": 1,
+      "message": "Why do we need the multiple steps here? Can\u0027t we just build this in two steps, like for the non-RME case?",
+      "revId": "61114266d19cb86f7cf24de3409d26e83dabdae0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
