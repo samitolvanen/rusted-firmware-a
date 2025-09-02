@@ -41,6 +41,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db4fd5a0_c25f7499",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "540fa386_ae85396a",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b85aa2_b240919c",
@@ -54,6 +78,24 @@
       "writtenOn": "2025-09-01T16:15:54Z",
       "side": 1,
       "message": "Are users expected to use this directly, or `Gic::get()`? If the latter then this doesn\u0027t need to be public.",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3fec1e4_be1e84c0",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b85aa2_b240919c",
       "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -75,6 +117,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc8177bc_25e5f4cb",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edfb0d67_2b3f231c",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0962c5e6_8042b671",
@@ -88,6 +148,24 @@
       "writtenOn": "2025-09-01T16:15:54Z",
       "side": 1,
       "message": "Typo: propagates",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c83b14d_627b864a",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0962c5e6_8042b671",
       "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -115,6 +193,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0395943f_afdff203",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d5bde05_7e399a36",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aabdf068_3a8b5267",
@@ -132,6 +234,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b54f8d7_29520b51",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aabdf068_3a8b5267",
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0ff8244_de64a271",
@@ -145,6 +265,30 @@
       "writtenOn": "2025-09-01T16:15:54Z",
       "side": 1,
       "message": "Could this be a `UniqueMmioPointer`?",
+      "range": {
+        "startLine": 132,
+        "startChar": 28,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427fa373_3373eed8",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done, and also changed gicr_base to `NonNull`.",
+      "parentUuid": "e0ff8244_de64a271",
       "range": {
         "startLine": 132,
         "startChar": 28,
@@ -178,6 +322,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5d6248_a09fd9d6",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b759326_d8db5bd9",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28821385_5c799fbc",
@@ -191,6 +359,30 @@
       "writtenOn": "2025-09-01T16:15:54Z",
       "side": 1,
       "message": "Add an extra `/` to make this a Rustdoc comment.",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 6
+      },
+      "revId": "c403ad5845be83e8d877fcb39f4816c3944812ec",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f06c653e_d8575130",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-02T18:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28821385_5c799fbc",
       "range": {
         "startLine": 224,
         "startChar": 4,
