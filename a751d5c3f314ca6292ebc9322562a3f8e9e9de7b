@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f1b02d_86167934",
+        "filename": "src/cpu/qemu_max.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-02T13:28:04Z",
+      "side": 1,
+      "message": "This method doesn\u0027t actually do anything, correct the doc comment.",
+      "revId": "a751d5c3f314ca6292ebc9322562a3f8e9e9de7b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
