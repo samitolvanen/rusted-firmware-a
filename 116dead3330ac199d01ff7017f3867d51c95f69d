@@ -1,0 +1,9 @@
+Verified+1: ci-bot
+Code-Review+2: Kis Imre <imre.kis@arm.com>
+Unsafe-Review+1: ci-bot
+Code-Review+1: Bálint Dobszay <balint.dobszay@arm.com>
+Submitted-by: Sandrine Afsa <sandrine.afsa@arm.com>
+Submitted-at: Tue, 02 Sep 2025 15:13:59 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/42428
+Project: RF-A/rusted-firmware-a
+Branch: refs/heads/main
