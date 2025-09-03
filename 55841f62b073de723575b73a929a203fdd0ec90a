@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f969db0_72a2843e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-03T13:42:10Z",
+      "side": 1,
+      "message": "Matthew made STF always build in release mode in https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41608 because of size issues. Can we include symbols while still keeping it a release build?",
+      "revId": "55841f62b073de723575b73a929a203fdd0ec90a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
