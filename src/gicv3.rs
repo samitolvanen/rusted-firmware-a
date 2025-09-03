@@ -41,13 +41,18 @@ pub struct InterruptConfig {
     pub trigger: Trigger,
 }
 
+impl InterruptConfig {
+    /// `default()` from [Default] trait is not const.
+    pub const DEFAULT: Self = Self {
+        priority: GIC_HIGHEST_NS_PRIORITY,
+        group: Group::Group1NS,
+        trigger: Trigger::Level,
+    };
+}
+
 impl Default for InterruptConfig {
     fn default() -> Self {
-        Self {
-            priority: GIC_HIGHEST_NS_PRIORITY,
-            group: Group::Group1NS,
-            trigger: Trigger::Level,
-        }
+        Self::DEFAULT
     }
 }
 
@@ -56,7 +61,7 @@ pub type InterruptConfigEntry = (IntId, InterruptConfig);
 /// The configuration of platform's GIC.
 pub struct GicConfig {
     /// This list specifies which interrupts will be configured
-    /// to non-default setup.
+    /// to specified setup and enabled by EL3.
     pub interrupts_config: &'static [InterruptConfigEntry],
 }
 
@@ -103,8 +108,13 @@ fn configure_spis(gic: &mut GicV3, config: &GicConfig) {
         // gicd_write_irouter(multichip_gicd_base, intr_num, gic_affinity_val);
     }
 
-    // Enable all SPIs.
-    for int_id in IntId::spis().take(num_spis) {
+    // Enable only the explicitly configured SPIs.
+    for int_id in config
+        .interrupts_config
+        .iter()
+        .filter(|(id, _)| id.is_spi())
+        .map(|(id, _)| *id)
+    {
         gic.enable_interrupt(int_id, None, true);
     }
 }
@@ -150,8 +160,13 @@ fn configure_private_interrupts(gic: &mut GicV3, core_index: usize, config: &Gic
         }
     }
 
-    // Enable all private interrupts.
-    for int_id in IntId::private() {
+    // Enable only the explicitly configured private interrupts.
+    for int_id in config
+        .interrupts_config
+        .iter()
+        .filter(|(id, _)| id.is_private())
+        .map(|(id, _)| *id)
+    {
         gic.enable_interrupt(int_id, Some(core_index), true);
     }
 }
