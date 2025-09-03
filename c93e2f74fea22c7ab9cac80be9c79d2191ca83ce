@@ -16,6 +16,24 @@
       "message": "This assertion fails when I try it, it seems to be `QemuPowerState::PowerDown` instead. Any idea why?",
       "revId": "c93e2f74fea22c7ab9cac80be9c79d2191ca83ce",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00c6047_1075abfe",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-09-03T15:16:41Z",
+      "side": 1,
+      "message": "The name of the argument `target_state` was confusing to me. In the case of this function, it actually represents the state \"which this CPU has woken up from\", and not \"power state that each level should transition to\" as it is in `power_domain_power_down_wfi`.",
+      "parentUuid": "f518dced_093cc52d",
+      "revId": "c93e2f74fea22c7ab9cac80be9c79d2191ca83ce",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
