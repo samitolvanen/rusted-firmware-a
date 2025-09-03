@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f589e46_6b8d698e",
+        "filename": "secure_test_framework/src/bl32.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-03T10:07:39Z",
+      "side": 1,
+      "message": "nit: This is not necessarily true. Please add a TODO that this should be decided by the platform, i.e. having an `is_primary_core()` method in the platform trait",
+      "revId": "be035438a8b26c506e751839a9678d2431d5e913",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
