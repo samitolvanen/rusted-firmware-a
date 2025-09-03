@@ -29,7 +29,7 @@ ifndef PLAT
   endif
 endif
 
-STF_CARGO_FLAGS := --release
+STF_CARGO_FLAGS :=
 RFA_CARGO_FLAGS := --no-default-features --features "$(FEATURES)"
 
 # Make a release build by default.
@@ -39,6 +39,7 @@ ifeq ($(DEBUG), 1)
 else
 	BUILDTYPE := release
 	RFA_CARGO_FLAGS += --release
+	STF_CARGO_FLAGS += --release
 	FEATURES += max_log_info
 endif
 
@@ -79,9 +80,9 @@ build:
 build-stf:
 	$(STF_CARGO) build --package rf-a-secure-test-framework $(CARGO_FLAGS) $(STF_CARGO_FLAGS)
 $(BL32): build-stf
-	$(OBJCOPY) target/$(TARGET)/release/bl32 -O binary $@
+	$(OBJCOPY) target/$(TARGET)/$(BUILDTYPE)/bl32 -O binary $@
 $(BL33): build-stf
-	$(OBJCOPY) target/$(TARGET)/release/bl33 -O binary $@
+	$(OBJCOPY) target/$(TARGET)/$(BUILDTYPE)/bl33 -O binary $@
 
 clippy-test:
 	$(CARGO) clippy --tests --features "$(FEATURES)"
