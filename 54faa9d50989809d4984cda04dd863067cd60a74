@@ -16,6 +16,24 @@
       "message": "This currently fails on FVP with esr_el3\u003d0x0000000062313116.",
       "revId": "54faa9d50989809d4984cda04dd863067cd60a74",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0627f5c_08710fa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-03T17:46:09Z",
+      "side": 1,
+      "message": "This is an attempt to write to `ICH_HCR_EL2`, which presumably fails because the GIC system register interface isn\u0027t yet enabled on secondary cores by the FVP platform.",
+      "parentUuid": "640f9cce_76499246",
+      "revId": "54faa9d50989809d4984cda04dd863067cd60a74",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
