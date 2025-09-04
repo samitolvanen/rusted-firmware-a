@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04c6c89_ff7016e2",
+        "filename": "src/platform_helpers.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-04T11:58:29Z",
+      "side": 1,
+      "message": "This can be implemented as a naked function in `platform.rs`.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "62e3cdb79a1a3acd1880d58eee2a32ccf1c0a8a0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
