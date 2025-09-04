@@ -52,6 +52,24 @@
       "parentUuid": "d00c6047_1075abfe",
       "revId": "c93e2f74fea22c7ab9cac80be9c79d2191ca83ce",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb8d97a_15e874f1",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-09-04T14:07:25Z",
+      "side": 1,
+      "message": "Done in a separate CL.",
+      "parentUuid": "7ce0f451_69d858c3",
+      "revId": "c93e2f74fea22c7ab9cac80be9c79d2191ca83ce",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
