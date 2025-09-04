@@ -22,6 +22,30 @@
       },
       "revId": "758eacbe8c71597dc90c05db220fc6009ef23b14",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f211a4d7_a866efa9",
+        "filename": "secure_test_framework/src/platform.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-04T10:42:15Z",
+      "side": 1,
+      "message": "What sysregs implementation? There isn\u0027t currently a `sysregs` module in STF.\n\nI am considering making a separate crate for system register access, possibly generated from the Arm XML files, but it requires some more careful thought of exactly what should be considered safe or not, as that can depend on the context.",
+      "parentUuid": "267c9997_1742a88f",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "758eacbe8c71597dc90c05db220fc6009ef23b14",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
