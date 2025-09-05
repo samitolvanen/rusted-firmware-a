@@ -27,6 +27,7 @@ func bl31_entrypoint
         msr     vbar_el3, x0
         isb
 
+        bl      {PLAT_RESET_HANDLER}
         bl      cpu_reset_handler
 
         /* ---------------------------------------------------------------------
@@ -241,6 +242,7 @@ func bl31_warm_entrypoint
         msr     vbar_el3, x0
         isb
 
+        bl      {PLAT_RESET_HANDLER}
         bl      cpu_reset_handler
 
         /* ---------------------------------------------------------------------

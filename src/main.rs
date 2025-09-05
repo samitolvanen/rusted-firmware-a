@@ -118,6 +118,7 @@ extern "C" fn psci_warmboot_entrypoint() -> ! {
 mod asm {
     use crate::{
         debug::{DEBUG, ENABLE_ASSERTIONS},
+        platform::{Platform, PlatformImpl},
         sysregs::SctlrEl3,
     };
     use core::arch::global_asm;
@@ -191,5 +192,6 @@ mod asm {
         TCPAC_BIT = const TCPAC_BIT,
         TTA_BIT = const TTA_BIT,
         TFP_BIT = const TFP_BIT,
+        PLAT_RESET_HANDLER = sym PlatformImpl::reset_handler,
     );
 }

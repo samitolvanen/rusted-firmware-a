@@ -263,6 +263,8 @@ unsafe impl Platform for Qemu {
             PLATFORM_CPU_PER_CLUSTER_SHIFT = const PLATFORM_CPU_PER_CLUSTER_SHIFT,
         );
     }
+
+    // TODO: implement platform-specific reset handler
 }
 
 #[derive(PartialEq, PartialOrd, Debug, Eq, Ord, Clone, Copy)]

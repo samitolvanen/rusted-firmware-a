@@ -30,6 +30,8 @@ select_platform!(platform = "fvp", fvp::Fvp);
 select_platform!(platform = "qemu", qemu::Qemu);
 select_platform!(test, test::TestPlatform);
 
+use core::arch::naked_asm;
+
 use crate::{
     context::EntryPointInfo,
     gicv3,
@@ -74,6 +76,9 @@ pub type PlatformServiceImpl = <PlatformImpl as Platform>::PlatformServiceImpl;
 /// only clobbers registers x0-x5. For any valid MPIDR value it must always return an index less than
 /// `CORE_COUNT`, and must return a different index for different MPIDR values. (These requirements
 /// don't apply to the test platform, as it is only used in unit tests.)
+///
+/// The implementation of `reset_handler` must be a naked function which doesn't use the stack,
+/// and the api should preserve the values of callee saved registers x19 to x29.
 pub unsafe trait Platform {
     /// The number of CPU cores.
     const CORE_COUNT: usize;
@@ -177,6 +182,15 @@ pub unsafe trait Platform {
     ///
     /// For an invalid MPIDR value no guarantees are made about the return value.
     extern "C" fn core_position(mpidr: u64) -> usize;
+
+    /// Perform platform specific initializations after reset.
+    /// Platform specific errata workarounds could also be implemented here.
+    #[unsafe(naked)]
+    #[allow(dead_code)]
+    extern "C" fn reset_handler() {
+        // The default implementation doesn't do anything.
+        naked_asm!("ret",)
+    }
 }
 
 #[cfg(all(target_arch = "aarch64", not(test)))]
