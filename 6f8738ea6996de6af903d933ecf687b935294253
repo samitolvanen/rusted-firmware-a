@@ -16,6 +16,24 @@
       "message": "Is this only maintained for backwards compatibility, or is it still used somewhere in the codebase? Based on the rest of this review, it looks like you\u0027ve moved references to `plat_my_core_pos` to use `PlatformImpl::core_position`. Do we need to maintain this backwards compatibility?",
       "revId": "6f8738ea6996de6af903d933ecf687b935294253",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980a2ed2_e68798a2",
+        "filename": "src/platform.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-05T11:57:10Z",
+      "side": 1,
+      "message": "This function is intended to be called from early assembly code before the stack is initialized, so it cannot call into Rust functions. One of its primary uses is to calculate the initial stack pointer for each core.",
+      "parentUuid": "ed991f9d_a3304076",
+      "revId": "6f8738ea6996de6af903d933ecf687b935294253",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
