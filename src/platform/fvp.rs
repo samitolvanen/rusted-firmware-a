@@ -356,6 +356,8 @@ unsafe impl Platform for Fvp {
             FVP_MAX_PE_PER_CPU = const FVP_MAX_PE_PER_CPU,
         );
     }
+
+    // TODO: implement platform-specific reset handler
 }
 
 #[derive(PartialEq, PartialOrd, Debug, Eq, Ord, Clone, Copy)]
