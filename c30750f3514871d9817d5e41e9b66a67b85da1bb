@@ -33,6 +33,23 @@
       "message": "RUN_CI",
       "revId": "c30750f3514871d9817d5e41e9b66a67b85da1bb",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1568e6c_22497b39",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-08T13:45:15Z",
+      "side": 1,
+      "message": "Unfortunately `-C clusterx.has_arm_v9-0\u003d1` does not automatically enable BTI simulation in the FVP (even though Armv9 architecture makes BTI mandatory). So we will need to add the `-C clusterx.has_branch_target_exception\u003d1` FVP parameter here explicitly.\n\nI was able to verify this locally. I disabled `-Zbranch-protection\u003dbti` for the stdlib build. Then with the `-C cluster0.has_arm_v9-0\u003d1` parameter alone, everything unexpectedly works fine. Adding `-C clusterx.has_branch_target_exception\u003d1` to the FVP command line makes the boot fail \"properly\" (it hangs after printing `INFO: Setting MMU config`).",
+      "revId": "c30750f3514871d9817d5e41e9b66a67b85da1bb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
