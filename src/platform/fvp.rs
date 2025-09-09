@@ -12,7 +12,7 @@ use crate::{
     cpu::aem_generic::AemGeneric,
     debug::DEBUG,
     define_cpu_ops,
-    gicv3::{GicConfig, InterruptConfig},
+    gicv3::{self, GIC, GicConfig, InterruptConfig},
     logger::{self, LockedWriter},
     pagetable::{IdMap, MT_DEVICE, map_region},
     services::{
@@ -523,8 +523,14 @@ impl FvpPsciPlatformImpl<'_> {
     }
 
     fn gic_cpu_interface_enable(&self) {
-        // TODO: implement enable_gic_cpu_interface
+        let mut gic = GIC
+            .get()
+            .expect("GIC must be initialized before CPU interface is enabled.")
+            .gic
+            .lock();
+        gicv3::init_cpu_interface(&mut gic).expect("CPU interface already enabled.");
     }
+
     fn gic_cpu_interface_disable(&self) {
         // TODO: implement disable_gic_cpu_interface
     }
