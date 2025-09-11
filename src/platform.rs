@@ -72,8 +72,11 @@ pub type PlatformServiceImpl = <PlatformImpl as Platform>::PlatformServiceImpl;
 ///
 /// The implementation of `core_position` must be a naked function which doesn't use the stack, and
 /// only clobbers registers x0-x5. For any valid MPIDR value it must always return an index less than
-/// `CORE_COUNT`, and must return a different index for different MPIDR values. (These requirements
-/// don't apply to the test platform, as it is only used in unit tests.)
+/// `CORE_COUNT`, and must return a different index for different MPIDR values.
+///
+/// The implementation of `cold_boot_handler` must be a naked function which doesn't use the stack.
+///
+/// (These requirements don't apply to the test platform, as it is only used in unit tests.)
 pub unsafe trait Platform {
     /// The number of CPU cores.
     const CORE_COUNT: usize;
@@ -177,6 +180,15 @@ pub unsafe trait Platform {
     ///
     /// For an invalid MPIDR value no guarantees are made about the return value.
     extern "C" fn core_position(mpidr: u64) -> usize;
+
+    /// Performs platform-specific initialisation on early cold boot before running Rust code.
+    ///
+    /// # Safety
+    ///
+    /// This should only be called once during cold boot, after the BSS has been zeroed but before
+    /// any Rust code runs.
+    #[cfg_attr(test, allow(unused))]
+    unsafe extern "C" fn cold_boot_handler();
 }
 
 #[cfg(all(target_arch = "aarch64", not(test)))]
