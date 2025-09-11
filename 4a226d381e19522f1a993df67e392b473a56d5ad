@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ecd00bd_62bcfe5f",
+        "filename": "bl31.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-11T15:17:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether this is actually necessary.",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "4a226d381e19522f1a993df67e392b473a56d5ad",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
