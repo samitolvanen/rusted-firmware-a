@@ -13,6 +13,8 @@ unsafe extern "C" {
     static __RODATA_END__: u32;
     static __TEXT_START__: u32;
     static __TEXT_END__: u32;
+    static __BSS2_START__: u32;
+    static __BSS2_END__: u32;
 }
 
 /// Returns the address of the `__BL31_START__` symbol defined by the linker script.
@@ -43,4 +45,14 @@ pub fn bl_ro_data_base() -> usize {
 /// Returns the address of the `__RODATA_END__` symbol defined by the linker script.
 pub fn bl_ro_data_end() -> usize {
     (&raw const __RODATA_END__) as usize
+}
+
+/// Returns the address of the `__BL31_SEC_DRAM_START__` symbol defined by the linker script.
+pub fn bss2_start() -> usize {
+    (&raw const __BSS2_START__) as usize
+}
+
+/// Returns the address of the `__BL31_SEC_DRAM_END__` symbol defined by the linker script.
+pub fn bss2_end() -> usize {
+    (&raw const __BSS2_END__) as usize
 }
