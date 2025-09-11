@@ -1,3 +1,5 @@
+hello
+
 # Rusted Firmware-A
 
 This project provides an experimental Rust port of Trusted Firmware-A’s (TF-A) EL3 runtime firmware
