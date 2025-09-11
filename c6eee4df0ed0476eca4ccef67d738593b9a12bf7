@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76181505_517a0e95",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-09-11T16:55:08Z",
+      "side": 1,
+      "message": "Nit: inconsistent tab wrt. the rest",
+      "range": {
+        "startLine": 439,
+        "startChar": 16,
+        "endLine": 439,
+        "endChar": 17
+      },
+      "revId": "c6eee4df0ed0476eca4ccef67d738593b9a12bf7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
