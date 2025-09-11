@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b4c752_85630759",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-11T16:42:37Z",
+      "side": 1,
+      "message": "Instead of implementing this single function, I\u0027d rather wait for this patch which addresses all of the missing pieces regarding the GIC handling on FVP platform: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/42179",
+      "revId": "1dd3a7da9edbda31f6d484cb5d9cb61261dbf5d3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
