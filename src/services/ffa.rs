@@ -269,7 +269,9 @@ impl Spmd {
                 dst_id,
                 args,
             } => {
-                if *dst_id == Self::OWN_ID {
+                if !Self::is_secure_id(*src_id) {
+                    Interface::error(FfaError::InvalidParameters)
+                } else if *dst_id == Self::OWN_ID {
                     match *args {
                         DirectMsgArgs::VersionResp { version } if *src_id == self.spmc_id => {
                             next_world = World::NonSecure;
@@ -288,6 +290,15 @@ impl Spmd {
                     *in_msg
                 }
             }
+            Interface::MsgSendDirectResp2 { src_id, .. } => {
+                if !Self::is_secure_id(*src_id) {
+                    Interface::error(FfaError::InvalidParameters)
+                } else {
+                    // Forward to NWd
+                    next_world = World::NonSecure;
+                    *in_msg
+                }
+            }
             Interface::Features { .. }
             | Interface::IdGet
             | Interface::SpmIdGet
@@ -299,7 +310,10 @@ impl Spmd {
             | Interface::Interrupt { .. }
             | Interface::MsgWait { .. }
             | Interface::Yield
-            | Interface::MemRetrieveResp { .. } => {
+            | Interface::MemRetrieveResp { .. }
+            | Interface::MemOpPause { .. }
+            | Interface::MemFragRx { .. }
+            | Interface::MemFragTx { .. } => {
                 // Forward to NWd
                 next_world = World::NonSecure;
                 *in_msg
@@ -392,13 +406,15 @@ impl Spmd {
                 target_info: TargetInfo::default(),
                 args: SuccessArgsSpmIdGet { id: self.spmc_id }.into(),
             },
-            Interface::MsgSendDirectReq { src_id, .. } => {
-                // Validate source endpoint ID
-                // TODO: create a function to check this
-                if *src_id & 0x8000 != 0 {
+            Interface::MsgSendDirectReq { src_id, .. }
+            | Interface::MsgSendDirectReq2 { src_id, .. }
+            | Interface::MsgSend2 {
+                sender_vm_id: src_id,
+                ..
+            } => {
+                if Self::is_secure_id(*src_id) {
                     Interface::error(FfaError::InvalidParameters)
                 } else {
-                    // Forward to SWd
                     next_world = World::Secure;
                     *in_msg
                 }
@@ -424,7 +440,10 @@ impl Spmd {
             | Interface::MemLend { .. }
             | Interface::MemShare { .. }
             | Interface::MemRetrieveReq { .. }
-            | Interface::MemReclaim { .. } => {
+            | Interface::MemReclaim { .. }
+            | Interface::MemOpResume { .. }
+            | Interface::MemFragRx { .. }
+            | Interface::MemFragTx { .. } => {
                 // Forward to SWd
                 next_world = World::Secure;
                 *in_msg
@@ -480,6 +499,11 @@ impl Spmd {
         msg.to_regs(self.spmc_version, out_regs.values_mut());
 
         out_regs
+    }
+
+    /// Return true if the FF-A endpoint ID is assigned to the secure world.
+    pub const fn is_secure_id(id: u16) -> bool {
+        id & 0x8000 != 0
     }
 }
 
