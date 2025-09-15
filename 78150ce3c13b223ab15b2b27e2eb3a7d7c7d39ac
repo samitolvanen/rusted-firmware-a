@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d606bb4_6e712af3",
+        "filename": "src/layout.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-09-15T14:34:34Z",
+      "side": 1,
+      "message": "could you maybe add a comment why this particular type? \n\nI saw the discussion where you observed weird bugs when bss2 was empty. maybe its worth mentioning that these symbols are assumed to not overlap if they have nonzero size?",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "78150ce3c13b223ab15b2b27e2eb3a7d7c7d39ac",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
