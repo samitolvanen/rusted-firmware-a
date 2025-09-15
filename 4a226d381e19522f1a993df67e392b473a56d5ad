@@ -46,6 +46,30 @@
       },
       "revId": "4a226d381e19522f1a993df67e392b473a56d5ad",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20649eae_51954af6",
+        "filename": "bl31.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-15T15:02:10Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "31ce1ca8_1e4182b2",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "4a226d381e19522f1a993df67e392b473a56d5ad",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
