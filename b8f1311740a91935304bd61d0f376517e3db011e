@@ -39,6 +39,30 @@
       },
       "revId": "b8f1311740a91935304bd61d0f376517e3db011e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62211d05_c7ba6f46",
+        "filename": "platforms/qemu.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-15T16:12:29Z",
+      "side": 1,
+      "message": "Good question. The QEMU virt platform has secure memory from 0x0e00_0000 to 0x0f00_0000, so we have plenty of space in general. BL2 is at 0xe05_b000 to 0xe06_442c, before BL31, so that\u0027s not a problem.\n\nHowever BL32 currently starts at 0x0e10_0000, so that\u0027s already a problem without this patch. I\u0027ve fixed that now by making `BL31_SIZE` smaller.",
+      "parentUuid": "ea825e45_a963db53",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "b8f1311740a91935304bd61d0f376517e3db011e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
