@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ea5b86_cbcc6e04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-15T13:41:50Z",
+      "side": 1,
+      "message": "Job: https://ci.trustedfirmware.org/job/rf-a-main/495/\nPatch to build and test in CI (dependency): https://review.trustedfirmware.org/c/ci/tf-a-ci-scripts/+/41208",
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
