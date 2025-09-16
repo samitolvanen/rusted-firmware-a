@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d85ea0df_fccf9e0d",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-09-16T17:08:05Z",
+      "side": 1,
+      "message": "is this still required?",
+      "range": {
+        "startLine": 17,
+        "startChar": 47,
+        "endLine": 17,
+        "endChar": 67
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a27beaa_f88a833a",
         "filename": "docs/getting-started.md",
         "patchSetId": 14
