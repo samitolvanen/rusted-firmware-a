@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f9c490b_61546591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-16T10:45:00Z",
+      "side": 1,
+      "message": "I agree that errata are about hardware bugs.\n\nIs there a reason why `ACTLR_EL3` can\u0027t be configured from Rust code? It looks like it just controls lower-EL access to features, so it shouldn\u0027t need to be configured so early in the reset flow.",
+      "parentUuid": "5849ac41_789ceff7",
+      "revId": "a2c0b770945c9c4acd9c7225e939fcbb65491b52",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76fb5cc1_5969fe22",
         "filename": "src/platform.rs",
         "patchSetId": 2
