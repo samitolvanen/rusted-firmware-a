@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57a96f0_c184f65e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-16T14:53:50Z",
+      "side": 1,
+      "message": "Several STF tests are failing, please fix them.",
+      "revId": "61c1b788a08ecea77c736e7ba2d8fb5ca61e9199",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
