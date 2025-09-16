@@ -16,6 +16,24 @@
       "message": "We already have a `Forward to SWd` block below. These new interfaces can just be part of that. To keep the order of definition in sync with the spec, AFAICS you can put these between `Run` and `MemDonate`",
       "revId": "24e4c5a63b6a6b21c5a659a9768f29a89b22958c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad5ade4_cc059ef0",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-16T12:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a5576bd_792aa936",
+      "revId": "24e4c5a63b6a6b21c5a659a9768f29a89b22958c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
