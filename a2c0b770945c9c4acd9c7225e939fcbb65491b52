@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "958fbe8d_56323d50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-16T12:41:36Z",
+      "side": 1,
+      "message": "It looks like C TF-A currently has only one platform upstream which sets `CLUSTERECTLR_EL1`. This does so from C code, see `setup_clusterectlr_el1` in the agilex5 platform. As far as I can see this is only called on the primary CPU core. Whether this is correct I don\u0027t know, but if it is then the same should be possible in Rust.",
+      "parentUuid": "c28b7d55_2c5f2701",
+      "revId": "a2c0b770945c9c4acd9c7225e939fcbb65491b52",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76fb5cc1_5969fe22",
         "filename": "src/platform.rs",
         "patchSetId": 2
