@@ -114,6 +114,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10b99ed7_73e57860",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T08:53:48Z",
+      "side": 1,
+      "message": "You could replace this with `$0` (alternatively `$(basename $0))` so it will adapt if we ever change the script name.",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa4aac63_d6181ac8",
         "filename": "build-and-run.sh",
         "patchSetId": 14
@@ -206,6 +229,46 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "813f91d9_d6d39052",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T08:53:48Z",
+      "side": 1,
+      "message": "nit: replace tabs with spaces to be consistent across the file",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b2ebbb_353ffe8c",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T08:53:48Z",
+      "side": 1,
+      "message": "Add an empty line between the 2 platforms?",
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "04d21ad2_0b1c91f2",
@@ -249,6 +312,23 @@
         "endLine": 68,
         "endChar": 46
       },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23185bf_78f5a288",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T08:53:48Z",
+      "side": 1,
+      "message": "Add an empty line before this as well?",
       "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -366,6 +446,76 @@
         "startChar": 2,
         "endLine": 41,
         "endChar": 28
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479734e0_379a0055",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T08:53:48Z",
+      "side": 1,
+      "message": "That\u0027s what I thought too... This appears to be the case for FVP doc below so I suspect Tomas overlooked this part of the QEMU doc here.",
+      "parentUuid": "4b40f5fa_0b307d1c",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b37d47_90e6defe",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T08:53:48Z",
+      "side": 1,
+      "message": "`build-and-run.sh` supports GDB debugging so should these instructions invoke the script now?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c1ab83_d6a85782",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T08:53:48Z",
+      "side": 1,
+      "message": "Move these 2 paragraphs into `build-and-run.sh` as a comment? It no longer makes sense to me here, as the `SPMD_SPM_AT_SEL2` and `FVP_TRUSTED_SRAM_SIZE` option do not appear in this doc anymore.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 76
       },
       "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
