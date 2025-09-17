@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c1017539_6d1bc95d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T08:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7613f672_422100b5",
+      "range": {
+        "startLine": 18,
+        "startChar": 40,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "91ea5b86_cbcc6e04",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 14
@@ -64,6 +88,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d20127c_d72cb60b",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T08:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d85ea0df_fccf9e0d",
+      "range": {
+        "startLine": 17,
+        "startChar": 47,
+        "endLine": 17,
+        "endChar": 67
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa4aac63_d6181ac8",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-09-17T07:29:06Z",
       "side": 1,
       "message": "I assume the script runs from RF-A\u0027s top dir?\n\nIs $CURRDIR matching to $PWD?  If yes, what is the point of pushd/popd current directory?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 14
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b0d3e8_57634075",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T08:37:51Z",
+      "side": 1,
+      "message": "The script is run by any outside user. I did this so that the script can be triggered from any location.",
+      "parentUuid": "fa4aac63_d6181ac8",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -112,6 +184,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0f55b9f2_dd34309a",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T08:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2790e053_2f2bde2e",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "04d21ad2_0b1c91f2",
         "filename": "build-and-run.sh",
         "patchSetId": 14
@@ -123,6 +219,30 @@
       "writtenOn": "2025-09-17T07:29:06Z",
       "side": 1,
       "message": "This is removed from public FVP 11.29 onwards.\n\nI guess CI might use 11.28 or below?",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbfa54e0_ff522aef",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T08:37:51Z",
+      "side": 1,
+      "message": "This was removed from CI by C TF-A and has not been updated in our own branch.\nNow that the project is public, I\u0027m trying to merge both branches into one before I leave so that we don\u0027t have to push the updates from C TF-A.",
+      "parentUuid": "04d21ad2_0b1c91f2",
       "range": {
         "startLine": 68,
         "startChar": 12,
@@ -146,6 +266,30 @@
       "writtenOn": "2025-09-16T14:09:11Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfbb74f_437a905a",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T08:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a27beaa_f88a833a",
       "range": {
         "startLine": 37,
         "startChar": 19,
@@ -193,6 +337,30 @@
       "side": 1,
       "message": "actually now I\u0027m confused should those make commands be removed if everything\u0027s handled in the build-an-run script?",
       "parentUuid": "2f8ceacf_a27432e0",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a099148_0ec89219",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T08:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b40f5fa_0b307d1c",
       "range": {
         "startLine": 41,
         "startChar": 2,
