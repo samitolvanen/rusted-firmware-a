@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77546b0f_4b4845bd",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-17T12:13:11Z",
+      "side": 1,
+      "message": "Strictly speaking this is not standardised, but in all existing implementations the FF-A ID of `0xffff` is the SPMD ID. Please use something else here.",
+      "range": {
+        "startLine": 778,
+        "startChar": 41,
+        "endLine": 778,
+        "endChar": 46
+      },
+      "revId": "62e7409e3490aa37ab3ac83fa14fe8d8efc06ee4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7314218_f31fde57",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-17T12:13:11Z",
+      "side": 1,
+      "message": "This returns FFA_SUCCESS, please fix the comment. Same applies to the rest of the test cases modified by this patch",
+      "range": {
+        "startLine": 786,
+        "startChar": 3,
+        "endLine": 786,
+        "endChar": 35
+      },
+      "revId": "62e7409e3490aa37ab3ac83fa14fe8d8efc06ee4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3c8b68_cb2efaf2",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-17T12:13:11Z",
+      "side": 1,
+      "message": "We don\u0027t have check for this yet in the SPMD, but the ID of secure endpoints should start from `0x8000`. Same applies to the rest of the test cases modified by this patch",
+      "range": {
+        "startLine": 800,
+        "startChar": 28,
+        "endLine": 800,
+        "endChar": 31
+      },
+      "revId": "62e7409e3490aa37ab3ac83fa14fe8d8efc06ee4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1d2847_1321df21",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-17T12:13:11Z",
+      "side": 1,
+      "message": "This should be `SuccessArgsNotificationGet`",
+      "range": {
+        "startLine": 968,
+        "startChar": 27,
+        "endLine": 968,
+        "endChar": 33
+      },
+      "revId": "62e7409e3490aa37ab3ac83fa14fe8d8efc06ee4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0e4de3_651456c4",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-17T12:13:11Z",
+      "side": 1,
+      "message": "This should be `SuccessArgsNotificationInfoGet32`",
+      "range": {
+        "startLine": 1012,
+        "startChar": 27,
+        "endLine": 1012,
+        "endChar": 33
+      },
+      "revId": "62e7409e3490aa37ab3ac83fa14fe8d8efc06ee4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
