@@ -69,6 +69,23 @@
       "parentUuid": "c021f194_0af3cd54",
       "revId": "e5e2cca9f095bb377389b5a4f6924dd87e052e9e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a913a0_9b384bbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T12:08:30Z",
+      "side": 1,
+      "message": "Matthew: Just a heads up that the FVP command line gets moved out of the Makefile to a shell script as part of the following commit:\nhttps://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41513\n\nSo the changes you\u0027re making in the present patch will need to migrate to the said script.",
+      "revId": "e5e2cca9f095bb377389b5a4f6924dd87e052e9e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
