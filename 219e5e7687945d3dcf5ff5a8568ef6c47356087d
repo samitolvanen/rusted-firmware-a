@@ -64,6 +64,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1493b282_2361a8dc",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd7cad60_b533dbb3",
+      "revId": "219e5e7687945d3dcf5ff5a8568ef6c47356087d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "360b0dbd_574f4cb0",
@@ -77,6 +95,30 @@
       "writtenOn": "2025-09-17T09:02:39Z",
       "side": 1,
       "message": "Remove, as `build-and-run.sh` supports running the RME config.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 81
+      },
+      "revId": "219e5e7687945d3dcf5ff5a8568ef6c47356087d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d698f9ce_40c29a60",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360b0dbd_574f4cb0",
       "range": {
         "startLine": 113,
         "startChar": 0,

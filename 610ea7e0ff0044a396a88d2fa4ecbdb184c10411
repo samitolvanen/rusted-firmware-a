@@ -135,6 +135,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ab4bf7_6a6db724",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b99ed7_73e57860",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa4aac63_d6181ac8",
@@ -252,6 +276,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f744d098_18a74ba6",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "813f91d9_d6d39052",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b2ebbb_353ffe8c",
@@ -265,6 +313,24 @@
       "writtenOn": "2025-09-17T08:53:48Z",
       "side": 1,
       "message": "Add an empty line between the 2 platforms?",
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e23fc4c_ecd87b4e",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b2ebbb_353ffe8c",
       "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -329,6 +395,24 @@
       "writtenOn": "2025-09-17T08:53:48Z",
       "side": 1,
       "message": "Add an empty line before this as well?",
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e795b7b9_cf19e1c0",
+        "filename": "build-and-run.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23185bf_78f5a288",
       "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -475,6 +559,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1078e6_4b6043ea",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "479734e0_379a0055",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40b37d47_90e6defe",
@@ -511,6 +619,30 @@
       "writtenOn": "2025-09-17T08:53:48Z",
       "side": 1,
       "message": "Move these 2 paragraphs into `build-and-run.sh` as a comment? It no longer makes sense to me here, as the `SPMD_SPM_AT_SEL2` and `FVP_TRUSTED_SRAM_SIZE` option do not appear in this doc anymore.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 76
+      },
+      "revId": "610ea7e0ff0044a396a88d2fa4ecbdb184c10411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "326b69d2_fae17b28",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T09:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98c1ab83_d6a85782",
       "range": {
         "startLine": 101,
         "startChar": 0,
