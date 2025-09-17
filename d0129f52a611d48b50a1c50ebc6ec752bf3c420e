@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769d70fe_119c6578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-17T13:07:22Z",
+      "side": 1,
+      "message": "Verified: https://ci.trustedfirmware.org/job/rf-a-main/537/",
+      "revId": "d0129f52a611d48b50a1c50ebc6ec752bf3c420e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
