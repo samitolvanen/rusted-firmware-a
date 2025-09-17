@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d39b4345_9a12b1df",
+        "filename": "Makefile",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T09:06:35Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 54
+      },
+      "revId": "219e5e7687945d3dcf5ff5a8568ef6c47356087d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad5fa62_834cf00a",
+        "filename": "Makefile",
+        "patchSetId": 15
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-17T09:06:35Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 84
+      },
+      "revId": "219e5e7687945d3dcf5ff5a8568ef6c47356087d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd7cad60_b533dbb3",
         "filename": "docs/getting-started.md",
         "patchSetId": 15
