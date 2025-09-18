@@ -39,6 +39,30 @@
       },
       "revId": "6d6e6e1996b015146dc7789bd364724a6c492de9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041e3e46_4c1cf9e7",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 18
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-18T12:40:16Z",
+      "side": 1,
+      "message": "I see that this patch removed half of the `init_cpu_interface`: https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/37111\nWhat\u0027s the rationale for this update? I didn\u0027t see any details in the commit message.",
+      "parentUuid": "16786689_2f92a276",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 1
+      },
+      "revId": "6d6e6e1996b015146dc7789bd364724a6c492de9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
