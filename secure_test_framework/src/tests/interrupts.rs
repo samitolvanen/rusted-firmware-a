@@ -127,19 +127,6 @@ fn nonsecure_timer_helper(ns_world_request: TestHelperRequest) -> Result<TestHel
 /// Calls the generic `timer_helper` with appropriate secure world timer implementation.
 fn secure_timer_helper(ns_world_request: TestHelperRequest) -> Result<TestHelperResponse, ()> {
     if current_el() == 2 {
-        // TODO: Enable SEL2Timer test for FVP.
-        //
-        // Right now ACKing a SEL2 interrupt in FVP
-        // always returns special value 1023 (means spurious interrupt).
-        // It looks like a bug in FVP itself.
-        // Enable the test after figuring out what was the issue.
-        #[cfg(platform = "fvp")]
-        {
-            log::warn!("SEL2 timer test skipped!");
-            // This is ugly, but will be removed soon when we fix the test for FVP.
-            return Ok([1, 0, 0, 0]);
-        }
-
         timer_helper::<SEL2Timer>(ns_world_request)
     } else {
         timer_helper::<SEL1Timer>(ns_world_request)
