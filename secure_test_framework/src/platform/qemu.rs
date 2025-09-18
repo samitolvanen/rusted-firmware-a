@@ -31,6 +31,8 @@ pub struct Qemu;
 // and x1, and returns a unique core index as long as PLATFORM_CPU_PER_CLUSTER_SHIFT is correct.
 unsafe impl Platform for Qemu {
     const CORE_COUNT: usize = CLUSTER_COUNT * MAX_CPUS_PER_CLUSTER;
+    const GICD_BASE: usize = 0x0800_0000;
+    const GICR_BASE: usize = 0x080A_0000;
 
     fn make_log_sink() -> &'static mut (dyn Write + Send) {
         let uart = UART.call_once(|| {
