@@ -24,6 +24,10 @@ pub type PlatformImpl = qemu::Qemu;
 pub unsafe trait Platform {
     /// The number of CPU cores.
     const CORE_COUNT: usize;
+    /// The based address of the GIC distributor block.
+    const GICD_BASE: usize;
+    /// The based address of the GIC redistributor block.
+    const GICR_BASE: usize;
 
     /// Returns something to which logs should be sent.
     ///

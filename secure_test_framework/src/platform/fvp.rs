@@ -32,6 +32,8 @@ pub struct Fvp;
 // `FVP_MAX_PE_PER_CPU` are correct.
 unsafe impl Platform for Fvp {
     const CORE_COUNT: usize = FVP_CLUSTER_COUNT * FVP_MAX_CPUS_PER_CLUSTER * FVP_MAX_PE_PER_CPU;
+    const GICD_BASE: usize = 0x2f00_0000;
+    const GICR_BASE: usize = 0x2f10_0000;
 
     fn make_log_sink() -> &'static mut (dyn Write + Send) {
         let uart = UART.call_once(|| {
