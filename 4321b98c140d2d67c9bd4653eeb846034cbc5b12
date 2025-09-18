@@ -22,6 +22,30 @@
       },
       "revId": "4321b98c140d2d67c9bd4653eeb846034cbc5b12",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "605fe277_a086e776",
+        "filename": "supply-chain/audits.toml",
+        "patchSetId": 12
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-18T11:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e43c232c_4c6a6b65",
+      "range": {
+        "startLine": 184,
+        "startChar": 60,
+        "endLine": 184,
+        "endChar": 69
+      },
+      "revId": "4321b98c140d2d67c9bd4653eeb846034cbc5b12",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
