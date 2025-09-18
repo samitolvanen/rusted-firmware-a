@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43c232c_4c6a6b65",
+        "filename": "supply-chain/audits.toml",
+        "patchSetId": 12
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-18T10:55:11Z",
+      "side": 1,
+      "message": "Why is this 2? AFAICS we didn\u0027t touch any unsafe code between 0.3.1 and 0.4.0",
+      "range": {
+        "startLine": 184,
+        "startChar": 60,
+        "endLine": 184,
+        "endChar": 69
+      },
+      "revId": "4321b98c140d2d67c9bd4653eeb846034cbc5b12",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
