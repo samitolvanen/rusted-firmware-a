@@ -16,6 +16,29 @@
       "message": "Verified: https://ci.trustedfirmware.org/job/rf-a-main/537/",
       "revId": "d0129f52a611d48b50a1c50ebc6ec752bf3c420e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef151bc_e57a4866",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-18T07:20:27Z",
+      "side": 1,
+      "message": "This suggests that the `GDB_PORT` is mandatory, but actually it can still be omitted like before, in which case it will default to 1234.\n\nI think we should remove the `GDB_PORT\u003d\u003cPORT\u003e` from these 2 command lines (so people can copy and paste them straight from the doc) and add a note below, similarly to what we had before this patch:\n\n\n----8\u003c----\nIf you want QEMU\u0027s `gdb` listener listen on a port other than the default (which\nis 1234), specify the `GDB_PORT` environment variable in both `make`\ninvocations:\n\n```sh\n$ GDB_PORT\u003d4096 make PLAT\u003dqemu DEBUG\u003d1 qemu-wait\n\n# In your 2nd terminal, of course:\n$ GDB_PORT\u003d4096 make PLAT\u003dqemu DEBUG\u003d1 gdb\n```\n\n(This could be useful if you needed to run many instances of QEMU, such as to\nrun many tests in parallel.)\n----8\u003c----",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "d0129f52a611d48b50a1c50ebc6ec752bf3c420e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
