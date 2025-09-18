@@ -39,6 +39,54 @@
       },
       "revId": "d0129f52a611d48b50a1c50ebc6ec752bf3c420e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee318a5_83da884b",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-18T08:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef151bc_e57a4866",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "d0129f52a611d48b50a1c50ebc6ec752bf3c420e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8029b05e_33906e03",
+        "filename": "docs/getting-started.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001350
+      },
+      "writtenOn": "2025-09-18T08:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef151bc_e57a4866",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "d0129f52a611d48b50a1c50ebc6ec752bf3c420e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
