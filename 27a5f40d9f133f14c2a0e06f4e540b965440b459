@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e0cd932_8b87574a",
+        "filename": "src/sysregs.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-09-19T11:10:22Z",
+      "side": 1,
+      "message": "could it be printed in hex?",
+      "range": {
+        "startLine": 653,
+        "startChar": 22,
+        "endLine": 653,
+        "endChar": 33
+      },
+      "revId": "27a5f40d9f133f14c2a0e06f4e540b965440b459",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
