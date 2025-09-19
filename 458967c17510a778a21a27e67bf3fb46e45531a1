@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44613f1b_345aeefb",
+        "filename": "build-and-run.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-09-19T13:03:51Z",
+      "side": 1,
+      "message": "I noticed in case the test suite reports a failure, I do Ctrl+C aborting the script which brings me back to the shell, although the side effect  is qemu process remains orphaned in the background. Not sure if/how we want to fix that.",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "458967c17510a778a21a27e67bf3fb46e45531a1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
