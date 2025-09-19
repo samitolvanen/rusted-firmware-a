@@ -16,6 +16,24 @@
       "message": "is this change still necessary?",
       "revId": "e6d995c7afd3e60621d9f3a10f346c1bab43df70",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "280affb8_85c8f562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-19T07:45:26Z",
+      "side": 1,
+      "message": "No, will abandon. Thanks for the reminder.",
+      "parentUuid": "85833783_933fabec",
+      "revId": "e6d995c7afd3e60621d9f3a10f346c1bab43df70",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
