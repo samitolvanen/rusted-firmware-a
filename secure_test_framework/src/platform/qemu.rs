@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 use super::Platform;
-use crate::sysregs::MpidrEl1;
 use arm_pl011_uart::{PL011Registers, Uart, UniqueMmioPointer};
+use arm_sysregs::MpidrEl1;
 use core::{arch::naked_asm, fmt::Write, ptr::NonNull};
 use spin::{
     Once,
