@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617c8727_e9fe0f69",
+        "filename": "src/sysregs.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-09-19T09:48:02Z",
+      "side": 1,
+      "message": "Aren\u0027t we going to run into problems with these multi-bit flags? Like\n```\nlet spsr \u003d Spsr::M_AARCH64_EL3T;\nspsr.contains(Spsr::M_AARCH64_EL1T) // this is true\nspsr.contains(Spsr::M_AARCH64_EL2T) // this is also true\n```",
+      "revId": "2b0fae69e81f776514edb22fbee6da6639e49c3c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
