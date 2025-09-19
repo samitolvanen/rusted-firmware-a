@@ -16,6 +16,24 @@
       "message": "Aren\u0027t we going to run into problems with these multi-bit flags? Like\n```\nlet spsr \u003d Spsr::M_AARCH64_EL3T;\nspsr.contains(Spsr::M_AARCH64_EL1T) // this is true\nspsr.contains(Spsr::M_AARCH64_EL2T) // this is also true\n```",
       "revId": "2b0fae69e81f776514edb22fbee6da6639e49c3c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "652bed61_53472ef2",
+        "filename": "src/sysregs.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-19T11:21:44Z",
+      "side": 1,
+      "message": "Right, only actual bit flags should be used with the `contains` method, that\u0027s why they are here in the separate `impl` block and not inside the `bitflags!` macro. If we need to check multi-bit fields like this then we\u0027ll need to add separate accessor methods, the same as we would with `bitflagslike!` anyway.",
+      "parentUuid": "617c8727_e9fe0f69",
+      "revId": "2b0fae69e81f776514edb22fbee6da6639e49c3c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
