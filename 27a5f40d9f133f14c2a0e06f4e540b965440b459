@@ -22,6 +22,30 @@
       },
       "revId": "27a5f40d9f133f14c2a0e06f4e540b965440b459",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec6aa22_a01282be",
+        "filename": "src/sysregs.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-19T11:14:21Z",
+      "side": 1,
+      "message": "It could be, but it isn\u0027t currently by the default `Debug` formatter. This commit just tests the existing behaviour; the next commit changes the behaviour.",
+      "parentUuid": "5e0cd932_8b87574a",
+      "range": {
+        "startLine": 653,
+        "startChar": 22,
+        "endLine": 653,
+        "endChar": 33
+      },
+      "revId": "27a5f40d9f133f14c2a0e06f4e540b965440b459",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
