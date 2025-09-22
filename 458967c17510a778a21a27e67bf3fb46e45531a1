@@ -22,6 +22,30 @@
       },
       "revId": "458967c17510a778a21a27e67bf3fb46e45531a1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0d8f46_3b6f791f",
+        "filename": "build-and-run.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-22T08:20:47Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I think I noticed the same issue with FVP. Let\u0027s tackle this issue separately for both platforms. I\u0027ve already merged https://review.trustedfirmware.org/c/ci/tf-a-ci-scripts/+/41208 so I\u0027d like to merge the RF-A side of it as well.",
+      "parentUuid": "44613f1b_345aeefb",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "458967c17510a778a21a27e67bf3fb46e45531a1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
