@@ -22,6 +22,30 @@
       },
       "revId": "ab82cef296155fded336996d220c4b795663599e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ac8b16_59722c5d",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-22T14:34:44Z",
+      "side": 1,
+      "message": "The implementation of these functions are generic, but we cannot call them directly from the platform independent PSCI code. This is because different platform call these functions at different steps of their CPU power up/down sequence and this depends on the platform specific power state as well.",
+      "parentUuid": "e4daa5b8_9c639787",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 5
+      },
+      "revId": "ab82cef296155fded336996d220c4b795663599e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
