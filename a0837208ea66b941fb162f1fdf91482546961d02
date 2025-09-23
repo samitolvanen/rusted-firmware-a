@@ -123,6 +123,24 @@
       "parentUuid": "9622c0d3_83fd2bef",
       "revId": "a0837208ea66b941fb162f1fdf91482546961d02",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42242efe_72f6189d",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-23T12:12:58Z",
+      "side": 1,
+      "message": "I discussed this topic with people from TF-A. It turned out that the AEM FVP is not fully HW assisted coherent (does not have a DynamIQ Shared Unit) and it requires these kind of cache maintenance operations on CPU power down. This was very confusing because this logic in TF-A is guarded by the `HW_ASSISTED_COHERENCY` macro.\nRF-A targets platform with HW assisted coherency, but currently we don\u0027t have an FVP that has both all the new architectural features and DSU. Other platform should not require any of these cache maintenance on CPU power down, the cache should stay enabled until the WFI instruction. The hardware then will take care of keeping the caches coherent. Once we have an FVP that fits all our needs we might remove the AEM CPU and this manual CMO logic.\nThe Arm ARM says that using exclusive memory access while changing the memory attributes (this applies to turning of the dcache too) or doing cache maintenance can cause unpredictable behavior (the architecture does not specify it).\nThe AEM FVP handles this in a predicable way and this code is only called on AEM CPUs so it is ok to have an exception for this.\nI updated the safety requirement for these functions so now it covers these cases. The `Cpu::power_down_level*` functions can remain safe, other cores should not do anything here that requires further safety guarantees from the caller.",
+      "parentUuid": "4023c400_29b33a53",
+      "revId": "a0837208ea66b941fb162f1fdf91482546961d02",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
