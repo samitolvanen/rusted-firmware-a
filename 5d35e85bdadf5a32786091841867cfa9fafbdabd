@@ -22,6 +22,30 @@
       },
       "revId": "5d35e85bdadf5a32786091841867cfa9fafbdabd",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cdf4d50_e3feb070",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-24T12:05:48Z",
+      "side": 1,
+      "message": "The spec only says that on \u0027invalid endpoint ID\u0027 the response should be `FFA_ERROR(INVALID_PARAMETERS)`. I think it is reasonable to check the destination ID here as well.",
+      "parentUuid": "1be5bf5a_54988eeb",
+      "range": {
+        "startLine": 287,
+        "startChar": 18,
+        "endLine": 287,
+        "endChar": 24
+      },
+      "revId": "5d35e85bdadf5a32786091841867cfa9fafbdabd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
