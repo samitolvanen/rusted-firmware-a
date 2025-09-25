@@ -43,8 +43,10 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
     info!("Rust BL31 starting");
     info!("Parameters: {bl31_params:#0x} {platform_params:#0x}");
 
-    // Set up page table.
-    pagetable::init();
+    // Safety: The MMU is off and this is the only time when the function is called.
+    unsafe {
+        pagetable::init();
+    }
     info!("Page table activated.");
 
     // Set up GIC.
@@ -67,7 +69,10 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
 
 #[unsafe(no_mangle)]
 extern "C" fn psci_warmboot_entrypoint() -> ! {
-    pagetable::enable();
+    // Safety: The MMU is off at this point.
+    unsafe {
+        pagetable::enable();
+    }
     debug!("Warmboot on core #{}", CoresImpl::core_index());
 
     let services = Services::get();
