@@ -22,15 +22,12 @@ use aarch64_paging::{
     },
 };
 use core::{
+    cell::UnsafeCell,
     fmt::{self, Debug, Formatter},
-    mem::take,
+    mem::{MaybeUninit, take},
     ptr::NonNull,
 };
 use log::{debug, info, trace, warn};
-use spin::{
-    Once,
-    mutex::{SpinMutex, SpinMutexGuard},
-};
 
 const ROOT_LEVEL: usize = 1;
 
@@ -121,40 +118,144 @@ pub const MT_RO_DATA: Attributes = MT_MEMORY
 #[allow(unused)]
 pub const MT_RW_DATA: Attributes = MT_MEMORY.union(Attributes::UXN);
 
-static PAGE_HEAP: SpinMutex<[PageTable; PlatformImpl::PAGE_HEAP_PAGE_COUNT]> =
-    SpinMutex::new([PageTable::EMPTY; PlatformImpl::PAGE_HEAP_PAGE_COUNT]);
-static PAGE_TABLE: Once<SpinMutex<IdMap>> = Once::new();
+pub static VIRTUAL_MEMORY_MAPPING: VirtualMemoryMapping = VirtualMemoryMapping::new();
 
-/// Initialises and enables the page table.
+/// Once-like entity for handling virtual memory mapping related global objects.
 ///
-/// This should be called once early in startup, before anything else that depends on it.
-pub fn init() {
-    PAGE_TABLE.call_once(|| {
-        let page_heap =
-            SpinMutexGuard::leak(PAGE_HEAP.try_lock().expect("Page heap was already taken"));
-        let mut idmap = init_page_table(page_heap);
+/// Using exclusive load/store instructions before enabling the MMU and caches is not permitted,
+/// because it can introduce unpredictable behavior according to the Arm Architecture Reference
+/// Manual. For this reason, Once, SpinMutex, etc. cannot be used when intializing the page tables.
+/// The functions of this object can only be called before enabling the MMU, either for initializing
+/// the page tables on the primary core on boot, or for configuring and enabling virtual memory
+/// mapping on secondary cores (or on warm boot).
+pub struct VirtualMemoryMapping {
+    page_heap: UnsafeCell<[PageTable; PlatformImpl::PAGE_HEAP_PAGE_COUNT]>,
+    idmap: UnsafeCell<MaybeUninit<IdMap>>,
+    initialized: UnsafeCell<bool>,
+}
 
-        trace!("Page table: {idmap:?}");
+impl VirtualMemoryMapping {
+    /// Creates new instance.
+    pub const fn new() -> Self {
+        Self {
+            page_heap: UnsafeCell::new([PageTable::EMPTY; PlatformImpl::PAGE_HEAP_PAGE_COUNT]),
+            idmap: UnsafeCell::new(MaybeUninit::zeroed()),
+            initialized: UnsafeCell::new(false),
+        }
+    }
 
-        info!("Setting MMU config");
-        // SAFETY: We pass the root address of `idmap`, which has just been initialised with
+    /// Initializes the page tables and enables virtual memory mapping.
+    ///
+    /// Panics if the MMU is enabled or the `idmap` is initialized.
+    ///
+    /// # Safety
+    ///
+    /// This function must be called once early in startup on the primary core, before anything else
+    /// that depends on virtual memory mapping and caches. The MMU must be disabled when this
+    /// function is called.
+    pub unsafe fn init_and_enable(&self) {
+        assert!(!read_sctlr_el3().contains(SctlrEl3::M));
+        assert!(!self.is_initialized());
+
+        // Safety: It is a valid pointer, and this is the only location where it is dereferenced.
+        // The reference is then passed to `idmap`, which shares the same lifetime as `page_heap`.
+        let pages = unsafe { &mut *self.page_heap.get() };
+
+        // Safety: It is valid and aligned pointer. The caller promises that this function is called
+        // once on primary core init, so this is the only place with mutable access to the variable.
+        let idmap_uninit = unsafe { &mut *self.idmap.get() };
+
+        idmap_uninit.write(init_page_table(pages));
+        self.mark_initialzed();
+
+        // Safety: The object has been initialized by an earlier step of this function.
+        let idmap = unsafe { idmap_uninit.assume_init_ref() };
+
+        // Safety: We pass the root address of `idmap`, which has just been initialised with
         // appropriate mappings, and will remain valid forever.
         unsafe {
             setup_mmu_cfg(idmap.root_address());
         }
+
+        trace!("Page table: {idmap:?}");
+
         info!("Marking page table as active");
         idmap.mark_active();
+    }
 
-        SpinMutex::new(idmap)
-    });
+    /// Enables virtual memory mapping.
+    ///
+    /// Panics if the MMU is enabled or the `idmap` is not initialized.
+    ///
+    /// # Safety
+    ///
+    /// The function must be called with MMU disabled.
+    pub unsafe fn enable(&self) {
+        assert!(!read_sctlr_el3().contains(SctlrEl3::M));
+        assert!(self.is_initialized());
+
+        // Safety: It is a valid and aligned pointer and `is_initialized()` guarantees that `idmap`
+        // has been initialized.
+        let idmap = unsafe { (&*self.idmap.get()).assume_init_ref() };
+
+        // Safety: We pass the root address of `idmap`, which has been initialised with appropriate
+        // mappings, and will remain valid forever.
+        unsafe {
+            setup_mmu_cfg(idmap.root_address());
+        }
+    }
+
+    /// Check whether self.idmap is initialized. Panics of the MMU is active.
+    fn is_initialized(&self) -> bool {
+        assert!(!read_sctlr_el3().contains(SctlrEl3::M));
+
+        // Safety: It is a valid and aligned pointer and it has been initialized by `new()`. The
+        // variable is only accessed when the MMU is disabled, so it always reads the system memory.
+        unsafe { core::ptr::read(self.initialized.get()) }
+    }
+
+    /// Marks the self.idmap as initialized. Panics of the MMU is active.
+    fn mark_initialzed(&self) {
+        assert!(!read_sctlr_el3().contains(SctlrEl3::M));
+
+        // Safety: It is a valid and aligned pointer. The variable is only accessed when the MMU is disabled,
+        unsafe { core::ptr::write_volatile(self.initialized.get(), true) };
+
+        isb();
+        dsb_sy();
+    }
+}
+
+// Safety: The callers of the functions of this object promise that the MMU is off, so all memory
+// accesses are device memory accesses. `init_and_enable()` only called once on the primary core and
+// this is the only function that can write the object. `enable()` only uses immutable reference
+// to the internal objects and validates if they have been initialized properly. `initialized` only
+// changes from `false` to `true` once, and this prevent `enable()` to use an invalid state.
+unsafe impl Sync for VirtualMemoryMapping {}
+
+/// Initialises and enables the page table.
+///
+/// # Safety
+///
+/// This function must be called once early in startup on the primary core, before anything else
+/// that depends on virtual memory mapping and caches. The MMU must be disabled when this
+/// function is called.
+pub unsafe fn init() {
+    // Safety: The same safety requirements are propagated to the caller.
+    unsafe {
+        VIRTUAL_MEMORY_MAPPING.init_and_enable();
+    }
 }
 
 /// Enables the MMU for a newly booted core, assuming the page table is already initialised.
-pub fn enable() {
-    // SAFETY: We pass the root address of the IdMap from `PAGE_TABLE`, which has previously been
-    // initialised with appropriate mappings, and will remain valid forever.
+///
+/// # Safety
+///
+/// The function must be called with MMU disabled.
+pub unsafe fn enable() {
+    // Safety: The same safety requirements are propagated to the caller.
     unsafe {
-        setup_mmu_cfg(PAGE_TABLE.get().unwrap().lock().root_address());
+        VIRTUAL_MEMORY_MAPPING.enable();
     }
 }
 
@@ -334,7 +435,7 @@ impl IdMap {
             .map_range(range, pa, flags, Constraints::empty())
     }
 
-    fn mark_active(&mut self) {
+    fn mark_active(&self) {
         self.mapping.mark_active();
     }
 
@@ -358,19 +459,73 @@ mod asm {
 
 #[cfg(test)]
 mod tests {
+    use crate::sysregs::fake::SYSREGS;
+
     use super::*;
 
     #[test]
-    fn create_page_table() {
-        assert_ne!(PlatformImpl::PAGE_HEAP_PAGE_COUNT, 0);
+    fn vmm_init_and_enable() {
+        SYSREGS.lock().unwrap().sctlr_el3 = SctlrEl3::empty();
 
-        let page_heap =
-            SpinMutexGuard::leak(PAGE_HEAP.try_lock().expect("Page heap was already taken"));
+        let vmm = VirtualMemoryMapping::new();
 
-        let mut idmap = init_page_table(page_heap);
-        assert_ne!(idmap.root_address().0, 0);
-        idmap.mark_active();
-        // `aarch64-paging` will detect the dropped idmap and panic
-        core::mem::forget(idmap);
+        unsafe {
+            vmm.init_and_enable();
+        }
+
+        // Act like a different core on boot.
+        SYSREGS.lock().unwrap().sctlr_el3 = SctlrEl3::empty();
+        unsafe {
+            vmm.enable();
+        }
+    }
+
+    #[test]
+    #[should_panic]
+    fn vmm_init_with_mmu() {
+        SYSREGS.lock().unwrap().sctlr_el3 = SctlrEl3::M;
+
+        let vmm = VirtualMemoryMapping::new();
+
+        unsafe {
+            vmm.init_and_enable();
+        }
+    }
+
+    #[test]
+    #[should_panic]
+    fn vmm_init_twice() {
+        SYSREGS.lock().unwrap().sctlr_el3 = SctlrEl3::empty();
+
+        let vmm = VirtualMemoryMapping::new();
+
+        unsafe {
+            vmm.init_and_enable();
+            vmm.init_and_enable();
+        }
+    }
+
+    #[test]
+    #[should_panic]
+    fn vmm_enable_with_mmu() {
+        SYSREGS.lock().unwrap().sctlr_el3 = SctlrEl3::M;
+
+        let vmm = VirtualMemoryMapping::new();
+
+        unsafe {
+            vmm.enable();
+        }
+    }
+
+    #[test]
+    #[should_panic]
+    fn vmm_enable_not_initialized() {
+        SYSREGS.lock().unwrap().sctlr_el3 = SctlrEl3::empty();
+
+        let vmm = VirtualMemoryMapping::new();
+
+        unsafe {
+            vmm.enable();
+        }
     }
 }
