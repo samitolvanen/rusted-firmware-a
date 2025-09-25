@@ -63,6 +63,30 @@
       },
       "revId": "91bc7413c495d29b911ed43117c122eeac220163",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "579db837_4950a19c",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-25T15:00:15Z",
+      "side": 1,
+      "message": "That makes sense, thanks.",
+      "parentUuid": "881ed7f5_93bbf089",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 5
+      },
+      "revId": "91bc7413c495d29b911ed43117c122eeac220163",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
