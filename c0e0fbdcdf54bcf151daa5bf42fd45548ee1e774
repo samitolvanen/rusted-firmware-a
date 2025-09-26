@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4417770d_d0536abd",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-26T15:04:35Z",
+      "side": 1,
+      "message": "AFAIU `enable_sre()` can be used to disable the system registers access (if the caller passes `false`), which makes its name misleading to me. How about `config_sre()` instead?",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4cf01e_fc8ed9ff",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-26T15:04:35Z",
+      "side": 1,
+      "message": "I am trying to understand this change... How does setting the `ICC_SRE_EL1.SRE` bit - which I thought simply allowed S-EL1 software to access the GIC through the system registers interface - \"prevent the selection of legacy mode\"? And by \"legacy mode\", do we mean GICv3\u0027s compatibility mode with GICv2?\n\nDoes this relate to the following sentence from https://developer.arm.com/documentation/ddi0601/2025-06/AArch64-Registers/ICC-SRE-EL1--Interrupt-Controller-System-Register-Enable-Register--EL1-:\n\n\u003e GICv3 implementations that do not require GICv2 compatibility might choose to make this bit RAO/WI.\n\n?\n\nApologies if this was discussed in another forum, I might have missed it...",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03e35be_e3e31741",
+        "filename": "supply-chain/audits.toml",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-26T15:04:35Z",
+      "side": 1,
+      "message": "I think this change should be in a separate change dedicated to auditing version 0.7.0 of the arm-gic crate.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
