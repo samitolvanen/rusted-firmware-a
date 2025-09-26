@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6558ea4_c56ddc91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-26T09:23:01Z",
+      "side": 1,
+      "message": "Who\u0027s making that claim? Is that required as per the PSCI specification, or is it a convention derived from TF-A implementation?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "d7eaa3edf504c43ff6c2aec217a9755f7f4ae7d6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deadee81_3f1e4775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-09-26T09:23:01Z",
+      "side": 1,
+      "message": "I\u0027ve got a question about what / who requires that patch. Other than that, I agree the patch does what it says on the tin!",
+      "revId": "d7eaa3edf504c43ff6c2aec217a9755f7f4ae7d6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
