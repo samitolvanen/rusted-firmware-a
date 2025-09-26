@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2baf1e59_0d5a7b4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-26T09:43:31Z",
+      "side": 1,
+      "message": "This is a simplification coming from TF-A, based on the limitations of FVPs. There\u0027s some explanation about this in the internal Gerrit under change `I0d852f3af8824edee1a17c085cf593ddd33a4e77`.",
+      "parentUuid": "a6558ea4_c56ddc91",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "d7eaa3edf504c43ff6c2aec217a9755f7f4ae7d6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "deadee81_3f1e4775",
