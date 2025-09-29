@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18378f2b_7531c8a9",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-29T17:38:35Z",
+      "side": 1,
+      "message": "I don\u0027t think we can assume that all interrupts are level triggered, let\u0027s pass this in as a parameter.",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ae2510_42bb915f",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-29T17:38:35Z",
+      "side": 1,
+      "message": "Move these to the top of the file, with the other `static` variables.",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee49219_191c02d5",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-29T17:38:35Z",
+      "side": 1,
+      "message": "We should have a better way of doing this across STF, ideally statically, but I\u0027ll look into that after this is merged.",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d95300_70209740",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-29T17:38:35Z",
+      "side": 1,
+      "message": "Why not `gic.distributor().enable_group1_secure(true)` (or the non-secure equivalent) instead?",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65af36b9_6a05fe81",
+        "filename": "secure_test_framework/src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-29T17:38:35Z",
+      "side": 1,
+      "message": "Safe code could call this function twice to get two instances of `GicV3` pointing to the same GIC. Either it needs to be an unsafe function with a safety requirement that it is only called once, or it needs to fail the second time it is called.",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2443d33_cae7439d",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-29T17:38:35Z",
+      "side": 1,
+      "message": "How does the GIC know which interrupts should be secure and which should be non-secure? Is it just that the configuration in S-EL2 takes priority over configuration from NS-EL2?",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}

@@ -140,6 +140,30 @@
       },
       "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14147882_1163fa49",
+        "filename": "supply-chain/audits.toml",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-09-29T17:38:35Z",
+      "side": 1,
+      "message": "It could be in an earlier change, though I don\u0027t think it matters that much.",
+      "parentUuid": "23123a49_b3dc67d5",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
