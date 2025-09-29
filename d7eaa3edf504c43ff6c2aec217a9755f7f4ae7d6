@@ -87,6 +87,23 @@
       "message": "I\u0027ve got a question about what / who requires that patch. Other than that, I agree the patch does what it says on the tin!",
       "revId": "d7eaa3edf504c43ff6c2aec217a9755f7f4ae7d6",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512dfc93_80599196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-29T11:42:07Z",
+      "side": 1,
+      "message": "RUN_CI",
+      "revId": "d7eaa3edf504c43ff6c2aec217a9755f7f4ae7d6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
