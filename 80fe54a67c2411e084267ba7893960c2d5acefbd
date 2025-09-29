@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8271f69_9f7edde1",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "Agreed, I also updated the variable\u0027s name to avoid any confusion.",
+      "parentUuid": "049eb698_44a0f6ee",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a7fa150_b244836e",
@@ -47,6 +71,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "509c0983_b1966c8f",
+        "filename": "build-and-run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7fa150_b244836e",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 40
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3dfc023_2e9d224c",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-09-29T12:38:07Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26c149c_93fb5620",
+        "filename": "build-and-run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3dfc023_2e9d224c",
       "range": {
         "startLine": 91,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "992335ff_3ef774b1",
+        "filename": "build-and-run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "Bumped to 9.1, but perhaps it would be preferable to target higher? And should I add the `has_branch_target_exception` similarly to the patch you linked?",
+      "parentUuid": "3af2a293_dbff00d3",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04449901_02aeac62",
         "filename": "secure_test_framework/build.rs",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2025-09-29T12:38:07Z",
       "side": 1,
       "message": "Additionally, should the build flow/Makefile break with PLAT\u003dqemu and RME\u003d1?",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898205ae_81f8541b",
+        "filename": "secure_test_framework/build.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "Qemu does not support RME yet (https://review.trustedfirmware.org/plugins/gitiles/RF-A/rusted-firmware-a/+/main/src/platform/qemu.rs#47), but in any case it should not break has the qemu platform build only targets `bl32` and `bl33`.",
+      "parentUuid": "04449901_02aeac62",
       "range": {
         "startLine": 31,
         "startChar": 4,
@@ -139,6 +259,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feea307b_d2d97817",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d432e7e_6c907f72",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1e8fc9_5a68a28c",
@@ -162,6 +306,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca5d27d_ea3488d9",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "I took what was proposed in the compiler output, but it\u0027s true that lifetimes can be elided for readability.",
+      "parentUuid": "2d1e8fc9_5a68a28c",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40174693_6af177c1",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-09-29T12:38:07Z",
       "side": 1,
       "message": "nitpick, we might want to force another format as using TF-RMM (aka failing atm) outputs:\n```\nINFO: Realm boot completed with code 18446744073709551614\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 54,
+        "endLine": 57,
+        "endChar": 56
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5fcca2_932c414a",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-09-29T13:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40174693_6af177c1",
       "range": {
         "startLine": 57,
         "startChar": 54,
