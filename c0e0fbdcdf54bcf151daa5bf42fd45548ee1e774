@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb1868cf_efa0257f",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-29T12:56:23Z",
+      "side": 1,
+      "message": "I removed `enable_sre()` because it was only called once from a few lines later. The `GicCpuInterface::enable_*` comes from `arm-gic` and it follows the naming of the GIC spec.",
+      "parentUuid": "4417770d_d0536abd",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb4cf01e_fc8ed9ff",
         "filename": "src/gicv3.rs",
         "patchSetId": 6
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed0ba98b_fadb9049",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-29T12:56:23Z",
+      "side": 1,
+      "message": "This is quite an obscure feature of the GIC and it already caused some long debug sessions.\nIt is described in \u00274.6.1 Interrupt grouping and security\u0027.\n\u003e Secure Group 1 interrupts are treated as Group 0 by a CPU interface if:\n\u003e — The PE does not implement EL3.\n\u003e — ICC_SRE_EL1_S.SRE \u003d\u003d 0.\n\nThere\u0027s an OR relation in the listed conditions.",
+      "parentUuid": "bb4cf01e_fc8ed9ff",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c03e35be_e3e31741",
         "filename": "supply-chain/audits.toml",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2025-09-26T15:04:35Z",
       "side": 1,
       "message": "I think this change should be in a separate change dedicated to auditing version 0.7.0 of the arm-gic crate.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "c0e0fbdcdf54bcf151daa5bf42fd45548ee1e774",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23123a49_b3dc67d5",
+        "filename": "supply-chain/audits.toml",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-29T12:56:23Z",
+      "side": 1,
+      "message": "It has to be in the same change, otherwise the CI fails because of the missing audit.",
+      "parentUuid": "c03e35be_e3e31741",
       "range": {
         "startLine": 238,
         "startChar": 0,
