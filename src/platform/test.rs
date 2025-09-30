@@ -52,6 +52,9 @@ unsafe impl Platform for TestPlatform {
     const CORE_COUNT: usize = 13;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
 
+    #[cfg(feature = "rme")]
+    const PAGE_HEAP_PAGE_COUNT: usize = 6;
+
     type LogSinkImpl = StdOutSink;
     type PsciPlatformImpl = TestPsciPlatformImpl;
     type TrngPlatformImpl = TestTrngPlatformImpl;
