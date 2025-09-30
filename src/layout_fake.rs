@@ -33,3 +33,12 @@ pub fn bss2_start() -> usize {
 pub fn bss2_end() -> usize {
     0
 }
+
+#[cfg(feature = "rme")]
+pub const fn rmm_shared_start() -> usize {
+    0xffbf_f000
+}
+#[cfg(feature = "rme")]
+pub const fn rmm_shared_end() -> usize {
+    rmm_shared_start() + 0x1000
+}
