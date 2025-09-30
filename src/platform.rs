@@ -30,6 +30,8 @@ select_platform!(platform = "fvp", fvp::Fvp);
 select_platform!(platform = "qemu", qemu::Qemu);
 select_platform!(test, test::TestPlatform);
 
+#[cfg(feature = "rme")]
+use crate::services::rmmd::manifest::RmmBootManifest;
 use crate::{
     context::EntryPointInfo,
     gicv3::{self, Gic},
@@ -91,6 +93,31 @@ pub unsafe trait Platform {
 
     /// The number of pages to reserve for the page heap.
     const PAGE_HEAP_PAGE_COUNT: usize = 5;
+
+    #[cfg(feature = "rme")]
+    /// Count of Non-Secure memory region.
+    const RMM_NS_DRAM_COUNT: usize = 0;
+    #[cfg(feature = "rme")]
+    /// Count of platform dependent console region for RMM.
+    const RMM_CONSOLE_COUNT: usize = 0;
+    #[cfg(feature = "rme")]
+    /// Count of non-coherent devices' memory regions accessible by RMM.
+    const RMM_NCOH_REGION_COUNT: usize = 0;
+    #[cfg(feature = "rme")]
+    /// Count of coherent devices' memory regions accessible by RMM.
+    const RMM_COH_REGION_COUNT: usize = 0;
+    #[cfg(feature = "rme")]
+    /// Count of SMMUs available to RMM.
+    const RMM_SMMU_COUNT: usize = 0;
+    #[cfg(feature = "rme")]
+    /// Count of PCIe root complexes available to RMM.
+    const RMM_ROOT_COMPLEX: &[&[usize]] = &[];
+
+    #[cfg(feature = "rme")]
+    /// Platform dependent part of the RME Boot Manifest. Entries within the range `0..RMM_<NAME>`
+    /// (see above) are allocated to be filled by this function. Any extra entry is reserved for
+    /// platform independent data.
+    fn rme_prepare_manifest(_manifest: &mut RmmBootManifest) {}
 
     /// Platform dependent LogSink implementation type for Logger.
     type LogSinkImpl: LogSink;
