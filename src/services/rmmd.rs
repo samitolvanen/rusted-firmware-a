@@ -55,6 +55,7 @@ pub fn rme_prepare() {
 }
 
 const RMM_BOOT_COMPLETE: u32 = 0xC400_01CF;
+const RMM_RMI_REQ_COMPLETE: u32 = 0xC400_018F;
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub enum RmmBootReturn {
@@ -93,6 +94,10 @@ pub struct Rmmd;
 impl Service for Rmmd {
     owns! {OwningEntityNumber::STANDARD_SECURE, 0x0150..=0x01CF}
 
+    fn handle_non_secure_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
+        ((*regs).into(), World::Realm)
+    }
+
     fn handle_realm_smc(&self, regs: &[u64; 18]) -> (SmcReturn, World) {
         let mut function = FunctionId(regs[0] as u32);
         function.clear_sve_hint();
@@ -101,6 +106,10 @@ impl Service for Rmmd {
             RMM_BOOT_COMPLETE => {
                 info!("Realm boot completed with code 0x{:x}", regs[1]);
                 (rmm_boot_complete(regs[1] as i32), World::NonSecure)
+            }
+            RMM_RMI_REQ_COMPLETE => {
+                let forwarded_regs: [u64; 17] = regs[1..].try_into().unwrap();
+                (forwarded_regs.into(), World::NonSecure)
             }
             _ => (NOT_SUPPORTED.into(), World::Realm),
         }
