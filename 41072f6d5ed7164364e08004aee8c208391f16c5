@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "490c0a14_25ae6d7b",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-30T10:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18378f2b_7531c8a9",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ae2510_42bb915f",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-29T17:38:35Z",
       "side": 1,
       "message": "Move these to the top of the file, with the other `static` variables.",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a006353_041475e7",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-30T10:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ae2510_42bb915f",
       "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -69,6 +105,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e1f5d87_0576f78b",
+        "filename": "secure_test_framework/src/gicv3.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-30T10:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d95300_70209740",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65af36b9_6a05fe81",
@@ -86,6 +140,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ca2d98_a7a35420",
+        "filename": "secure_test_framework/src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-30T10:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65af36b9_6a05fe81",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2443d33_cae7439d",
@@ -99,6 +171,24 @@
       "writtenOn": "2025-09-29T17:38:35Z",
       "side": 1,
       "message": "How does the GIC know which interrupts should be secure and which should be non-secure? Is it just that the configuration in S-EL2 takes priority over configuration from NS-EL2?",
+      "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ffa9f38_37e77cbe",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-09-30T10:52:29Z",
+      "side": 1,
+      "message": "Normal world can only access the registers of Group1NS interrupts. If an interrupt is configured as secure (Group0 or Group1S), the normal world reads the associated registers or bits of registers as zero and writes are ignored. The normal world cannot change the group assignment of the interrupts. The secure world can lift some of these restrictions by the `GICD_NSACR` register.\nSince the secure world boots first it can claim its interrupts by configuring them as Group0 or Group1S. Secure partitions can specify their interrupts in the SP manifest, so the interrupt assignment happens when the SPMC initializes the SPs.",
+      "parentUuid": "c2443d33_cae7439d",
       "revId": "41072f6d5ed7164364e08004aee8c208391f16c5",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
