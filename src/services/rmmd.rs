@@ -2,12 +2,57 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+use core::ptr::slice_from_raw_parts_mut;
+
 use crate::{
     context::World,
     info,
-    services::{Service, owns},
+    layout::{rmm_shared_end, rmm_shared_start},
+    platform::{Platform, PlatformImpl},
+    services::{
+        Service, owns,
+        rmmd::manifest::{ManifestList, RmmBootManifest, RmmConsoleInfo},
+    },
     smccc::{FunctionId, NOT_SUPPORTED, OwningEntityNumber, SmcReturn},
 };
+
+pub mod manifest;
+
+pub fn rme_prepare() {
+    let shared_base = rmm_shared_start();
+    let shared_end = rmm_shared_end();
+
+    // Safety: this memory region was allocated during page table initialization. It is not accessed
+    // outside of RMMD or the R-EL2 payload, thus it is ensured that this reference is unique.
+    let buf =
+        unsafe { &mut *slice_from_raw_parts_mut(shared_base as *mut u8, shared_end - shared_base) };
+
+    let manifest = RmmBootManifest::new(
+        buf,
+        PlatformImpl::RMM_NS_DRAM_COUNT,
+        PlatformImpl::RMM_CONSOLE_COUNT + 1,
+        PlatformImpl::RMM_NCOH_REGION_COUNT,
+        PlatformImpl::RMM_COH_REGION_COUNT,
+        PlatformImpl::RMM_SMMU_COUNT,
+        PlatformImpl::RMM_ROOT_COMPLEX,
+    );
+
+    PlatformImpl::rme_prepare_manifest(manifest);
+
+    manifest.plat_console.as_slice_mut()[PlatformImpl::RMM_CONSOLE_COUNT] = RmmConsoleInfo {
+        // Value from the pl011_uart crate.
+        base: 0x1C09_0000,
+
+        // Values from TF-A.
+        map_pages: 0x1,
+        name: [0x70, 0x6c, 0x30, 0x31, 0x31, 0x0, 0x0, 0x0], // "pl011"
+        clk_in_hz: 0x00e1_0000,
+        baud_rate: 0x1c200,
+        flags: 0,
+    };
+
+    info!("RME Boot Manifest ready: {manifest:#x?}")
+}
 
 const RMM_BOOT_COMPLETE: u32 = 0xC400_01CF;
 
