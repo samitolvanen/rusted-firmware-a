@@ -25,6 +25,8 @@ use crate::{
     },
     sysregs::{IccSre, MpidrEl1, SctlrEl3, Spsr, read_mpidr_el1, read_sctlr_el3, write_cntfrq_el0},
 };
+#[cfg(feature = "rme")]
+use crate::{layout::rmm_shared_start, services::rmmd::manifest::RmmBootManifest};
 use aarch64_paging::paging::{MemoryRegion, VirtualAddress};
 use arm_fvp_base_pac::{
     Cci550Map, MemoryMap, Peripherals, PhysicalInstance,
@@ -102,14 +104,13 @@ const NT_FW_CONFIG_ADDRESS: u64 = 0x8000_0000;
 const HW_CONFIG_ADDRESS: u64 = 0x07f0_0000;
 const HW_CONFIG_ADDRESS_NS: u64 = 0x8200_0000;
 
-// TODO: Use the correct values here (see services/std_svc/rmmd/rmmd_main.c).
 /// Version of the RMM Boot Interface.
 #[cfg(feature = "rme")]
-const RMM_BOOT_VERSION: u64 = 0;
+const RMM_BOOT_VERSION: u64 = 0x4;
 /// Base address for the EL3 - RMM shared area. The boot manifest should be stored at the beginning
 /// of this area.
 #[cfg(feature = "rme")]
-const RMM_SHARED_AREA_BASE_ADDRESS: u64 = 0;
+const RMM_SHARED_AREA_BASE_ADDRESS: u64 = rmm_shared_start() as u64;
 
 /// Secure timers' interrupt IDs.
 const SEL2_TIMER_ID: IntId = IntId::ppi(4);
@@ -150,6 +151,25 @@ pub struct Fvp;
 unsafe impl Platform for Fvp {
     const CORE_COUNT: usize = PLATFORM_CORE_COUNT;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
+    const PAGE_HEAP_PAGE_COUNT: usize = 6;
+
+    #[cfg(feature = "rme")]
+    const RMM_NS_DRAM_COUNT: usize = 2;
+
+    #[cfg(feature = "rme")]
+    fn rme_prepare_manifest(manifest: &mut RmmBootManifest) {
+        use crate::services::rmmd::manifest::{ManifestList, RmmMemoryBank};
+
+        // TODO: These addresses should be parsed from FW_CONFIG
+        manifest.plat_dram.as_slice_mut()[0] = RmmMemoryBank {
+            base: NT_FW_CONFIG_ADDRESS,
+            size: 0x7c00_0000,
+        };
+        manifest.plat_dram.as_slice_mut()[1] = RmmMemoryBank {
+            base: 0x0008_8000_0000,
+            size: 0x0000_8000_0000,
+        };
+    }
 
     type LogSinkImpl = LockedWriter<Uart<'static>>;
     type PsciPlatformImpl = FvpPsciPlatformImpl<'static>;
