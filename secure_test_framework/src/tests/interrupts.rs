@@ -4,6 +4,8 @@
 
 //! Tests for interrupt handling and forwarding.
 
+#[cfg(not(platform = "fvp"))]
+use crate::util::timer::SEL2Timer;
 use crate::{
     framework::{
         TestHelperProxy, TestHelperRequest, TestHelperResponse, normal_world_test,
@@ -12,7 +14,7 @@ use crate::{
     gicv3::set_interrupt_handler,
     util::{
         current_el,
-        timer::{NonSecureTimer, SEL1Timer, SEL2Timer, Timer},
+        timer::{NonSecureTimer, SEL1Timer, Timer},
     },
 };
 use arm_ffa::Interface;
@@ -68,7 +70,7 @@ fn helper_timer_interrupt_status_response(timer_handled: bool) -> TestHelperResp
 /// On the other hand, the world switch test calls:
 /// - the main loop in the non-secure world,
 /// - this helper in the secure world.
-/// (World switch happens when TestHelperProxy is called).
+///   (World switch happens when TestHelperProxy is called).
 fn timer_helper<TIMER: Timer>(request: TestHelperRequest) -> Result<TestHelperResponse, ()> {
     let [phase, ..] = request;
 
@@ -137,9 +139,10 @@ fn secure_timer_helper(ns_world_request: TestHelperRequest) -> Result<TestHelper
         {
             log::warn!("SEL2 timer test skipped!");
             // This is ugly, but will be removed soon when we fix the test for FVP.
-            return Ok([1, 0, 0, 0]);
+            Ok([1, 0, 0, 0])
         }
 
+        #[cfg(not(platform = "fvp"))]
         timer_helper::<SEL2Timer>(ns_world_request)
     } else {
         timer_helper::<SEL1Timer>(ns_world_request)
