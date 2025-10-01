@@ -111,6 +111,30 @@
       },
       "revId": "6d6e6e1996b015146dc7789bd364724a6c492de9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34acd85f_c038c15b",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 18
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-01T09:38:29Z",
+      "side": 1,
+      "message": "okay, thanks for fixing that!",
+      "parentUuid": "58006e54_5beab6e9",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 1
+      },
+      "revId": "6d6e6e1996b015146dc7789bd364724a6c492de9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
