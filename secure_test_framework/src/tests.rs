@@ -7,4 +7,5 @@
 mod ffa_spmd;
 mod interrupts;
 mod psci;
+mod rmi;
 mod smccc_arch;
