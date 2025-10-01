@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "badffaa5_69969550",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 26
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-01T13:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76174c41_43017cd5",
+      "revId": "336b6c1b7b7147ae92f259956ea57b2ba0385153",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad0513c8_0f5eb369",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-01T13:34:24Z",
       "side": 1,
       "message": "Why does this need to take `self`?",
+      "revId": "336b6c1b7b7147ae92f259956ea57b2ba0385153",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8488d869_c596301e",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 26
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-01T13:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad0513c8_0f5eb369",
       "revId": "336b6c1b7b7147ae92f259956ea57b2ba0385153",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
