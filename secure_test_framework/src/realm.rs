@@ -34,6 +34,9 @@ const SUPPORTED_RMM_VERSION: RmmBootManifestVersion = RmmBootManifestVersion::ne
 const SUPPORTED_RMM_MANIFEST_VERSION: RmmBootManifestVersion = RmmBootManifestVersion::new(0, 8);
 
 const RMM_BOOT_COMPLETE: u64 = 0xC400_01CF;
+const RMM_RMI_REQ_COMPLETE: u64 = 0xC400_018F;
+const RMM_RMI_REQ_VERSION: u64 = 0xC400_0150;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 struct RmmBootManifestVersion(u32);
 impl RmmBootManifestVersion {
@@ -69,10 +72,53 @@ fn complete_boot(ret: RmmBootReturn) -> ! {
     // Sends a RMM_BOOT_COMPLETED SMC to notify the Root World that RMM has booted.
     let mut args: [u64; 17] = [0; 17];
     args[0] = ret;
-    smc64(RMM_BOOT_COMPLETE as u32, args);
+    let regs = smc64(RMM_BOOT_COMPLETE as u32, args);
 
-    // TODO: handle RMI calls originating from NS world.
-    todo!()
+    handle_incoming_calls(regs)
+}
+
+/// Infinite loop to handle RMI calls coming from NS World.
+fn handle_incoming_calls(mut regs: [u64; 18]) -> ! {
+    info!("Received RMI call for FID 0x{:X}", regs[0]);
+
+    loop {
+        let ret = handle_rmi_call(&regs);
+
+        regs = smc64(RMM_RMI_REQ_COMPLETE as u32, ret);
+    }
+}
+
+/// Handles a single RMI call from NS world.
+fn handle_rmi_call(regs: &[u64]) -> [u64; 17] {
+    match regs[0] {
+        RMM_RMI_REQ_VERSION => rmi_version(regs),
+        _ => {
+            let mut ret = [0; 17];
+            ret[0] = u64::MAX;
+            ret
+        }
+    }
+}
+
+fn rmi_version(args: &[u64]) -> [u64; 17] {
+    let mut ret = [0; 17];
+
+    let requested = RmmBootManifestVersion(args[1] as u32);
+    info!(
+        "Received RMM_RMI_REQ_VERSION for v{}.{}",
+        requested.major(),
+        requested.minor()
+    );
+
+    ret[0] = if args[1] == SUPPORTED_RMM_VERSION.0 as u64 {
+        0
+    } else {
+        1
+    };
+    ret[1] = SUPPORTED_RMM_VERSION.0 as u64;
+    ret[2] = SUPPORTED_RMM_VERSION.0 as u64;
+
+    ret
 }
 
 fn validate_args(pe_idx: u64, version: u64, core_count: u64, shared_buffer_addr: u64) {
