@@ -8,3 +8,6 @@ mod ffa_spmd;
 mod interrupts;
 mod psci;
 mod smccc_arch;
+
+#[cfg(feature = "rme")]
+mod rmi;
