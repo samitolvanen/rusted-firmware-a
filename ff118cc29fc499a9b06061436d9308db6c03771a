@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a58e7d9_0c3030ef",
+        "filename": "Cargo.toml",
+        "patchSetId": 26
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-01T12:02:45Z",
+      "side": 1,
+      "message": "Let\u0027s make this `0.7.1` as well, the same as the main dependency above.",
+      "revId": "ff118cc29fc499a9b06061436d9308db6c03771a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03bcedb_a90ff2c4",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 26
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-01T12:02:45Z",
+      "side": 1,
+      "message": "Typo: continuously",
+      "range": {
+        "startLine": 202,
+        "startChar": 43,
+        "endLine": 202,
+        "endChar": 55
+      },
+      "revId": "ff118cc29fc499a9b06061436d9308db6c03771a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d13835_b0ed9463",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 26
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-01T12:02:45Z",
+      "side": 1,
+      "message": "Typo: continuously",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 55
+      },
+      "revId": "ff118cc29fc499a9b06061436d9308db6c03771a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
