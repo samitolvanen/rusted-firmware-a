@@ -10,7 +10,7 @@ use spin::mutex::{SpinMutex, SpinMutexGuard};
 
 const PAGE_SIZE: usize = 4096;
 
-const HEAP_SIZE: usize = 1 * PAGE_SIZE;
+const HEAP_SIZE: usize = PAGE_SIZE;
 static HEAP: SpinMutex<[u8; HEAP_SIZE]> = SpinMutex::new([0; HEAP_SIZE]);
 
 #[global_allocator]
