@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3ca71f_9792dd95",
+        "filename": "arm-sysregs/src/aarch64.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-02T13:55:00Z",
+      "side": 1,
+      "message": "can we standardize the naming?\n\nI mean modifying the macro so that when we call\n```\nread_sysreg!(actlr_el3, u64)\n```\nit generates `read_actlr_el3`\n\nand if the compiler does not recognize some register name, then we can declare e.g.\n```\nread_sysreg!(s3_0_c5_c3_1, u16, errselr_el1);\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 49
+      },
+      "revId": "ca719a1b882bd6de7866854513ef605a19904f69",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
