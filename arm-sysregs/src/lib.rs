@@ -11,35 +11,38 @@ mod aarch64;
 #[cfg(any(test, feature = "fakes"))]
 pub mod fake;
 
+#[doc(hidden)]
+pub use paste as _paste;
+
 use bitflags::bitflags;
 
-/// Generates public functions named `$read_function_name` and `$write_function_name` to read or
-/// write (respectively) a value of type `$type` from/to the system register `$sysreg`.
+/// Generates public functions named `read_$sysreg` and `write_$sysreg` to read or write
+/// (respectively) a value of type `$type` from/to the system register `$sysreg`.
 ///
 /// `safe` should only be specified for system registers which are indeed safe to read from or write
 /// any value to.
 #[macro_export]
 macro_rules! read_write_sysreg {
-    ($sysreg:ident, $type:ty, safe $read_function_name:ident, safe $write_function_name:ident $(, $fake_sysregs:expr)?) => {
-        $crate::read_sysreg!($sysreg, $type, safe $read_function_name $(, $fake_sysregs)?);
-        $crate::write_sysreg!($sysreg, $type, safe $write_function_name $(, $fake_sysregs)?);
+    ($sysreg:ident, $type:ty, safe, safe $(, $fake_sysregs:expr)?) => {
+        $crate::read_sysreg!($sysreg, $type, safe $(, $fake_sysregs)?);
+        $crate::write_sysreg!($sysreg, $type, safe $(, $fake_sysregs)?);
     };
-    ($sysreg:ident, $type:ty, safe $read_function_name:ident, $write_function_name:ident $(, $fake_sysregs:expr)?) => {
-        $crate::read_sysreg!($sysreg, $type, safe $read_function_name $(, $fake_sysregs)?);
-        $crate::write_sysreg!($sysreg, $type, $write_function_name $(, $fake_sysregs)?);
+    ($sysreg:ident, $type:ty, safe $(, $fake_sysregs:expr)?) => {
+        $crate::read_sysreg!($sysreg, $type, safe $(, $fake_sysregs)?);
+        $crate::write_sysreg!($sysreg, $type, $(, $fake_sysregs)?);
     };
-    ($sysreg:ident, $raw_type:ty : $type:ty, safe $read_function_name:ident, safe $write_function_name:ident $(, $fake_sysregs:expr)?) => {
-        $crate::read_sysreg!($sysreg, $raw_type : $type, safe $read_function_name $(, $fake_sysregs)?);
-        $crate::write_sysreg!($sysreg, $raw_type : $type, safe $write_function_name $(, $fake_sysregs)?);
+    ($sysreg:ident, $raw_type:ty : $type:ty, safe, safe $(, $fake_sysregs:expr)?) => {
+        $crate::read_sysreg!($sysreg, $raw_type : $type, safe $(, $fake_sysregs)?);
+        $crate::write_sysreg!($sysreg, $raw_type : $type, safe $(, $fake_sysregs)?);
     };
     (
         $(#[$attributes:meta])*
-        $sysreg:ident, $raw_type:ty : $type:ty, safe $read_function_name:ident, $write_function_name:ident $(, $fake_sysregs:expr)?
+        $sysreg:ident, $raw_type:ty : $type:ty, safe $(, $fake_sysregs:expr)?
     ) => {
-        $crate::read_sysreg!($sysreg, $raw_type : $type, safe $read_function_name $(, $fake_sysregs)?);
+        $crate::read_sysreg!($sysreg, $raw_type : $type, safe $(, $fake_sysregs)?);
         $crate::write_sysreg! {
             $(#[$attributes])*
-            $sysreg, $raw_type : $type, $write_function_name $(, $fake_sysregs)?
+            $sysreg, $raw_type : $type $(, $fake_sysregs)?
         }
     };
 }
@@ -108,7 +111,7 @@ impl MpidrEl1 {
     }
 }
 
-read_sysreg!(mpidr_el1, u64: MpidrEl1, safe read_mpidr_el1, fake::SYSREGS);
+read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
 
 #[cfg(test)]
 mod tests {
