@@ -8,13 +8,12 @@ use crate::{
     aarch64::{dsb_sy, isb},
     context::{CoresImpl, World},
     platform::{Platform, PlatformImpl},
-    sysregs::{IccSre, ScrEl3, write_icc_sre_el1, write_icc_sre_el3},
 };
 use arm_gic::{
     IntId, Trigger,
     gicv3::{GICRError, GicV3, Group, InterruptGroup, registers::GicdCtlr},
 };
-use arm_sysregs::MpidrEl1;
+use arm_sysregs::{IccSre, MpidrEl1, ScrEl3, write_icc_sre_el1, write_icc_sre_el3};
 use log::debug;
 use percore::Cores;
 use spin::{Once, mutex::SpinMutex};
