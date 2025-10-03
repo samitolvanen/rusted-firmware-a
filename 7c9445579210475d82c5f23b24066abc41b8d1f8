@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c052c769_d9e7bbe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-03T10:21:44Z",
+      "side": 1,
+      "message": "This should instead be moved into a dedicated repository under the arm-firmware-crates namespace. arm-gic has very similar macros for the CPU interface registers and other projects like rust-spmc would also benefit from a separate sysregs crate.\nWhat\u0027s the reason for not moving the actual register definitions into arm-sysregs?",
+      "revId": "7c9445579210475d82c5f23b24066abc41b8d1f8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
