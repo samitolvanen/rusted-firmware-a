@@ -39,6 +39,48 @@
       "message": "Would be nice to include an explanation of this parameter in the comment above. As far as I understand, it\u0027s the expression to replace that with when mocking this module, right? The amount of repetition in the code below related to it makes me think that maybe the responsibility for mocking should be on some other module, but I can\u0027t think of a better way of doing this tbh.",
       "revId": "ca719a1b882bd6de7866854513ef605a19904f69",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7266fe_01df8f1c",
+        "filename": "arm-sysregs/src/aarch64.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-03T10:06:18Z",
+      "side": 1,
+      "message": "No, it\u0027s just the name of the function to generate, and it is mentioned in the doc comment. But see my reply to Mateusz\u0027s comment below, this is going away.",
+      "parentUuid": "e7864399_15e47c87",
+      "revId": "ca719a1b882bd6de7866854513ef605a19904f69",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb540a18_dda7a0d9",
+        "filename": "arm-sysregs/src/aarch64.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-03T10:06:18Z",
+      "side": 1,
+      "message": "I thought it wasn\u0027t possible because of macro hygiene, but apparently it is. Done in a separate change: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/43783",
+      "parentUuid": "6c3ca71f_9792dd95",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 49
+      },
+      "revId": "ca719a1b882bd6de7866854513ef605a19904f69",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
