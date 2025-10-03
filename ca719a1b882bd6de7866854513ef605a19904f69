@@ -81,6 +81,24 @@
       },
       "revId": "ca719a1b882bd6de7866854513ef605a19904f69",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ac4105_9734d2d3",
+        "filename": "arm-sysregs/src/aarch64.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-10-03T10:20:13Z",
+      "side": 1,
+      "message": "Ah, sorry, I meant the `$fake_sysregs`, but it\u0027s clear enough what the purpose is when reading fake.rs.",
+      "parentUuid": "1d7266fe_01df8f1c",
+      "revId": "ca719a1b882bd6de7866854513ef605a19904f69",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
