@@ -16,6 +16,24 @@
       "message": "This should instead be moved into a dedicated repository under the arm-firmware-crates namespace. arm-gic has very similar macros for the CPU interface registers and other projects like rust-spmc would also benefit from a separate sysregs crate.\nWhat\u0027s the reason for not moving the actual register definitions into arm-sysregs?",
       "revId": "7c9445579210475d82c5f23b24066abc41b8d1f8",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc5534ba_42074ffb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-03T10:31:58Z",
+      "side": 1,
+      "message": "That\u0027s the eventual plan, I\u0027m just doing it in several steps. I don\u0027t think it makes sense to move it to a separate repository until I have support for aarch32 and a much wider set of system registers, and have thought more carefully about what API makes sense for other projects.\n\nI\u0027m working on a change to move our existing system register definitions to the new crate, I\u0027ll send it out soon. The steps are roughly:\n\n1. Move the existing macros to a separate crate within the RF-A repository (this change).\n2. Refactoring to clean up and improve how the macros work.\n3. Move existing register definitions to the new crate.\n4. Add support for aarch32. This is required for `arm-gic`.\n5. Think carefully about safety and how the API is structured. In RF-A we\u0027ve made most of the system register accessors for lower ELs safe because they don\u0027t affect the memory safety of our EL3 code, but that isn\u0027t necessarily correct from the point of view of code running in EL2 or EL1.\n5. Look into generating bitflags and other things automatically from the system register XML files provided by Arm.\n6. Create new repository under arm-firmware-crates and move the code there.\n7. Publish it, and use it in arm-gic and other crates.",
+      "parentUuid": "c052c769_d9e7bbe2",
+      "revId": "7c9445579210475d82c5f23b24066abc41b8d1f8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
