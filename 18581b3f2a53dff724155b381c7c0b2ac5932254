@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c2ccb2_c246ab3b",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000206
+      },
+      "writtenOn": "2025-10-04T01:16:06Z",
+      "side": 1,
+      "message": "Just driving by, but I\u0027m curious about the workflow that demanded this change. Couldn\u0027t you just do `PATH\u003d\"/my/toolchain/path:${PATH}\" make`?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 1
+      },
+      "revId": "18581b3f2a53dff724155b381c7c0b2ac5932254",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
