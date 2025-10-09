@@ -76,3 +76,15 @@ macro_rules! expect_ffa_interface {
     };
 }
 pub(crate) use expect_ffa_interface;
+
+/// This macro wraps a naked_asm block with `bti`, or any other universal
+/// prologue we'd still like added.
+///
+/// Use this over `core::arch::naked_asm` by default, otherwise you may
+/// need to ensure that e.g. `bti` landing pads are in place yourself.
+macro_rules! naked_asm {
+    ($($templates:literal),* $(,$var:ident = $mid:ident $rhs:expr)*) => {
+       ::core::arch::naked_asm!("bti", $($templates),* $(,$var = $mid $rhs)*)
+    }
+}
+pub(crate) use naked_asm;
