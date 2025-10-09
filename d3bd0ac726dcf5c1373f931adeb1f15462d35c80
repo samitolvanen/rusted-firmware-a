@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8543ae7_3c59e4c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-10-09T23:43:36Z",
+      "side": 1,
+      "message": "`naked_asm!` itself is fine, as it does not take on the role of providing a prologue. I\u0027ve taken care of this in a follow-up patch.\n\n(`global_asm!` was working because I hooked your function-declaration macro).",
+      "parentUuid": "465400fc_6209c50f",
+      "revId": "d3bd0ac726dcf5c1373f931adeb1f15462d35c80",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4344a647_2cfc760f",
