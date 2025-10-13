@@ -1,0 +1,10 @@
+Verified+1: ci-bot
+Code-Review+2: Andrew Walbran <qwandor@google.com>
+Unsafe-Review+1: Andrew Walbran <qwandor@google.com>
+Code-Review+1: Sandrine Afsa <sandrine.afsa@arm.com>
+Submitted-by: Sandrine Afsa <sandrine.afsa@arm.com>
+Submitted-at: Mon, 13 Oct 2025 11:47:07 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/43382
+Comments-Total: 4
+Project: RF-A/rusted-firmware-a
+Branch: refs/heads/main
