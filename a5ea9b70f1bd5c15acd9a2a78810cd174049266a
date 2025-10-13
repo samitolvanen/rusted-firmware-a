@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18100e9d_403d622a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-13T14:59:22Z",
+      "side": 1,
+      "message": "We should make all of these types `#[repr(transparent)]`.",
+      "revId": "a5ea9b70f1bd5c15acd9a2a78810cd174049266a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
