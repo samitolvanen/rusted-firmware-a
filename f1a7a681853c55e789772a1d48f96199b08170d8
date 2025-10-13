@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f024a13b_81210423",
+        "filename": "build-and-run.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-10-13T09:59:14Z",
+      "side": 1,
+      "message": "I guess we need this in the CI scripts as well. Do you have a patch for that?\nHow come the CI is passing without this? Is it out of luck?",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 45
+      },
+      "revId": "f1a7a681853c55e789772a1d48f96199b08170d8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
