@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a413701b_8e4d848d",
+        "filename": "src/aarch64.rs",
+        "patchSetId": 41
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-13T11:27:12Z",
+      "side": 1,
+      "message": "From our discussion last week, I think we came to the conclusion that we should never run Rust code with caches disabled, so this function should only be called from assembly.",
+      "revId": "cb3ef4a5da092bdd7ca7211b934bc76f5a71398e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4ecdc7_60d28c03",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 41
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-13T11:27:12Z",
+      "side": 1,
+      "message": "Typo: because",
+      "range": {
+        "startLine": 15,
+        "startChar": 81,
+        "endLine": 15,
+        "endChar": 88
+      },
+      "revId": "cb3ef4a5da092bdd7ca7211b934bc76f5a71398e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f61eb0f_656756e0",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 41
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-13T11:27:12Z",
+      "side": 1,
+      "message": "Typo, here and below: predictable",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "cb3ef4a5da092bdd7ca7211b934bc76f5a71398e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
