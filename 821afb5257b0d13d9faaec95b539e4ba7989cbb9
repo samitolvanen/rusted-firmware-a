@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0d44f4_789cf0d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-10-13T14:09:57Z",
+      "side": 1,
+      "message": "Might be worth saying in the commit message that we are enabling BTI both in RF-A and STF payloads. Therefore, we test BTI at EL3 itself, and we test that RF-A correctly allowed lower ELs to use BTI for themselves as well.",
+      "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d2d7453a_a41416e6",
@@ -14,6 +31,52 @@
       "writtenOn": "2025-10-10T14:38:55Z",
       "side": 1,
       "message": "RUN_CI",
+      "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37cbcc0_f84b0ef6",
+        "filename": "src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-10-13T14:09:57Z",
+      "side": 1,
+      "message": "I thought the bti variant (`c`/`j`/`cj`) was a mandatory operand for the `bti` instruction.... If that\u0027s not the case (?), then what is the default variant used here? I could not find this info in the doc.",
+      "range": {
+        "startLine": 205,
+        "startChar": 37,
+        "endLine": 205,
+        "endChar": 40
+      },
+      "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14c1ba4_a19bfc8d",
+        "filename": "src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-10-13T14:09:57Z",
+      "side": 1,
+      "message": "(minor) Spurious tab, replace with spaces.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 1
+      },
       "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
