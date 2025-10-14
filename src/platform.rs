@@ -96,6 +96,10 @@ pub unsafe trait Platform {
 
     const SVE_VECTOR_LEN: usize = 128;
 
+    const ENABLE_NS_SME: bool = false;
+
+    const CTX_SWITCH_SVE_SME: bool = false;
+
     /// The number of pages to reserve for the page heap.
     const PAGE_HEAP_PAGE_COUNT: usize = 5;
 
