@@ -6,8 +6,7 @@
 
 mod platforms;
 
-use platforms::{PLATFORMS, get_builder};
-use rf_a_bl31_build::configure_build;
+use platforms::PLATFORMS;
 use std::env;
 
 fn main() {
@@ -17,10 +16,6 @@ fn main() {
     );
 
     if env::var("CARGO_CFG_TARGET_OS").unwrap() == "none" {
-        let platform = env::var("CARGO_CFG_PLATFORM").expect("Missing platform name");
-
-        let platform_builder = get_builder(&platform).unwrap();
-
-        configure_build(&*platform_builder);
+        env::var("CARGO_CFG_PLATFORM").expect("Missing platform name");
     }
 }
