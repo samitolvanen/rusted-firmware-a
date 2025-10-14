@@ -44,6 +44,7 @@ use core::{
     ptr::{null, null_mut},
 };
 use percore::{Cores, ExceptionFree, ExceptionLock, PerCore};
+use spin::Once;
 
 /// The number of contexts to store for each CPU core, one per security state.
 const CPU_DATA_CONTEXT_NUM: usize = if cfg!(feature = "rme") { 3 } else { 2 };
@@ -473,9 +474,9 @@ impl El2Sysregs {
 /// Registers whose values can be shared across CPUs.
 #[derive(Clone, Debug, Default)]
 #[repr(C)]
-struct PerWorldContext {
-    cptr_el3: CptrEl3,
-    zcr_el3: u64,
+pub struct PerWorldContext {
+    pub cptr_el3: CptrEl3,
+    pub zcr_el3: u64,
 }
 
 impl PerWorldContext {
@@ -608,6 +609,24 @@ pub fn cpu_state(token: ExceptionFree) -> RefMut<CpuState> {
     CPU_STATE.get().borrow_mut(token)
 }
 
+/// Initialises the per-world contexts.
+pub fn initialise_per_world_contexts() {
+    const ONCE: Once = Once::new();
+
+    ONCE.call_once(|| {
+        #[allow(static_mut_refs)]
+        {
+            // SAFETY: This is called only once during cold boot, so there are no races.
+            let per_world = unsafe { &mut PER_WORLD_CONTEXT };
+
+            for ext in PlatformImpl::CPU_EXTENSIONS {
+                ext.configure_per_world(World::Secure, &mut per_world[World::Secure]);
+                ext.configure_per_world(World::NonSecure, &mut per_world[World::NonSecure]);
+            }
+        }
+    });
+}
+
 /// Initialises all CPU contexts for this CPU, ready for first boot.
 pub fn initialise_contexts(
     non_secure_entry_point: &EntryPointInfo,
@@ -670,6 +689,11 @@ fn initialise_nonsecure(context: &mut CpuContext, entry_point: &EntryPointInfo) 
     context.el3_state.scr_el3 |= ScrEl3::NS;
 
     gicv3::set_routing_model(&mut context.el3_state.scr_el3, World::NonSecure);
+
+    // Configure CPU extensions for the non-secure world.
+    for ext in PlatformImpl::CPU_EXTENSIONS {
+        ext.configure_per_cpu(World::NonSecure, context);
+    }
 }
 
 /// Initialises the given CPU context ready for booting S-EL2 or S-EL1.
@@ -681,6 +705,11 @@ fn initialise_secure(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     context.el3_state.scr_el3 |= ScrEl3::ST;
 
     gicv3::set_routing_model(&mut context.el3_state.scr_el3, World::Secure);
+
+    // Configure CPU extensions for the secure world.
+    for ext in PlatformImpl::CPU_EXTENSIONS {
+        ext.configure_per_cpu(World::Secure, context);
+    }
 }
 
 /// Initialises the given CPU context ready for booting Realm world
@@ -689,6 +718,8 @@ fn initialise_realm(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     initialise_common(context, entry_point);
     // SCR_NS + SCR_NSE = Realm state
     context.el3_state.scr_el3 |= ScrEl3::NS | ScrEl3::NSE;
+
+    // TODO: CPU extensions?
     // TODO: FIQ and IRQ routing model.
 }
 
