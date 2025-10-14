@@ -94,6 +94,8 @@ pub unsafe trait Platform {
     /// TODO: what if a platform wants to explicitly DISABLE an extension instead?
     const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension];
 
+    const SVE_VECTOR_LEN: usize = 128;
+
     /// The number of pages to reserve for the page heap.
     const PAGE_HEAP_PAGE_COUNT: usize = 5;
 
