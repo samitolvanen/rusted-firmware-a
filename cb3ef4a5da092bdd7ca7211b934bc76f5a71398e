@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "260ee3b5_7ec1eca8",
+        "filename": "src/aarch64.rs",
+        "patchSetId": 41
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-14T11:32:37Z",
+      "side": 1,
+      "message": "This is true for all the flush functions as well, however the current FVP version (with the aem_generic CPU) uses all of these. I put the functions here, because in C TF-A the qemu_max CPU also relies on these functions.\nIf the Qemu platform doesn\u0027t need these steps, I can move them from the generic part of RF-A into aem_generic.rs. When we switch to a new FVP we can remove aem_generic.rs altogether.\nI also noticed that the `QemuPsciPlatformImpl::power_domain_power_down_wfi` disables the MMU. We shouldn\u0027t need do that either.",
+      "parentUuid": "a413701b_8e4d848d",
+      "revId": "cb3ef4a5da092bdd7ca7211b934bc76f5a71398e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d4ecdc7_60d28c03",
         "filename": "src/cpu/aem_generic.rs",
         "patchSetId": 41
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-13T11:27:12Z",
       "side": 1,
       "message": "Typo: because",
+      "range": {
+        "startLine": 15,
+        "startChar": 81,
+        "endLine": 15,
+        "endChar": 88
+      },
+      "revId": "cb3ef4a5da092bdd7ca7211b934bc76f5a71398e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2707e5d5_26a23584",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 41
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-14T11:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4ecdc7_60d28c03",
       "range": {
         "startLine": 15,
         "startChar": 81,
@@ -54,6 +96,30 @@
       "writtenOn": "2025-10-13T11:27:12Z",
       "side": 1,
       "message": "Typo, here and below: predictable",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "cb3ef4a5da092bdd7ca7211b934bc76f5a71398e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a34b8f_179ca8b6",
+        "filename": "src/cpu/aem_generic.rs",
+        "patchSetId": 41
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-14T11:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f61eb0f_656756e0",
       "range": {
         "startLine": 32,
         "startChar": 45,
