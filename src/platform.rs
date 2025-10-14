@@ -93,6 +93,8 @@ pub unsafe trait Platform {
     /// The CPU extensions enabled by this platform.
     const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension];
 
+    const SVE_VECTOR_LEN: usize = 128;
+
     /// The number of pages to reserve for the page heap.
     const PAGE_HEAP_PAGE_COUNT: usize = 5;
 
