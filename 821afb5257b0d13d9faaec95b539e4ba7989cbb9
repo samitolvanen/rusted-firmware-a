@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0cd7b32d_aa05cc8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-10-14T18:12:06Z",
+      "side": 1,
+      "message": "Added to original BTI commit\u0027s commit message.",
+      "parentUuid": "ed0d44f4_789cf0d0",
+      "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d2d7453a_a41416e6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -58,6 +76,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba46ebc_2d03b9f0",
+        "filename": "src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-10-14T18:12:06Z",
+      "side": 1,
+      "message": "It\u0027s not a mandatory argument - it encodes as a `bti` with `00` set. I *think* but have not verified that the behavior is that if you perform an indirect jump that allows either c or j targets then it works.\n\nThis was an oversight on my part though, I intended to write `bti c`, and have amended it.",
+      "parentUuid": "a37cbcc0_f84b0ef6",
+      "range": {
+        "startLine": 205,
+        "startChar": 37,
+        "endLine": 205,
+        "endChar": 40
+      },
+      "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b14c1ba4_a19bfc8d",
@@ -71,6 +113,30 @@
       "writtenOn": "2025-10-13T14:09:57Z",
       "side": 1,
       "message": "(minor) Spurious tab, replace with spaces.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 1
+      },
+      "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13664442_67662426",
+        "filename": "src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-10-14T18:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b14c1ba4_a19bfc8d",
       "range": {
         "startLine": 206,
         "startChar": 0,
