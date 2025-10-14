@@ -157,6 +157,12 @@ The unsafe assembly block only contains barrier instructions that does not viola
 The driver provides functions for entering and exiting cache coherency. This requires further actions from the caller that are described in the safety comments.
 """
 
+[[audits.arm-cci]]
+who = "Andrew Walbran <qwandor@google.com>"
+criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
+delta = "0.1.0 -> 0.1.1"
+notes = "No code changes, only metadata."
+
 [[audits.arm-ffa]]
 who = "Andrew Walbran <qwandor@google.com>"
 criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
@@ -208,6 +214,12 @@ notes = """
 The crate uses safe-mmio to access the peripheral registers.
 It provies an unsafe function for generating interrupt, where the required safety conditions are properly described.
 """
+
+[[audits.arm-generic-timer]]
+who = "Andrew Walbran <qwandor@google.com>"
+criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
+delta = "0.1.0 -> 0.1.1"
+notes = "No code changes, only metadata."
 
 [[audits.arm-gic]]
 who = "Jeremi Miller <jeremimiller@google.com>"
@@ -273,6 +285,12 @@ who = "Imre Kis <imre.kis@arm.com>"
 criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
 version = "0.1.1"
 notes = "The crate uses safe-mmio to access the peripheral registers. It does not have any unsafe code."
+
+[[audits.arm-sp805]]
+who = "Andrew Walbran <qwandor@google.com>"
+criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
+delta = "0.1.1 -> 0.1.2"
+notes = "No substantial changes, only a lint fix."
 
 [[audits.autocfg]]
 who = "Andrew Walbran <qwandor@google.com>"
@@ -378,6 +396,12 @@ notes = "No substantial changes."
 who = "Andrew Walbran <qwandor@google.com>"
 criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-2"]
 version = "0.1.0"
+
+[[audits.quote]]
+who = "Andrew Walbran <qwandor@google.com>"
+criteria = ["safe-to-deploy", "does-not-implement-crypto", "ub-risk-0"]
+delta = "1.0.40 -> 1.0.41"
+notes = "Build script just checks the Rust version. Other changes are minor refactoring."
 
 [[audits.rustversion]]
 who = "Imre Kis <imre.kis@arm.com>"
