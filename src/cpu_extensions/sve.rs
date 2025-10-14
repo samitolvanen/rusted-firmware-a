@@ -18,6 +18,23 @@ use core::cell::RefCell;
 use log::info;
 use percore::{ExceptionLock, PerCore};
 
+struct Sme;
+
+impl CpuExtension for Sme {
+    fn init(&self) {
+        // TODO
+    }
+
+    fn configure_per_cpu(&self, _world: World, _context: &mut CpuContext) {
+        // TODO
+    }
+
+    fn configure_per_world(&self, _world: World, ctx: &mut PerWorldContext) {
+        // TODO
+        ctx.cptr_el3 |= CptrEl3::ESM;
+    }
+}
+
 #[repr(C, align(16))]
 pub struct SveCpuContext {
     /// FFR and each of predicates is one-eigth of the SVE vector length
@@ -70,18 +87,38 @@ pub struct Sve;
 // }
 
 impl CpuExtension for Sve {
-    fn configure_per_world(&self, _world: World, ctx: &mut PerWorldContext) {
+    fn init(&self) {
+        if PlatformImpl::ENABLE_NS_SME {
+            &Sme.init();
+        }
+    }
+
+    fn configure_per_world(&self, world: World, ctx: &mut PerWorldContext) {
         ctx.cptr_el3 |= CptrEl3::EZ;
         ctx.cptr_el3 &= !CptrEl3::TFP;
         // TODO: I think zcr_el3 should not be per world.
         ctx.zcr_el3 = (PlatformImpl::SVE_VECTOR_LEN / 128 - 1) as u64;
+
+        if PlatformImpl::ENABLE_NS_SME {
+            &Sme.configure_per_world(world, ctx);
+        }
     }
 
-    fn save_context(&self, _world: World) {
-        // TODO
+    fn save_context(&self, world: World) {
+        if PlatformImpl::CTX_SWITCH_SVE_SME {
+            // TODO:
+            if PlatformImpl::ENABLE_NS_SME {
+                &Sme.save_context(world);
+            }
+        }
     }
 
-    fn restore_context(&self, _world: World) {
-        // TODO
+    fn restore_context(&self, world: World) {
+        if PlatformImpl::CTX_SWITCH_SVE_SME {
+            // TODO
+            if PlatformImpl::ENABLE_NS_SME {
+                &Sme.restore_context(world);
+            }
+        }
     }
 }
