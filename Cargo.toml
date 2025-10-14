@@ -4,7 +4,13 @@
 
 [workspace]
 resolver = "3"
-members = ["rf-a-bl31-build", "secure_test_framework", "arm-sysregs"]
+members = [
+  "arm-sysregs",
+  "fvp-rf-a-bl31",
+  "qemu-rf-a-bl31",
+  "rf-a-bl31-build",
+  "secure_test_framework",
+]
 
 [package]
 name = "rf-a-bl31"

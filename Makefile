@@ -50,8 +50,8 @@ STF_CARGO := RUSTFLAGS="$(TARGET_RUSTFLAGS) -C link-args=-znostart-stop-gc" $(CA
 all: images
 
 build:
-	$(TARGET_CARGO) build $(CARGO_FLAGS) $(RFA_CARGO_FLAGS)
-	ln -fsr target/$(TARGET)/$(BUILDTYPE)/rf-a-bl31 $(BL31_ELF)
+	$(TARGET_CARGO) build --package $(PLAT)-rf-a-bl31 $(CARGO_FLAGS) $(RFA_CARGO_FLAGS)
+	ln -fsr target/$(TARGET)/$(BUILDTYPE)/$(PLAT)-rf-a-bl31 $(BL31_ELF)
 	$(OBJCOPY) $(BL31_ELF) -O binary $(BL31_BIN)
 
 build-stf:
