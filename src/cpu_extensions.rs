@@ -6,6 +6,8 @@
 
 use crate::context::{CpuContext, PerWorldContext, World};
 
+pub mod sve;
+
 /// A trait for managing CPU extensions.
 pub trait CpuExtension {
     /// Checks if the CPU extension is supported by the hardware.
