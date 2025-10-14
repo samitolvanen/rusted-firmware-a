@@ -80,6 +80,10 @@ pub type PlatformServiceImpl = <PlatformImpl as Platform>::PlatformServiceImpl;
 /// `crash_console_flush` must be naked functions which doesn't use the stack, and only clobber the
 /// registers they are documented to clobber.
 ///
+/// The implementations of all functions receiving as parameter the buffer shared between EL3 and
+/// R-EL2 (RMM) must never directly access that buffer other than through the referenced provided
+/// and must not yield into R-EL2.
+///
 /// (These requirements don't apply to the test platform, as it is only used in unit tests.)
 pub unsafe trait Platform {
     /// The number of CPU cores.
@@ -93,6 +97,13 @@ pub unsafe trait Platform {
 
     /// The number of pages to reserve for the page heap.
     const PAGE_HEAP_PAGE_COUNT: usize = 5;
+
+    #[cfg(feature = "rme")]
+    /// Writes a slice of the Realm Attestation Key into the shared buffer. The slice range within
+    /// the Key is `start_index..`, clamped at either the end of the Key or the end of the buffer,
+    /// whichever is shorter.
+    // TODO(firme): pass the requested curve as parameter?
+    fn write_attestion_key_ecc_secp384r1(buf: &mut [u8], start_index: usize) -> Result<usize, ()>;
 
     #[cfg(feature = "rme")]
     /// Count of Non-Secure memory region.
