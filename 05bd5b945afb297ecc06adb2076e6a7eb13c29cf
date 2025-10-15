@@ -34,6 +34,24 @@
       "parentUuid": "32678c7e_f101681d",
       "revId": "05bd5b945afb297ecc06adb2076e6a7eb13c29cf",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55078886_b5431559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-15T13:06:28Z",
+      "side": 1,
+      "message": "In that case I think there should be separate parameters for the human-readable register name and the assembly register name, with the former used to generate the function names. But that\u0027s new functionality, so let\u0027s do it in a separate change when we need it.",
+      "parentUuid": "88e653c1_8bf5bebb",
+      "revId": "05bd5b945afb297ecc06adb2076e6a7eb13c29cf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
