@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32678c7e_f101681d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-15T13:03:24Z",
+      "side": 1,
+      "message": "what if we want to generate accessors for register that is not recognized by the compiler?\n\nwith ToT we can do sth like\n\n```\nwrite_sysreg!(s3_0_c5_c3_1, u16, safe write_errselr_el1);\n```\n\nwhich is (i think??) impossible with this CL",
+      "revId": "05bd5b945afb297ecc06adb2076e6a7eb13c29cf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
