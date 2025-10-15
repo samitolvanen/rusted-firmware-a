@@ -6,11 +6,12 @@ use super::{DummyService, Platform};
 use crate::{
     aarch64::sev,
     context::EntryPointInfo,
-    cpu::Cpu,
-    cpu::define_cpu_ops,
+    cpu::{Cpu, define_cpu_ops},
     gicv3::{Gic, GicConfig},
     logger::{self, LogSink},
-    pagetable::{IdMap, MT_DEVICE, disable_mmu_el3, map_region},
+    pagetable::{
+        IdMap, MT_DEVICE, disable_mmu_el3, early_pagetable::define_early_mapping, map_region,
+    },
     services::{
         arch::WorkaroundSupport,
         psci::{
@@ -41,6 +42,8 @@ const CLUSTERS_PER_SOC: usize = 2;
 const CORES_PER_CLUSTER: usize = 3;
 const CORES_PER_CLUSTER_LAST: usize = 4;
 
+define_early_mapping!([]);
+
 /// A fake platform for unit tests.
 pub struct TestPlatform;
 
@@ -61,7 +64,7 @@ unsafe impl Platform for TestPlatform {
         interrupts_config: &[],
     };
 
-    fn init_before_mmu() {
+    fn init() {
         logger::init(StdOutSink).expect("Failed to initialise logger");
     }
 

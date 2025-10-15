@@ -8,21 +8,27 @@ macro_rules! select_platform {
         mod $mod;
 
         #[cfg(platform = $condition)]
-        pub use $mod::$sub::{CPU_OPS, $plat_impl as PlatformImpl};
+        pub use $mod::$sub::{
+            CPU_OPS, EARLY_PAGE_TABLE_RANGES, EARLY_PAGE_TABLE_SIZE, $plat_impl as PlatformImpl,
+        };
     };
     (platform = $condition:literal, $mod:ident::$plat_impl:ident) => {
         #[cfg(platform = $condition)]
         mod $mod;
 
         #[cfg(platform = $condition)]
-        pub use $mod::{CPU_OPS, $plat_impl as PlatformImpl};
+        pub use $mod::{
+            CPU_OPS, EARLY_PAGE_TABLE_RANGES, EARLY_PAGE_TABLE_SIZE, $plat_impl as PlatformImpl,
+        };
     };
     (test, $mod:ident::$plat_impl:ident) => {
         #[cfg(test)]
         mod $mod;
 
         #[cfg(test)]
-        pub use $mod::{CPU_OPS, $plat_impl as PlatformImpl};
+        pub use $mod::{
+            CPU_OPS, EARLY_PAGE_TABLE_RANGES, EARLY_PAGE_TABLE_SIZE, $plat_impl as PlatformImpl,
+        };
     };
 }
 
@@ -108,7 +114,7 @@ pub unsafe trait Platform {
     /// MMU is enabled.
     ///
     /// Any logs sent before this is called will be ignored.
-    fn init_before_mmu();
+    fn init();
 
     /// Maps device memory and any other regions specific to the platform, before the MMU is
     /// enabled.
