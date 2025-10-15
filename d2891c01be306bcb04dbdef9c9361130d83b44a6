@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f574fa34_31f3eb75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-15T17:27:02Z",
+      "side": 1,
+      "message": "For context, the new struct was added in https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/41390.",
+      "revId": "d2891c01be306bcb04dbdef9c9361130d83b44a6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
