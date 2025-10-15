@@ -39,12 +39,13 @@ use percore::Cores;
 
 #[unsafe(no_mangle)]
 extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
+    pagetable::init();
+
     PlatformImpl::init_before_mmu();
+
     info!("Rust BL31 starting");
     info!("Parameters: {bl31_params:#0x} {platform_params:#0x}");
 
-    // Set up page table.
-    pagetable::init();
     info!("Page table activated.");
 
     // Set up GIC.
@@ -67,7 +68,6 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
 
 #[unsafe(no_mangle)]
 extern "C" fn psci_warmboot_entrypoint() -> ! {
-    pagetable::enable();
     debug!("Warmboot on core #{}", CoresImpl::core_index());
 
     let services = Services::get();

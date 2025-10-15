@@ -55,7 +55,12 @@ global_asm!(
     ".section    .tzfw_normal_stacks, \"aw\", %nobits",
     ".align TZ_COUNT",
     "platform_normal_stacks:",
-    ".space (({PLATFORM_CORE_COUNT}) * ({STACK_SIZE})), 0",
+    ".space (({STACK_SIZE})), 0",
+    ".global early_page_table_start",
+    "early_page_table_start:",
+    ".space (({PLATFORM_CORE_COUNT}) * ({STACK_SIZE} - 1)), 0",
+    ".global early_page_table_end",
+    "early_page_table_end:",
     include_str!("asm_macros_common_purge.S"),
 
     DEBUG = const DEBUG as i32,

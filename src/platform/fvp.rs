@@ -13,7 +13,7 @@ use crate::{
     debug::DEBUG,
     gicv3::{Gic, GicConfig, InterruptConfig},
     logger::{self, LockedWriter},
-    pagetable::{IdMap, MT_DEVICE, map_region},
+    pagetable::{IdMap, MT_DEVICE, MT_MEMORY, early_page_tables::define_early_mapping, map_region},
     services::{
         arch::WorkaroundSupport,
         psci::{
@@ -44,6 +44,7 @@ use arm_sysregs::{MpidrEl1, read_mpidr_el1};
 use core::{
     arch::{global_asm, naked_asm},
     mem::offset_of,
+    ops::Range,
     ptr::NonNull,
 };
 use percore::Cores;
@@ -109,6 +110,13 @@ const RMM_BOOT_VERSION: u64 = 0;
 /// of this area.
 #[cfg(feature = "rme")]
 const RMM_SHARED_AREA_BASE_ADDRESS: u64 = 0;
+
+const REGIONS: [(Range<usize>, usize); 2] = [
+    (0x0400_0000..0x0408_0000, MT_MEMORY.bits()), // Trusted SRAM
+    (0x1c09_0000..0x1c0a_0000, MT_DEVICE.bits()), // UART0
+];
+
+define_early_mapping!(REGIONS);
 
 const fn secure_sgi_configuration(index: u32) -> (IntId, InterruptConfig) {
     (

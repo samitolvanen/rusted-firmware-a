@@ -125,6 +125,9 @@ static PAGE_HEAP: SpinMutex<[PageTable; PlatformImpl::PAGE_HEAP_PAGE_COUNT]> =
     SpinMutex::new([PageTable::EMPTY; PlatformImpl::PAGE_HEAP_PAGE_COUNT]);
 static PAGE_TABLE: Once<SpinMutex<IdMap>> = Once::new();
 
+#[unsafe(no_mangle)]
+static mut PAGE_TABLE_ADDR: usize = 0;
+
 /// Initialises and enables the page table.
 ///
 /// This should be called once early in startup, before anything else that depends on it.
@@ -137,6 +140,11 @@ pub fn init() {
         trace!("Page table: {idmap:?}");
 
         info!("Setting MMU config");
+        unsafe {
+            // Expose page table address, this is still written with device attributes.
+            PAGE_TABLE_ADDR = idmap.root_address().0;
+        }
+
         // SAFETY: We pass the root address of `idmap`, which has just been initialised with
         // appropriate mappings, and will remain valid forever.
         unsafe {
@@ -221,7 +229,7 @@ unsafe fn setup_mmu_cfg(root_address: PhysicalAddress) {
 
     let mut sctlr = read_sctlr_el3();
     // Assert that the MMU is not yet enabled:
-    assert!(!sctlr.contains(SctlrEl3::M));
+    //assert!(!sctlr.contains(SctlrEl3::M));
 
     tlbi_alle3();
     // SAFETY: We enable the MMU with valid and correct configuration parameters MAIR, TCR, and
@@ -354,6 +362,358 @@ mod asm {
         include_str!("asm_macros_common_purge.S"),
         DEBUG = const DEBUG as i32,
     );
+}
+
+pub mod early_page_tables {
+    use crate::{platform::EARLY_PAGE_TABLE_RANGES, sysregs::SctlrEl3};
+
+    #[derive(Debug)]
+    #[repr(C)]
+    pub struct DescriptorRange {
+        /// Index of the descriptor in the flattened page table array.
+        index: usize,
+        /// This field is split into two by the granule size mask. The upper part is the step value
+        /// that is added to each descriptor value. The lower part is the count of the consecutive
+        /// block descriptors.
+        /// It is 0 for table descriptors.
+        step_count: usize,
+        /// Descriptor base value. For table descriptor it contains the offset of the next level table
+        /// in the page table array.
+        value: usize,
+    }
+
+    pub const fn build_ranges<const N: usize>(
+        regions: &[(Range<usize>, usize)],
+    ) -> ([DescriptorRange; N], usize) {
+        let mut ranges = [const {
+            DescriptorRange {
+                index: 0,
+                value: 0,
+                step_count: 0,
+            }
+        }; N];
+
+        let (entry_count, _) =
+            build_page_table_ranges(regions, &mut ranges, 0, 0, 0, 0x4000_0000, 4, 4096);
+
+        (ranges, entry_count)
+    }
+
+    /// const usize min
+    const fn min(a: usize, b: usize) -> usize {
+        if a < b { a } else { b }
+    }
+
+    /// const usize max
+    const fn max(a: usize, b: usize) -> usize {
+        if a > b { a } else { b }
+    }
+
+    /// const overlap check between two `Range<usize>`.
+    const fn overlaps(a: &Range<usize>, b: &Range<usize>) -> bool {
+        max(a.start, b.start) < min(a.end, b.end)
+    }
+
+    /// Builds DescriptorRanges from memory regions recursively.
+    ///
+    /// * regions: input memory regions and their attributes
+    /// * ranges: output ranges
+    /// * output_index: next index to be used in ranges
+    /// * start_entry: index of the first descriptor in the flattened page table array
+    /// * block_base_address: base VA of the current level page table
+    /// * block_size: size of the blocks in the current level page table
+    /// * descriptor_count: descriptor size at the current level page table
+    /// * granule_size: granule size
+    const fn build_page_table_ranges(
+        regions: &[(Range<usize>, usize)],
+        ranges: &mut [DescriptorRange],
+        mut output_index: usize,
+        start_entry: usize,
+        block_base_address: usize,
+        block_size: usize,
+        descriptor_count: usize,
+        granule_size: usize,
+    ) -> (usize, usize) {
+        let mut used_entry_count = granule_size / 8;
+        let mut descriptor_index = 0;
+
+        // Looping the descriptors of the current table.
+        loop {
+            if descriptor_index >= descriptor_count {
+                break;
+            }
+
+            let block = (block_base_address + descriptor_index * block_size)
+                ..(block_base_address + (descriptor_index + 1) * block_size);
+
+            // Loop each address range and check if the descriptor
+            let mut region_index = 0;
+            loop {
+                if region_index >= regions.len() {
+                    break;
+                }
+
+                let range = &regions[region_index].0;
+                let attr = regions[region_index].1;
+
+                if range.start <= block.start && block.end <= range.end {
+                    // The block is fully covered by a region, insert block descriptor.
+
+                    // Calculate description repetition count.
+                    let repeat_count = min(
+                        (range.end - block.end) / block_size,
+                        descriptor_count - descriptor_index,
+                    );
+
+                    let lsb = if granule_size == block_size {
+                        0b11
+                    } else {
+                        0b01
+                    };
+
+                    ranges[output_index] = DescriptorRange {
+                        index: (descriptor_index + start_entry) * 8,
+                        step_count: block_size | (repeat_count + 1),
+                        value: block.start | attr | lsb,
+                    };
+
+                    descriptor_index += repeat_count;
+                    output_index += 1;
+                    break;
+                } else if overlaps(&block, range) {
+                    // There's a region that overlaps with the block but with a smaller granule, make it
+                    // into a table descriptor.
+                    let next_descriptor_count = granule_size / 8;
+                    assert!(block_size / next_descriptor_count >= granule_size);
+
+                    ranges[output_index] = DescriptorRange {
+                        index: (descriptor_index + start_entry) * 8,
+                        step_count: 0,
+                        value: ((start_entry + used_entry_count) * 8) | 0b11,
+                    };
+
+                    // Create next level table.
+                    let (new_entry_count, new_output_index) = build_page_table_ranges(
+                        regions,
+                        ranges,
+                        output_index + 1,
+                        start_entry + used_entry_count,
+                        block.start,
+                        block_size / next_descriptor_count,
+                        next_descriptor_count,
+                        granule_size,
+                    );
+
+                    output_index = new_output_index;
+                    used_entry_count += new_entry_count;
+                    break;
+                }
+
+                region_index += 1;
+            }
+
+            descriptor_index += 1;
+        }
+        (used_entry_count, output_index)
+    }
+
+    /// Calculates the necessary DescriptorRanges for a given region list in const time.
+    pub const fn get_range_entry_count(
+        regions: &[(Range<usize>, usize)],
+        block_base_address: usize,
+        block_size: usize,
+        descriptor_count: usize,
+        granule_size: usize,
+    ) -> usize {
+        let mut count = 0;
+
+        let mut descriptor_index = 0;
+        loop {
+            if descriptor_index >= descriptor_count {
+                break;
+            }
+
+            let block = (block_base_address + descriptor_index * block_size)
+                ..(block_base_address + (descriptor_index + 1) * block_size);
+
+            let mut region_index = 0;
+            loop {
+                if region_index >= regions.len() {
+                    break;
+                }
+
+                let range = &regions[region_index].0;
+
+                if range.start <= block.start && block.end <= range.end {
+                    // The block is fully covered by a region, insert block descriptor.
+
+                    // Calculate description repetition count.
+                    descriptor_index += min(
+                        (range.end - block.end) / block_size,
+                        descriptor_count - descriptor_index,
+                    );
+
+                    count += 1;
+                    break;
+                } else if overlaps(&block, range) {
+                    // There's a region that overlaps with the block but with a smaller granule, make it
+                    // into a table descriptor.
+                    let next_descriptor_count = granule_size / 8;
+                    assert!(block_size / next_descriptor_count >= granule_size);
+
+                    count += get_range_entry_count(
+                        regions,
+                        block.start,
+                        block_size / next_descriptor_count,
+                        next_descriptor_count,
+                        granule_size,
+                    ) + 1;
+                    break;
+                }
+
+                region_index += 1;
+            }
+
+            descriptor_index += 1;
+        }
+        count
+    }
+
+    macro_rules! define_early_mapping {
+        ($regions:expr) => {
+            pub static EARLY_PAGE_TABLE_RANGES: (
+                [$crate::pagetable::early_page_tables::DescriptorRange;
+                    $crate::pagetable::early_page_tables::get_range_entry_count(
+                        &$regions,
+                        0,
+                        0x4000_0000,
+                        4,
+                        4096,
+                    )],
+                usize,
+            ) = $crate::pagetable::early_page_tables::build_ranges(&$regions);
+        };
+    }
+
+    use core::ops::Range;
+
+    pub(crate) use define_early_mapping;
+
+    #[cfg(target_arch = "aarch64")]
+    #[unsafe(naked)]
+    #[unsafe(no_mangle)]
+    pub extern "C" fn init_early_page_tables() {
+        core::arch::naked_asm!(
+            "/* x0 = RANGES start */
+            ldr	x0, ={ranges}
+
+            /* x1 = RANGES end */
+            ldr	x1, =({ranges} + ({ranges_size} * {ranges_count}))
+
+            /* x2 = table base address */
+            ldr x2, =early_page_table_start
+
+        1:
+            /* x3 = range.index and x4 = range.step_count, x5 = range.value */
+            ldp x3, x4, [x0, #{index_step_count_offset}];
+            ldr x5, [x0, #{value_offset}]
+
+            /* If step_count is zero, the entry is a table descriptor. */
+            cbz	x4, 3f
+
+            /* Block descriptors */
+
+            /* x4 = step, x6 = index + (count * 8) */
+            and x6, x4, #{count_mask}
+            sub x4, x4, x6
+            lsl x6, x6, #3
+            add x6, x3, x6
+
+        2:
+            /* Block descriptor loop */
+
+            /* *(table_base + index) = range.value */
+            str x5, [x2, x3]
+
+            /* index += 8 */
+            add x3, x3, #8
+
+            /* index != end_index */
+            cmp x3, x6
+            b.eq 4f
+
+            /* range.value += step */
+            add x5, x5, x4
+            b 2b
+
+        3:
+            /* Table descriptor */
+
+            /* *(table_base + index) = table_base + range.value */
+            add x5, x2, x5
+            str x5, [x2, x3]
+
+        4:
+            /* range += sizeof(DescriptorRange) */
+            add	x0, x0, #{ranges_size}
+
+            /* Check end of list */
+            cmp	x0, x1
+            b.ne	1b
+
+            /* Instruction and data barrier */
+            isb
+            dsb sy
+
+            ret",
+            ranges = sym EARLY_PAGE_TABLE_RANGES,
+            ranges_size = const core::mem::size_of::<DescriptorRange>(),
+            ranges_count = const EARLY_PAGE_TABLE_RANGES.0.len(),
+            index_step_count_offset = const core::mem::offset_of!(DescriptorRange, index),
+            value_offset = const core::mem::offset_of!(DescriptorRange, value),
+            count_mask = const 0xfff,
+        );
+    }
+
+    #[cfg(target_arch = "aarch64")]
+    #[unsafe(naked)]
+    #[unsafe(no_mangle)]
+    pub extern "C" fn enable_early_mmu() {
+        core::arch::naked_asm!(
+            "tlbi alle3
+
+            ldr x0, ={mair}
+            msr mair_el3, x0
+
+            ldr x0, ={tcr}
+            msr tcr_el3, x0
+
+            ldr x0, =early_page_table_start
+            msr ttbr0_el3, x0
+
+            dsb ish
+            isb
+
+            mrs x1, sctlr_el3
+
+            ldr x0, ={sctlr_set}
+            orr x1, x1, x0
+            ldr x0, ={sctlr_clear}
+            and x1, x1, x0
+
+            msr sctlr_el3, x1
+
+            isb
+            ret",
+            mair = const super::MAIR.0,
+            tcr = const {
+                (0b101 << 16) // 48 bit physical address size (256 TiB).
+            | (64 - 32) // Size offset is 2**32 bytes (4 GiB).
+            },
+            sctlr_set = const { SctlrEl3::M.bits() | SctlrEl3::C.bits() },
+            sctlr_clear = const { !SctlrEl3::WXN.bits() },
+        )
+    }
 }
 
 #[cfg(test)]

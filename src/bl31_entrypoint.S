@@ -237,6 +237,15 @@ func bl31_entrypoint
 	 */
 	bl	plat_set_my_stack
 
+        /* Early page table setup */
+        ldr     x0, =early_page_table_start
+        ldr     x1, =early_page_table_end
+        sub     x1, x1, x0
+        bl      zeromem
+
+        bl init_early_page_tables
+        bl enable_early_mmu
+
         mov     x0, x20
         mov     x1, x21
         mov     x2, x22
@@ -400,6 +409,31 @@ func bl31_warm_entrypoint
 	 * ---------------------------------------------------------------------
 	 */
 	bl	plat_set_my_stack
+
+        /* enable page table */
+
+        tlbi alle3
+
+        ldr x0, =0x21002063
+        msr mair_el3, x0
+
+        ldr x0, =((5 << 16) | (64 - 39))
+        msr tcr_el3, x0
+
+        ldr x0, =PAGE_TABLE_ADDR
+        ldr x0, [x0]
+        msr ttbr0_el3, x0
+
+        dsb ish
+        isb
+
+        mrs x1, sctlr_el3
+
+        ldr x0, =(5 + (1 << 19))
+        orr x1, x1, x0
+        msr sctlr_el3, x1
+
+        isb
 
         // TODO: gpt_enable for RME to set up sysregs?
 
