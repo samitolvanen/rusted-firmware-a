@@ -52,6 +52,24 @@
       "parentUuid": "88e653c1_8bf5bebb",
       "revId": "05bd5b945afb297ecc06adb2076e6a7eb13c29cf",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe85011_1643b253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-15T15:26:38Z",
+      "side": 1,
+      "message": "Done in https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/44154.",
+      "parentUuid": "55078886_b5431559",
+      "revId": "05bd5b945afb297ecc06adb2076e6a7eb13c29cf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
