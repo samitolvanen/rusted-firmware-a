@@ -100,6 +100,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50282dd5_493bac8f",
+        "filename": "src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-10-15T07:23:48Z",
+      "side": 1,
+      "message": "I see, thank you.",
+      "parentUuid": "aba46ebc_2d03b9f0",
+      "range": {
+        "startLine": 205,
+        "startChar": 37,
+        "endLine": 205,
+        "endChar": 40
+      },
+      "revId": "821afb5257b0d13d9faaec95b539e4ba7989cbb9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b14c1ba4_a19bfc8d",
