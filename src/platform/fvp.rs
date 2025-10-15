@@ -14,7 +14,7 @@ use crate::{
     gicv3::{Gic, GicConfig, InterruptConfig},
     logger::{self, LockedWriter},
     naked_asm,
-    pagetable::{IdMap, MT_DEVICE, map_region},
+    pagetable::{IdMap, MT_DEVICE, MT_MEMORY, early_pagetable::define_early_mapping, map_region},
     platform::CpuExtension,
     services::{
         arch::WorkaroundSupport,
@@ -42,11 +42,7 @@ use arm_gic::{
 use arm_pl011_uart::{Uart, UniqueMmioPointer};
 use arm_psci::{EntryPoint, ErrorCode, HwState, Mpidr, PowerState};
 use arm_sysregs::{IccSre, MpidrEl1, Spsr, read_mpidr_el1, write_cntfrq_el0};
-use core::{
-    arch::global_asm,
-    mem::offset_of,
-    ptr::NonNull,
-};
+use core::{arch::global_asm, mem::offset_of, ops::Range, ptr::NonNull};
 use percore::Cores;
 use spin::mutex::SpinMutex;
 
@@ -110,6 +106,13 @@ const RMM_BOOT_VERSION: u64 = 0;
 /// of this area.
 #[cfg(feature = "rme")]
 const RMM_SHARED_AREA_BASE_ADDRESS: u64 = 0;
+
+const EARLY_REGIONS: [(Range<usize>, usize); 2] = [
+    (0x0400_0000..0x0408_0000, MT_MEMORY.bits()), // Trusted SRAM
+    (0x1c09_0000..0x1c0a_0000, MT_DEVICE.bits()), // UART0
+];
+
+define_early_mapping!(EARLY_REGIONS);
 
 const fn secure_sgi_configuration(index: u32) -> (IntId, InterruptConfig) {
     (
@@ -179,7 +182,7 @@ unsafe impl Platform for Fvp {
 
     const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension] = &[];
 
-    fn init_before_mmu() {
+    fn init() {
         let peripherals = Peripherals::take().unwrap();
 
         let uart_pointer = map_peripheral(peripherals.uart0);
