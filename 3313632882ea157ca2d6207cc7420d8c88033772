@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117ad650_3947a68c",
+        "filename": "build-and-run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-15T16:48:04Z",
+      "side": 1,
+      "message": "I believe you can omit all the above, as this is implicit by line 102.",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 40
+      },
+      "revId": "3313632882ea157ca2d6207cc7420d8c88033772",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df38869e_eb9fdccb",
+        "filename": "build-and-run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-15T16:48:04Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "3313632882ea157ca2d6207cc7420d8c88033772",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}

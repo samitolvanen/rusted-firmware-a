@@ -189,6 +189,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04789a45_269948db",
+        "filename": "build-and-run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-15T16:48:04Z",
+      "side": 1,
+      "message": "I believe this is ok with v9.1 or v9.2. We could bump to higher version but you may start facing issues because of arch extensions not yet enabled.\n\nCurrent change will inherit branch_target_exception after a rebase, as mentioned change is now merged upstream.",
+      "parentUuid": "992335ff_3ef774b1",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "80fe54a67c2411e084267ba7893960c2d5acefbd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04449901_02aeac62",
