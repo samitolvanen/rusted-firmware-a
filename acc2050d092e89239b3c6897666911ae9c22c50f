@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0143322e_8504f683",
+        "filename": "src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T10:21:33Z",
+      "side": 1,
+      "message": "Or just move them down after the platform initialises the logger.",
+      "parentUuid": "59346512_511d2c47",
+      "revId": "acc2050d092e89239b3c6897666911ae9c22c50f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08a471df_f1dc3e65",
         "filename": "src/main.rs",
         "patchSetId": 1
