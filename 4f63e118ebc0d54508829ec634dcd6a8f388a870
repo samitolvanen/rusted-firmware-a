@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f258100_264c7a63",
+        "filename": "src/context.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-16T13:22:34Z",
+      "side": 1,
+      "message": "this function corresponds to `cm_manage_extensions_el3` in C TFA. So I think its safe to do the initialization in Rust.\n\nPAuth setup used to be done early in asm (up to TFA 2.12), but it was moved to `cm_manage_extensions_el3` and this function now has `no_pauth` attribute.",
+      "parentUuid": "a99d39a8_9cffb65d",
+      "revId": "4f63e118ebc0d54508829ec634dcd6a8f388a870",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "495caad7_45558a71",
         "filename": "src/context.rs",
         "patchSetId": 5
@@ -65,6 +83,24 @@
       "writtenOn": "2025-10-15T16:42:59Z",
       "side": 1,
       "message": "Is that a generic component, or platform-specific?",
+      "revId": "4f63e118ebc0d54508829ec634dcd6a8f388a870",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a16295_a7f31c8c",
+        "filename": "src/context.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-16T13:22:34Z",
+      "side": 1,
+      "message": "this is a generic component. In fact, RFA does this setup in bl31_entrypoint.S and its copypasted for the cold and warm boot paths. \n\nInitializing PMU in Rust should reduce the amount of startup asm significantly.",
+      "parentUuid": "495caad7_45558a71",
       "revId": "4f63e118ebc0d54508829ec634dcd6a8f388a870",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
