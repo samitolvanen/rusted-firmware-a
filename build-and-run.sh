@@ -132,11 +132,7 @@ case "$PLAT" in
         # layout file.
         make PLAT=fvp ${DEBUG} CARGO="${CARGO}" BTI_EL3=${BTI_EL3} all
         make -C $TFA PLAT=fvp ${DEBUG} FVP_TRUSTED_SRAM_SIZE=512 SPD=spmd SPMD_SPM_AT_SEL2=0 \
-<<<<<<< HEAD
-            BL31="$(pwd)/target/bl31.bin" BL32="$(pwd)/target/bl32.bin" BL33="$(pwd)/target/bl33.bin" CTX_INCLUDE_AARCH32_REGS=0 all fip
-=======
             BL31="$BL31" BL32="$BL32" BL33="$BL33" all fip
->>>>>>> c782f9e (feat: add payload for R-EL2 & build instructions)
         FVP_Base_RevC-2xAEMvA \
             -C cluster0.has_arm_v9-0=1 \
             -C cluster1.has_arm_v9-0=1 \

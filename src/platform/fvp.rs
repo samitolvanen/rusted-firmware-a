@@ -25,6 +25,11 @@ use crate::{
     },
     sysregs::{IccSre, Spsr, write_cntfrq_el0},
 };
+#[cfg(feature = "rme")]
+use crate::{
+    layout::rmm_shared_start,
+    services::rmmd::manifest::{ManifestList, RmmBootManifest, RmmConsoleInfo, RmmMemoryBank},
+};
 use aarch64_paging::paging::{MemoryRegion, VirtualAddress};
 use arm_fvp_base_pac::{
     MemoryMap, Peripherals, PhysicalInstance,
@@ -42,11 +47,7 @@ use arm_gic::{
 use arm_pl011_uart::{Uart, UniqueMmioPointer};
 use arm_psci::{EntryPoint, ErrorCode, HwState, Mpidr, PowerState};
 use arm_sysregs::{MpidrEl1, read_mpidr_el1};
-use core::{
-    arch::global_asm,
-    mem::offset_of,
-    ptr::NonNull,
-};
+use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
 use percore::Cores;
 use spin::mutex::SpinMutex;
 
@@ -102,14 +103,13 @@ const NT_FW_CONFIG_ADDRESS: u64 = 0x8000_0000;
 const HW_CONFIG_ADDRESS: u64 = 0x07f0_0000;
 const HW_CONFIG_ADDRESS_NS: u64 = 0x8200_0000;
 
-// TODO: Use the correct values here (see services/std_svc/rmmd/rmmd_main.c).
 /// Version of the RMM Boot Interface.
 #[cfg(feature = "rme")]
-const RMM_BOOT_VERSION: u64 = 0;
+const RMM_BOOT_VERSION: u64 = 0x4;
 /// Base address for the EL3 - RMM shared area. The boot manifest should be stored at the beginning
 /// of this area.
 #[cfg(feature = "rme")]
-const RMM_SHARED_AREA_BASE_ADDRESS: u64 = 0;
+const RMM_SHARED_AREA_BASE_ADDRESS: u64 = rmm_shared_start() as u64;
 
 const fn secure_sgi_configuration(index: u32) -> (IntId, InterruptConfig) {
     (
@@ -156,6 +156,37 @@ pub struct Fvp;
 unsafe impl Platform for Fvp {
     const CORE_COUNT: usize = PLATFORM_CORE_COUNT;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
+    const PAGE_HEAP_PAGE_COUNT: usize = 6;
+
+    #[cfg(feature = "rme")]
+    const RMM_SHARED_BUFFER_START: usize = 0xffbf_f000;
+
+    #[cfg(feature = "rme")]
+    fn rme_prepare_manifest(buf: &mut [u8]) {
+        let manifest = RmmBootManifest::new(buf, 2, 1, 0, 0, 0, &[]);
+
+        // TODO: These addresses should be parsed from FW_CONFIG
+        manifest.plat_dram.as_slice_mut()[0] = RmmMemoryBank {
+            base: NT_FW_CONFIG_ADDRESS,
+            size: 0x7c00_0000,
+        };
+        manifest.plat_dram.as_slice_mut()[1] = RmmMemoryBank {
+            base: 0x0008_8000_0000,
+            size: 0x0000_8000_0000,
+        };
+
+        manifest.plat_console.as_slice_mut()[0] = RmmConsoleInfo {
+            // Value from the pl011_uart crate.
+            base: 0x1C09_0000,
+
+            // Values from TF-A.
+            map_pages: 0x1,
+            name: [0x70, 0x6c, 0x30, 0x31, 0x31, 0x0, 0x0, 0x0], // "pl011"
+            clk_in_hz: 0x00e1_0000,
+            baud_rate: 0x1c200,
+            flags: 0,
+        };
+    }
 
     type LogSinkImpl = LockedWriter<Uart<'static>>;
     type PsciPlatformImpl = FvpPsciPlatformImpl<'static>;
