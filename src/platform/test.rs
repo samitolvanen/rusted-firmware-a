@@ -65,6 +65,14 @@ unsafe impl Platform for TestPlatform {
     ) -> Result<usize, ()> {
         Ok(0)
     }
+    #[cfg(feature = "rme")]
+    fn write_attestation_token(
+        _buf: &mut [u8],
+        _hash: &[u8],
+        _start_index: usize,
+    ) -> Result<(usize, usize), ()> {
+        Ok((0, 0))
+    }
 
     type LogSinkImpl = StdOutSink;
     type PsciPlatformImpl = TestPsciPlatformImpl;
