@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdd3cc3_df95db13",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "Is this the right place for a platform dependent constant?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716530ab_e9664b6f",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "Should core_count be validated before pe_idx?",
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb56fa84_4d60c232",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "Would it be fair casting RmmBootManifest to the shared buffer and access the version field from the structure?",
+      "range": {
+        "startLine": 118,
+        "startChar": 51,
+        "endLine": 118,
+        "endChar": 66
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fded60_144f133c",
+        "filename": "src/layout.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "This is FVP platform specific, should there be a way to make it platform defined?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84054ab8_eaf6ed75",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "Add a TODO this will have to change to Realm PAS region.",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 21
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a7beb65_3d720ead",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "Should it preferably use usize?",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb6e47c4_cb5cfd70",
+        "filename": "src/services.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "Should this be moved at top?",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 51
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8148e40d_035f6d6b",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-16T09:24:14Z",
+      "side": 1,
+      "message": "This is platform specific",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 26
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
