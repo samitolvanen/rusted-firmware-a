@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e8a038_b76b931a",
+        "filename": "build-and-run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T07:58:08Z",
+      "side": 1,
+      "message": "Indeed. That\u0027s weird because I encountered an issue where I had to enable multiple of these flags, but I can\u0027t reproduce it now.",
+      "parentUuid": "117ad650_3947a68c",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 40
+      },
+      "revId": "3313632882ea157ca2d6207cc7420d8c88033772",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df38869e_eb9fdccb",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-15T16:48:04Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "3313632882ea157ca2d6207cc7420d8c88033772",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ab7b2b_aa719b47",
+        "filename": "build-and-run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T07:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df38869e_eb9fdccb",
       "range": {
         "startLine": 103,
         "startChar": 1,
