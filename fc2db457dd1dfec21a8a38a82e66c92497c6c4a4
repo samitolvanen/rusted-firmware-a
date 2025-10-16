@@ -1,0 +1,374 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f3a767_cb8d1eff",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Where does this number come from? Pass it in as a constant from the Rust code instead.",
+      "range": {
+        "startLine": 417,
+        "startChar": 17,
+        "endLine": 417,
+        "endChar": 27
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95caeee2_c058c142",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Pass this constant in from Rust too.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13023969_6aa241e3",
+        "filename": "src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "This is no longer \u0027before MMU\u0027, so let\u0027s just call it `init`.",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d005e23_1b3b1c08",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Rather than using `no_mangle`, can we pass this in as a symbol parameter to the `global_asm!`?",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7f9b408_fea29612",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "What do you mean by device attributes? The early page table should be enabled by this point, so the image should be mapped as normal memory. I guess this means you need to do a cache flush after this write to ensure that secondary CPUs can see the value before enabling their page tables.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d22509_b38b3b7c",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "We\u0027re doing this from assembly on secondary CPUs, so maybe we should just use the same codepath for the primary CPU cold boot as well to avoid duplication.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15472007_eec0a8e5",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Just delete this line and comment entirely.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be91c3cc_bd65c774",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Let\u0027s move this module to a separate file.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ccf43b_067fc84e",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Please add a doc comment for this struct. You might also want to derive `Clone` and `Eq` for unit tests.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a774b9f_83b26ed5",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Please add some unit tests for this function, and a doc comment.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f627b2f3_15fffcb9",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Where do these constants come from?",
+      "range": {
+        "startLine": 397,
+        "startChar": 67,
+        "endLine": 397,
+        "endChar": 87
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575da72a_69c25cd7",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Please add some unit tests for this too.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291ee892_f9ef6886",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "There seems to be a lot of duplication between this function and `build_page_table_ranges`, is there any way to reuse the logic? `len()` on arrays is a const function, if that helps.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b63b3c8_5bdca656",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Let\u0027s define a struct for this rather than just using a pair.",
+      "range": {
+        "startLine": 584,
+        "startChar": 48,
+        "endLine": 584,
+        "endChar": 49
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad6de12_41b623a3",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Where do these numbers come from? Are they platform-dependent?",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de409f93_47c48d21",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Move this import to the top of the module.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8077de6f_774ef64f",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Please be consistent about spaces vs. tabs between instructions and their parameters.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a348ab41_d98b4536",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Let\u0027s call this something like `EARLY_REGIONS` to distinguish it from the main page table mappings.",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60cc1bf_036af322",
+        "filename": "src/stacks.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Add a comment here explaining that we are reusing the secondary core stack space for the early page table to save memory, and that that is valid because the early page table is only used during cold boot on the primary core before any secondary cores start.\n\nThough, is it guaranteed that the cold boot core is always core 0?",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedf50fa_1edff653",
+        "filename": "src/stacks.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-16T11:17:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be (PLATFORM_CORE_COUNT - 1) * STACK_SIZE, not the other way around?",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
