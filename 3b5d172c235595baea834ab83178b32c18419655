@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04ea5c39_277b216f",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bdd3cc3_df95db13",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "716530ab_e9664b6f",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c942e8c7_d8e817b9",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "TRP does it in this order. Although, it explicitly checks that `core_count \u003e pe_idx` before allocating a stack (ergo in the first ASM instructions of the entrypoint), but I\u0027m not sure to understand why it is relevant.",
+      "parentUuid": "716530ab_e9664b6f",
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb56fa84_4d60c232",
         "filename": "secure_test_framework/src/realm.rs",
         "patchSetId": 5
@@ -54,6 +96,30 @@
       "writtenOn": "2025-10-16T09:24:14Z",
       "side": 1,
       "message": "Would it be fair casting RmmBootManifest to the shared buffer and access the version field from the structure?",
+      "range": {
+        "startLine": 118,
+        "startChar": 51,
+        "endLine": 118,
+        "endChar": 66
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013e3894_f8c91d8b",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb56fa84_4d60c232",
       "range": {
         "startLine": 118,
         "startChar": 51,
@@ -87,6 +153,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0d1cfc_368e4500",
+        "filename": "src/layout.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27fded60_144f133c",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84054ab8_eaf6ed75",
@@ -100,6 +190,30 @@
       "writtenOn": "2025-10-16T09:24:14Z",
       "side": 1,
       "message": "Add a TODO this will have to change to Realm PAS region.",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 21
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c5396d_cc0487a3",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84054ab8_eaf6ed75",
       "range": {
         "startLine": 210,
         "startChar": 8,
@@ -133,6 +247,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f32029d_ce76eba2",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "Actually this is only used in one place, I\u0027ll just get rid of it.",
+      "parentUuid": "5a7beb65_3d720ead",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb6e47c4_cb5cfd70",
@@ -156,6 +294,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2435f6fd_2b2a4a52",
+        "filename": "src/services.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb6e47c4_cb5cfd70",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 51
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8148e40d_035f6d6b",
@@ -169,6 +331,30 @@
       "writtenOn": "2025-10-16T09:24:14Z",
       "side": 1,
       "message": "This is platform specific",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 26
+      },
+      "revId": "3b5d172c235595baea834ab83178b32c18419655",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ad2903_e3df2777",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-16T12:08:14Z",
+      "side": 1,
+      "message": "Alright, I moved the whole manifest initialization logic to `Platform::rme_prepare_manifest` then. That way we avoid all the constant values like `RMM_NS_DRAM_COUNT` in `Platform`. \n\nI also removed the sorting mechanism, since the `PlatformImpl` is now sole responsible for the content of the manifest and can take care of initializing the entries in the correct order.",
+      "parentUuid": "8148e40d_035f6d6b",
       "range": {
         "startLine": 71,
         "startChar": 7,
