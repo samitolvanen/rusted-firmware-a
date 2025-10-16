@@ -104,11 +104,12 @@ pub unsafe trait Platform {
     /// Service that handles platform-specific SMC calls.
     type PlatformServiceImpl: Service;
 
-    /// Initialises the logger and anything else the platform needs. This will be called before the
-    /// MMU is enabled.
+    /// Initialises the logger and anything else the platform needs to initialise early in the boot
+    /// process, immediately after MMU initialisation. No Rust code is allowed to run before MMU is
+    /// initialised.
     ///
     /// Any logs sent before this is called will be ignored.
-    fn init_before_mmu();
+    fn init();
 
     /// Maps device memory and any other regions specific to the platform, before the MMU is
     /// enabled.

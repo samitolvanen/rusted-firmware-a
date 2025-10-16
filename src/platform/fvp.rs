@@ -177,7 +177,7 @@ unsafe impl Platform for Fvp {
         ],
     };
 
-    fn init_before_mmu() {
+    fn init() {
         let peripherals = Peripherals::take().unwrap();
 
         let uart_pointer = map_peripheral(peripherals.uart0);

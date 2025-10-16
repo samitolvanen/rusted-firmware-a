@@ -134,7 +134,7 @@ unsafe impl Platform for Qemu {
         interrupts_config: &[],
     };
 
-    fn init_before_mmu() {
+    fn init() {
         // SAFETY: `PL011_BASE_ADDRESS` is the base address of a PL011 device, and nothing else
         // accesses that address range. The address remains valid after turning on the MMU
         // because of the identity mapping of the `DEVICE1` region.
