@@ -63,7 +63,7 @@ fn bl33_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
 
     // Test what happens if we try a much higher version.
     let spmc_supported_ffa_version = ffa::version(HIGH_FFA_VERSION).expect("FFA_VERSION failed");
-    info!("SPMC supports FF-A version {}", spmc_supported_ffa_version);
+    info!("SPMC supports FF-A version {spmc_supported_ffa_version}");
     assert!(spmc_supported_ffa_version >= FFA_VERSION);
     assert!(spmc_supported_ffa_version < HIGH_FFA_VERSION);
     // Negotiate the FF-A version we actually support. This must happen before any other FF-A calls.
@@ -123,14 +123,14 @@ fn bl33_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
         );
         match send_request(Request::RunSecureTest { test_index }) {
             Ok(Response::Success { .. }) => {
-                info!("Secure world test {} passed", test_index);
+                info!("Secure world test {test_index} passed");
                 passing_secure_test_count += 1;
             }
             Ok(Response::Failure) => {
-                warn!("Secure world test {} failed", test_index);
+                warn!("Secure world test {test_index} failed");
             }
             Ok(Response::Panic) => {
-                warn!("Secure world test {} panicked", test_index);
+                warn!("Secure world test {test_index} panicked");
                 // We can't continue running other tests after one panics.
                 break;
             }
@@ -161,14 +161,14 @@ fn send_request(request: Request) -> Result<Response, ()> {
         args,
     } = result
     else {
-        warn!("Unexpected response {:?}", result);
+        warn!("Unexpected response {result:?}");
         return Err(());
     };
     assert_eq!(src_id, SECURE_WORLD_ID);
     assert_eq!(dst_id, NORMAL_WORLD_ID);
 
     Response::try_from(args).map_err(|e| {
-        warn!("{}", e);
+        warn!("{e}");
     })
 }
 
@@ -178,7 +178,7 @@ fn call_test_helper(test_index: usize, args: [u64; 3]) -> Result<[u64; 4], ()> {
     match send_request(Request::RunTestHelper { test_index, args })? {
         Response::Success { return_value } => Ok(return_value),
         Response::Failure => {
-            warn!("Secure world test helper {} failed", test_index);
+            warn!("Secure world test helper {test_index} failed");
             Err(())
         }
         Response::Panic => {
@@ -191,7 +191,7 @@ fn call_test_helper(test_index: usize, args: [u64; 3]) -> Result<[u64; 4], ()> {
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    error!("{}", info);
+    error!("{info}");
     let _ = psci::system_off::<Smc>();
     loop {}
 }
