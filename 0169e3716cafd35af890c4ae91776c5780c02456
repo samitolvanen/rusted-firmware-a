@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74313756_6907d464",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-16T14:14:27Z",
+      "side": 1,
+      "message": "It breaks because `arm-pl011-uart` is a dependency of both RF-A and `arm-fvp-base-pac` and these has to be update in once step. At some point we should resolve this issue by either removing the direct uart dependency from RF-A or by coming up with a different approach. The same problem can happen with `arm-gic` too.",
+      "revId": "0169e3716cafd35af890c4ae91776c5780c02456",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
