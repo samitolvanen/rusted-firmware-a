@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cced395_20f58b96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-16T14:11:01Z",
+      "side": 1,
+      "message": "We still have exemptions for zerocopy/zerocopy-derive 0.8.26 in supply-chain/config.toml. Could you please remove them as well?",
+      "revId": "90bc918e3740646cc873c7946db71d40222ac864",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
