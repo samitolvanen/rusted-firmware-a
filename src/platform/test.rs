@@ -62,7 +62,7 @@ unsafe impl Platform for TestPlatform {
         interrupts_config: &[],
     };
 
-    fn init_before_mmu() {
+    fn init_after_mmu() {
         logger::init(StdOutSink).expect("Failed to initialise logger");
     }
 
