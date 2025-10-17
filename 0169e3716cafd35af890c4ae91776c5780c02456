@@ -52,6 +52,24 @@
       "parentUuid": "8deea935_6e638330",
       "revId": "0169e3716cafd35af890c4ae91776c5780c02456",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a1716c_28ba0787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-17T10:48:30Z",
+      "side": 1,
+      "message": "`arm-pl011-uart` 0.3.2 to 0.4.0 is a semver breaking change. Whenever you update a dependency of your crate which is exposed as part of the public API of your crate past a semver breaking version bump, that is itself a breaking change to your crate, precisely for this reason: anyone depending on both your crate and directly on the dependency gets broken.\n\n(And in this case, it happens that the breaking change in `arm-pl011-uart` from 0.3.2 to 0.4.0 was itself because of a dependency update; the `embedded-io` dependency was updated from 0.6 to 0.7.1.)",
+      "parentUuid": "6b9cd1cf_e2c803f0",
+      "revId": "0169e3716cafd35af890c4ae91776c5780c02456",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
