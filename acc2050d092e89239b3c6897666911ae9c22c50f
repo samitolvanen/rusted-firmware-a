@@ -36,6 +36,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ce1741_f0aef732",
+        "filename": "src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-10-17T14:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0143322e_8504f683",
+      "revId": "acc2050d092e89239b3c6897666911ae9c22c50f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08a471df_f1dc3e65",
@@ -53,6 +71,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "456890d7_afdbfebe",
+        "filename": "src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-10-17T14:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08a471df_f1dc3e65",
+      "revId": "acc2050d092e89239b3c6897666911ae9c22c50f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e93df062_dabf66ec",
@@ -66,6 +102,24 @@
       "writtenOn": "2025-10-16T09:39:12Z",
       "side": 1,
       "message": "Maybe let\u0027s just call this `init`, as everything is after the MMU setup.",
+      "revId": "acc2050d092e89239b3c6897666911ae9c22c50f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d69c30_2a461553",
+        "filename": "src/platform.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-10-17T14:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e93df062_dabf66ec",
       "revId": "acc2050d092e89239b3c6897666911ae9c22c50f",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
