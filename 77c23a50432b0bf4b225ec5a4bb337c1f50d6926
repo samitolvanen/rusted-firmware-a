@@ -16,6 +16,24 @@
       "message": "Why delete this line?",
       "revId": "77c23a50432b0bf4b225ec5a4bb337c1f50d6926",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a89708a_77f4253e",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-17T15:20:04Z",
+      "side": 0,
+      "message": "By default, cargo clean deletes the complete target directory, or whole directory specified by CARGO_TARGET_DIR. So I felt this rm command is a but superfluous. I can restore if you prefer.",
+      "parentUuid": "59d14e2e_bd9680c3",
+      "revId": "77c23a50432b0bf4b225ec5a4bb337c1f50d6926",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
