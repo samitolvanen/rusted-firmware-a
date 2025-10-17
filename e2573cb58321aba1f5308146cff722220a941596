@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103d6bb1_9e58e2be",
+        "filename": "src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-17T14:48:33Z",
+      "side": 1,
+      "message": "Let\u0027s remove this line entirely, it doesn\u0027t add anything now.",
+      "revId": "e2573cb58321aba1f5308146cff722220a941596",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
