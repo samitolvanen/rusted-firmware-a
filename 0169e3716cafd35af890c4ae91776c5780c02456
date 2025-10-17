@@ -34,6 +34,24 @@
       "parentUuid": "74313756_6907d464",
       "revId": "0169e3716cafd35af890c4ae91776c5780c02456",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9cd1cf_e2c803f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-17T10:30:13Z",
+      "side": 1,
+      "message": "There was no breaking change in `arm-pl011-uart` so having 0.1.4 as the `arm-fvp-base-pac` version is correct. The issue is caused by RF-A using `arm-pl011-uart` both as a direct dependency and as a dependency of `arm-fvp-base-pac`. This can happen with any other crate with a similar setup.\n\n    error[E0308]: mismatched types\n       --\u003e src/platform/fvp.rs:193:50\n        |\n    193 |         logger::init(LockedWriter::new(Uart::new(uart_pointer)))\n        |                                        --------- ^^^^^^^^^^^^ expected `arm_pl011_uart::PL011Registers`, found `arm_fvp_base_pac::arm_pl011_uart::PL011Registers`\n        |                                        |\n        |                                        arguments to this function are incorrect\n        |\n    note: two different versions of crate `arm_pl011_uart` are being used; two types coming from two different versions of the same crate are different types even if they look the same",
+      "parentUuid": "8deea935_6e638330",
+      "revId": "0169e3716cafd35af890c4ae91776c5780c02456",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
