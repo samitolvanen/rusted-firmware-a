@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9bcc16_6a54fffb",
+        "filename": "src/context.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-17T14:04:18Z",
+      "side": 1,
+      "message": "I made a mistake when resolving a merge conflict",
+      "parentUuid": "c88dcf9b_a484e597",
+      "revId": "cacc172d607686b3c42d4f3bc25c66f739e4673f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5b33d31_4a45ecec",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-17T11:53:21Z",
       "side": 1,
       "message": "As far as I can see this isn\u0027t doing anything with context, only with system registers. So let\u0027s call it something like `initialise_el3_sysregs` instead, and maybe move it to the `cpu_extensions` module.",
+      "range": {
+        "startLine": 624,
+        "startChar": 7,
+        "endLine": 624,
+        "endChar": 29
+      },
+      "revId": "cacc172d607686b3c42d4f3bc25c66f739e4673f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79d8828_1a29f2d6",
+        "filename": "src/context.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-17T14:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b33d31_4a45ecec",
       "range": {
         "startLine": 624,
         "startChar": 7,
