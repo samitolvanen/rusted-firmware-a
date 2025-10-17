@@ -1,0 +1,9 @@
+Code-Review+1: Jeremi Miller <jeremimiller@google.com>
+Verified+1: ci-bot
+Unsafe-Review+1: ci-bot
+Code-Review+2: Kis Imre <imre.kis@arm.com>
+Submitted-by: Andrew Walbran <qwandor@google.com>
+Submitted-at: Fri, 17 Oct 2025 11:46:38 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/44081
+Project: RF-A/rusted-firmware-a
+Branch: refs/heads/main
