@@ -9,6 +9,8 @@ use crate::{
     platform::{Platform, PlatformImpl},
 };
 
+pub mod sys_reg_trace;
+
 /// A trait for managing CPU extensions.
 pub trait CpuExtension {
     /// Checks if the CPU extension is supported by the hardware.
