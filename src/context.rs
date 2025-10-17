@@ -476,7 +476,7 @@ impl El2Sysregs {
 #[derive(Clone, Debug, Default)]
 #[repr(C)]
 pub struct PerWorldContext {
-    cptr_el3: CptrEl3,
+    pub cptr_el3: CptrEl3,
     zcr_el3: u64,
 }
 
