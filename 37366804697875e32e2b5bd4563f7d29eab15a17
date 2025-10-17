@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23fa7d2_bf13d87f",
+        "filename": "src/context.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-17T16:45:21Z",
+      "side": 1,
+      "message": "Should be `restore_context(new_world)`",
+      "range": {
+        "startLine": 585,
+        "startChar": 16,
+        "endLine": 585,
+        "endChar": 39
+      },
+      "revId": "37366804697875e32e2b5bd4563f7d29eab15a17",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
