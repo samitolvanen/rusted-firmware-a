@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d14e2e_bd9680c3",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-17T15:02:42Z",
+      "side": 0,
+      "message": "Why delete this line?",
+      "revId": "77c23a50432b0bf4b225ec5a4bb337c1f50d6926",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
