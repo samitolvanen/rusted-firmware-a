@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ed9b66_d3d6bb47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000228
+      },
+      "writtenOn": "2025-10-17T15:35:16Z",
+      "side": 1,
+      "message": "I noticed with present change, CARGO_TARGET_DIR must be an absolute path. I can either amend the commit message with this information, or find a way to make it work with a relative path if really necessary.",
+      "revId": "7365fc6c15cda4e10f9b1c8595855741be94f411",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
