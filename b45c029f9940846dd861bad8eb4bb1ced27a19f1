@@ -16,6 +16,24 @@
       "message": "`From` shouldn\u0027t panic, use `TryFrom` instead.",
       "revId": "b45c029f9940846dd861bad8eb4bb1ced27a19f1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c685bd76_a2a13416",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe37910_d65b37f6",
+      "revId": "b45c029f9940846dd861bad8eb4bb1ced27a19f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
