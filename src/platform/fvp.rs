@@ -145,6 +145,12 @@ define_cpu_ops!(AemGeneric);
 /// Fixed Virtual Platform
 pub struct Fvp;
 
+const ATTESTION_KEY_ECC_SECP384R1: [u8; 48] = [
+    0x20, 0x11, 0xC7, 0xF0, 0x3C, 0xEE, 0x43, 0x25, 0x17, 0x6E, 0x52, 0x4F, 0x03, 0x3C, 0x0C, 0xE1,
+    0xE2, 0x1A, 0x76, 0xE6, 0xC1, 0xA4, 0xF0, 0xB8, 0x39, 0xAA, 0x1D, 0xF6, 0x1E, 0x0E, 0x8A, 0x5C,
+    0x8A, 0x05, 0x74, 0x0F, 0x9B, 0x69, 0xEF, 0xA7, 0xEB, 0x1A, 0x41, 0x85, 0xBD, 0x11, 0x7F, 0x68,
+];
+
 // SAFETY: `core_position` is indeed a naked function, doesn't access the stack or any other memory,
 // only clobbers x0-x5, and returns a unique core index as long as `FVP_MAX_CPUS_PER_CLUSTER` and
 // `FVP_MAX_PE_PER_CPU` are correct.
@@ -155,6 +161,22 @@ unsafe impl Platform for Fvp {
 
     #[cfg(feature = "rme")]
     const RMM_SHARED_BUFFER_START: usize = 0xffbf_f000;
+
+    #[cfg(feature = "rme")]
+    fn write_attestion_key_ecc_secp384r1(buf: &mut [u8], start_index: usize) -> Result<usize, ()> {
+        if start_index >= buf.len() {
+            return Err(());
+        }
+
+        let range = start_index
+            ..ATTESTION_KEY_ECC_SECP384R1
+                .len()
+                .min(start_index + buf.len());
+        let size = range.end - range.start;
+
+        buf[..size].copy_from_slice(&ATTESTION_KEY_ECC_SECP384R1[range]);
+        Ok(size)
+    }
 
     #[cfg(feature = "rme")]
     fn rme_prepare_manifest(buf: &mut [u8]) {

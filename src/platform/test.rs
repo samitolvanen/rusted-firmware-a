@@ -57,6 +57,14 @@ unsafe impl Platform for TestPlatform {
     #[cfg(feature = "rme")]
     const RMM_SHARED_BUFFER_START: usize = 0;
 
+    #[cfg(feature = "rme")]
+    fn write_attestion_key_ecc_secp384r1(
+        _buf: &mut [u8],
+        _start_index: usize,
+    ) -> Result<usize, ()> {
+        Ok(0)
+    }
+
     type LogSinkImpl = StdOutSink;
     type PsciPlatformImpl = TestPsciPlatformImpl;
     type TrngPlatformImpl = TestTrngPlatformImpl;
