@@ -41,6 +41,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4956d360_d5082006",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f3a767_cb8d1eff",
+      "range": {
+        "startLine": 417,
+        "startChar": 17,
+        "endLine": 417,
+        "endChar": 27
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95caeee2_c058c142",
@@ -54,6 +78,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "Pass this constant in from Rust too.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2d8146_16d144c8",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95caeee2_c058c142",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -81,6 +123,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc62335_1e261f2d",
+        "filename": "src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13023969_6aa241e3",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d005e23_1b3b1c08",
@@ -94,6 +160,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "Rather than using `no_mangle`, can we pass this in as a symbol parameter to the `global_asm!`?",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "454c245f_8019abe5",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d005e23_1b3b1c08",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -115,6 +199,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30011e54_52f31a78",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f9b408_fea29612",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48d22509_b38b3b7c",
@@ -128,6 +230,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "We\u0027re doing this from assembly on secondary CPUs, so maybe we should just use the same codepath for the primary CPU cold boot as well to avoid duplication.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "014acd1e_6855450d",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48d22509_b38b3b7c",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -149,6 +269,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d552f85_a4f6306f",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15472007_eec0a8e5",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be91c3cc_bd65c774",
@@ -162,6 +300,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "Let\u0027s move this module to a separate file.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da818534_37fba9f5",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be91c3cc_bd65c774",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -183,6 +339,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2306d18_8d2a55f1",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09ccf43b_067fc84e",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a774b9f_83b26ed5",
@@ -196,6 +370,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "Please add some unit tests for this function, and a doc comment.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd13e98_f5c831a6",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a774b9f_83b26ed5",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -223,6 +415,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd050dc_a5baeaef",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f627b2f3_15fffcb9",
+      "range": {
+        "startLine": 397,
+        "startChar": 67,
+        "endLine": 397,
+        "endChar": 87
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "575da72a_69c25cd7",
@@ -240,6 +456,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1243e9_bc4deb52",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "575da72a_69c25cd7",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "291ee892_f9ef6886",
@@ -253,6 +487,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "There seems to be a lot of duplication between this function and `build_page_table_ranges`, is there any way to reuse the logic? `len()` on arrays is a const function, if that helps.",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51a9b81_a0c3b3c5",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "This has to be done in two separate steps, because the length of the array has to be known before trying to build them.",
+      "parentUuid": "291ee892_f9ef6886",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -280,6 +532,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39427bb4_b4750117",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b63b3c8_5bdca656",
+      "range": {
+        "startLine": 584,
+        "startChar": 48,
+        "endLine": 584,
+        "endChar": 49
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cad6de12_41b623a3",
@@ -293,6 +569,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "Where do these numbers come from? Are they platform-dependent?",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd889603_92e786e5",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cad6de12_41b623a3",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -314,6 +608,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de15940_665c2834",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de409f93_47c48d21",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8077de6f_774ef64f",
@@ -331,6 +643,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b9ca01_51e43d1e",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8077de6f_774ef64f",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a348ab41_d98b4536",
@@ -344,6 +674,30 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "Let\u0027s call this something like `EARLY_REGIONS` to distinguish it from the main page table mappings.",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8619aa3_35895a04",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a348ab41_d98b4536",
       "range": {
         "startLine": 114,
         "startChar": 6,
@@ -373,6 +727,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dee6cf81_3bd2478d",
+        "filename": "src/stacks.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "It depends on the implementation of `Platform::core_position`. We can add this to the `Platform` safety requirements.",
+      "parentUuid": "a60cc1bf_036af322",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aedf50fa_1edff653",
         "filename": "src/stacks.rs",
         "patchSetId": 1
@@ -384,6 +756,24 @@
       "writtenOn": "2025-10-16T11:17:50Z",
       "side": 1,
       "message": "Shouldn\u0027t this be (PLATFORM_CORE_COUNT - 1) * STACK_SIZE, not the other way around?",
+      "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5054c5d9_52b01694",
+        "filename": "src/stacks.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-18T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aedf50fa_1edff653",
       "revId": "fc2db457dd1dfec21a8a38a82e66c92497c6c4a4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
