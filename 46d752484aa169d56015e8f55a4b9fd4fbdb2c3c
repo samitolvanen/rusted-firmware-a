@@ -16,6 +16,24 @@
       "message": "There are CPU specific sysregs that we might want to dump on panic, so this should be a function of the `Cpu` trait. For example see https://review.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a/+/refs/heads/master/lib/cpus/aarch64/cortex_x4.S#183.",
       "revId": "46d752484aa169d56015e8f55a4b9fd4fbdb2c3c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a2b275_f00b82ca",
+        "filename": "src/context.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-20T13:33:32Z",
+      "side": 0,
+      "message": "Yep, I left a TODO for this in `cpu_helpers.S`. I\u0027ll send another patch to add that.",
+      "parentUuid": "c569a9ae_6cea63b8",
+      "revId": "46d752484aa169d56015e8f55a4b9fd4fbdb2c3c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
