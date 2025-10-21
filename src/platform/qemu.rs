@@ -12,9 +12,9 @@ use crate::{
     dram::zeroed_mut,
     gicv3::{Gic, GicConfig},
     logger::{self, HybridLogger, LockedWriter, inmemory::PerCoreMemoryLogger},
-    platform::CpuExtension,
-    pagetable::{IdMap, MT_DEVICE, disable_mmu_el3, map_region},
     naked_asm,
+    pagetable::{IdMap, MT_DEVICE, disable_mmu_el3, map_region},
+    platform::CpuExtension,
     semihosting::{AdpStopped, semihosting_exit},
     services::{
         arch::WorkaroundSupport,
@@ -34,11 +34,7 @@ use arm_gic::{
 use arm_pl011_uart::{PL011Registers, Uart, UniqueMmioPointer};
 use arm_psci::{ErrorCode, Mpidr, PowerState};
 use arm_sysregs::{IccSre, MpidrEl1, Spsr};
-use core::{
-    arch::global_asm,
-    mem::offset_of,
-    ptr::NonNull,
-};
+use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
 use percore::Cores;
 use spin::mutex::SpinMutexGuard;
 
@@ -295,6 +291,29 @@ unsafe impl Platform for Qemu {
             PLAT_QEMU_CRASH_UART_BASE = const UART1_BASE,
         );
     }
+
+    /// Dumps relevant GIC and CCI registers.
+    ///
+    /// Clobbers x0-x11, x16, x17, sp.
+    #[unsafe(naked)]
+    unsafe extern "C" fn dump_registers() {
+        naked_asm!(
+            include_str!("../asm_macros_common.S"),
+            include_str!("../arm_macros.S"),
+            // Save the LR.
+            "mov x11, lr",
+            "mov_imm x16, {GICD_BASE}",
+            "arm_print_gic_regs",
+            "mov lr, x11",
+            "ret",
+            include_str!("../arm_macros_purge.S"),
+            include_str!("../asm_macros_common_purge.S"),
+            DEBUG = const DEBUG as i32,
+            ICC_SRE_SRE_BIT = const IccSre::SRE.bits(),
+            GICD_BASE = const GICD_BASE,
+            GICD_ISPENDR = const offset_of!(Gicd, ispendr),
+        );
+    }
 }
 
 #[derive(PartialEq, PartialOrd, Debug, Eq, Ord, Clone, Copy)]
@@ -403,18 +422,6 @@ impl PsciPlatformInterface for QemuPsciPlatformImpl {
     }
 }
 
-global_asm!(
-    include_str!("../asm_macros_common.S"),
-    include_str!("../arm_macros.S"),
-    include_str!("qemu/crash_print_regs.S"),
-    include_str!("../arm_macros_purge.S"),
-    include_str!("../asm_macros_common_purge.S"),
-    DEBUG = const DEBUG as i32,
-    ICC_SRE_SRE_BIT = const IccSre::SRE.bits(),
-    GICD_BASE = const GICD_BASE,
-    GICD_ISPENDR = const offset_of!(Gicd, ispendr),
-);
-
 /// This function sets up the holding pen mechanism on this core. It waits for an event and then
 /// checks the value in the core's holding pen. If the core receives a `HOLD_STATE_GO` signal, it
 /// jumps to the location provided in the mailbox (`TRUSTED_MAILBOX_BASE`).
@@ -442,3 +449,5 @@ unsafe extern "C" fn plat_secondary_cold_boot_setup() -> ! {
     HOLD_STATE_WAIT = const HOLD_STATE_WAIT,
     );
 }
+
+global_asm!(include_str!("../arm_macros_data.S"));
