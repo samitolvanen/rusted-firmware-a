@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45d107d5_d77ff4ce",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:56:39Z",
+      "side": 1,
+      "message": "Please add a `trace_ver` function for accessing this field and make this const private.",
+      "revId": "629ea4594992e60159c8e4aa252c45738545a36a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65b3d189_e7155c56",
         "filename": "src/cpu_extensions.rs",
         "patchSetId": 7
