@@ -10,7 +10,6 @@ use crate::{
     sysregs::is_feat_vhe_present,
 };
 use arm_psci::EntryPoint;
-use arm_sysregs::read_mpidr_el1;
 use arm_sysregs::{CptrEl3, Esr, ScrEl3, Spsr, write_scr_el3};
 #[cfg(feature = "sel2")]
 use arm_sysregs::{
@@ -27,6 +26,7 @@ use arm_sysregs::{
     write_sp_el2, write_spsr_el2, write_tcr_el2, write_tpidr_el2, write_ttbr0_el2, write_ttbr1_el2,
     write_vbar_el2, write_vmpidr_el2, write_vpidr_el2, write_vtcr_el2, write_vttbr_el2,
 };
+use arm_sysregs::{MdcrEl3, read_mpidr_el1};
 #[cfg(not(feature = "sel2"))]
 use arm_sysregs::{
     SctlrEl1, read_actlr_el1, read_afsr0_el1, read_afsr1_el1, read_amair_el1, read_contextidr_el1,
@@ -174,6 +174,7 @@ pub struct El3State {
     is_in_el3: u64,
     saved_elr_el3: u64,
     nested_ea_flag: u64,
+    pub mdcr_el3: MdcrEl3,
 }
 
 impl El3State {
