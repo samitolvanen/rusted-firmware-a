@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a04857f_2d714839",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T15:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4f5afd7_4a50482b",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "bdd3b51801ed5d25da508f6079231ebeeaa8d4f7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "968554c4_6fdcda15",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-21T14:56:14Z",
       "side": 1,
       "message": "Size in bytes or size in entries? I assume bytes, but mention it in the comment.",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "bdd3b51801ed5d25da508f6079231ebeeaa8d4f7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d458a239_89b58e9a",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T15:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968554c4_6fdcda15",
       "range": {
         "startLine": 39,
         "startChar": 45,
@@ -70,6 +118,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb739b74_9adcb492",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T15:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8dac358_f0e89a6d",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "bdd3b51801ed5d25da508f6079231ebeeaa8d4f7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8551bc6b_8667b933",
@@ -83,6 +155,24 @@
       "writtenOn": "2025-10-21T14:56:14Z",
       "side": 1,
       "message": "Move this import to the top of the file with the other imports.",
+      "revId": "bdd3b51801ed5d25da508f6079231ebeeaa8d4f7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d2a8c7_11e3d3f0",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T15:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8551bc6b_8667b933",
       "revId": "bdd3b51801ed5d25da508f6079231ebeeaa8d4f7",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
