@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d7f822_992d721d",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15f1cdb7_e58b9d84",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ea1ad56_bf2b05e9",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-21T12:57:11Z",
       "side": 1,
       "message": "What translation register writes? I don\u0027t see any before here, only after. Should this be below `write_ttbr0_el3`?",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53208243_35d2cd44",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ea1ad56_bf2b05e9",
       "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "521ae64c_f7e54ed8",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "\u0027D24.2.169 SCTLR_EL3, System Control Register (EL3)\u0027\n\u003e The WXN bit is permitted to be cached in a TLB.\n\nBased on this we need TLBI both before and after setting WXN. See more info in comments.",
+      "parentUuid": "c9e2e5fa_fda5f3aa",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2613c390_b88a0733",
         "filename": "src/pagetable/early_pagetable.rs",
         "patchSetId": 5
@@ -65,6 +119,30 @@
       "writtenOn": "2025-10-21T12:57:11Z",
       "side": 1,
       "message": "Define a struct for this with named fields, rather than just a pair. It\u0027s not clear from this that the second element of the pair is the attributes. Maybe you could use `aarch64_paging::Attributes` for the attributes too?",
+      "range": {
+        "startLine": 32,
+        "startChar": 15,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80b9f0f_14f9039b",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2613c390_b88a0733",
       "range": {
         "startLine": 32,
         "startChar": 15,
@@ -94,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a6d25c4_b67490fc",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Documented the return values. These are only used in the `define_early_mapping` macro, so it is ok to have them as an anonymous tuple.",
+      "parentUuid": "c2dad336_29f16e29",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d2b5b10_8724cbe4",
         "filename": "src/pagetable/early_pagetable.rs",
         "patchSetId": 5
@@ -105,6 +201,24 @@
       "writtenOn": "2025-10-21T12:57:11Z",
       "side": 1,
       "message": "Mention in the doc comment above what the return values are.",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de886516_b6a86210",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2b5b10_8724cbe4",
       "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -122,6 +236,30 @@
       "writtenOn": "2025-10-21T12:57:11Z",
       "side": 1,
       "message": "I\u0027m not sure what you mean by \"at the table of the tree\", can you rephrase this?",
+      "range": {
+        "startLine": 168,
+        "startChar": 16,
+        "endLine": 168,
+        "endChar": 40
+      },
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a4281b_a37eea48",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34eb3ba_7f802b2b",
       "range": {
         "startLine": 168,
         "startChar": 16,
@@ -155,6 +293,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ffda7c_d1c92093",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54fb8435_1ca424ae",
+      "range": {
+        "startLine": 265,
+        "startChar": 39,
+        "endLine": 265,
+        "endChar": 61
+      },
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10a28e3a_5cd0411a",
@@ -168,6 +330,24 @@
       "writtenOn": "2025-10-21T12:57:11Z",
       "side": 1,
       "message": "Use the constants above, e.g. `ARM_TRUSTED_SRAM_BASE`.",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae66edd_6a3a7f18",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done, this now duplicates the definitions of arm-base-fvp-pac. This issue will be addressed in a separate patch.",
+      "parentUuid": "10a28e3a_5cd0411a",
       "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -191,6 +371,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b66cb92_5a42f83e",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "I am not allowed to add any Qemu platform code, so this has to come from your side. I only added this to prevent breaking the build.",
+      "parentUuid": "eaeacc7b_e5579c7c",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "988fabcc_ba93ba92",
         "filename": "src/stacks.rs",
         "patchSetId": 5
@@ -202,6 +400,30 @@
       "writtenOn": "2025-10-21T12:57:11Z",
       "side": 1,
       "message": "Typo: primary",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb39f3f_4e8d52fb",
+        "filename": "src/stacks.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-21T14:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "988fabcc_ba93ba92",
       "range": {
         "startLine": 61,
         "startChar": 18,
