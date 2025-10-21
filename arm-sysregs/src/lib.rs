@@ -312,8 +312,17 @@ bitflags! {
         const RLTE = 1 << 0;
         /// Secure Trace enable. Enables tracing in Secure state.
         const STE = 1 << 18;
-        /// Trap Trace Filter controls. Traps use of the Trace Filter control registers at EL2 and EL1 to EL3.
+        /// Trap Trace Filter controls. Traps use of the Trace Filter control registers at EL2 and
+        /// EL1 to EL3.
         const TTRF = 1 << 19;
+        /// Enable TRBE register access for the security state that owns the buffer.
+        const NSTB_EN = 1 << 24;
+        /// Together with MDCR_EL3.NSTBE determines which security state owns the trace buffer
+        const NSTB_SS = 1 << 25;
+        /// Non-secure Trace Buffer Extended. Together with MDCR_EL3.NSTB, controls the trace
+        /// buffer owning Security state and accesses to trace buffer System registers from EL2
+        /// and EL1.
+        const NSTBE = 1 << 26;
     }
 }
 
@@ -459,6 +468,9 @@ impl IdAa64dfr0El1 {
 
     /// Armv8.4 Self-hosted Trace Extension version.
     pub const TRACE_FILT_MASK: Self = Self::from_bits_retain(0xf << 40);
+
+    /// Trace Buffer Extension version.
+    pub const TRACE_BUFFER_MASK: Self = Self::from_bits_retain(0xf << 44);
 }
 
 read_sysreg!(id_aa64mmfr1_el1, u64, safe, fake::SYSREGS);
