@@ -10,6 +10,7 @@ use crate::{
 };
 
 pub mod sys_reg_trace;
+pub mod trbe;
 pub mod trf;
 
 /// A trait for managing CPU extensions.
