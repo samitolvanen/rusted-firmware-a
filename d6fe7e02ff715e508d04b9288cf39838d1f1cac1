@@ -106,6 +106,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae811bc_678a2e13",
+        "filename": "src/pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-21T14:56:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "521ae64c_f7e54ed8",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2613c390_b88a0733",
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "Documented the return values. These are only used in the `define_early_mapping` macro, so it is ok to have them as an anonymous tuple.",
       "parentUuid": "c2dad336_29f16e29",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7c94b8_dc4a3331",
+        "filename": "src/pagetable/early_pagetable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-21T14:56:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7a6d25c4_b67490fc",
       "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -352,6 +388,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78bc1b0_f7c6bfda",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-21T14:56:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4ae66edd_6a3a7f18",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaeacc7b_e5579c7c",
@@ -383,6 +437,24 @@
       "side": 1,
       "message": "I am not allowed to add any Qemu platform code, so this has to come from your side. I only added this to prevent breaking the build.",
       "parentUuid": "eaeacc7b_e5579c7c",
+      "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3593de9_96024c65",
+        "filename": "src/platform/qemu.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-21T14:56:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7b66cb92_5a42f83e",
       "revId": "d6fe7e02ff715e508d04b9288cf39838d1f1cac1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
