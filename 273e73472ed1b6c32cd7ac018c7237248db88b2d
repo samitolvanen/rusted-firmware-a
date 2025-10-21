@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730e3860_ef8467f6",
+        "filename": "src/cpu.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-21T13:25:01Z",
+      "side": 1,
+      "message": "This could be factored out into another function to save duplication with `cpu_reset_handler()`",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 12
+      },
+      "revId": "273e73472ed1b6c32cd7ac018c7237248db88b2d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
