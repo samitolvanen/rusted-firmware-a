@@ -42,11 +42,7 @@ use arm_gic::{
 use arm_pl011_uart::{Uart, UniqueMmioPointer};
 use arm_psci::{EntryPoint, ErrorCode, HwState, Mpidr, PowerState};
 use arm_sysregs::{IccSre, MpidrEl1, Spsr, read_mpidr_el1, write_cntfrq_el0};
-use core::{
-    arch::global_asm,
-    mem::offset_of,
-    ptr::NonNull,
-};
+use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
 use percore::Cores;
 use spin::mutex::SpinMutex;
 
@@ -395,6 +391,47 @@ unsafe impl Platform for Fvp {
             PLAT_ARM_CRASH_UART_BASE = const V2M_IOFPGA_UART1_BASE,
         );
     }
+
+    /// Dumps relevant GIC registers.
+    ///
+    /// Clobbers x0-x11, x16, x17, sp.
+    #[unsafe(naked)]
+    unsafe extern "C" fn dump_registers() {
+        naked_asm!(
+            include_str!("../asm_macros_common.S"),
+            include_str!("../arm_macros.S"),
+            "mov x11, lr",
+            // Detect if we're using the base memory map or the legacy VE memory map.
+            "mov_imm	x0, ({V2M_SYSREGS_BASE} + {V2M_SYS_ID})",
+            "ldr	w16, [x0]",
+            // Extract BLD (12th - 15th bits) from the SYS_ID.
+            "ubfx	x16, x16, #{V2M_SYS_ID_BLD_SHIFT}, #4",
+            // Check if VE mmap.
+            "cmp	w16, #{BLD_GIC_VE_MMAP}",
+            "b.eq	0f",
+            // Assume Base Cortex mmap.
+            "mov_imm	x16, {BASE_GICD_BASE}",
+            "b	1f",
+        "0:",
+            "mov_imm	x16, {VE_GICD_BASE}",
+        "1:",
+            "arm_print_gic_regs",
+            "mov	lr, x11",
+            "ret",
+
+            include_str!("../arm_macros_purge.S"),
+            include_str!("../asm_macros_common_purge.S"),
+            DEBUG = const DEBUG as i32,
+            ICC_SRE_SRE_BIT = const IccSre::SRE.bits(),
+            GICD_ISPENDR = const offset_of!(Gicd, ispendr),
+            V2M_SYSREGS_BASE = const V2M_SYSREGS_BASE,
+            V2M_SYS_ID = const V2M_SYS_ID,
+            V2M_SYS_ID_BLD_SHIFT = const V2M_SYS_ID_BLD_SHIFT,
+            BLD_GIC_VE_MMAP = const BLD_GIC_VE_MMAP,
+            BASE_GICD_BASE = const BASE_GICD_BASE,
+            VE_GICD_BASE = const VE_GICD_BASE,
+        );
+    }
 }
 
 #[derive(PartialEq, PartialOrd, Debug, Eq, Ord, Clone, Copy)]
@@ -739,19 +776,4 @@ impl PsciPlatformInterface for FvpPsciPlatformImpl<'_> {
     }
 }
 
-global_asm!(
-    include_str!("../asm_macros_common.S"),
-    include_str!("../arm_macros.S"),
-    include_str!("fvp/crash_print_regs.S"),
-    include_str!("../arm_macros_purge.S"),
-    include_str!("../asm_macros_common_purge.S"),
-    DEBUG = const DEBUG as i32,
-    ICC_SRE_SRE_BIT = const IccSre::SRE.bits(),
-    GICD_ISPENDR = const offset_of!(Gicd, ispendr),
-    V2M_SYSREGS_BASE = const V2M_SYSREGS_BASE,
-    V2M_SYS_ID = const V2M_SYS_ID,
-    V2M_SYS_ID_BLD_SHIFT = const V2M_SYS_ID_BLD_SHIFT,
-    BLD_GIC_VE_MMAP = const BLD_GIC_VE_MMAP,
-    BASE_GICD_BASE = const BASE_GICD_BASE,
-    VE_GICD_BASE = const VE_GICD_BASE,
-);
+global_asm!(include_str!("../arm_macros_data.S"));

@@ -290,6 +290,7 @@ mod asm {
         SCTLR_EnIB_BIT = const SctlrEl3::ENIB.bits(),
         plat_crash_console_init = sym PlatformImpl::crash_console_init,
         plat_crash_console_flush = sym PlatformImpl::crash_console_flush,
+        plat_crash_print_regs = sym PlatformImpl::dump_registers,
     );
 }
 
