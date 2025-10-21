@@ -10,7 +10,6 @@ use crate::{
     sysregs::is_feat_vhe_present,
 };
 use arm_psci::EntryPoint;
-use arm_sysregs::read_mpidr_el1;
 use arm_sysregs::{CptrEl3, Esr, ScrEl3, Spsr, write_scr_el3};
 #[cfg(feature = "sel2")]
 use arm_sysregs::{
@@ -27,6 +26,7 @@ use arm_sysregs::{
     write_sp_el2, write_spsr_el2, write_tcr_el2, write_tpidr_el2, write_ttbr0_el2, write_ttbr1_el2,
     write_vbar_el2, write_vmpidr_el2, write_vpidr_el2, write_vtcr_el2, write_vttbr_el2,
 };
+use arm_sysregs::{MdcrEl3, read_mpidr_el1};
 #[cfg(not(feature = "sel2"))]
 use arm_sysregs::{
     SctlrEl1, read_actlr_el1, read_afsr0_el1, read_afsr1_el1, read_amair_el1, read_contextidr_el1,
@@ -173,6 +173,7 @@ pub struct El3State {
     is_in_el3: u64,
     saved_elr_el3: u64,
     nested_ea_flag: u64,
+    pub mdcr_el3: MdcrEl3,
 }
 
 impl El3State {
@@ -187,6 +188,7 @@ impl El3State {
         is_in_el3: 0,
         saved_elr_el3: 0,
         nested_ea_flag: 0,
+        mdcr_el3: MdcrEl3::empty(),
     };
 }
 
@@ -811,6 +813,7 @@ mod asm {
         CTX_PMCR_EL0 = const offset_of!(El3State, pmcr_el0),
         CTX_SCR_EL3 = const offset_of!(El3State, scr_el3),
         CTX_SPSR_EL3 = const offset_of!(El3State, spsr_el3),
+        CTX_MDCR_EL3 = const offset_of!(El3State, mdcr_el3),
         CTX_RUNTIME_SP_LR = const offset_of!(El3State, runtime_sp),
         CTX_CPTR_EL3 = const offset_of!(PerWorldContext, cptr_el3),
         CTX_SAVED_ELR_EL3 = const offset_of!(El3State, saved_elr_el3),
