@@ -5,6 +5,7 @@
 //! A framework for managing ARM architectural CPU extensions using a trait-based approach.
 
 pub mod sys_reg_trace;
+pub mod trf;
 
 use crate::{
     context::{CpuContext, PerWorldContext, World},
