@@ -467,11 +467,22 @@ bitflags! {
         const EZ = 1 << 8;
     }
 
-    /// PMCR_EL0 register value.
+    /// PMCR_EL0 register configures and controls the Performance Monitors counters.
     #[derive(Clone, Copy, Debug, Eq, PartialEq, Default)]
     #[repr(transparent)]
     pub struct Pmcr: u64 {
-        /// Disable cycle counter when event counting is prohibited.
+        /// Enable. Affected counters are enabled by PMCNTENSET_EL0.
+        const E = 1 << 0;
+        /// Event counter reset. Reset all affected event counters PMEVCNTR<n>_EL0 to zero.
+        const P = 1 << 1;
+        /// Cycle counter reset. Reset PMCCNTR_EL0 to zero.
+        const C = 1 << 2;
+        /// Clock divider. If set PMCCNTR_EL0 counts once every 64 clock cycles.
+        const D = 1 << 3;
+        /// Enable export of events in an IMPLEMENTATION DEFINED PMU event export bus. If set,
+        /// export events where not prohibited.
+        const X = 1 << 4;
+        /// If set, cycle counting by PMCCNTR_EL0 is disabled in prohibited regions.
         const DP = 1 << 5;
     }
 
@@ -481,11 +492,17 @@ bitflags! {
     pub struct MdcrEl3: u64 {
         /// Realm Trace enable. Enables tracing in Realm state.
         const RLTE = 1 << 0;
+        /// Trap Performance Monitor register accesses
+        const TPM = 1 << 6;
+        /// Secure Performance Monitors Enable. Controls event counting in Secure state and EL3.
+        const SPME = 1 << 17;
         /// Secure Trace enable. Enables tracing in Secure state.
         const STE = 1 << 18;
         /// Trap Trace Filter controls. Traps use of the Trace Filter control registers at EL2 and
         /// EL1 to EL3.
         const TTRF = 1 << 19;
+        /// ecure Cycle Counter Disable. Prohibits PMCCNTR_EL0 from counting in Secure state.
+        const SCCD = 1 << 23;
         /// Enable TRBE register access for the security state that owns the buffer.
         const NSTB_EN = 1 << 24;
         /// Together with MDCR_EL3.NSTBE determines which security state owns the trace buffer
@@ -494,6 +511,13 @@ bitflags! {
         /// buffer owning Security state and accesses to trace buffer System registers from EL2
         /// and EL1.
         const NSTBE = 1 << 26;
+        /// Multi-threaded PMU Enable. Enables use of the PMEVTYPER<n>_EL0.MT bits.
+        const MTPMU = 1 << 28;
+        /// Monitor Cycle Counter Disable. Prohibits the Cycle Counter, PMCCNTR_EL0, from counting at EL3.
+        const MCCD = 1 << 34;
+        /// Monitor Performance Monitors Extended control. In conjunction with MDCR_EL3.SPME,
+        /// controls when event counters are enabled at EL3 and in other Secure Exception levels.
+        const MPMX = 1 << 35;
     }
 }
 
@@ -646,6 +670,10 @@ impl IdAa64dfr0El1 {
     const TRACE_BUFFER_MASK: u64 = 0b1111;
     const TRBE_NOT_SUPPORTED: u64 = 0;
 
+    const MTPMU_SHIFT: u64 = 48;
+    const MTPMU_MASK: u64 = 0b1111;
+    const MTPMU_SUPPORTED: u64 = 1;
+
     /// Trace support. Indicates whether System register interface to a PE trace unit is
     // implemented.
     pub fn is_feat_sys_reg_trace_present(self) -> bool {
@@ -662,6 +690,11 @@ impl IdAa64dfr0El1 {
     pub fn is_feat_trbe_present(self) -> bool {
         (self.bits() >> Self::TRACE_BUFFER_SHIFT) & Self::TRACE_BUFFER_MASK
             != Self::TRBE_NOT_SUPPORTED
+    }
+
+    /// Indicates whether Multi Threaded PMU Extension is implemented.
+    pub fn is_feat_mtpmu_present(self) -> bool {
+        (self.bits() >> Self::MTPMU_SHIFT) & Self::MTPMU_MASK == Self::MTPMU_SUPPORTED
     }
 }
 
@@ -724,6 +757,7 @@ read_write_sysreg!(mdcr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(mdscr_el1, u64, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(midr_el1, u64, safe, fake::SYSREGS);
 read_write_sysreg!(par_el1, u64, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(pmcr_el0, u64: Pmcr, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(scr_el3, u64: ScrEl3, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(sctlr_el1, u64: SctlrEl1, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(sctlr_el2, u64, safe_read, safe_write, fake::SYSREGS);
