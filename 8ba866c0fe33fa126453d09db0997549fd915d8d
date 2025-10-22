@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e573d1b7_92e9ac36",
+        "filename": "src/cpu.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-22T11:26:18Z",
+      "side": 1,
+      "message": "This part should look the same as `cpu_reset_handler`. LR can be restored after this instruction, then `br x1`. This way x16 can stay unchanged.",
+      "revId": "8ba866c0fe33fa126453d09db0997549fd915d8d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
