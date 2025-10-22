@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e5b410_fbbcf7d1",
+        "filename": "supply-chain/config.toml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-22T17:24:08Z",
+      "side": 1,
+      "message": "Maybe we want at least `safe-to-run`?",
+      "revId": "075d3cf6db76b1841c09566ff477cd916cabef4a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43479e10_4f636c17",
+        "filename": "tools/memory_usage_analyser/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-22T17:24:08Z",
+      "side": 1,
+      "message": "Does this have column headers?",
+      "revId": "075d3cf6db76b1841c09566ff477cd916cabef4a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
