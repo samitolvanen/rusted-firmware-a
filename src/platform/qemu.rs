@@ -6,15 +6,15 @@ use super::{DummyService, Platform};
 use crate::{
     aarch64::{dsb_sy, sev, wfi},
     context::{CoresImpl, EntryPointInfo},
-    cpu::define_cpu_ops,
-    cpu::qemu_max::QemuMax,
+    cpu::{define_cpu_ops, qemu_max::QemuMax},
+    cpu_extensions::pmuv3::MultiThreadedPmu,
     debug::DEBUG,
     dram::zeroed_mut,
     gicv3::{Gic, GicConfig},
     logger::{self, HybridLogger, LockedWriter, inmemory::PerCoreMemoryLogger},
-    platform::CpuExtension,
-    pagetable::{IdMap, MT_DEVICE, disable_mmu_el3, map_region},
     naked_asm,
+    pagetable::{IdMap, MT_DEVICE, disable_mmu_el3, map_region},
+    platform::CpuExtension,
     semihosting::{AdpStopped, semihosting_exit},
     services::{
         arch::WorkaroundSupport,
@@ -34,11 +34,7 @@ use arm_gic::{
 use arm_pl011_uart::{PL011Registers, Uart, UniqueMmioPointer};
 use arm_psci::{ErrorCode, Mpidr, PowerState};
 use arm_sysregs::{IccSre, MpidrEl1, Spsr};
-use core::{
-    arch::global_asm,
-    mem::offset_of,
-    ptr::NonNull,
-};
+use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
 use percore::Cores;
 use spin::mutex::SpinMutexGuard;
 
@@ -134,7 +130,7 @@ unsafe impl Platform for Qemu {
         interrupts_config: &[],
     };
 
-    const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension] = &[];
+    const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension] = &[&MultiThreadedPmu];
 
     fn init_before_mmu() {
         // SAFETY: `PL011_BASE_ADDRESS` is the base address of a PL011 device, and nothing else
