@@ -4,6 +4,7 @@
 
 use crate::{
     aarch64::isb,
+    cpu_extensions::pmuv3,
     gicv3,
     platform::{Platform, PlatformImpl, exception_free},
     smccc::SmcReturn,
@@ -690,6 +691,8 @@ fn initialise_common(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     {
         context.el1_sysregs.sctlr_el1 = SctlrEl1::RES1;
     }
+
+    pmuv3::enable(context);
 }
 
 /// Initialises the given CPU context ready for booting NS-EL2 or NS-EL1.

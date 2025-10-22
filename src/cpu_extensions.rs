@@ -9,6 +9,7 @@ use crate::{
     platform::{Platform, PlatformImpl},
 };
 
+pub mod pmuv3;
 pub mod sys_reg_trace;
 pub mod trbe;
 pub mod trf;
@@ -55,5 +56,6 @@ pub fn initialise_el3_sysregs() {
             ext.init();
         }
     }
-    // TODO: initialize PMU
+
+    pmuv3::init();
 }
