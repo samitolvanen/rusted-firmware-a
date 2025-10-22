@@ -4,6 +4,7 @@
 
 use crate::{
     aarch64::isb,
+    cpu_extensions::pmuv3,
     gicv3,
     platform::{Platform, PlatformImpl, exception_free},
     smccc::SmcReturn,
@@ -13,7 +14,7 @@ use arm_psci::EntryPoint;
 use arm_sysregs::{CptrEl3, Esr, MdcrEl3, ScrEl3, Spsr, read_mpidr_el1, write_scr_el3};
 #[cfg(feature = "sel2")]
 use arm_sysregs::{
-    HcrEl2, IccSre, read_actlr_el2, read_afsr0_el2, read_afsr1_el2, read_amair_el2,
+    HcrEl2, IccSre, MdcrEl2, read_actlr_el2, read_afsr0_el2, read_afsr1_el2, read_amair_el2,
     read_cnthctl_el2, read_cntvoff_el2, read_contextidr_el2, read_cptr_el2, read_elr_el2,
     read_esr_el2, read_far_el2, read_hacr_el2, read_hcr_el2, read_hpfar_el2, read_hstr_el2,
     read_icc_sre_el2, read_ich_hcr_el2, read_ich_vmcr_el2, read_mair_el2, read_mdcr_el2,
@@ -89,7 +90,7 @@ pub struct CpuContext {
     pub gpregs: GpRegs,
     pub el3_state: El3State,
     #[cfg(feature = "sel2")]
-    el2_sysregs: El2Sysregs,
+    pub el2_sysregs: El2Sysregs,
     #[cfg(not(feature = "sel2"))]
     el1_sysregs: El1Sysregs,
 }
@@ -315,7 +316,7 @@ impl El1Sysregs {
 /// world switches.
 #[derive(Clone, Debug, Eq, PartialEq)]
 #[cfg(feature = "sel2")]
-struct El2Sysregs {
+pub struct El2Sysregs {
     actlr_el2: u64,
     afsr0_el2: u64,
     afsr1_el2: u64,
@@ -335,7 +336,7 @@ struct El2Sysregs {
     ich_hcr_el2: u64,
     ich_vmcr_el2: u64,
     mair_el2: u64,
-    mdcr_el2: u64,
+    pub mdcr_el2: MdcrEl2,
     sctlr_el2: u64,
     spsr_el2: Spsr,
     sp_el2: u64,
@@ -372,7 +373,8 @@ impl El2Sysregs {
         ich_hcr_el2: 0,
         ich_vmcr_el2: 0,
         mair_el2: 0,
-        mdcr_el2: 0,
+        // MDCR_EL2 is initialized dynamically by PMU setup code.
+        mdcr_el2: MdcrEl2::empty(), 
         sctlr_el2: 0,
         spsr_el2: Spsr::empty(),
         sp_el2: 0,
@@ -669,6 +671,8 @@ fn initialise_common(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     {
         context.el1_sysregs.sctlr_el1 = SctlrEl1::RES1;
     }
+
+    pmuv3::configure_per_cpu(context);
 }
 
 /// Initialises the given CPU context ready for booting NS-EL2 or NS-EL1.
