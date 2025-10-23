@@ -63,7 +63,7 @@ unsafe impl Platform for TestPlatform {
 
     const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension] = &[];
 
-    fn init_before_mmu() {
+    fn init() {
         logger::init(StdOutSink).expect("Failed to initialise logger");
     }
 

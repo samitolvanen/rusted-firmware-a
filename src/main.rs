@@ -43,13 +43,12 @@ use percore::Cores;
 
 #[unsafe(no_mangle)]
 extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
-    PlatformImpl::init_before_mmu();
+    pagetable::init();
+
+    PlatformImpl::init();
+
     info!("Rust BL31 starting");
     info!("Parameters: {bl31_params:#0x} {platform_params:#0x}");
-
-    // Set up page table.
-    pagetable::init();
-    info!("Page table activated.");
 
     // Set up GIC.
     gicv3::init();
@@ -198,6 +197,7 @@ mod asm {
         TTA_BIT = const TTA_BIT,
         TFP_BIT = const TFP_BIT,
         plat_cold_boot_handler = sym PlatformImpl::cold_boot_handler,
+        plat_init_mmu_early = sym platform::plat_init_mmu_early,
     );
 
     /// This macro wraps a naked_asm block with `bti`, or any other universal

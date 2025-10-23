@@ -80,6 +80,11 @@ SECTIONS
 	} >image
 
 	. = ALIGN(PAGE_SIZE);
+	__INIT_PT_START__ = .;
+	. += 3 * 4096;
+	__INIT_PT_END__ = .;
+
+	. = ALIGN(PAGE_SIZE);
 	__BL31_END__ = .;
 
 	/* DRAM section */

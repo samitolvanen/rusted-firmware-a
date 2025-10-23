@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+use crate::naked_asm;
+
 macro_rules! select_platform {
     (platform = $condition:literal, $mod:ident::$sub:ident::$plat_impl:ident) => {
         #[cfg(platform = $condition)]
@@ -108,11 +110,8 @@ pub unsafe trait Platform {
     /// Service that handles platform-specific SMC calls.
     type PlatformServiceImpl: Service;
 
-    /// Initialises the logger and anything else the platform needs. This will be called before the
-    /// MMU is enabled.
-    ///
-    /// Any logs sent before this is called will be ignored.
-    fn init_before_mmu();
+    /// Initialises the logger and anything else the platform needs.
+    fn init();
 
     /// Maps device memory and any other regions specific to the platform, before the MMU is
     /// enabled.
@@ -187,7 +186,8 @@ pub unsafe trait Platform {
     /// For an invalid MPIDR value no guarantees are made about the return value.
     extern "C" fn core_position(mpidr: u64) -> usize;
 
-    /// Performs platform-specific initialisation on early cold boot before running Rust code.
+    /// Performs platform-specific initialisation on early cold boot before enabling MMU and
+    /// running Rust code.
     ///
     /// # Safety
     ///
@@ -247,4 +247,96 @@ mod asm {
             core_position = sym PlatformImpl::core_position,
         );
     }
+}
+
+#[unsafe(naked)]
+pub unsafe extern "C" fn plat_init_mmu_early() {
+    naked_asm!(
+        // Disable MMU and D$
+        "mrs x1, sctlr_el3",
+        "mov x2, 5", // M=C=0
+        "orr x2, x2, 0x80000", // WXN=0
+        "bic x1, x1, x2",
+        "msr sctlr_el3, x1",
+        "isb",
+
+        // Clear TLB
+        "tlbi alle3",
+        "dsb sy",
+        "isb",
+
+        // TCR_EL3
+        // T0SZ=25 (39b), IRGN0=11b, ORGN0=11b, SH0=11b
+        "mov x1, (25UL << 0) | (3UL << 8) | (3UL << 10) | (3UL << 12)",
+        // PS=101b (48b), TBI=1, IPS=01b, TBI0=1
+        "mov x2, (1UL << 20) | (5UL << 16)",
+        "orr x2, x2, (1UL << 32)",
+        "orr x2, x2, (1UL << 37)",
+        "orr x1, x1, x2",
+        "msr tcr_el3, x1",
+
+        // Set MAIR_EL3
+        "mov x1, 0xff00",
+        "movk x1, 0xffff, lsl 16",
+        "msr mair_el3, x1",
+
+        // Set TTBR0_EL3
+        "adr x1, __INIT_PT_START__",
+        "mov x2, x1",
+        "msr ttbr0_el3, x1",
+
+        // Clear initial page tables
+        "mov x3, 3 * 4096",
+        "0: stp xzr, xzr, [x2], #16",
+        "subs x3, x3, #16",
+        "bne 0b",
+
+        "add x2, x1, 4096",
+        "add x3, x2, 4096",
+        "adr x4, __TEXT_START__",
+
+        // Calculate L1 PT entry address
+        "lsr x5, x4, 30",
+        "and x6, x5, 0x1ff",
+        "lsl x6, x6, 3",
+        "add x1, x1, x6",
+        "orr x5, x2, 3", // Page table, valid
+        "str x5, [x1]",
+
+        // Calculate L2 PT entry address
+        "lsr x5, x4, 21",
+        "and x6, x5, 0x1ff",
+        "lsl x6, x6, 3",
+        "add x2, x2, x6",
+        "orr x5, x3, 3", // Page table, valid
+        "str x5, [x2]",
+
+        // Calculate L3 PT entry address
+        "lsr x5, x4, 12",
+        "and x6, x5, 0x1ff",
+        "lsl x6, x6, 3",
+        "add x3, x3, x6",
+
+        // Fill L3 table with page descriptors
+        "adr x5, __BL31_END__",
+        "orr x4, x4, (1UL << 10)",
+        "orr x4, x4, 3", // Page descriptor, valid
+        "1: add x6, x4, 4096",
+        "stp x4, x6, [x3], #16",
+        "add x4, x4, 8192",
+        "cmp x4, x5",
+        "blt 1b",
+
+        // Enable MMU and D$
+        "mrs x1, sctlr_el3",
+        "orr x1, x1, 4",
+        "orr x1, x1, 1",
+        "msr sctlr_el3, x1",
+        "isb",
+
+        // Clear I$
+        "ic iallu",
+        "isb",
+        "ret"
+    );
 }

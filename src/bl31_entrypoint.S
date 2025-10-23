@@ -223,6 +223,7 @@ func bl31_entrypoint
         bl      zeromem
 
         bl      {plat_cold_boot_handler}
+        bl      {plat_init_mmu_early}
 
         /* ---------------------------------------------------------------------
          * Use SP_EL0 for the C runtime stack.

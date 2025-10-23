@@ -141,15 +141,11 @@ pub fn init() {
             SpinMutexGuard::leak(PAGE_HEAP.try_lock().expect("Page heap was already taken"));
         let mut idmap = init_page_table(page_heap);
 
-        trace!("Page table: {idmap:?}");
-
-        info!("Setting MMU config");
         // SAFETY: We pass the root address of `idmap`, which has just been initialised with
         // appropriate mappings, and will remain valid forever.
         unsafe {
             setup_mmu_cfg(idmap.root_address());
         }
-        info!("Marking page table as active");
         idmap.mark_active();
 
         SpinMutex::new(idmap)
@@ -222,20 +218,14 @@ pub fn map_region(idmap: &mut IdMap, region: &MemoryRegion, attributes: Attribut
 /// `root_address` must be the physical address of a valid page table which maps all the memory that
 /// EL3 uses.
 unsafe fn setup_mmu_cfg(root_address: PhysicalAddress) {
-    let tcr = (0b101 << 16) // 48 bit physical address size (256 TiB).
-        | (64 - 39); // Size offset is 2**39 bytes (512 GiB).
     let ttbr0 = root_address.0;
-
     let mut sctlr = read_sctlr_el3();
-    // Assert that the MMU is not yet enabled:
-    assert!(!sctlr.contains(SctlrEl3::M));
 
     tlbi_alle3();
+
     // SAFETY: We enable the MMU with valid and correct configuration parameters MAIR, TCR, and
     // TTBR0 (which is a valid address).
     unsafe {
-        write_mair_el3(MAIR.0);
-        write_tcr_el3(tcr);
         write_ttbr0_el3(ttbr0);
     }
 
@@ -244,11 +234,10 @@ unsafe fn setup_mmu_cfg(root_address: PhysicalAddress) {
     dsb_ish();
     isb();
 
-    sctlr |= SctlrEl3::M | SctlrEl3::C | SctlrEl3::WXN;
-    // SAFETY: `sctlr` is a valid and safe value for the EL3 system control register. At this point,
-    // the MMU is turned off (as `assert!`ed above), the translation table base register has been
-    // set to a valid address, and we are about to turn the MMU on with a safe configuration
-    // (`SctlrEl3::C | SctlrEl3::WXN`).
+    // Enable WXN
+    sctlr |= SctlrEl3::WXN;
+    // SAFETY: `sctlr` is a valid and safe value for the EL3 system control register.
+    // The translation table base register has been set to a valid address.
     unsafe {
         write_sctlr_el3(sctlr);
     }
