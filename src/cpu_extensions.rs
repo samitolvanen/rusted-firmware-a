@@ -4,6 +4,8 @@
 
 //! A framework for managing ARM architectural CPU extensions using a trait-based approach.
 
+mod hcx;
+
 use crate::{
     context::{CpuContext, PerWorldContext, World},
     platform::{Platform, PlatformImpl},
