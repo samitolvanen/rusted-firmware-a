@@ -237,6 +237,8 @@ func bl31_entrypoint
 	 */
 	bl	plat_set_my_stack
 
+        bl      {init_mmu_early}
+
         mov     x0, x20
         mov     x1, x21
         mov     x2, x22
