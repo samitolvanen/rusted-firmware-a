@@ -46,6 +46,30 @@
       },
       "revId": "fbb06f9338ddcde18e55d6848610049c5185216d",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee76310_9910a7c8",
+        "filename": "src/cpu.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-23T13:28:33Z",
+      "side": 1,
+      "message": "Oh nice",
+      "parentUuid": "215af66e_ef3beaf9",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 12
+      },
+      "revId": "fbb06f9338ddcde18e55d6848610049c5185216d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
