@@ -25,6 +25,7 @@ use core::{
     fmt::{self, Debug, Formatter},
     mem::take,
     ptr::NonNull,
+    arch::naked_asm,
 };
 use log::{debug, info, trace, warn};
 use spin::{
@@ -141,15 +142,11 @@ pub fn init() {
             SpinMutexGuard::leak(PAGE_HEAP.try_lock().expect("Page heap was already taken"));
         let mut idmap = init_page_table(page_heap);
 
-        trace!("Page table: {idmap:?}");
-
-        info!("Setting MMU config");
         // SAFETY: We pass the root address of `idmap`, which has just been initialised with
         // appropriate mappings, and will remain valid forever.
         unsafe {
             setup_mmu_cfg(idmap.root_address());
         }
-        info!("Marking page table as active");
         idmap.mark_active();
 
         SpinMutex::new(idmap)
@@ -217,25 +214,111 @@ pub fn map_region(idmap: &mut IdMap, region: &MemoryRegion, attributes: Attribut
         .expect("Error mapping memory range");
 }
 
+#[unsafe(naked)]
+pub extern "C" fn init_mmu_early() {
+    naked_asm!(
+        // Disable MMU and D$
+        "mrs x1, sctlr_el3",
+        "mov x2, 5", // M=C=0
+        "orr x2, x2, 0x80000", // WXN=0
+        "bic x1, x1, x2",
+        "msr sctlr_el3, x1",
+        "isb",
+
+        // Clear TLB
+        "tlbi alle3",
+        "dsb sy",
+        "isb",
+
+        // TCR_EL3
+        // T0SZ=25 (39b), IRGN0=11b, ORGN0=11b, SH0=11b
+        "mov x1, (25UL << 0) | (3UL << 8) | (3UL << 10) | (3UL << 12)",
+        // PS=101b (48b), TBI=1, IPS=01b, TBI0=1
+        "mov x2, (1UL << 20) | (5UL << 16)",
+        "orr x2, x2, (1UL << 32)",
+        "orr x2, x2, (1UL << 37)",
+        "orr x1, x1, x2",
+        "msr tcr_el3, x1",
+
+        // Set MAIR_EL3
+        "mov x1, 0x0433",
+        "movk x1, 0x44, lsl 16",
+        "msr mair_el3, x1",
+
+        // Set TTBR0_EL3
+        "adr x1, __INIT_PT_START__",
+        "mov x2, x1",
+        "msr ttbr0_el3, x1",
+
+        // Clear initial page tables
+        "mov x3, 3 * 4096",
+        "2: stp xzr, xzr, [x2], #16",
+        "subs x3, x3, #16",
+        "bne 2b",
+
+        "add x2, x1, 4096",
+        "add x3, x2, 4096",
+        "adr x4, __TEXT_START__",
+
+        // Calculate L1 PT entry address
+        "lsr x5, x4, 30",
+        "and x6, x5, 0x1ff",
+        "lsl x6, x6, 3",
+        "add x1, x1, x6",
+        "orr x5, x2, 3", // Page table, valid
+        "str x5, [x1]",
+
+        // Calculate L2 PT entry address
+        "lsr x5, x4, 21",
+        "and x6, x5, 0x1ff",
+        "lsl x6, x6, 3",
+        "add x2, x2, x6",
+        "orr x5, x3, 3", // Page table, valid
+        "str x5, [x2]",
+
+        // Calculate L3 PT entry address
+        "lsr x5, x4, 12",
+        "and x6, x5, 0x1ff",
+        "lsl x6, x6, 3",
+        "add x3, x3, x6",
+
+        // Fill L3 table with page descriptors
+        "adr x5, __BL31_END__",
+        "orr x4, x4, (1UL << 10)",
+        "orr x4, x4, 3", // Page descriptor, valid
+        "3: add x6, x4, 4096",
+        "stp x4, x6, [x3], #16",
+        "add x4, x4, 8192",
+        "cmp x4, x5",
+        "blt 3b",
+
+        // Enable MMU and D$
+        "mrs x1, sctlr_el3",
+        "orr x1, x1, 4",
+        "orr x1, x1, 1",
+        "msr sctlr_el3, x1",
+        "isb",
+
+        // Clear I$
+        "ic iallu",
+        "isb",
+        "ret"
+    );
+}
+
 /// # Safety
 ///
 /// `root_address` must be the physical address of a valid page table which maps all the memory that
 /// EL3 uses.
 unsafe fn setup_mmu_cfg(root_address: PhysicalAddress) {
-    let tcr = (0b101 << 16) // 48 bit physical address size (256 TiB).
-        | (64 - 39); // Size offset is 2**39 bytes (512 GiB).
     let ttbr0 = root_address.0;
-
     let mut sctlr = read_sctlr_el3();
-    // Assert that the MMU is not yet enabled:
-    assert!(!sctlr.contains(SctlrEl3::M));
 
     tlbi_alle3();
+
     // SAFETY: We enable the MMU with valid and correct configuration parameters MAIR, TCR, and
     // TTBR0 (which is a valid address).
     unsafe {
-        write_mair_el3(MAIR.0);
-        write_tcr_el3(tcr);
         write_ttbr0_el3(ttbr0);
     }
 
@@ -244,11 +327,10 @@ unsafe fn setup_mmu_cfg(root_address: PhysicalAddress) {
     dsb_ish();
     isb();
 
-    sctlr |= SctlrEl3::M | SctlrEl3::C | SctlrEl3::WXN;
-    // SAFETY: `sctlr` is a valid and safe value for the EL3 system control register. At this point,
-    // the MMU is turned off (as `assert!`ed above), the translation table base register has been
-    // set to a valid address, and we are about to turn the MMU on with a safe configuration
-    // (`SctlrEl3::C | SctlrEl3::WXN`).
+    // Enable WXN
+    sctlr |= SctlrEl3::WXN;
+    // SAFETY: `sctlr` is a valid and safe value for the EL3 system control register.
+    // The translation table base register has been set to a valid address.
     unsafe {
         write_sctlr_el3(sctlr);
     }
