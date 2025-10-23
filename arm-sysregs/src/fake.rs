@@ -5,8 +5,8 @@
 //! Fake implementations of system register getters and setters for unit tests.
 
 use super::{
-    ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, IccSre, IdAa64mmfr2El1, MpidrEl1, ScrEl3, SctlrEl1,
-    SctlrEl3, Spsr,
+    ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, HcrxEl2, IccSre, IdAa64mmfr1El1, IdAa64mmfr2El1,
+    MpidrEl1, ScrEl3, SctlrEl1, SctlrEl3, Spsr,
 };
 use std::sync::Mutex;
 
@@ -172,6 +172,8 @@ pub struct SystemRegisters {
     pub hacr_el2: u64,
     /// Fake value for the HCR_EL2 system register.
     pub hcr_el2: HcrEl2,
+    /// Fake value for the HCRX_EL2 system register.
+    pub hcrx_el2: HcrxEl2,
     /// Fake value for the HPFAR_EL2 system register.
     pub hpfar_el2: u64,
     /// Fake value for the HSTR_EL2 system register.
@@ -187,7 +189,7 @@ pub struct SystemRegisters {
     /// Fake value for the ICH_VMCR_EL2 system register.
     pub ich_vmcr_el2: u64,
     /// Fake value for the ID_AA64MMFR1_EL1 system register.
-    pub id_aa64mmfr1_el1: u64,
+    pub id_aa64mmfr1_el1: IdAa64mmfr1El1,
     /// Fake value for the ID_AA64MMFR2_EL1 system register.
     pub id_aa64mmfr2_el1: IdAa64mmfr2El1,
     /// Fake value for the ISR_EL1 system register.
@@ -296,6 +298,7 @@ impl SystemRegisters {
             far_el2: 0,
             hacr_el2: 0,
             hcr_el2: HcrEl2::empty(),
+            hcrx_el2: HcrxEl2::empty(),
             hpfar_el2: 0,
             hstr_el2: 0,
             icc_sre_el1: IccSre::empty(),
@@ -303,7 +306,7 @@ impl SystemRegisters {
             icc_sre_el3: IccSre::empty(),
             ich_hcr_el2: 0,
             ich_vmcr_el2: 0,
-            id_aa64mmfr1_el1: 0,
+            id_aa64mmfr1_el1: IdAa64mmfr1El1::empty(),
             id_aa64mmfr2_el1: IdAa64mmfr2El1::empty(),
             isr_el1: 0,
             mair_el1: 0,
