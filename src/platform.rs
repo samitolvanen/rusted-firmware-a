@@ -108,11 +108,8 @@ pub unsafe trait Platform {
     /// Service that handles platform-specific SMC calls.
     type PlatformServiceImpl: Service;
 
-    /// Initialises the logger and anything else the platform needs. This will be called before the
-    /// MMU is enabled.
-    ///
-    /// Any logs sent before this is called will be ignored.
-    fn init_before_mmu();
+    /// Initialises the logger and anything else the platform needs.
+    fn init();
 
     /// Maps device memory and any other regions specific to the platform, before the MMU is
     /// enabled.
@@ -187,7 +184,8 @@ pub unsafe trait Platform {
     /// For an invalid MPIDR value no guarantees are made about the return value.
     extern "C" fn core_position(mpidr: u64) -> usize;
 
-    /// Performs platform-specific initialisation on early cold boot before running Rust code.
+    /// Performs platform-specific initialisation on early cold boot before enabling MMU and
+    /// running Rust code.
     ///
     /// # Safety
     ///

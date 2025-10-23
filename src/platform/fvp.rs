@@ -179,7 +179,7 @@ unsafe impl Platform for Fvp {
 
     const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension] = &[];
 
-    fn init_before_mmu() {
+    fn init() {
         let peripherals = Peripherals::take().unwrap();
 
         let uart_pointer = map_peripheral(peripherals.uart0);

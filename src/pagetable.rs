@@ -22,6 +22,7 @@ use arm_sysregs::{
     SctlrEl3, read_sctlr_el3, write_mair_el3, write_sctlr_el3, write_tcr_el3, write_ttbr0_el3,
 };
 use core::{
+    arch::asm,
     fmt::{self, Debug, Formatter},
     mem::take,
     ptr::NonNull,
@@ -44,6 +45,7 @@ const MAIR_DEVICE: MairAttribute = MairAttribute::DEVICE_NGNRE;
 
 // Set write-through mode to ensure all written values are propagated to system memory.
 // This guarantees correct Once and Mutex behavior before enabling the MMU.
+// TODO: is the constraint above still required?
 const MAIR_IWTRWA_OWTRWA_NTR: MairAttribute = MairAttribute::normal(
     NormalMemory::WriteThroughTransientReadWriteAllocate,
     NormalMemory::WriteThroughTransientReadWriteAllocate,
@@ -141,15 +143,11 @@ pub fn init() {
             SpinMutexGuard::leak(PAGE_HEAP.try_lock().expect("Page heap was already taken"));
         let mut idmap = init_page_table(page_heap);
 
-        trace!("Page table: {idmap:?}");
-
-        info!("Setting MMU config");
         // SAFETY: We pass the root address of `idmap`, which has just been initialised with
         // appropriate mappings, and will remain valid forever.
         unsafe {
             setup_mmu_cfg(idmap.root_address());
         }
-        info!("Marking page table as active");
         idmap.mark_active();
 
         SpinMutex::new(idmap)
@@ -158,6 +156,9 @@ pub fn init() {
 
 /// Enables the MMU for a newly booted core, assuming the page table is already initialised.
 pub fn enable() {
+    // Assert that the MMU is not yet enabled:
+    assert!(!read_sctlr_el3().contains(SctlrEl3::M));
+
     // SAFETY: We pass the root address of the IdMap from `PAGE_TABLE`, which has previously been
     // initialised with appropriate mappings, and will remain valid forever.
     unsafe {
@@ -217,22 +218,138 @@ pub fn map_region(idmap: &mut IdMap, region: &MemoryRegion, attributes: Attribut
         .expect("Error mapping memory range");
 }
 
+#[repr(align(4096))]
+struct InitPageTables {
+    l1: [u64; 512],
+    l2: [u64; 512],
+    l3: [u64; 512],
+}
+
+#[unsafe(no_mangle)]
+static mut INIT_PT: InitPageTables = InitPageTables {
+    l1: [0; 512],
+    l2: [0; 512],
+    l3: [0; 512],
+};
+
+pub extern "C" fn init_mmu_early() {
+    let sctlr = SctlrEl3::A | SctlrEl3::SA | SctlrEl3::I;
+    let tcr = (1 << 20) // TBI
+        | (0b101 << 16) // 48 bit physical address size (256 TiB).
+        | (3 << 12)     // SH0
+        | (3 << 10)     // ORGN0
+        | (3 << 8)      // IRGN0
+        | (64 - 39); // Size offset is 2**39 bytes (512 GiB).
+
+    // Assert that the MMU is not yet enabled:
+    assert!(!read_sctlr_el3().contains(SctlrEl3::M));
+
+    // SAFETY: Set appropriate configurations to TCR_EL3, MAIR_EL3, SCTLR_EL3
+    // which might have retained bit settings from earlier bootloader stages.
+    // Set TTBR0 to point to a valid root page table address.
+    unsafe {
+        write_mair_el3(MAIR.0);
+        write_tcr_el3(tcr);
+        write_sctlr_el3(sctlr);
+
+        let ttbr = &raw const INIT_PT.l1 as usize;
+        write_ttbr0_el3(ttbr);
+    }
+
+    // SAFETY: invalidate all instruction caches to PoU. This instruction
+    // doesn't operate on a VA and won't fault as MMU is off anyways.
+    unsafe {
+        asm!("ic iallu", "isb",);
+    }
+
+    // Clear TLB such that it doesn't contain stale entries for when we
+    // re-enable MMU with new mapping.
+    tlbi_alle3();
+    isb();
+
+    // Build L1/L2/L3 tables to cover the whole BL31 image
+    // with identity mapping.
+    let image_start = bl31_start();
+    let l1_index = (image_start >> 30) & 0x1ff;
+
+    // SAFETY: l2_base raw pointer is inferred from INIT_PT.l2 which is a valid
+    // address decided by the linker.
+    // l1_index is limited to 0..511 range which matches INIT_PT.l1 array bounds.
+    unsafe {
+        let l2_base = &raw const INIT_PT.l2 as u64;
+        INIT_PT.l1[l1_index] = l2_base | 3;
+    }
+
+    let l2_index = (image_start >> 21) & 0x1ff;
+
+    // SAFETY: l3_base raw pointer is inferred from INIT_PT.l3 which is a valid
+    // address decided by the linker.
+    // l2_index is limited to 0..511 range which matches INIT_PT.l2 array bounds.
+    unsafe {
+        let l3_base = &raw const INIT_PT.l3 as u64;
+        INIT_PT.l2[l2_index] = l3_base | 3;
+    }
+
+    let l3_index_start = (image_start >> 12) & 0x1ff;
+    let l3_index_end = (bl31_end() >> 12) & 0x1ff;
+
+    //TODO: check image does not cross a 2MB (or 1GB) boundary.
+
+    let mut image_address = image_start as u64;
+
+    for l3_index in l3_index_start..l3_index_end {
+        let mut l3_desc = image_address;
+
+        #[cfg(feature = "rme")]
+        {
+            // NSE
+            l3_desc |= (1 << 11);
+        }
+
+        // AF, Inner shareable, AttrIndex=0 (Normal WRT), Pagetable, Valid
+        l3_desc |= (1 << 10) | (3 << 8) | (0 << 2) | 3;
+
+        // SAFETY: l3_index is limited to 0..511 range which matches INIT_PT.l3
+        // array bounds.
+        unsafe {
+            INIT_PT.l3[l3_index] = l3_desc;
+        }
+
+        image_address += 4096;
+    }
+
+    // Ensure all translation table writes have drained into memory, the TLB invalidation is
+    // complete, and translation register writes are committed before enabling the MMU.
+    dsb_ish();
+    isb();
+
+    // SAFETY: Enable MMU and D$, system configuration and page tables are set is
+    // a known good way.
+    unsafe {
+        write_sctlr_el3(sctlr | SctlrEl3::C | SctlrEl3::M);
+    }
+    isb();
+}
+
 /// # Safety
 ///
 /// `root_address` must be the physical address of a valid page table which maps all the memory that
 /// EL3 uses.
 unsafe fn setup_mmu_cfg(root_address: PhysicalAddress) {
-    let tcr = (0b101 << 16) // 48 bit physical address size (256 TiB).
+    let tcr = (1 << 20) // TBI
+        | (0b101 << 16) // 48 bit physical address size (256 TiB).
+        | (3 << 12)     // SH0
+        | (3 << 10)     // ORGN0
+        | (3 << 8)      // IRGN0
         | (64 - 39); // Size offset is 2**39 bytes (512 GiB).
+    let sctlr =
+        SctlrEl3::WXN | SctlrEl3::A | SctlrEl3::SA | SctlrEl3::I | SctlrEl3::C | SctlrEl3::M;
     let ttbr0 = root_address.0;
 
-    let mut sctlr = read_sctlr_el3();
-    // Assert that the MMU is not yet enabled:
-    assert!(!sctlr.contains(SctlrEl3::M));
-
     tlbi_alle3();
-    // SAFETY: We enable the MMU with valid and correct configuration parameters MAIR, TCR, and
-    // TTBR0 (which is a valid address).
+
+    // SAFETY: init_mmu_early has set valid and correct configuration parameters MAIR, TCR.
+    // TTBR0 (which is a valid address) is swapped to runtime page tables.
     unsafe {
         write_mair_el3(MAIR.0);
         write_tcr_el3(tcr);
@@ -244,11 +361,8 @@ unsafe fn setup_mmu_cfg(root_address: PhysicalAddress) {
     dsb_ish();
     isb();
 
-    sctlr |= SctlrEl3::M | SctlrEl3::C | SctlrEl3::WXN;
-    // SAFETY: `sctlr` is a valid and safe value for the EL3 system control register. At this point,
-    // the MMU is turned off (as `assert!`ed above), the translation table base register has been
-    // set to a valid address, and we are about to turn the MMU on with a safe configuration
-    // (`SctlrEl3::C | SctlrEl3::WXN`).
+    // SAFETY: `sctlr` is a valid and safe value for the EL3 system control register.
+    // The translation table base register has been set to a valid address.
     unsafe {
         write_sctlr_el3(sctlr);
     }
