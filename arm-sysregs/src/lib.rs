@@ -41,6 +41,24 @@ macro_rules! read_write_sysreg {
 }
 
 bitflags! {
+    /// ID_AA64ISAR2_EL1 system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64isar2El1: u64 {}
+}
+
+impl IdAa64isar2El1 {
+    const MOPS_SHIFT: u64 = 16;
+    const MOPS_MASK: u64 = 0b1111;
+    const MOPS_SUPPORTED: u64 = 0b0001;
+
+    /// Indicates presence of FEAT_MOPS.
+    pub fn is_feat_mops_present(self) -> bool {
+        (self.bits() >> Self::MOPS_SHIFT) & Self::MOPS_MASK == Self::MOPS_SUPPORTED
+    }
+}
+
+bitflags! {
     /// ID_AA64MMFR1_EL1 system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -664,6 +682,7 @@ impl Debug for Esr {
     }
 }
 
+read_sysreg!(id_aa64isar2_el1: s3_0_c0_c6_2, u64: IdAa64isar2El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr1_el1, u64: IdAa64mmfr1El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
 read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
