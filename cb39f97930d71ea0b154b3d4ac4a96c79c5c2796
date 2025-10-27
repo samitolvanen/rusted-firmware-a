@@ -16,6 +16,75 @@
       "message": "RUN_CI",
       "revId": "cb39f97930d71ea0b154b3d4ac4a96c79c5c2796",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6629e11_1a64a996",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-27T15:33:37Z",
+      "side": 1,
+      "message": "please follow the structure of\n\n```\n    /// AArch64 execution state, EL0.\n    pub const M_AARCH64_EL0: Self \u003d Self::from_bits_retain(0b00000);\n    /// AArch64 execution state, EL1 with SP_EL0.\n    pub const M_AARCH64_EL1T: Self \u003d Self::from_bits_retain(0b00100);\n    /// AArch64 execution state, EL1 with SP_EL1.\n    pub const M_AARCH64_EL1H: Self \u003d Self::from_bits_retain(0b00101);\n```\n\nbut without `pub`",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "cb39f97930d71ea0b154b3d4ac4a96c79c5c2796",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a40ec28_9be4ae07",
+        "filename": "src/context.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-27T15:33:37Z",
+      "side": 1,
+      "message": "do we have to reverse the order? it makes it harder to see changes in the imports",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "cb39f97930d71ea0b154b3d4ac4a96c79c5c2796",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f6a66a_0b4016b6",
+        "filename": "src/cpu_extensions/hcx.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-27T15:33:37Z",
+      "side": 1,
+      "message": "is it possible to limit the amount of `#[cfg(feature \u003d \"sel2\")]` somehow? \n\nFor example you could define submodules and impl CpuExtension twice. This requires duplicating some bit of code unfortunately (is_present, init and configure_per_cpu). please LMK what you think",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "cb39f97930d71ea0b154b3d4ac4a96c79c5c2796",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
