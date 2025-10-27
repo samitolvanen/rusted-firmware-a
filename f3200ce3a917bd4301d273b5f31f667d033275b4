@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f028e7_55258d0b",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-27T18:26:09Z",
+      "side": 1,
+      "message": "@jamiefox@google.com could you explain what how this function works? I think it would be nice to see a crash log on sysreg trap",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "f3200ce3a917bd4301d273b5f31f667d033275b4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
