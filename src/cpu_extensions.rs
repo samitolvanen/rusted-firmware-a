@@ -6,6 +6,7 @@
 
 pub mod hcx;
 pub mod mops;
+pub mod pan;
 
 use crate::{
     context::{CpuContext, PerWorldContext, World},
