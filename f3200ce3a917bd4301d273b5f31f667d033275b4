@@ -22,6 +22,30 @@
       },
       "revId": "f3200ce3a917bd4301d273b5f31f667d033275b4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db086d31_db572b74",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-27T18:48:23Z",
+      "side": 1,
+      "message": "The idea is that if a lower EL triggers an exception taken to EL3 by using some disabled CPU feature, then EL3 injects the exception back to that EL, so that the kernel/hypervisor can mitigate it in some way (avoid using the feature/terminate the VM that used it). That way a full EL3 crash can be avoided. I guess for debugging purposes it could be useful to have a way of setting it to crash.",
+      "parentUuid": "64f028e7_55258d0b",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "f3200ce3a917bd4301d273b5f31f667d033275b4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
