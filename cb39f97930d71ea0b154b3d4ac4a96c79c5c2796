@@ -65,6 +65,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "387a3214_9acec1e7",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-27T18:44:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f9d33daf_560d5956",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "cb39f97930d71ea0b154b3d4ac4a96c79c5c2796",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a40ec28_9be4ae07",
@@ -107,6 +131,29 @@
         "startChar": 0,
         "endLine": 13,
         "endChar": 29
+      },
+      "revId": "cb39f97930d71ea0b154b3d4ac4a96c79c5c2796",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd718959_149cd58f",
+        "filename": "src/context.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-27T18:44:29Z",
+      "side": 1,
+      "message": "can we turn it into a `CpuExtension` in a future CL?",
+      "range": {
+        "startLine": 456,
+        "startChar": 8,
+        "endLine": 458,
+        "endChar": 9
       },
       "revId": "cb39f97930d71ea0b154b3d4ac4a96c79c5c2796",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
