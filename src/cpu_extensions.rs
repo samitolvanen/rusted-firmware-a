@@ -11,6 +11,7 @@ use crate::{
     context::{CpuContext, PerWorldContext, World},
     platform::{Platform, PlatformImpl},
 };
+use arm_sysregs::{ExceptionLevel, Spsr};
 
 /// A trait for managing CPU extensions.
 pub trait CpuExtension {
@@ -43,6 +44,17 @@ pub trait CpuExtension {
     /// checking if the extension is supported by the hardware. This way `restore_context` will be
     /// a no-op for every extension that does not have any context.
     fn restore_context(&self, _world: World) {}
+
+    /// Set extension-specific bits of SPSR to get PSTATE at exception return.
+    ///
+    /// This function is responsible for checking if the extension is supported by the hardware.
+    fn set_spsr_exception_ret(
+        &self,
+        _new_spsr: &mut Spsr,
+        _old_spsr: Spsr,
+        _target_el: ExceptionLevel,
+    ) {
+    }
 }
 
 /// Enable architecture extensions for EL3 execution. This function only updates
