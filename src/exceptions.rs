@@ -2,10 +2,9 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-use crate::context::{PER_WORLD_CONTEXT, world_context};
 use crate::{
-    context::{World, cpu_state},
-    platform::exception_free,
+    context::{PER_WORLD_CONTEXT, World, cpu_state, world_context},
+    platform::{Platform, PlatformImpl, exception_free},
     smccc::SmcReturn,
 };
 use arm_sysregs::{
@@ -134,7 +133,10 @@ fn create_spsr(old_spsr: Spsr, target_el: ExceptionLevel) -> Spsr {
     // BTYPE bits should be cleared to ensure that when injecting an undefined exception,
     // BTI does not trigger when performing an exception return as it will be unexpected.
 
-    // TODO: Add support for SSBS, NMI, PAN, UAO, MTE2, EBEP, SEBEP and GCS.
+    // Set bits associated with CPU extensions.
+    for ext in PlatformImpl::CPU_EXTENSIONS {
+        ext.set_spsr_exception_ret(&mut new_spsr, old_spsr, target_el);
+    }
 
     new_spsr
 }
