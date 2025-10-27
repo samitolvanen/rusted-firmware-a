@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cf525c_61e13546",
+        "filename": "src/cpu_extensions/hcx/hcx_sel2.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-27T18:50:01Z",
+      "side": 1,
+      "message": "maybe pub(super)?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "62f796ba61b265458351d29e37f24151d5a5a012",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
