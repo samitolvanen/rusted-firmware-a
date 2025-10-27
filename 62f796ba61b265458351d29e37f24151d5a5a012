@@ -22,6 +22,30 @@
       },
       "revId": "62f796ba61b265458351d29e37f24151d5a5a012",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5063e890_01d44ab7",
+        "filename": "src/cpu_extensions/hcx/hcx_sel2.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-27T19:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93cf525c_61e13546",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "62f796ba61b265458351d29e37f24151d5a5a012",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
