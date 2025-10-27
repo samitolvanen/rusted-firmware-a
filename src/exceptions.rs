@@ -90,7 +90,7 @@ fn find_exception_vector(spsr_el3: Spsr, vbar: usize, target_el: ExceptionLevel)
     }
 }
 
-fn is_tge_enabled() -> bool {
+pub fn is_tge_enabled() -> bool {
     read_id_aa64mmfr1_el1().is_feat_vhe_present() && read_hcr_el2().contains(HcrEl2::TGE)
 }
 
