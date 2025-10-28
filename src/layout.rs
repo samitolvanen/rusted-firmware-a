@@ -4,6 +4,8 @@
 
 //! Helper functions to get addresses defined by the linker script.
 
+use crate::{PlatformImpl, platform::Platform};
+
 #[allow(improper_ctypes)]
 unsafe extern "C" {
     // These aren't really variables, just symbols defined by the linker script whose addresses we
@@ -57,4 +59,13 @@ pub fn bss2_start() -> usize {
 /// Returns the address of the `__BL31_SEC_DRAM_END__` symbol defined by the linker script.
 pub fn bss2_end() -> usize {
     (&raw const __BSS2_END__) as usize
+}
+
+#[cfg(feature = "rme")]
+pub const fn rmm_shared_start() -> usize {
+    PlatformImpl::RMM_SHARED_BUFFER_START
+}
+#[cfg(feature = "rme")]
+pub const fn rmm_shared_end() -> usize {
+    rmm_shared_start() + 0x1000
 }

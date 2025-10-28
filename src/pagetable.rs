@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+#[cfg(feature = "rme")]
+use crate::layout::{rmm_shared_end, rmm_shared_start};
 use crate::{
     aarch64::{dsb_ish, dsb_sy, isb, tlbi_alle3},
     layout::{
@@ -128,6 +130,11 @@ pub const MT_RO_DATA: Attributes = MT_MEMORY
 #[allow(unused)]
 pub const MT_RW_DATA: Attributes = MT_MEMORY.union(Attributes::UXN);
 
+#[allow(unused)]
+pub const MT_MEMORY_NS: Attributes = MT_MEMORY.union(Attributes::NS);
+#[allow(unused)]
+pub const MT_RW_DATA_NS: Attributes = MT_MEMORY_NS.union(Attributes::UXN);
+
 static PAGE_HEAP: SpinMutex<[PageTable; PlatformImpl::PAGE_HEAP_PAGE_COUNT]> =
     SpinMutex::new([PageTable::EMPTY; PlatformImpl::PAGE_HEAP_PAGE_COUNT]);
 static PAGE_TABLE: Once<SpinMutex<IdMap>> = Once::new();
@@ -202,6 +209,14 @@ fn init_page_table(pages: &'static mut [PageTable]) -> IdMap {
             MT_RW_DATA,
         );
     }
+
+    #[cfg(feature = "rme")]
+    map_region(
+        &mut idmap,
+        &MemoryRegion::new(rmm_shared_start(), rmm_shared_end()),
+        // TODO: change to Realm PAS instead of NS PAS
+        MT_RW_DATA_NS,
+    );
 
     // Corresponds to `plat_regions` in C TF-A.
     PlatformImpl::map_extra_regions(&mut idmap);
