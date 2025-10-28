@@ -14,6 +14,7 @@ use crate::{
 };
 
 pub mod manifest;
+mod smc;
 
 /// Returns a mutable reference to the shared buffer used for communication between R-EL2 and EL3.
 ///
