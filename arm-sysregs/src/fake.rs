@@ -6,7 +6,7 @@
 
 use super::{
     ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, HcrxEl2, IccSre, IdAa64mmfr1El1, IdAa64mmfr2El1,
-    MpidrEl1, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, Spsr,
+    IdAa64pfr0El1, MpidrEl1, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, Spsr,
 };
 use std::sync::Mutex;
 
@@ -192,6 +192,8 @@ pub struct SystemRegisters {
     pub id_aa64mmfr1_el1: IdAa64mmfr1El1,
     /// Fake value for the ID_AA64MMFR2_EL1 system register.
     pub id_aa64mmfr2_el1: IdAa64mmfr2El1,
+    /// Fake value for the ID_AA64PFR0_EL1 system register.
+    pub id_aa64pfr0_el1: IdAa64pfr0El1,
     /// Fake value for the ISR_EL1 system register.
     pub isr_el1: u64,
     /// Fake value for the MAIR_EL1 system register.
@@ -258,10 +260,14 @@ pub struct SystemRegisters {
     pub vbar_el1: usize,
     /// Fake value for THEVBAR_EL2 system register.
     pub vbar_el2: usize,
+    /// Fake value for the VDISR_EL2 system register.
+    pub vdisr_el2: u64,
     /// Fake value for THEVMPIDR_EL2 system register.
     pub vmpidr_el2: u64,
     /// Fake value for THEVPIDR_EL2 system register.
     pub vpidr_el2: u64,
+    /// Fake value for the VSESR_EL2 system register.
+    pub vsesr_el2: u64,
     /// Fake value for THEVTCR_EL2 system register.
     pub vtcr_el2: u64,
     /// Fake value for THEVTTBR_EL2 system register.
@@ -308,6 +314,7 @@ impl SystemRegisters {
             ich_vmcr_el2: 0,
             id_aa64mmfr1_el1: IdAa64mmfr1El1::empty(),
             id_aa64mmfr2_el1: IdAa64mmfr2El1::empty(),
+            id_aa64pfr0_el1: IdAa64pfr0El1::empty(),
             isr_el1: 0,
             mair_el1: 0,
             mair_el2: 0,
@@ -341,8 +348,10 @@ impl SystemRegisters {
             ttbr1_el2: 0,
             vbar_el1: 0,
             vbar_el2: 0,
+            vdisr_el2: 0,
             vmpidr_el2: 0,
             vpidr_el2: 0,
+            vsesr_el2: 0,
             vtcr_el2: 0,
             vttbr_el2: 0,
         }
