@@ -519,6 +519,18 @@ bitflags! {
         /// controls when event counters are enabled at EL3 and in other Secure Exception levels.
         const MPMX = 1 << 35;
     }
+
+    /// Holds information to generate MPAM labels for memory requests when executing at EL3
+    #[derive(Clone, Copy, Debug, Eq, PartialEq, Default)]
+    #[repr(transparent)]
+    pub struct Mpam3El3: u64 {
+        /// Trap direct accesses to MPAM System registers that are not UNDEFINED from all ELn lower than EL3
+        const TRAPLOWER = 1 << 62;
+        /// MPAM Enable
+        /// If set, MPAM information is output based on the MPAMn_ELx register for ELn according the MPAM configuration.
+        /// If not set, the default PARTID and default PMG are output in MPAM information when executing at any ELn.
+        const MPAMEN = 1 << 63;
+    }
 }
 
 /// An AArch64 exception level.
@@ -655,6 +667,11 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64dfr0El1: u64 {}
+
+    /// ID_AA64PFR0_EL1 system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64pfr0El1: u64 {}
 }
 
 impl IdAa64dfr0El1 {
@@ -698,9 +715,21 @@ impl IdAa64dfr0El1 {
     }
 }
 
+impl IdAa64pfr0El1 {
+    const MPAM_SHIFT: u64 = 40;
+    const MPAM_MASK: u64 = 0b1111;
+    const MPAM_SUPPORTED: u64 = 1;
+
+    /// Indicates whether MPAM Extension is implemented.
+    pub fn is_feat_mpam_present(self) -> bool {
+        (self.bits() >> Self::MPAM_SHIFT) & Self::MPAM_MASK == Self::MPAM_SUPPORTED
+    }
+}
+
 read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr1_el1, u64, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
+read_sysreg!(id_aa64pfr0_el1, u64: IdAa64pfr0El1, safe, fake::SYSREGS);
 read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(actlr_el1, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(actlr_el2, u64, safe_read, safe_write, fake::SYSREGS);
