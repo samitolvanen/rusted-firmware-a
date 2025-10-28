@@ -11,7 +11,7 @@ use crate::{
     sysregs::is_feat_vhe_present,
 };
 use arm_psci::EntryPoint;
-use arm_sysregs::{CptrEl3, Esr, ScrEl3, Spsr, write_scr_el3};
+use arm_sysregs::{CptrEl3, Esr, Mpam3El3, ScrEl3, Spsr, write_scr_el3};
 #[cfg(feature = "sel2")]
 use arm_sysregs::{
     HcrEl2, IccSre, read_actlr_el2, read_afsr0_el2, read_afsr1_el2, read_amair_el2,
@@ -48,7 +48,7 @@ use percore::{Cores, ExceptionFree, ExceptionLock, PerCore};
 use spin::Once;
 
 /// The number of contexts to store for each CPU core, one per security state.
-const CPU_DATA_CONTEXT_NUM: usize = if cfg!(feature = "rme") { 3 } else { 2 };
+pub const CPU_DATA_CONTEXT_NUM: usize = if cfg!(feature = "rme") { 3 } else { 2 };
 
 /// The number of registers which can be saved in the crash buffer.
 const CPU_DATA_CRASH_BUF_COUNT: usize = 8;
@@ -515,7 +515,7 @@ static mut PERCPU_DATA: [CpuData; PlatformImpl::CORE_COUNT] =
 /// An array with one `T` for each world.
 #[derive(Clone, Debug, Eq, PartialEq)]
 #[repr(transparent)]
-pub struct PerWorld<T>([T; CPU_DATA_CONTEXT_NUM]);
+pub struct PerWorld<T>(pub [T; CPU_DATA_CONTEXT_NUM]);
 
 impl<T> Index<World> for PerWorld<T> {
     type Output = T;
