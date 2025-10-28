@@ -119,6 +119,15 @@ pub unsafe trait Platform {
     /// whichever is shorter.
     // TODO(firme): pass the requested curve as parameter?
     fn write_attestion_key_ecc_secp384r1(buf: &mut [u8], start_index: usize) -> Result<usize, ()>;
+    #[cfg(feature = "rme")]
+    /// Computes if needed and writes a slice of the Platform Attestation Token into the shared
+    /// buffer. The slice range within the Token is `start_index..`, clamped at either the end of
+    /// the Token or the end of the buffer, whichever is shorter.
+    fn write_attestation_token(
+        buf: &mut [u8],
+        hash: &[u8],
+        start_index: usize,
+    ) -> Result<(usize, usize), ()>;
 
     #[cfg(feature = "rme")]
     /// Platform dependent part of the RME Boot Manifest. Entries within the range `0..RMM_<NAME>`
