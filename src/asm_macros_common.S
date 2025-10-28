@@ -169,8 +169,8 @@
 .endif
 	.endm
 
-/* TODO: Set this to 1. As of Arm v8.2, it is mandatory. */
-.set ENABLE_FEAT_RAS, 0
+/* Assume FEAT_RAS is present as it is mandatory from Armv8.2. */
+.set ENABLE_FEAT_RAS, 1
 
 	/* Macro for error synchronization on exception boundries.
 	 * With FEAT_RAS enabled, it is assumed that FEAT_IESB is also present
