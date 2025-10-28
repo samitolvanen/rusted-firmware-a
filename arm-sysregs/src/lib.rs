@@ -95,6 +95,24 @@ impl IdAa64mmfr2El1 {
 }
 
 bitflags! {
+    /// ID_AA64PFR0_EL1 system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64pfr0El1: u64 {}
+}
+
+impl IdAa64pfr0El1 {
+    const RAS_SHIFT: u64 = 28;
+    const RAS_MASK: u64 = 0b1111;
+    const RAS_SUPPORTED: u64 = 0b0001;
+
+    /// Indicates presence of FEAT_RAS.
+    pub fn is_feat_ras_present(self) -> bool {
+        (self.bits() >> Self::RAS_SHIFT) & Self::RAS_MASK >= Self::RAS_SUPPORTED
+    }
+}
+
+bitflags! {
     /// MPIDR_EL1 system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -707,6 +725,7 @@ impl IdAa64dfr0El1 {
 read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr1_el1, u64: IdAa64mmfr1El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
+read_sysreg!(id_aa64pfr0_el1, u64: IdAa64pfr0El1, safe, fake::SYSREGS);
 read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(actlr_el1, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(actlr_el2, u64, safe_read, safe_write, fake::SYSREGS);
@@ -727,6 +746,7 @@ read_write_sysreg!(cpacr_el1, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(cptr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(csselr_el1, u64: CsselrEl1, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(ctr_el0, u64: CtrEl0, safe, fake::SYSREGS);
+read_write_sysreg!(disr_el1, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(elr_el1, usize, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(elr_el2, usize, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(esr_el1, u64: Esr, safe_read, safe_write, fake::SYSREGS);
@@ -808,8 +828,10 @@ read_write_sysreg!(ttbr1_el1, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(ttbr1_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vbar_el1, usize, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vbar_el2, usize, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(vdisr_el2: s3_4_c12_c1_1, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vmpidr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vpidr_el2, u64, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(vsesr_el2: s3_4_c5_c2_3, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vtcr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vttbr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 
