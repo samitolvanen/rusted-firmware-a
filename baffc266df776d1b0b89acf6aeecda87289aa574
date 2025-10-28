@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb99c10_690d7564",
+        "filename": "src/cpu_extensions.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-28T18:10:22Z",
+      "side": 1,
+      "message": "What do you mean here about getting PSTATE?",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "baffc266df776d1b0b89acf6aeecda87289aa574",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
