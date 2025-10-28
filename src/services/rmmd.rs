@@ -16,6 +16,7 @@ use crate::{
 pub const RMM_SHARED_BUFFER_SIZE: usize = 0x1000;
 
 pub mod manifest;
+mod smc;
 
 /// Returns a mutable reference to the shared buffer used for communication between R-EL2 and EL3.
 ///
