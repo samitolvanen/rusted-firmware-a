@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15bc8912_041f82c3",
+        "filename": "src/cpu_extensions/pan.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-28T18:08:35Z",
+      "side": 1,
+      "message": "Why is this necessary in addition to the logic below, and even if the extension isn\u0027t present?",
+      "revId": "3104768357de110470f7264b23daa31e4d3e2cc1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
