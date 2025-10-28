@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e2e22bc_8e0aa03c",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-28T18:35:51Z",
+      "side": 1,
+      "message": "You\u0027re missing a `/`.",
+      "range": {
+        "startLine": 621,
+        "startChar": 4,
+        "endLine": 621,
+        "endChar": 6
+      },
+      "revId": "645bc37dbb40b20ebb8ebbbaadfef941a346a952",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
