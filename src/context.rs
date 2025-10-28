@@ -11,7 +11,7 @@ use crate::{
     sysregs::is_feat_vhe_present,
 };
 use arm_psci::EntryPoint;
-use arm_sysregs::{CptrEl3, Esr, ScrEl3, Spsr, write_scr_el3};
+use arm_sysregs::{CptrEl3, Esr, Mpam3El3, ScrEl3, Spsr, write_scr_el3};
 #[cfg(feature = "sel2")]
 use arm_sysregs::{
     HcrEl2, IccSre, read_actlr_el2, read_afsr0_el2, read_afsr1_el2, read_amair_el2,
@@ -479,12 +479,14 @@ impl El2Sysregs {
 #[repr(C)]
 pub struct PerWorldContext {
     pub cptr_el3: CptrEl3,
+    pub mpam3_el3: Mpam3El3,
     zcr_el3: u64,
 }
 
 impl PerWorldContext {
     const EMPTY: Self = Self {
         cptr_el3: CptrEl3::empty(),
+        mpam3_el3: Mpam3El3::empty(),
         zcr_el3: 0,
     };
 }

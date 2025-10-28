@@ -192,6 +192,8 @@ func el3_exit
 	msr	S3_6_C1_C2_0, x20 /* zcr_el3 */
 sve_not_enabled:
 
+	/* TODO RESTORE MPAM3_EL3 */
+
 	synchronize_errors
 
 	/* ----------------------------------------------------------
