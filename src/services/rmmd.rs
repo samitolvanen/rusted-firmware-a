@@ -4,6 +4,8 @@
 
 use core::{fmt::Debug, ptr::slice_from_raw_parts_mut};
 
+use spin::mutex::SpinMutex;
+
 use crate::{
     context::World,
     info,
@@ -12,8 +14,8 @@ use crate::{
     services::{
         Service, owns,
         rmmd::smc::{
-            EccCurve, RecAttestGetRealmKeyResponse, RecCall, RecCommandReturnCode,
-            RecEl3FeaturesResponse,
+            EccCurve, RecAttestGetPlatTokenResponse, RecAttestGetRealmKeyResponse, RecCall,
+            RecCommandReturnCode, RecEl3FeaturesResponse,
         },
     },
     smccc::{FunctionId, NOT_SUPPORTED, OwningEntityNumber, SmcReturn},
@@ -169,7 +171,68 @@ impl Service for Rmmd {
                 }
                 .into()
             }
-            RecCall::AttestGetPlatToken { .. } => todo!(),
+            // TODO(firme): equivalent to MFI_ATTEST_PAT_GET, will have to take into accoun the
+            // write offset.
+            RecCall::AttestGetPlatToken {
+                buf_pa,
+                buf_size,
+                c_size,
+            } => {
+                let buf_pa = buf_pa as usize;
+                let buf_size = buf_size as usize;
+                let c_size = c_size as usize;
+
+                // Perform sanity checks on the received buffer range.
+                if !sb_address.contains(&buf_pa) {
+                    return RecCommandReturnCode::BadAddress.into();
+                }
+                if !sb_address.contains(&(buf_pa + buf_size - 1)) {
+                    return RecCommandReturnCode::InvalidValue.into();
+                }
+
+                // Safety:
+                // - This function can only be reached after having setup the Realm World, which
+                //   requires the MMU and pagetables to be setup.
+                // - This function never calls again `get_shared_buffer()`, thus the reference will
+                //   be dropped upon return, before another call is made.
+                // - Similarly to the above, this function does not switch to the Realm World.
+                let shared_buffer = unsafe { get_shared_buffer() };
+
+                static INDEX: SpinMutex<usize> = SpinMutex::new(0);
+
+                let mut idx = INDEX.lock();
+
+                let write_res = if c_size == 0 {
+                    PlatformImpl::write_attestation_token(shared_buffer, &[], *idx)
+                } else {
+                    let mut hash_print = [0; 256];
+                    fn to_hex(val: u8) -> u8 {
+                        char::from_digit(val as u32, 16)
+                            .unwrap()
+                            .try_into()
+                            .unwrap()
+                    }
+
+                    for i in 0..c_size {
+                        hash_print[2 * i] = to_hex(shared_buffer[i] >> 4);
+                        hash_print[2 * i + 1] = to_hex(shared_buffer[i] & 0xF);
+                    }
+
+                    PlatformImpl::write_attestation_token(shared_buffer, &hash_print, *idx)
+                };
+
+                let Ok((size, rem)) = write_res else {
+                    return RecCommandReturnCode::Unk.into();
+                };
+
+                *idx += size;
+
+                RecAttestGetPlatTokenResponse {
+                    token_hunk_size: size as u64,
+                    remaining_size: rem as u64,
+                }
+                .into()
+            }
             RecCall::El3Features { .. } => RecEl3FeaturesResponse { feat_reg: 0 }.into(),
             RecCall::El3TokenSign { .. } => todo!(),
             // Hacky trick to avoid TF-RMM from enabling encryption (not implemented yet).
