@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1945d871_04d48fb8",
+        "filename": "src/cpu_extensions/hcx/hcx_sel2.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-28T18:03:18Z",
+      "side": 1,
+      "message": "This (and `restore_context`) can just be `pub`, the visibility is already restricted beyond that by the visibility of this module.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "bd09c488390ecbb7c51a8b9408cfbe08a6a5fd00",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
