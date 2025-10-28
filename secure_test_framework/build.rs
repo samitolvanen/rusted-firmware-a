@@ -27,4 +27,12 @@ fn main() {
     );
     println!("cargo:rerun-if-changed={}/{}_bl32.ld", crate_dir, platform);
     println!("cargo:rerun-if-changed={}/{}_bl33.ld", crate_dir, platform);
+
+    if platform == "fvp" {
+        println!(
+            "cargo:rustc-link-arg-bin=realm=-T{}/{}_realm.ld",
+            crate_dir, platform
+        );
+        println!("cargo:rerun-if-changed={}/{}_realm.ld", crate_dir, platform);
+    }
 }
