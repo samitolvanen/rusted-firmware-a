@@ -16,6 +16,24 @@
       "message": "miss \n\n```use spin::mutex::SpinMutex;\nuse crate::services::rmmd::smc::RecAttestGetPlatTokenResponse;```",
       "revId": "9b95e0629da920c8e416e920d3797b3b704744a2",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c02ce7a_38ba4cbd",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-28T09:22:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5bedfda_c81b4c0b",
+      "revId": "9b95e0629da920c8e416e920d3797b3b704744a2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
