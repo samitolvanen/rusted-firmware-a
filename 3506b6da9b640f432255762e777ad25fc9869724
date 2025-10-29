@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf73044_b5e509b8",
+        "filename": "src/arm_macros.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-29T17:32:50Z",
+      "side": 1,
+      "message": "It also clobbers LR, and the `{Fvp, Qemu}::dump_registers` functions save it. The macro should either save/restore LR or mention it in the clobber list.",
+      "revId": "3506b6da9b640f432255762e777ad25fc9869724",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
