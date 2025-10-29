@@ -188,7 +188,10 @@ impl El3State {
         is_in_el3: 0,
         saved_elr_el3: 0,
         nested_ea_flag: 0,
-        mdcr_el3: MdcrEl3::empty(),
+        mdcr_el3: MdcrEl3::TPM
+            .union(MdcrEl3::TTRF)
+            .union(MdcrEl3::SCCD)
+            .union(MdcrEl3::MCCD),
     };
 }
 
