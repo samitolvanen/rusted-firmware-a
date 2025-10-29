@@ -47,7 +47,7 @@ use percore::{Cores, ExceptionFree, ExceptionLock, PerCore};
 use spin::Once;
 
 /// The number of contexts to store for each CPU core, one per security state.
-const CPU_DATA_CONTEXT_NUM: usize = if cfg!(feature = "rme") { 3 } else { 2 };
+pub const CPU_DATA_CONTEXT_NUM: usize = if cfg!(feature = "rme") { 3 } else { 2 };
 
 /// The number of registers which can be saved in the crash buffer.
 const CPU_DATA_CRASH_BUF_COUNT: usize = 8;
@@ -518,7 +518,7 @@ static mut PERCPU_DATA: [CpuData; PlatformImpl::CORE_COUNT] =
 /// An array with one `T` for each world.
 #[derive(Clone, Debug, Eq, PartialEq)]
 #[repr(transparent)]
-pub struct PerWorld<T>([T; CPU_DATA_CONTEXT_NUM]);
+pub struct PerWorld<T>(pub [T; CPU_DATA_CONTEXT_NUM]);
 
 impl<T> Index<World> for PerWorld<T> {
     type Output = T;
