@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331f588d_23b192d3",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-29T16:33:18Z",
+      "side": 1,
+      "message": "Looks like these bits belong to the `MPAMCTL_EL3` register? Though it is the same in TF-A, so maybe I am missing something...",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 31
+      },
+      "revId": "13a5aecc17ed40759c1d0cdadfd55dad8fb0ac83",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
