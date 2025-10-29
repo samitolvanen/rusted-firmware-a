@@ -4,13 +4,15 @@
 
 use crate::{
     context::{PER_WORLD_CONTEXT, World, cpu_state, world_context},
+    cpu_extensions::{CpuExtension, mpam::Mpam},
     platform::exception_free,
     smccc::SmcReturn,
 };
 use arm_sysregs::{
     Esr, ExceptionLevel, HcrEl2, ScrEl3, SctlrEl1, SctlrEl2, Spsr, StackPointer, read_hcr_el2,
     read_id_aa64mmfr1_el1, read_sctlr_el1, read_sctlr_el2, read_vbar_el1, read_vbar_el2,
-    write_elr_el1, write_elr_el2, write_esr_el1, write_esr_el2, write_spsr_el1, write_spsr_el2,
+    write_elr_el1, write_elr_el2, write_esr_el1, write_esr_el2, write_mpam3_el3, write_spsr_el1,
+    write_spsr_el2,
 };
 #[cfg(not(test))]
 use core::arch::asm;
@@ -209,6 +211,11 @@ pub fn enter_world(in_regs: &SmcReturn, world: World) -> RunResult {
     let mut out_values = [0; 18];
     let return_reason: u64;
     let esr: u64;
+
+    // TODO: move the entire per_world_context restoration to Rust from `el3_exit`.
+    if Mpam.is_present() {
+        write_mpam3_el3(per_world_context.mpam3_el3);
+    }
 
     // SAFETY: The CPU context is always valid, and will only be used via this pointer by assembly
     // code after the Rust code returns to prepare for the eret, and after the next exception before
