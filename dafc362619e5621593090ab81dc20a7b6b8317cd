@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24c2d2a_d51913ad",
+        "filename": "src/context.S",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T14:39:56Z",
+      "side": 1,
+      "message": "@jamiefox@google.com C TFA restores MDCR_EL3 before ERET, but I think its never configured again when entering EL3. Do you think we could just init it in trf.rs directly and not add it to the PerWorldContext?",
+      "range": {
+        "startLine": 198,
+        "startChar": 12,
+        "endLine": 198,
+        "endChar": 20
+      },
+      "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
