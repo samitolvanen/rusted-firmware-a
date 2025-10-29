@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90cbc3b_bfc01435",
+        "filename": "src/context.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-29T14:30:18Z",
+      "side": 1,
+      "message": "nit: could be combined with line 13",
+      "revId": "457ad8036ca690f2a6212d4d482690d5bbbfab7b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1217d2_d4e09899",
+        "filename": "src/cpu_extensions/trf.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-29T14:30:18Z",
+      "side": 1,
+      "message": "Should be `-\u003d` to match the comment",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "457ad8036ca690f2a6212d4d482690d5bbbfab7b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
