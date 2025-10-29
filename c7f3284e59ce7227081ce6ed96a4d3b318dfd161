@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04340c8_d547ce93",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T17:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "531b55f1_4c087b5f",
+      "range": {
+        "startLine": 515,
+        "startChar": 14,
+        "endLine": 515,
+        "endChar": 19
+      },
+      "revId": "c7f3284e59ce7227081ce6ed96a4d3b318dfd161",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "827057f4_2fe45ba6",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-10-29T15:47:49Z",
       "side": 1,
       "message": "comparing to TF-A, it\u0027s missing the MDCR_EnPM2 bit",
+      "range": {
+        "startLine": 81,
+        "startChar": 59,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "c7f3284e59ce7227081ce6ed96a4d3b318dfd161",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bcafb5_25c39c1b",
+        "filename": "src/cpu_extensions/pmuv3.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T17:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c72aded_9ab095f0",
       "range": {
         "startLine": 81,
         "startChar": 59,
