@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9366cab8_50fd3ea0",
+        "filename": "src/cpu_extensions/pmuv3.rs",
+        "patchSetId": 20
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-29T18:12:26Z",
+      "side": 1,
+      "message": "nit: stray tab",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "7eb8b2c73a78dcaf51bb2cb5c6f9985d86d213aa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
