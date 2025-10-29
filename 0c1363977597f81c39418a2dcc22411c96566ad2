@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ad7e45_bc4b1b52",
+        "filename": "src/cpu_extensions/pmuv3.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T14:33:05Z",
+      "side": 1,
+      "message": "C TFA:\n```\nstatic u_register_t init_mdcr_el2_hpmn(u_register_t mdcr_el2)\n{\n\t/*\n\t * Initialize MDCR_EL2.HPMN to its hardware reset value so we don\u0027t\n\t * throw anyone off who expects this to be sensible.\n\t */\n\tmdcr_el2 \u0026\u003d ~MDCR_EL2_HPMN_MASK;\n\tmdcr_el2 |\u003d ((read_pmcr_el0() \u003e\u003e PMCR_EL0_N_SHIFT) \u0026 PMCR_EL0_N_MASK);\n\n\treturn mdcr_el2;\n}\n```\n\nto me it looks a bit off that we need to do that. @jamiefox@google.com what do you think?",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "0c1363977597f81c39418a2dcc22411c96566ad2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
