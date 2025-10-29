@@ -22,6 +22,30 @@
       },
       "revId": "645bc37dbb40b20ebb8ebbbaadfef941a346a952",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ba597d_774e6065",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T13:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e2e22bc_8e0aa03c",
+      "range": {
+        "startLine": 621,
+        "startChar": 4,
+        "endLine": 621,
+        "endChar": 6
+      },
+      "revId": "645bc37dbb40b20ebb8ebbbaadfef941a346a952",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
