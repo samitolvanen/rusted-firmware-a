@@ -16,6 +16,24 @@
       "message": "This is no longer \u0027empty\u0027, so the it doesn\u0027t match the name of the constant. I expect that this means the `CPU_STATE` gets moved from `.bss` to `.data`, which we might not want as it is relatively large. Why not do this initialisation in `initialise_common` instead, like the other fields?\n\nSeparately, why are these bits all being set unconditionally? Shouldn\u0027t they only be set if the relevant features are present and enabled?",
       "revId": "78a7c2087f12f3327d9cf454efd51240d09a89cc",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c251958_5e17d536",
+        "filename": "src/context.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T17:40:50Z",
+      "side": 1,
+      "message": "TPM, SCCD, MCCD configuration is done in next CL (PMU config).\n\nShould I Trap TRF control accesses if the extension is present, but not supported by the platform?",
+      "parentUuid": "69f1394b_1dcd9d1c",
+      "revId": "78a7c2087f12f3327d9cf454efd51240d09a89cc",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
