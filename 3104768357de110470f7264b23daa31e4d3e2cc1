@@ -16,6 +16,24 @@
       "message": "Why is this necessary in addition to the logic below, and even if the extension isn\u0027t present?",
       "revId": "3104768357de110470f7264b23daa31e4d3e2cc1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c696c6ee_42d742d1",
+        "filename": "src/cpu_extensions/pan.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-29T19:19:52Z",
+      "side": 1,
+      "message": "It\u0027s the same behaviour as the TF-A version, it copies the bits from old to new unconditionally and then modifies it. I guess that ensures it handles any case where the bit is RES1 instead of RES0 without the extension.",
+      "parentUuid": "15bc8912_041f82c3",
+      "revId": "3104768357de110470f7264b23daa31e4d3e2cc1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

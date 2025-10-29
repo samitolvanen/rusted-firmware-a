@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef0f882_f2dd5073",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-29T19:19:52Z",
+      "side": 1,
+      "message": "I moved the code here, since it needs to be here even if the platform has not enabled the extension. This also makes it easier to verify correctness against the pseudocode in the link above.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
