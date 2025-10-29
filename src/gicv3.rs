@@ -18,7 +18,9 @@ use arm_gic::{
         registers::{Gicd, GicdCtlr, GicrSgi},
     },
 };
-use arm_sysregs::{MpidrEl1, ScrEl3, read_mpidr_el1};
+use arm_sysregs::{
+    IccSre, MpidrEl1, ScrEl3, read_mpidr_el1, read_scr_el3, write_icc_sre_el2, write_scr_el3,
+};
 use log::debug;
 use percore::Cores;
 use spin::{Once, mutex::SpinMutex};
@@ -283,6 +285,24 @@ impl<'a> Gic<'a> {
         // levels to configure the same for themselves. If the legacy mode is
         // not supported, the SRE bit is RAO/WI
         GicCpuInterface::enable_system_register_el3(true, true);
+
+        // If S-EL2 is present, these values are set in CpuContext::el2_sysregs and written into the
+        // registers at the first time we do a context restore, both in SWd and NWd. Without S-EL2
+        // however there is no EL2 sysreg context handling, but the values still need to be set in
+        // NS-EL2.
+        #[cfg(not(feature = "sel2"))]
+        {
+            let scr_el3 = read_scr_el3();
+
+            write_scr_el3(scr_el3 | ScrEl3::NS);
+            isb();
+
+            GicCpuInterface::disable_legacy_interrupt_bypass_el2(true);
+            GicCpuInterface::enable_system_register_el2(true, true);
+
+            write_scr_el3(scr_el3);
+            isb();
+        }
 
         // Prevent the selection of legacy mode where Secure Group 1 interrupts are treated as Group 0.
         GicCpuInterface::enable_system_register_el1(true);
