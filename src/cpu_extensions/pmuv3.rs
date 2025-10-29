@@ -83,7 +83,7 @@ pub fn configure_per_cpu(ctx: &mut CpuContext) {
     //                              MDCR_EL2.HPMN - 1. Enabled for the rest
     //
     // MDCR_EL3.EnPM2: Set to one so that various PMUv3p9 related system
-	//  register accesses do not trap to EL3.
+    //  register accesses do not trap to EL3.
     //
     // MDCR_EL3.TPM: Set to zero so that EL0, EL1, and EL2 System register
     //  accesses to all Performance Monitors registers do not trap to EL3.
