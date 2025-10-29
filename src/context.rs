@@ -4,6 +4,7 @@
 
 use crate::{
     aarch64::isb,
+    dram::lazy_indirect,
     gicv3,
     platform::{Platform, PlatformImpl, exception_free},
     smccc::SmcReturn,
@@ -534,9 +535,12 @@ impl CpuState {
     const EMPTY: Self = Self([CpuContext::EMPTY; CPU_DATA_CONTEXT_NUM]);
 }
 
-static CPU_STATE: PerCoreState<CpuState> = PerCore::new(
-    [const { ExceptionLock::new(RefCell::new(CpuState::EMPTY)) }; PlatformImpl::CORE_COUNT],
-);
+lazy_indirect! {
+    CPU_STATE,
+    PerCoreState<CpuState>,
+    PerCore::new([const { ExceptionLock::new(RefCell::new(CpuState::EMPTY)) }; PlatformImpl::CORE_COUNT]),
+    unsafe(link_section = ".bss.dram")
+}
 
 /// Returns a raw pointer to the CPU context of the given world on the current core.
 pub fn world_context(world: World) -> *mut CpuContext {
