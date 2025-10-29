@@ -89,6 +89,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79648dd5_330685bb",
+        "filename": "src/cpu_extensions/trf.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T16:11:30Z",
+      "side": 1,
+      "message": "Yes - initially I thought its only related to NS world, but it is not true.",
+      "parentUuid": "0cf6fada_248bf536",
+      "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cb01c99_05545731",
@@ -106,6 +124,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65030ea4_d911df71",
+        "filename": "src/cpu_extensions/trf.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T16:11:30Z",
+      "side": 1,
+      "message": "They can be set unconditionally",
+      "parentUuid": "1cb01c99_05545731",
+      "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00741dd8_2ad3f228",
@@ -119,6 +155,24 @@
       "writtenOn": "2025-10-29T14:56:02Z",
       "side": 1,
       "message": "`mdcr_el3` is initialised to empty, so aren\u0027t these all always no-ops? Maybe you should be setting some bits instead?",
+      "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "501c6397_6d2c567e",
+        "filename": "src/cpu_extensions/trf.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-29T16:11:30Z",
+      "side": 1,
+      "message": "Now i initialize mdcr_el3 by setting all defined (so far) bit flags with values that result in disabling a feature, or enabling sysreg traps",
+      "parentUuid": "00741dd8_2ad3f228",
       "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
