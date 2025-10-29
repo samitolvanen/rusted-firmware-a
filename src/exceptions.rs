@@ -4,13 +4,15 @@
 
 use crate::{
     context::{PER_WORLD_CONTEXT, World, cpu_state, world_context},
+    cpu_extensions::{CpuExtension, mpam::Mpam},
     platform::exception_free,
     smccc::SmcReturn,
 };
 use arm_sysregs::{
     Esr, ExceptionLevel, HcrEl2, ScrEl3, SctlrEl1, SctlrEl2, Spsr, StackPointer, read_hcr_el2,
     read_id_aa64mmfr1_el1, read_sctlr_el1, read_sctlr_el2, read_vbar_el1, read_vbar_el2,
-    write_elr_el1, write_elr_el2, write_esr_el1, write_esr_el2, write_spsr_el1, write_spsr_el2,
+    write_elr_el1, write_elr_el2, write_esr_el1, write_esr_el2, write_mpam3_el3, write_spsr_el1,
+    write_spsr_el2,
 };
 #[cfg(not(test))]
 use core::arch::asm;
