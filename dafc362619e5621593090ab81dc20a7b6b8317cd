@@ -70,6 +70,57 @@
       },
       "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf6fada_248bf536",
+        "filename": "src/cpu_extensions/trf.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-29T14:56:02Z",
+      "side": 1,
+      "message": "Does this bit also affect the other security states?",
+      "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb01c99_05545731",
+        "filename": "src/cpu_extensions/trf.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-29T14:56:02Z",
+      "side": 1,
+      "message": "As far as I can see the `RLTE` and `STE` bits only affect realm state and secure state respectively, so can\u0027t these bits be set unconditionally?",
+      "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00741dd8_2ad3f228",
+        "filename": "src/cpu_extensions/trf.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-29T14:56:02Z",
+      "side": 1,
+      "message": "`mdcr_el3` is initialised to empty, so aren\u0027t these all always no-ops? Maybe you should be setting some bits instead?",
+      "revId": "dafc362619e5621593090ab81dc20a7b6b8317cd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
