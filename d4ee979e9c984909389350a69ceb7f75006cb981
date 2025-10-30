@@ -46,6 +46,30 @@
       },
       "revId": "d4ee979e9c984909389350a69ceb7f75006cb981",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8573ae_460f05ec",
+        "filename": "src/asm_macros_common.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-30T18:34:59Z",
+      "side": 1,
+      "message": "Removed the macro, since we can assume Armv8.2 in RF-A.",
+      "parentUuid": "c767f7ff_e43c1993",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 6
+      },
+      "revId": "d4ee979e9c984909389350a69ceb7f75006cb981",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
