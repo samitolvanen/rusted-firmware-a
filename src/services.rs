@@ -9,6 +9,8 @@ pub mod psci;
 pub mod rmmd;
 pub mod trng;
 
+#[cfg(feature = "rme")]
+use crate::services::rmmd::rme_prepare;
 use crate::{
     context::{World, cpu_state, set_initial_world, switch_world},
     exceptions::{RunResult, enter_world, inject_undef64},
@@ -233,6 +235,7 @@ impl Services {
         #[cfg(feature = "rme")]
         {
             info!("Booting Realm World");
+            rme_prepare();
             switch_world(current_world, World::Realm);
             current_world = World::Realm;
             // TODO: implement separate boot loop for Realm World
