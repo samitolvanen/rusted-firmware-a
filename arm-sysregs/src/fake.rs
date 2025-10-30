@@ -6,8 +6,8 @@
 
 use super::{
     ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, HcrxEl2, IccSre, IdAa64dfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, MdcrEl2, Mpam3El3, MpamIdrEl1, MpidrEl1, Pmcr,
-    ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, Spsr,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, MdcrEl2, Mpam3El3, MpamIdrEl1,
+    MpidrEl1, Pmcr, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, Spsr,
 };
 use std::sync::Mutex;
 
