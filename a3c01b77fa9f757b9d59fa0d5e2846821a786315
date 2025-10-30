@@ -16,6 +16,29 @@
       "message": "RUN_CI",
       "revId": "a3c01b77fa9f757b9d59fa0d5e2846821a786315",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81381fb6_4fd37a06",
+        "filename": "src/cpu.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-30T13:21:59Z",
+      "side": 1,
+      "message": "wouldnt it be waay simpler if platforms declared the full CPU array?",
+      "range": {
+        "startLine": 108,
+        "startChar": 18,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "a3c01b77fa9f757b9d59fa0d5e2846821a786315",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ],
   "submitRequirementResults": [
@@ -35,10 +58,10 @@
         "allowOverrideInChildProjects": true
       },
       "applicabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"],"atomExplanations":{"value":null}}
       },
       "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader AND -label:Code-Review=MIN AND label:Verified=MAX AND -label:Verified=MIN AND label:Unsafe-Review=MAX AND -label:Unsafe-Review=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Verified=MAX","label:Unsafe-Review=MAX"],"failingAtoms":["label:Code-Review=MIN","label:Verified=MIN","label:Unsafe-Review=MIN"]}
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader AND -label:Code-Review=MIN AND label:Verified=MAX AND -label:Verified=MIN AND label:Unsafe-Review=MAX AND -label:Unsafe-Review=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Verified=MAX","label:Unsafe-Review=MAX"],"failingAtoms":["label:Code-Review=MIN","label:Verified=MIN","label:Unsafe-Review=MIN"],"atomExplanations":{"value":null}}
       },
       "overrideExpressionResult": {},
       "patchSetCommitId": "a3c01b77fa9f757b9d59fa0d5e2846821a786315",
