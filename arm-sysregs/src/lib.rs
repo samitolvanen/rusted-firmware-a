@@ -41,6 +41,14 @@ macro_rules! read_write_sysreg {
 }
 
 bitflags! {
+    /// ID_AA64MMFR1_EL1 system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64mmfr1El1: u64 {
+        /// Virtualization Host Extensions supported.
+        const VHE = 1 << 8;
+    }
+
     /// ID_AA64MMFR2_EL1 system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -778,7 +786,7 @@ impl IdAa64pfr0El1 {
 }
 
 read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
-read_sysreg!(id_aa64mmfr1_el1, u64, safe, fake::SYSREGS);
+read_sysreg!(id_aa64mmfr1_el1, u64: IdAa64mmfr1El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64pfr0_el1, u64: IdAa64pfr0El1, safe, fake::SYSREGS);
 read_write_sysreg!(mpam2_el2, u64, safe_read, safe_write, fake::SYSREGS);

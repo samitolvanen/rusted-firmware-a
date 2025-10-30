@@ -3,11 +3,12 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 use crate::context::{PER_WORLD_CONTEXT, world_context};
+use crate::cpu_extensions::CpuExtension;
+use crate::cpu_extensions::vhe::VirtualizationHost;
 use crate::{
     context::{World, cpu_state},
     platform::exception_free,
     smccc::SmcReturn,
-    sysregs::is_feat_vhe_present,
 };
 use arm_sysregs::{
     Esr, ExceptionLevel, HcrEl2, ScrEl3, Spsr, StackPointer, read_hcr_el2, read_vbar_el1,
@@ -93,7 +94,7 @@ fn find_exception_vector(spsr_el3: Spsr, vbar: usize, target_el: ExceptionLevel)
 }
 
 fn is_tge_enabled() -> bool {
-    is_feat_vhe_present() && read_hcr_el2().contains(HcrEl2::TGE)
+    VirtualizationHost.is_present() && read_hcr_el2().contains(HcrEl2::TGE)
 }
 
 /// Returns whether we are in secure state on a system without S-EL2.
