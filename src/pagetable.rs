@@ -4,13 +4,15 @@
 
 pub mod early_pagetable;
 
+#[cfg(feature = "rme")]
+use crate::layout::{rmm_shared_end, rmm_shared_start};
 use crate::{
     aarch64::{dsb_sy, isb, tlbi_alle3},
     layout::{
         bl_code_base, bl_code_end, bl_ro_data_base, bl_ro_data_end, bl31_end, bl31_start, bss2_end,
         bss2_start,
     },
-    platform::{Platform, PlatformImpl},
+    platform::{Platform as _, PlatformImpl},
 };
 use aarch64_paging::{
     MapError, Mapping,
@@ -134,6 +136,11 @@ pub const MT_RO_DATA: Attributes = MT_MEMORY
 /// Attributes used for read-write data mappings.
 #[allow(unused)]
 pub const MT_RW_DATA: Attributes = MT_MEMORY.union(Attributes::UXN);
+
+#[allow(unused)]
+pub const MT_MEMORY_NS: Attributes = MT_MEMORY.union(Attributes::NS);
+#[allow(unused)]
+pub const MT_RW_DATA_NS: Attributes = MT_MEMORY_NS.union(Attributes::UXN);
 
 static PAGE_HEAP: SpinMutex<[PageTable; PlatformImpl::PAGE_HEAP_PAGE_COUNT]> =
     SpinMutex::new([PageTable::EMPTY; PlatformImpl::PAGE_HEAP_PAGE_COUNT]);
@@ -285,6 +292,14 @@ fn init_page_table(pages: &'static mut [PageTable]) -> IdMap {
             MT_RW_DATA,
         );
     }
+
+    #[cfg(feature = "rme")]
+    map_region(
+        &mut idmap,
+        &MemoryRegion::new(rmm_shared_start(), rmm_shared_end()),
+        // TODO: change to Realm PAS instead of NS PAS
+        MT_RW_DATA_NS,
+    );
 
     // Corresponds to `plat_regions` in C TF-A.
     PlatformImpl::map_extra_regions(&mut idmap);
