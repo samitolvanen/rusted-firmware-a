@@ -9,6 +9,7 @@ pub mod pmuv3;
 pub mod sys_reg_trace;
 pub mod trbe;
 pub mod trf;
+pub mod vhe;
 
 use crate::{
     context::{CpuContext, PerWorldContext, World},
