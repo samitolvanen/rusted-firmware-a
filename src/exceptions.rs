@@ -154,7 +154,7 @@ fn create_spsr(old_spsr: Spsr, target_el: ExceptionLevel) -> Spsr {
 /// Describes the reason why execution returned to EL3 after running a lower EL.
 pub enum RunResult {
     /// A lower EL has executed an SMC instruction.
-    Smc { regs: [u64; 18] },
+    Smc,
     /// An IRQ or FIQ routed to EL3 has been triggered while running in a lower EL.
     Interrupt,
     /// A lower EL tried to access a system register that was trapped to EL3.
@@ -170,17 +170,7 @@ impl RunResult {
 impl Debug for RunResult {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         match self {
-            Self::Smc { regs } => {
-                write!(f, "Smc {{ regs: [")?;
-                if let Some(first) = regs.first() {
-                    write!(f, "{first:#x}")?;
-                    for reg in &regs[1..] {
-                        write!(f, ", {reg:#x}")?;
-                    }
-                }
-                write!(f, "] }}")?;
-                Ok(())
-            }
+            Self::Smc => write!(f, "Smc"),
             Self::Interrupt => write!(f, "Interrupt"),
             Self::SysregTrap { esr } => f.debug_struct("SysregTrap").field("esr", esr).finish(),
         }
@@ -195,18 +185,18 @@ impl Debug for RunResult {
 /// in the `in_regs` parameter, those values will be copied into the lower EL's saved context before
 /// the ERET. After execution returns to EL3 by any exception, the reason for returning is checked
 /// and the appropriate result will be returned by this function.
-pub fn enter_world(in_regs: &SmcReturn, world: World) -> RunResult {
-    trace!("Entering world {world:?} with args {in_regs:x?}");
+pub fn enter_world(regs: &mut SmcReturn, world: World) -> RunResult {
+    trace!("Entering world {world:?} with args {regs:x?}");
 
-    if !in_regs.is_empty() {
+    if !regs.is_empty() {
         exception_free(|token| {
-            cpu_state(token)[world].gpregs.write_return_value(in_regs);
+            cpu_state(token)[world].gpregs.write_return_value(regs);
         });
     }
 
     let context = world_context(world);
     let per_world_context = &PER_WORLD_CONTEXT.get().unwrap()[world];
-    let mut out_values = [0; 18];
+    let out_values = regs.mark_all_used();
     let return_reason: u64;
     let esr: u64;
 
@@ -261,7 +251,7 @@ pub fn enter_world(in_regs: &SmcReturn, world: World) -> RunResult {
     }
 
     let result = match return_reason {
-        RunResult::SMC => RunResult::Smc { regs: out_values },
+        RunResult::SMC => RunResult::Smc,
         RunResult::INTERRUPT => RunResult::Interrupt,
         RunResult::SYSREG_TRAP => RunResult::SysregTrap {
             esr: Esr::from_bits_retain(esr),
@@ -312,15 +302,7 @@ mod tests {
 
     #[test]
     fn run_result_debug_format() {
-        assert_eq!(
-            format!(
-                "{:?}",
-                RunResult::Smc {
-                    regs: [0, 1, 2, 0x42, 0x1234, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }
-            ),
-            "Smc { regs: [0x0, 0x1, 0x2, 0x42, 0x1234, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0] }"
-        );
+        assert_eq!(format!("{:?}", RunResult::Smc), "Smc");
         assert_eq!(format!("{:?}", RunResult::Interrupt), "Interrupt");
         assert_eq!(
             format!(
