@@ -12,6 +12,7 @@ pub mod sys_reg_trace;
 pub mod tcr2;
 pub mod trbe;
 pub mod trf;
+pub mod vhe;
 
 use crate::{
     context::{CpuContext, PerWorldContext, World},
