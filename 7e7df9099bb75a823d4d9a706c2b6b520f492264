@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eaeb7b8_1afc1d89",
+        "filename": "src/cpu_extensions/pan.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-30T18:28:53Z",
+      "side": 1,
+      "message": "Removed it",
+      "parentUuid": "5036e417_93a2593f",
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb04acb7_03eb7827",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I think the decision was ARMv9+.",
       "parentUuid": "027de562_609b1e4f",
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c75c5a3_3c76496d",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-30T18:28:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a94f1ecf_5ed38b7e",
       "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -156,6 +192,30 @@
       "side": 1,
       "message": "If we need the check at all, then yeah, let\u0027s just add it in here.",
       "parentUuid": "b0b8995f_73be956c",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c785a608_b0baf264",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-30T18:28:53Z",
+      "side": 1,
+      "message": "Removed the check in favour of assuming it is present.",
+      "parentUuid": "9003967d_d0c4a56a",
       "range": {
         "startLine": 141,
         "startChar": 0,
