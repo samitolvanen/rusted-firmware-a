@@ -35,6 +35,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "027de562_609b1e4f",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-30T15:08:50Z",
+      "side": 1,
+      "message": "It is mandatory from Armv8.1. Do we have a minimum architecture version, other than only AArch64 supported? That implies Armv8.0 upwards. I have a feeling we talked about only supporting Armv9.0/Armv8.5+ platforms, but I can\u0027t find anything documenting that for sure.",
+      "parentUuid": "cb04acb7_03eb7827",
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ef0f882_f2dd5073",
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "What does it mean for the platform to enable the extension then? It seems like that is now a no-op, so what\u0027s the point of the extension at all?",
       "parentUuid": "1ef0f882_f2dd5073",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b8995f_73be956c",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-10-30T15:08:50Z",
+      "side": 1,
+      "message": "It\u0027s the same in TF-A, ENABLE_FEAT_PAN is effectively a no-op. It does seem a bit pointless though, so I\u0027m happy to remove it and just access the id reg here directly if you favour that.",
+      "parentUuid": "0c5153c6_fcbc1ad6",
       "range": {
         "startLine": 141,
         "startChar": 0,
