@@ -4,7 +4,7 @@
 
 //! Fake implementations of system register getters and setters for unit tests.
 
-use crate::{IdAa64pfr0El1, MdcrEl2, Mpam3El3, MpamIdrEl1};
+use crate::{IdAa64mmfr1El1, IdAa64pfr0El1, MdcrEl2, Mpam3El3, MpamIdrEl1};
 
 use super::{
     ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, IccSre, IdAa64dfr0El1, IdAa64mmfr2El1, MpidrEl1,
@@ -191,7 +191,7 @@ pub struct SystemRegisters {
     /// Fake value for the ID_AA64DFR0_EL1 system register.
     pub id_aa64dfr0_el1: IdAa64dfr0El1,
     /// Fake value for the ID_AA64MMFR1_EL1 system register.
-    pub id_aa64mmfr1_el1: u64,
+    pub id_aa64mmfr1_el1: IdAa64mmfr1El1,
     /// Fake value for the ID_AA64MMFR2_EL1 system register.
     pub id_aa64mmfr2_el1: IdAa64mmfr2El1,
     /// Fake value for the ID_AA64PFR0_EL1 system register.
@@ -338,7 +338,7 @@ impl SystemRegisters {
             ich_hcr_el2: 0,
             ich_vmcr_el2: 0,
             id_aa64dfr0_el1: IdAa64dfr0El1::empty(),
-            id_aa64mmfr1_el1: 0,
+            id_aa64mmfr1_el1: IdAa64mmfr1El1::empty(),
             id_aa64mmfr2_el1: IdAa64mmfr2El1::empty(),
             id_aa64pfr0_el1: IdAa64pfr0El1::empty(),
             isr_el1: 0,
