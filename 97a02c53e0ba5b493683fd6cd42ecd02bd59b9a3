@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7db0bb4_be10a8d5",
+        "filename": "src/context.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-30T17:21:15Z",
+      "side": 1,
+      "message": "I guess it can be a separate CL, but do we actually need to restore these system registers in assembly here, or could we restore them a little earlier in `enter_world` before calling `el3_exit`?\n\nIs there a concern with setting `SPSR_EL3` and `ELR_EL3` earlier in case an exception happens before returning to the lower EL?",
+      "revId": "97a02c53e0ba5b493683fd6cd42ecd02bd59b9a3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
