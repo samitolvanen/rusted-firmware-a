@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbf6857_4e663d4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-30T18:54:11Z",
+      "side": 1,
+      "message": "Please describe that this patch introduces a mechanism for delegating work to secondary cores and a test that validates the state transitions on a CPU on-off sequence.",
+      "revId": "de5297f0f519379215bcddbc78583935fa0e7104",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a23a413d_53c2efcc",
@@ -49,6 +66,23 @@
       "side": 1,
       "message": "No, this code is for the BL33 part of STF only. BL32 registers its secondary CPU entrypoint already in `bl32_main` via `secondary_ep_register`.",
       "parentUuid": "ac9277b8_ff1b1daa",
+      "revId": "de5297f0f519379215bcddbc78583935fa0e7104",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e02aea_4d8f34f4",
+        "filename": "secure_test_framework/src/tests/psci.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-10-30T18:54:11Z",
+      "side": 1,
+      "message": "This highlights a problem with STF. Using atomics, spin, etc. will cause issues on real hardware, because STF is running with MMU disabled, so everything is accessed as device memory.\nSTF needs an MMU configuration with caches enabled. This can be addressed in a separate patch.",
       "revId": "de5297f0f519379215bcddbc78583935fa0e7104",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
