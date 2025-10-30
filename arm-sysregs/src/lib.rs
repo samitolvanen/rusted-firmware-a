@@ -44,7 +44,10 @@ bitflags! {
     /// ID_AA64MMFR1_EL1 system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
-    pub struct IdAa64mmfr1El1: u64 {}
+    pub struct IdAa64mmfr1El1: u64 {
+        /// Virtualization Host Extensions supported.
+        const VHE = 1 << 8;
+    }
 }
 
 impl IdAa64mmfr1El1 {
