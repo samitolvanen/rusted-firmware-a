@@ -420,10 +420,6 @@ impl El2Sysregs {
         self.vpidr_el2 = read_vpidr_el2();
         self.vtcr_el2 = read_vtcr_el2();
         self.vttbr_el2 = read_vttbr_el2();
-
-        if read_id_aa64mmfr1_el1().is_feat_vhe_present() {
-            self.save_vhe();
-        }
     }
 
     /// Writes the saved register values to the system registers.
@@ -459,20 +455,6 @@ impl El2Sysregs {
         write_vpidr_el2(self.vpidr_el2);
         write_vtcr_el2(self.vtcr_el2);
         write_vttbr_el2(self.vttbr_el2);
-
-        if read_id_aa64mmfr1_el1().is_feat_vhe_present() {
-            self.restore_vhe();
-        }
-    }
-
-    fn save_vhe(&mut self) {
-        self.contextidr_el2 = read_contextidr_el2();
-        self.ttbr1_el2 = read_ttbr1_el2();
-    }
-
-    fn restore_vhe(&self) {
-        write_contextidr_el2(self.contextidr_el2);
-        write_ttbr1_el2(self.ttbr1_el2);
     }
 }
 

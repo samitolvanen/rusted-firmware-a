@@ -44,7 +44,20 @@ bitflags! {
     /// ID_AA64MMFR1_EL1 system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
-    pub struct IdAa64mmfr1El1: u64 {}
+    pub struct IdAa64mmfr1El1: u64 {
+        /// Virtualization Host Extensions supported.
+        const VHE = 1 << 8;
+    }
+
+    /// ID_AA64MMFR2_EL1 system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64mmfr2El1: u64 {}
+
+    /// ID_AA64MMFR3_EL1 system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64mmfr3El1: u64 {}
 }
 
 impl IdAa64mmfr1El1 {
@@ -67,13 +80,6 @@ impl IdAa64mmfr1El1 {
     }
 }
 
-bitflags! {
-    /// ID_AA64MMFR2_EL1 system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IdAa64mmfr2El1: u64 { }
-}
-
 impl IdAa64mmfr2El1 {
     const CCIDX_SHIFT: u64 = 20;
     const CCIDX_MASK: u64 = 0b1111;
@@ -83,13 +89,6 @@ impl IdAa64mmfr2El1 {
     pub fn has_64_bit_ccsidr_el1(self) -> bool {
         (self.bits() >> Self::CCIDX_SHIFT) & Self::CCIDX_MASK == Self::CCIDX_64_BIT
     }
-}
-
-bitflags! {
-    /// ID_AA64MMFR3_EL1 system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IdAa64mmfr3El1: u64 {}
 }
 
 impl IdAa64mmfr3El1 {
