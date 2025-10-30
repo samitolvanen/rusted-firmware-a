@@ -53,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a94f1ecf_5ed38b7e",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-30T16:55:24Z",
+      "side": 1,
+      "message": "I think the decision was ARMv9+.",
+      "parentUuid": "027de562_609b1e4f",
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ef0f882_f2dd5073",
@@ -114,6 +132,30 @@
       "side": 1,
       "message": "It\u0027s the same in TF-A, ENABLE_FEAT_PAN is effectively a no-op. It does seem a bit pointless though, so I\u0027m happy to remove it and just access the id reg here directly if you favour that.",
       "parentUuid": "0c5153c6_fcbc1ad6",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "7e7df9099bb75a823d4d9a706c2b6b520f492264",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9003967d_d0c4a56a",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-10-30T16:55:24Z",
+      "side": 1,
+      "message": "If we need the check at all, then yeah, let\u0027s just add it in here.",
+      "parentUuid": "b0b8995f_73be956c",
       "range": {
         "startLine": 141,
         "startChar": 0,
