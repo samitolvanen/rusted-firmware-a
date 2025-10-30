@@ -8,7 +8,6 @@ use crate::{
     gicv3,
     platform::{Platform, PlatformImpl, exception_free},
     smccc::SmcReturn,
-    sysregs::is_feat_vhe_present,
 };
 use arm_psci::EntryPoint;
 use arm_sysregs::{CptrEl3, Esr, MdcrEl3, ScrEl3, Spsr, read_mpidr_el1, write_scr_el3};
@@ -418,10 +417,6 @@ impl El2Sysregs {
         self.vpidr_el2 = read_vpidr_el2();
         self.vtcr_el2 = read_vtcr_el2();
         self.vttbr_el2 = read_vttbr_el2();
-
-        if is_feat_vhe_present() {
-            self.save_vhe();
-        }
     }
 
     /// Writes the saved register values to the system registers.
@@ -457,20 +452,6 @@ impl El2Sysregs {
         write_vpidr_el2(self.vpidr_el2);
         write_vtcr_el2(self.vtcr_el2);
         write_vttbr_el2(self.vttbr_el2);
-
-        if is_feat_vhe_present() {
-            self.restore_vhe();
-        }
-    }
-
-    fn save_vhe(&mut self) {
-        self.contextidr_el2 = read_contextidr_el2();
-        self.ttbr1_el2 = read_ttbr1_el2();
-    }
-
-    fn restore_vhe(&self) {
-        write_contextidr_el2(self.contextidr_el2);
-        write_ttbr1_el2(self.ttbr1_el2);
     }
 }
 
