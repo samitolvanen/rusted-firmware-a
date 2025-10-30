@@ -94,6 +94,30 @@
       },
       "revId": "0c1363977597f81c39418a2dcc22411c96566ad2",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8afb1f_6f2ef3d3",
+        "filename": "src/cpu_extensions/pmuv3.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-10-30T13:29:12Z",
+      "side": 1,
+      "message": "so do you think I can just init mdcr_el2 like this:\n```\nctx.el2_sysregs.mdcr_el2 \u003d read_mdcr_el2()\n```\n?",
+      "parentUuid": "1626d3bf_67d02961",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "0c1363977597f81c39418a2dcc22411c96566ad2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
