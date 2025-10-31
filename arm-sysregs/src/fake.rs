@@ -5,8 +5,8 @@
 //! Fake implementations of system register getters and setters for unit tests.
 
 use super::{
-    ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, IccSre, IdAa64dfr0El1, IdAa64mmfr2El1, MpidrEl1,
-    ScrEl3, SctlrEl1, SctlrEl3, Spsr,
+    ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, IccSre, IdAa64dfr0El1, IdAa64mmfr2El1, Mpam3El3,
+    MpidrEl1, ScrEl3, SctlrEl1, SctlrEl3, Spsr,
 };
 use std::sync::Mutex;
 
@@ -266,6 +266,16 @@ pub struct SystemRegisters {
     pub vtcr_el2: u64,
     /// Fake value for THEVTTBR_EL2 system register.
     pub vttbr_el2: u64,
+    /// Fake value for the CNTPCT_EL0 system register.
+    pub cntpct_el0: u64,
+    /// Fake value for the ERRSELR_EL1 system register.
+    pub errselr_el1: u64,
+    /// Fake value for the ERXCTLR_EL1 system register.
+    pub erxctlr_el1: u64,
+    /// Fake value for the ACTLR_EL3 system register.
+    pub actlr_el3: u64,
+    /// Fake value for the MPAM3_EL3 system register.
+    pub mpam3_el3: Mpam3El3,
 }
 
 impl SystemRegisters {
@@ -345,6 +355,11 @@ impl SystemRegisters {
             vpidr_el2: 0,
             vtcr_el2: 0,
             vttbr_el2: 0,
+            cntpct_el0: 0,
+            errselr_el1: 0,
+            erxctlr_el1: 0,
+            actlr_el3: 0,
+            mpam3_el3: Mpam3El3::empty(),
         }
     }
 

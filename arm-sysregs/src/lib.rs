@@ -605,27 +605,6 @@ impl Debug for Esr {
     }
 }
 
-bitflags! {
-    /// ID_AA64DFR0_EL1 system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IdAa64dfr0El1: u64 {}
-}
-
-impl IdAa64dfr0El1 {
-    const TRACE_VER_SHIFT: u64 = 4;
-    const TRACE_VER_MASK: u64 = 0b1111;
-    const SYS_REG_TRACE_SUPPORTED: u64 = 1;
-
-    /// Trace support. Indicates whether System register interface to a PE trace unit is
-    /// implemented.
-    pub fn is_feat_sys_reg_trace_present(self) -> bool {
-        (self.bits() >> Self::TRACE_VER_SHIFT) & Self::TRACE_VER_MASK
-            == Self::SYS_REG_TRACE_SUPPORTED
-    }
-}
-
-read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr1_el1, u64, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
 read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
@@ -732,6 +711,21 @@ read_write_sysreg!(vmpidr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vpidr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vtcr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vttbr_el2, u64, safe_read, safe_write, fake::SYSREGS);
+read_sysreg!(cntpct_el0, u64, safe, fake::SYSREGS);
+write_sysreg!(errselr_el1: S3_0_C5_C3_1, u64, safe, fake::SYSREGS);
+write_sysreg!(erxctlr_el1: S3_0_C5_C4_1, u64, safe, fake::SYSREGS);
+read_write_sysreg!(actlr_el3, u64, safe_read, safe_write, fake::SYSREGS);
+
+bitflags! {
+    /// MPAM3_EL3 system register value
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    pub struct Mpam3El3: u64 {
+        /// MPAM Enable
+        const MPAMEN = 1 << 63;
+    }
+}
+
+write_sysreg!(mpam3_el3: S3_6_C10_C5_0, u64: Mpam3El3, safe, fake::SYSREGS);
 
 #[cfg(test)]
 mod tests {
