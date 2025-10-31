@@ -40,6 +40,91 @@ macro_rules! read_write_sysreg {
     };
 }
 
+/// Generates a public function named `read_$reg` to proxy the one defined by this crate,
+/// which converts the underlying type to the bitfield type `$ty`. This is intended to
+/// allow platforms which define the contents of implementation defined registers to
+/// conveniently assign those bits while sharing a common definition and fakes.
+///
+/// Safety must match the original definition.
+#[macro_export]
+macro_rules! retype_read_sysreg {
+    ($reg:ident, $ty:ty, safe) => {
+        ::paste::paste! {
+            #[doc = "Returns the value of the `"]
+            #[doc = stringify!($sysreg)]
+            #[doc = "` system register."]
+            pub fn [<read_ $reg>]() -> $ty {
+                $ty::from_bits_retain($crate::[<read_ $reg>]())
+            }
+        }
+    };
+    ($reg:ident, $ty:ty) => {
+        ::paste::paste! {
+            #[doc = "Returns the value of the `"]
+            #[doc = stringify!($sysreg)]
+            #[doc = "` system register."]
+            pub unsafe fn [<read_ $reg>]() -> $ty {
+                // SAFETY: Requirements propagated to caller
+                $ty::from_bits_retain(unsafe { $crate::[<read_ $reg>]() })
+            }
+        }
+    };
+}
+
+/// Generates a public function named `write_$reg` to proxy the one defined by this crate,
+/// which converts to the underlying type from the bitfield type `$ty`. This is intended to
+/// allow platforms which define the contents of implementation defined registers to
+/// conveniently assign those bits while sharing a common definition and fakes.
+///
+/// Safety must match the original definition.
+#[macro_export]
+macro_rules! retype_write_sysreg {
+    ($reg:ident, $ty:ty, safe) => {
+        ::paste::paste! {
+            #[doc = "Writes `value` to the `"]
+            #[doc = stringify!($sysreg)]
+            #[doc = "` system register."]
+            pub fn [<write_ $reg>](value: $ty) {
+                $crate::[<write_ $reg>](value.bits())
+            }
+        }
+    };
+    ($reg:ident, $ty:ty) => {
+        ::paste::paste! {
+            #[doc = "Writes `value` to the `"]
+            #[doc = stringify!($sysreg)]
+            #[doc = "` system register."]
+            pub unsafe fn [<write_ $reg>]() -> $ty {
+                // SAFETY: Requirements propagated to caller
+                unsafe { $crate::[<write_ $reg>](value.bits()) }
+            }
+        }
+    };
+}
+
+/// Generates public functions named `{read,write}_$reg` to proxy the ones defined by
+/// this crate, which convert between the underlying type and the bitfield type `$ty`.
+/// This is intended to allow platforms which define the contents of implementation
+/// defined registers to conveniently assign those bits while sharing a common
+/// definition and fakes.
+///
+/// Safety must match the original definition.
+#[macro_export]
+macro_rules! retype_read_write_sysreg {
+    ($reg:ident, $ty:ty, safe_read, safe_write) => {
+        $crate::retype_read_sysreg!($reg, $ty, safe);
+        $crate::retype_write_sysreg!($reg, $ty, safe);
+    };
+    ($reg:ident, $ty:ty, safe_read) => {
+        $crate::retype_read_sysreg!($reg, $ty, safe);
+        $crate::retype_write_sysreg!($reg, $ty);
+    };
+    ($reg:ident, $ty:ty) => {
+        $crate::retype_read_sysreg!($reg, $ty);
+        $crate::retype_write_sysreg!($reg, $ty);
+    };
+}
+
 bitflags! {
     /// ID_AA64MMFR2_EL1 system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
