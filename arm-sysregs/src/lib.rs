@@ -732,6 +732,21 @@ read_write_sysreg!(vmpidr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vpidr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vtcr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vttbr_el2, u64, safe_read, safe_write, fake::SYSREGS);
+read_sysreg!(cntpct_el0, u64, safe, fake::SYSREGS);
+write_sysreg!(errselr_el1: S3_0_C5_C3_1, u64, safe, fake::SYSREGS);
+write_sysreg!(erxctlr_el1: S3_0_C5_C4_1, u64, safe, fake::SYSREGS);
+read_write_sysreg!(actlr_el3, u64, safe_read, safe_write, fake::SYSREGS);
+
+bitflags! {
+    /// MPAM3_EL3 system register value
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    pub struct Mpam3El3: u64 {
+        /// MPAM Enable
+        const MPAMEN = 1 << 63;
+    }
+}
+
+write_sysreg!(mpam3_el3: S3_6_C10_C5_0, u64: Mpam3El3, safe, fake::SYSREGS);
 
 #[cfg(test)]
 mod tests {
