@@ -16,6 +16,24 @@
       "message": "I think it\u0027s clearer to keep the \u00271 *\u0027 here, as it makes it clear we are explicitly choosing to use one page for the heap, but might choose to use 2 or 3 in future.",
       "revId": "ca6c18974d27783ea4bb453ef8c3bae33409c380",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b8cf07_e7951ab9",
+        "filename": "secure_test_framework/src/heap.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-31T14:51:20Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "6901f1f2_6f786a68",
+      "revId": "ca6c18974d27783ea4bb453ef8c3bae33409c380",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

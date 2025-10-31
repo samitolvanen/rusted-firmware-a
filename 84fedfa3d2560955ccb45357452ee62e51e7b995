@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd5c551_2c485d4a",
+        "filename": "secure_test_framework/Cargo.toml",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-31T14:51:20Z",
+      "side": 1,
+      "message": "Good point. The thing is that there are a lot of items flagged as unused (~30), I don\u0027t think excluding each of them would be a good solution either...",
+      "parentUuid": "3289e1d3_79dd75a5",
+      "revId": "84fedfa3d2560955ccb45357452ee62e51e7b995",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5b9f071_a5dac918",
@@ -41,6 +59,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf0859d_56ccd139",
+        "filename": "secure_test_framework/src/tests/ffa_spmd.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-31T14:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b9f071_a5dac918",
+      "range": {
+        "startLine": 992,
+        "startChar": 60,
+        "endLine": 992,
+        "endChar": 61
+      },
+      "revId": "84fedfa3d2560955ccb45357452ee62e51e7b995",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e58403_9507076f",
@@ -54,6 +96,24 @@
       "writtenOn": "2025-10-31T12:26:18Z",
       "side": 1,
       "message": "I don\u0027t think this was intended to be part of the list item. Add a blank line before it instead, to put it in a new paragraph.",
+      "revId": "84fedfa3d2560955ccb45357452ee62e51e7b995",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8881c471_b3b98d70",
+        "filename": "secure_test_framework/src/tests/interrupts.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-10-31T14:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80e58403_9507076f",
       "revId": "84fedfa3d2560955ccb45357452ee62e51e7b995",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
