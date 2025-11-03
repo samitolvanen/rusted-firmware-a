@@ -101,7 +101,7 @@ pub unsafe trait Platform {
     const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension];
 
     /// The number of pages to reserve for the page heap.
-    const PAGE_HEAP_PAGE_COUNT: usize = 5;
+    const PAGE_HEAP_PAGE_COUNT: usize = 8;
 
     /// Platform dependent LogSink implementation type for Logger.
     type LogSinkImpl: LogSink;
