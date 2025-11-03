@@ -38,6 +38,7 @@ const ROOT_LEVEL: usize = 1;
 const MAIR_IWTRWA_OWTRWA_NTR_INDEX: u8 = 0;
 const MAIR_DEVICE_INDEX: u8 = 1;
 const MAIR_NON_CACHEABLE_INDEX: u8 = 2;
+const MAIR_IWBRWA_OWBRWA_NTR_INDEX: u8 = 3;
 
 // Values for MAIR entries.
 const MAIR_DEVICE: MairAttribute = MairAttribute::DEVICE_NGNRE;
@@ -51,10 +52,17 @@ const MAIR_IWTRWA_OWTRWA_NTR: MairAttribute = MairAttribute::normal(
 const MAIR_NON_CACHEABLE: MairAttribute =
     MairAttribute::normal(NormalMemory::NonCacheable, NormalMemory::NonCacheable);
 
+// TODO: this can be removed when the default attribute is changed back to write-back
+const MAIR_IWBRWA_OWBRWA_NTR: MairAttribute = MairAttribute::normal(
+    NormalMemory::WriteBackNonTransientReadWriteAllocate,
+    NormalMemory::WriteBackNonTransientReadWriteAllocate,
+);
+
 const MAIR: Mair = Mair::EMPTY
     .with_attribute(MAIR_DEVICE_INDEX, MAIR_DEVICE)
     .with_attribute(MAIR_IWTRWA_OWTRWA_NTR_INDEX, MAIR_IWTRWA_OWTRWA_NTR)
-    .with_attribute(MAIR_NON_CACHEABLE_INDEX, MAIR_NON_CACHEABLE);
+    .with_attribute(MAIR_NON_CACHEABLE_INDEX, MAIR_NON_CACHEABLE)
+    .with_attribute(MAIR_IWBRWA_OWBRWA_NTR_INDEX, MAIR_IWBRWA_OWBRWA_NTR);
 
 const TCR: u64 = (0b101 << 16) // 48 bit physical address size (256 TiB).
         | (64 - 39); // Size offset is 2**39 bytes (512 GiB).
@@ -67,6 +75,7 @@ pub const GRANULE_SIZE: usize = 4096; // Using 4k pages.
 const IWTRWA_OWTRWA_NTR: Attributes = Attributes::ATTRIBUTE_INDEX_0;
 const DEVICE: Attributes = Attributes::ATTRIBUTE_INDEX_1;
 const NON_CACHEABLE: Attributes = Attributes::ATTRIBUTE_INDEX_2;
+const IWBRWA_OWBRWA_NTR: Attributes = Attributes::ATTRIBUTE_INDEX_3;
 
 /// Attribute bits which are RES1 for the EL3 translation regime, as we configure it.
 ///
@@ -113,6 +122,10 @@ pub const MT_NON_CACHEABLE: Attributes = NON_CACHEABLE.union(BASE);
 
 /// Attributes used for regular memory mappings.
 pub const MT_MEMORY: Attributes = IWTRWA_OWTRWA_NTR
+    .union(BASE)
+    .union(Attributes::INNER_SHAREABLE);
+
+pub const MT_MEMORY_WB: Attributes = IWBRWA_OWBRWA_NTR
     .union(BASE)
     .union(Attributes::INNER_SHAREABLE);
 
@@ -292,12 +305,28 @@ fn init_page_table(pages: &'static mut [PageTable]) -> IdMap {
     idmap
 }
 
+pub fn get_page_table<'a>() -> &'a SpinMutex<IdMap> {
+    PAGE_TABLE.get().unwrap()
+}
+
+pub fn va_to_pa(va: VirtualAddress) -> PhysicalAddress {
+    IdTranslation::virtual_to_physical(va)
+}
+
 /// Adds the given region to the page table with the given attributes, logging it first.
 pub fn map_region(idmap: &mut IdMap, region: &MemoryRegion, attributes: Attributes) {
     debug!("Mapping {region} as {attributes:?}.");
     idmap
         .map_range(region, attributes)
         .expect("Error mapping memory range");
+}
+
+/// Removes the given region from the page table, logging it first.
+pub fn unmap_region(idmap: &mut IdMap, region: &MemoryRegion) {
+    debug!("Unmapping {region}");
+    idmap
+        .map_range(region, Attributes::empty())
+        .expect("Error unmapping memory range");
 }
 
 /// # Safety
