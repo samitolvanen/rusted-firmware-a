@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60dbc1dd_b3a6b302",
+        "filename": "src/context.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-04T18:07:19Z",
+      "side": 1,
+      "message": "Looks like this change removed all the `esb`s https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/21685\n\nBut I missed the setting of SCTLR_EL3.IESB in this patch, which looks to be needed to do that, so I\u0027ll add it into this patch.",
+      "parentUuid": "659572d1_00575d30",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 17
+      },
+      "revId": "377e10f4b08228edc6ca8eac15cab028938b5459",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcae9594_fa898e7a",
         "filename": "src/cpu_extensions/ras.rs",
         "patchSetId": 6
