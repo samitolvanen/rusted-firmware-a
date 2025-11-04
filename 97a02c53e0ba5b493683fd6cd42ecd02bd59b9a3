@@ -34,6 +34,24 @@
       "parentUuid": "f7db0bb4_be10a8d5",
       "revId": "97a02c53e0ba5b493683fd6cd42ecd02bd59b9a3",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a92719_45bbcdfb",
+        "filename": "src/context.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-04T16:25:13Z",
+      "side": 1,
+      "message": "As far as I can see the change you linked doesn\u0027t change anything about how these registers are restored, it just stops saving `scr_el3` to the context struct.\n\nWhere is the esb?",
+      "parentUuid": "28d56132_b7bf6fe9",
+      "revId": "97a02c53e0ba5b493683fd6cd42ecd02bd59b9a3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
