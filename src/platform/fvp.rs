@@ -106,6 +106,8 @@ const NT_FW_CONFIG_ADDRESS: u64 = 0x8000_0000;
 const HW_CONFIG_ADDRESS: u64 = 0x07f0_0000;
 const HW_CONFIG_ADDRESS_NS: u64 = 0x8200_0000;
 
+const SYS_COUNTER_FREQ_IN_HZ: u64 = 1000_000_000;
+
 // TODO: Use the correct values here (see services/std_svc/rmmd/rmmd_main.c).
 /// Version of the RMM Boot Interface.
 #[cfg(feature = "rme")]
@@ -172,6 +174,7 @@ pub struct Fvp;
 // `FVP_MAX_PE_PER_CPU` are correct.
 unsafe impl Platform for Fvp {
     const CORE_COUNT: usize = PLATFORM_CORE_COUNT;
+    const SYS_COUNTER_FREQ_IN_HZ: u64 = SYS_COUNTER_FREQ_IN_HZ;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
 
     type LogSinkImpl = LockedWriter<Uart<'static>>;
