@@ -16,6 +16,24 @@
       "message": "I guess it can be a separate CL, but do we actually need to restore these system registers in assembly here, or could we restore them a little earlier in `enter_world` before calling `el3_exit`?\n\nIs there a concern with setting `SPSR_EL3` and `ELR_EL3` earlier in case an exception happens before returning to the lower EL?",
       "revId": "97a02c53e0ba5b493683fd6cd42ecd02bd59b9a3",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d56132_b7bf6fe9",
+        "filename": "src/context.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-04T15:10:56Z",
+      "side": 1,
+      "message": "https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/18307/6\nexplicitly moves the restoration of spsr_el3, elr_el3, etc. after esb. \n\nI think we should discuss it in a separate CL\n\nAlso this seems related to @jamiefox@google.com \u0027s RAS CL\nhttps://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/44548/comment/659572d1_00575d30/\n\n(I have left a similar comment there.)",
+      "parentUuid": "f7db0bb4_be10a8d5",
+      "revId": "97a02c53e0ba5b493683fd6cd42ecd02bd59b9a3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
