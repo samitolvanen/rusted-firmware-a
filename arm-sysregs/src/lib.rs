@@ -625,6 +625,7 @@ impl IdAa64dfr0El1 {
     }
 }
 
+read_sysreg!(cntpct_el0, u64, safe, fake::SYSREGS);
 read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr1_el1, u64, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);

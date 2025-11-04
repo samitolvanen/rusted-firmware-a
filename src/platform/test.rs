@@ -43,6 +43,9 @@ const CLUSTERS_PER_SOC: usize = 2;
 const CORES_PER_CLUSTER: usize = 3;
 const CORES_PER_CLUSTER_LAST: usize = 4;
 
+const SYS_COUNTER_FREQ_IN_HZ: u64 = 1000_000_000;
+
+
 define_early_mapping!([]);
 
 /// A fake platform for unit tests.
@@ -53,6 +56,7 @@ pub struct TestPlatform;
 // assembly code.
 unsafe impl Platform for TestPlatform {
     const CORE_COUNT: usize = 13;
+    const SYS_COUNTER_FREQ_IN_HZ: u64 = SYS_COUNTER_FREQ_IN_HZ;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
 
     type LogSinkImpl = StdOutSink;
