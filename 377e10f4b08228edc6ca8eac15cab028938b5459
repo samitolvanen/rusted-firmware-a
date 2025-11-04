@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcae9594_fa898e7a",
+        "filename": "src/cpu_extensions/ras.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-04T09:59:54Z",
+      "side": 1,
+      "message": "if RAS is mandatory then maybe this should just return true?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "377e10f4b08228edc6ca8eac15cab028938b5459",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
