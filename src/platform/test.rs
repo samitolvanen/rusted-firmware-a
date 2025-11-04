@@ -297,6 +297,9 @@ impl PsciPlatformInterface for TestPsciPlatformImpl {
             PowerState::PowerDown(0) => {
                 [TestPowerState::PowerDown; TestPsciPlatformImpl::MAX_POWER_LEVEL + 1]
             }
+            PowerState::PowerDown(1) => {
+                [TestPowerState::PowerDown, TestPowerState::On, TestPowerState::On, TestPowerState::On]
+            }
             _ => return None,
         };
 
