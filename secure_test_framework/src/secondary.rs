@@ -30,6 +30,9 @@ pub unsafe extern "C" fn secondary_entry() -> ! {
         "msr cpacr_el1, x30",
         "isb",
 
+        // Enable the MMU and caches.
+        "bl enable_mmu",
+
         // Save registers which `core_position` might clobber.
         "mov x24, x0",
         "mov x25, x1",
