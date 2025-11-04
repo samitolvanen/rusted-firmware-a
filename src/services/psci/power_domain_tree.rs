@@ -342,6 +342,28 @@ impl PowerDomainTree {
         );
         f(cpu, lock_list)
     }
+
+    /// Checks if all of the CPUs are on, using cpu_index (which must be the calling core) to lock
+    /// parents while doing so.
+    pub fn are_all_cpus_on(&self, cpu_index: usize) -> bool {
+        let mut all_on = true;
+        let mut locked_cpu = self.locked_cpu_node(cpu_index);
+        self.with_ancestors_locked(&mut locked_cpu, |_1, _2| {
+            all_on = self
+                .cpu_power_nodes
+                .iter()
+                .enumerate()
+                .all(|(index, cpu_it)| {
+                    // Skip the passed-in index since it's already locked.
+                    if cpu_index == index {
+                        return true;
+                    }
+                    let locked_cpu_it = cpu_it.lock();
+                    locked_cpu_it.affinity_info() == AffinityInfo::On
+                });
+        });
+        all_on
+    }
 }
 
 impl Debug for PowerDomainTree {
@@ -526,5 +548,44 @@ mod tests {
             assert_eq!(Some(0), iter.next().unwrap().parent);
             assert_eq!(None, iter.next().unwrap().parent);
         });
+    }
+
+    #[test]
+    fn power_domain_tree_all_cpus_on_returns_true_for_all_on() {
+        let tree = PowerDomainTree::new(PsciPlatformImpl::topology());
+        for cpu in &tree.cpu_power_nodes {
+            cpu.lock().set_affinity_info(AffinityInfo::On);
+        }
+        assert!(tree.are_all_cpus_on(0));
+    }
+
+    #[test]
+    fn power_domain_tree_some_cpus_off_returns_false_for_all_on() {
+        let tree = PowerDomainTree::new(PsciPlatformImpl::topology());
+        for cpu in &tree.cpu_power_nodes {
+            cpu.lock().set_affinity_info(AffinityInfo::On);
+        }
+        tree.cpu_power_nodes
+            .first()
+            .expect("cpu_power_nodes must be non-empty")
+            .lock()
+            .set_affinity_info(AffinityInfo::Off);
+        tree.cpu_power_nodes
+            .last()
+            .expect("cpu_power_nodes must be non-empty")
+            .lock()
+            .set_affinity_info(AffinityInfo::Off);
+
+        assert!(!tree.are_all_cpus_on(0));
+    }
+
+    #[test]
+    fn power_domain_tree_some_cpus_off_returns_false_for_all_off() {
+        let tree = PowerDomainTree::new(PsciPlatformImpl::topology());
+        for cpu in &tree.cpu_power_nodes {
+            cpu.lock().set_affinity_info(AffinityInfo::Off);
+        }
+
+        assert!(!tree.are_all_cpus_on(0));
     }
 }
