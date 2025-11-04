@@ -140,6 +140,8 @@ pub struct SystemRegisters {
     pub clidr_el1: ClidrEl1,
     /// Fake value for the CNTFRQ_EL0 system register.
     pub cntfrq_el0: u64,
+    /// Fake value for the CNTPCT_EL0 system register.
+    pub cntpct_el0: u64,
     /// Fake value for the CNTHCTL_EL2 system register.
     pub cnthctl_el2: u64,
     /// Fake value for the CNTVOFF_EL2 system register.
@@ -282,6 +284,7 @@ impl SystemRegisters {
             ccsidr_el1: 0,
             clidr_el1: ClidrEl1::empty(),
             cntfrq_el0: 0,
+            cntpct_el0: 0,
             cnthctl_el2: 0,
             cntvoff_el2: 0,
             contextidr_el1: 0,
