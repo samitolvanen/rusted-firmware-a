@@ -16,6 +16,24 @@
       "message": "It looks like you\u0027ve chosen that enabling `TraceBuffer` means enabling support for non-secure world and disabling it for other worlds. Let\u0027s document that, so that someone adding this extension to their platform knows what to expect. Or we could even call the extension something like `TraceBufferNonSecure` to make it more obvious.",
       "revId": "5af69ebe6e2f619ec95c86df9e2af2d1b2e2c9e1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfd188f_2b23b5b9",
+        "filename": "src/cpu_extensions/trbe.rs",
+        "patchSetId": 27
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-04T15:40:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d49e76b_e4cc8e68",
+      "revId": "5af69ebe6e2f619ec95c86df9e2af2d1b2e2c9e1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
