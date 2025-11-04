@@ -14,6 +14,7 @@ mod cpu_extensions;
 #[cfg(not(test))]
 mod crash_console;
 mod debug;
+mod delay_timer;
 mod dram;
 mod exceptions;
 mod gicv3;
@@ -52,6 +53,9 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
 
     info!("Page table activated.");
 
+    // Initialize the delay timer.
+    delay_timer::timer_init();
+
     // Set up GIC.
     gicv3::init();
     info!("GIC configured.");
@@ -76,6 +80,9 @@ extern "C" fn bl31_main(bl31_params: u64, platform_params: u64) -> ! {
 #[unsafe(no_mangle)]
 extern "C" fn psci_warmboot_entrypoint() -> ! {
     debug!("Warmboot on core #{}", CoresImpl::core_index());
+
+    // Initialize the delay timer.
+    delay_timer::timer_init();
 
     let services = Services::get();
 
