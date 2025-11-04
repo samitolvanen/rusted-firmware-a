@@ -95,6 +95,8 @@ const MAX_CPUS_PER_CLUSTER: usize = 1 << PLATFORM_CPU_PER_CLUSTER_SHIFT;
 /// The per-core log buffer size in bytes.
 const LOG_BUFFER_SIZE: usize = 1024;
 
+const SYS_COUNTER_FREQ_IN_HZ: u64 = 1000_000_000;
+
 zeroed_mut! {
     /// Buffers for the per-core in-memory logger.
     LOG_BUFFERS, [[u8; LOG_BUFFER_SIZE]; Qemu::CORE_COUNT], unsafe(link_section = ".bss2.dram")
@@ -121,6 +123,7 @@ define_early_mapping!([]);
 // is correct.
 unsafe impl Platform for Qemu {
     const CORE_COUNT: usize = CLUSTER_COUNT * MAX_CPUS_PER_CLUSTER;
+    const SYS_COUNTER_FREQ_IN_HZ: u64 = SYS_COUNTER_FREQ_IN_HZ;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
 
     type LogSinkImpl = HybridLogger<PerCoreMemoryLogger<'static>, LockedWriter<Uart<'static>>>;

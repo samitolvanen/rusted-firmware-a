@@ -91,6 +91,9 @@ pub unsafe trait Platform {
     /// The number of CPU cores.
     const CORE_COUNT: usize;
 
+    /// The system counter frequency in Hz.
+    const SYS_COUNTER_FREQ_IN_HZ: u64;
+
     /// The size in bytes of the largest cache line across all the cache levels in the platform.
     const CACHE_WRITEBACK_GRANULE: usize;
 
