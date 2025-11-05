@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1751c1b0_21655547",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-05T16:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3098c69c_9756c130",
+      "revId": "c154d2fc6c3d717268292510de8f11c67a8d1ccf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eb0ec74_fadf2baf",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-05T15:12:56Z",
       "side": 1,
       "message": "If SCR_EL3 and MDCR_EL3 are stored in neighboring fields, they can be loaded by a single `ldp` instruction.",
+      "revId": "c154d2fc6c3d717268292510de8f11c67a8d1ccf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88593ee9_d2e133fc",
+        "filename": "src/context.S",
+        "patchSetId": 18
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-05T16:02:11Z",
+      "side": 1,
+      "message": "we are considering moving (at least a part of) this context restoration to Rust. Let\u0027s figure out first whether its possible before optimizing the asm here.",
+      "parentUuid": "6eb0ec74_fadf2baf",
       "revId": "c154d2fc6c3d717268292510de8f11c67a8d1ccf",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
