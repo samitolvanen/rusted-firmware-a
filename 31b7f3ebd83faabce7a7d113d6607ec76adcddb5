@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa20fe78_1da226f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-05T15:49:46Z",
+      "side": 1,
+      "message": "Please add a description:\n* mention the related feature IDs (FEAT_xxx)\n* describe the configuration (which world can access the feature)",
+      "revId": "31b7f3ebd83faabce7a7d113d6607ec76adcddb5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a1b7a7_baa08432",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-05T15:49:46Z",
+      "side": 1,
+      "message": "The CI fails because of a formatting issue, but I am not sure what is happening here. Is there a non-visible character in that line?",
+      "revId": "31b7f3ebd83faabce7a7d113d6607ec76adcddb5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5872ae1_7cbb44f5",
+        "filename": "arm-sysregs/src/fake.rs",
+        "patchSetId": 27
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-05T15:49:46Z",
+      "side": 1,
+      "message": "\u0027L\u0027",
+      "range": {
+        "startLine": 217,
+        "startChar": 29,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "31b7f3ebd83faabce7a7d113d6607ec76adcddb5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
