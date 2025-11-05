@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72954608_dab12a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-05T14:31:36Z",
+      "side": 1,
+      "message": "This patch will not work on FVP until we have a DSU in the FVP. There\u0027s ongoing work both in the FVP team and on our side to sort out this issue.",
+      "revId": "e6d301a8ff2d77a9d338a01086a5dc961a3953fa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
