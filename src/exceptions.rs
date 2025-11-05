@@ -290,7 +290,7 @@ pub fn enter_world(regs: &mut SmcReturn, world: World) -> RunResult {
         r => panic!("unhandled enter world result: {r}"),
     };
 
-    trace!("Returned from world {world:?} with result {result:?}");
+    trace!("Returned from world {world:?} with result {result:?}, regs: {regs:x?}");
 
     result
 }

@@ -50,6 +50,8 @@ arm-gic = "0.7.1"
 uuid = { version = "1.18.1", default-features = false }
 zerocopy = { version = "0.8.27", features = ["derive"] }
 
+libspmc = { path = "../arm-ffa-spmc/libspmc", optional = true, default-features = false }
+
 [dev-dependencies]
 arm-gic = { version = "0.7.1", features = ["fakes"] }
 arm-sysregs = { version = "0.1.0", features = ["fakes"], path = "arm-sysregs" }
@@ -58,6 +60,7 @@ arm-sysregs = { version = "0.1.0", features = ["fakes"], path = "arm-sysregs" }
 default = ["sel2"]
 rme = []
 sel2 = []
+spmc = ["dep:libspmc"]
 max_log_error = ["log/max_level_error"]
 max_log_warn = ["log/max_level_warn"]
 max_log_info = ["log/max_level_info"]

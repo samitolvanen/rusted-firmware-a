@@ -53,9 +53,17 @@ extern "C" fn bl31_main(arg0: u64, arg1: u64, arg2: u64, arg3: u64) -> ! {
     info!("GIC configured.");
 
     let non_secure_entry_point = PlatformImpl::non_secure_entry_point();
-    let secure_entry_point = PlatformImpl::secure_entry_point();
+    let mut secure_entry_point = PlatformImpl::secure_entry_point();
     #[cfg(feature = "rme")]
     let realm_entry_point = PlatformImpl::realm_entry_point();
+
+    #[cfg(feature = "spmc")]
+    {
+        // TODO: get initial args from SPMD or SPMC
+        secure_entry_point.args.fill(0);
+        // TODO: get primary entry point from SPMD or SPMC
+        secure_entry_point.pc = 0xff20_0000;
+    }
 
     initialise_contexts(
         &non_secure_entry_point,
@@ -89,6 +97,7 @@ extern "C" fn psci_warmboot_entrypoint() -> ! {
             let mut secure_entry_point = PlatformImpl::secure_entry_point();
             secure_entry_point.pc = services.spmd.secondary_ep();
             secure_entry_point.args.fill(0);
+            secure_entry_point.args[4] = CoresImpl::core_index() as u64;
             services.spmd.handle_wake_from_cpu_off();
 
             #[cfg(feature = "rme")]

@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+#[cfg(feature = "spmc")]
+use crate::services::ffa::spmc::SPMC;
 use crate::{
     context::{PerCoreState, World, switch_world},
     exceptions::{RunResult, enter_world},
@@ -9,14 +11,18 @@ use crate::{
     services::{Service, owns, psci::PsciSpmInterface},
     smccc::{OwningEntityNumber, SmcReturn},
 };
-use arm_ffa::{
-    DirectMsgArgs, FfaError, Interface, SecondaryEpRegisterAddr, SuccessArgsIdGet,
-    SuccessArgsSpmIdGet, TargetInfo, Version, VersionOut, WarmBootType,
-};
+#[cfg(not(feature = "spmc"))]
+use arm_ffa as ffa;
 use core::{
     cell::RefCell,
     sync::atomic::{AtomicUsize, Ordering::Relaxed},
 };
+use ffa::{
+    DirectMsgArgs, Error, FfaError, Interface, SecondaryEpRegisterAddr, SuccessArgsIdGet,
+    SuccessArgsSpmIdGet, TargetInfo, Version, VersionOut, WarmBootType,
+};
+#[cfg(feature = "spmc")]
+use libspmc::arm_ffa as ffa;
 use log::{debug, error, info, warn};
 use percore::{ExceptionLock, PerCore};
 
@@ -54,6 +60,27 @@ pub struct Spmd {
     core_local: PerCoreState<SpmdLocal>,
 }
 
+#[cfg(feature = "spmc")]
+impl libspmc::SpmdInterface for Spmd {
+    fn ffa_features(&self) {}
+
+    fn ffa_id_get(&self) -> u16 {
+        self.spmc_id
+    }
+
+    fn ffa_spm_id_get(&self) -> u16 {
+        Self::OWN_ID
+    }
+
+    fn ffa_console_log(&self, msg: &str) {
+        use crate::logger::{LogSink, get_log_sink};
+
+        if let Some(sink) = get_log_sink() {
+            writeln!(sink, "SP: {msg}")
+        }
+    }
+}
+
 impl Service for Spmd {
     owns!(
         OwningEntityNumber::STANDARD_SECURE,
@@ -75,8 +102,16 @@ impl Service for Spmd {
 
                 assert_eq!(spmc_state, SpmcState::Runtime);
 
-                let next_world = self.handle_non_secure_call(msg);
+                let mut next_world = self.handle_non_secure_call(msg);
 
+                #[cfg(feature = "spmc")]
+                {
+                    if next_world == World::Secure {
+                        next_world = super::spmc::Spmc::handle_call_from_spmd(msg);
+                    }
+                }
+
+                // TODO: for SPMC, we have to use the SP's version here
                 msg.to_regs(version, regs.mark_all_used());
 
                 next_world
@@ -84,7 +119,7 @@ impl Service for Spmd {
             Err(error) => {
                 error!("Invalid FF-A call from Normal World {error}");
                 let response = match error {
-                    arm_ffa::Error::InvalidVersion(_) => Interface::VersionOut {
+                    Error::InvalidVersion(_) => Interface::VersionOut {
                         output_version: VersionOut::NotSupported,
                     },
                     error => Interface::error((*error).into()),
@@ -101,6 +136,16 @@ impl Service for Spmd {
 
         match &mut Interface::from_regs(version, regs.values()) {
             Ok(msg) => {
+                #[cfg(feature = "spmc")]
+                {
+                    let next_world = super::spmc::Spmc::handle_call_from_sp(msg, 0x8001);
+
+                    if next_world == World::Secure {
+                        msg.to_regs(version, regs.mark_all_used());
+                        return next_world;
+                    }
+                }
+
                 debug!("Handle FF-A call from SWd {msg:x?}");
 
                 let spmc_state =
@@ -177,6 +222,10 @@ impl Spmd {
     }
 
     pub fn secondary_ep(&self) -> usize {
+        #[cfg(feature = "spmc")]
+        return SPMC.lock().libspmc.sp_secondary_entrypoint(0x8001);
+
+        #[cfg(not(feature = "spmc"))]
         self.spmc_secondary_ep.load(Relaxed)
     }
 
@@ -392,6 +441,13 @@ impl Spmd {
         let mut next_world = World::NonSecure;
 
         match msg {
+            #[cfg(feature = "spmc")]
+            Interface::Version { .. } => {
+                *msg = Interface::VersionOut {
+                    output_version: VersionOut::Version(Version(1, 2)),
+                };
+            }
+            #[cfg(not(feature = "spmc"))]
             Interface::Version { input_version } => {
                 // Forward version call to the SPMC
                 next_world = World::Secure;
@@ -472,7 +528,7 @@ impl Spmd {
     }
 
     pub fn forward_secure_interrupt(&self, regs: &mut SmcReturn) -> World {
-        let msg = Interface::Interrupt {
+        let mut msg = Interface::Interrupt {
             // The endpoint and vCPU ID fields MBZ in this case
             target_info: TargetInfo {
                 endpoint_id: 0,
@@ -483,6 +539,17 @@ impl Spmd {
         };
 
         self.switch_spmc_local_state(SpmcState::Runtime, SpmcState::SecureInterrupt);
+
+        #[cfg(feature = "spmc")]
+        {
+            let next_world = super::spmc::Spmc::handle_call_from_spmd(&mut msg);
+
+            if next_world == World::NonSecure {
+                let out_regs = regs.mark_all_used();
+                msg.to_regs(self.spmc_version, out_regs);
+                return World::NonSecure;
+            }
+        }
 
         let out_regs = regs.mark_all_used();
         msg.to_regs(self.spmc_version, out_regs);
@@ -523,6 +590,17 @@ impl Spmd {
 
 impl PsciSpmInterface for Spmd {
     fn forward_psci_request(&self, psci_request: &[u64; 4]) -> u64 {
+        #[cfg(feature = "spmc")]
+        {
+            if !crate::services::ffa::spmc::SPMC
+                .lock()
+                .libspmc
+                .check_sp_psci(0x8001)
+            {
+                return 0;
+            }
+        }
+
         let version = self.spmc_version;
         let mut regs = SmcReturn::EMPTY;
 
