@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679c60b5_d4196ce5",
+        "filename": "arm-sysregs/src/aarch64.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-11-05T18:13:48Z",
+      "side": 1,
+      "message": "Do you want `#[inline(always)]`? `#[inline]` is just a hint to the compiler. If this is load bearing in some cases (since you typed `fix`), you want `#[inline(always)]`. (Even that doesn\u0027t *force* it to be inline, for example if someone creates a function pointer out of it, but the optimizer will stop trying to make calls and just assume that if it can inline it should)",
+      "revId": "77533a4d198f7a6253e02ad8dd1b9b65fc255b88",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
