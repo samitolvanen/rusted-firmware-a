@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab090d02_00e9734f",
+        "filename": "src/cpu_extensions/ras.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-05T17:02:58Z",
+      "side": 1,
+      "message": "maybe lets document what it means for a platform to enable `Ras` CpuExtension?",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "0aeeb767aa2833e034e44650a5ce770147842558",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
