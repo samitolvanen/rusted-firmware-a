@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff646e4_5fc3eef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-05T14:46:43Z",
+      "side": 1,
+      "message": "Is this still relevant? Most of the GIC driver has changed in this patch: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/42178",
+      "revId": "fed934c0c4d0d3f53cb642522d4bc2c6ca672bd1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
