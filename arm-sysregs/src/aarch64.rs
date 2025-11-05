@@ -21,7 +21,7 @@ macro_rules! read_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("mrs {value}, ", stringify!($asm_sysreg)),
-                        options(nostack),
+                        options(nomem, nostack, preserves_flags),
                         value = out(reg) value,
                     );
                 }
@@ -41,7 +41,7 @@ macro_rules! read_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("mrs {value}, ", stringify!($asm_sysreg)),
-                        options(nostack),
+                        options(nomem, nostack, preserves_flags),
                         value = out(reg) value,
                     );
                 }
@@ -61,7 +61,7 @@ macro_rules! read_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("mrs {value}, ", stringify!($asm_sysreg)),
-                        options(nostack),
+                        options(nomem, nostack, preserves_flags),
                         value = out(reg) value,
                     );
                 }
@@ -81,7 +81,7 @@ macro_rules! read_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("mrs {value}, ", stringify!($asm_sysreg)),
-                        options(nostack),
+                        options(nomem, nostack, preserves_flags),
                         value = out(reg) value,
                     );
                 }
@@ -122,7 +122,7 @@ macro_rules! write_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("msr ", stringify!($asm_sysreg), ", {value}"),
-                        options(nostack),
+                        options(nomem, nostack, preserves_flags),
                         value = in(reg) value,
                     );
                 }
@@ -143,7 +143,7 @@ macro_rules! write_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("msr ", stringify!($asm_sysreg), ", {value}"),
-                        options(nostack),
+                        options(nostack, preserves_flags),
                         value = in(reg) value,
                     );
                 }
@@ -162,7 +162,7 @@ macro_rules! write_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("msr ", stringify!($asm_sysreg), ", {value}"),
-                        options(nostack),
+                        options(nomem, nostack, preserves_flags),
                         value = in(reg) value,
                     );
                 }
@@ -184,7 +184,7 @@ macro_rules! write_sysreg {
                 unsafe {
                     core::arch::asm!(
                         concat!("msr ", stringify!($asm_sysreg), ", {value}"),
-                        options(nostack),
+                        options(nostack, preserves_flags),
                         value = in(reg) value,
                     );
                 }
