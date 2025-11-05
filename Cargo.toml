@@ -45,10 +45,15 @@ spin = { version = "0.10.0", default-features = false, features = [
   "spin_mutex",
 ] }
 arm-ffa = { version = "0.4.1", default-features = false }
+arm-ffa-spmc = { version = "0.1.0", optional = true, default-features = false }
 arm-fvp-base-pac = { version = "0.1.3", default-features = false }
 arm-gic = "0.7.1"
 uuid = { version = "1.18.1", default-features = false }
 zerocopy = { version = "0.8.27", features = ["derive"] }
+
+[patch.crates-io]
+arm-ffa = { git = "https://git.trustedfirmware.org/arm-firmware-crates/arm-ffa.git", rev = "refs/changes/67/45567/1" }
+arm-ffa-spmc = { git = "https://git.trustedfirmware.org/arm-firmware-crates/arm-ffa.git", rev = "refs/changes/67/45567/1" }
 
 [dev-dependencies]
 arm-gic = { version = "0.7.1", features = ["fakes"] }
@@ -58,6 +63,7 @@ arm-sysregs = { version = "0.1.0", features = ["fakes"], path = "arm-sysregs" }
 default = ["sel2"]
 rme = []
 sel2 = []
+spmc = ["dep:arm-ffa-spmc"]
 max_log_error = ["log/max_level_error"]
 max_log_warn = ["log/max_level_warn"]
 max_log_info = ["log/max_level_info"]
