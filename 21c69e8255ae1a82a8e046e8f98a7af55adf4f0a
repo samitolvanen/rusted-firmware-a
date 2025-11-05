@@ -22,6 +22,30 @@
       },
       "revId": "21c69e8255ae1a82a8e046e8f98a7af55adf4f0a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d92e598_c5b13c7d",
+        "filename": "src/cpu_extensions/tcr2.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-05T18:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e9ea8ba_5c021ad9",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "21c69e8255ae1a82a8e046e8f98a7af55adf4f0a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
