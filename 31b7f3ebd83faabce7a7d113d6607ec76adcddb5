@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96ecb90_e9bcb6f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-05T16:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa20fe78_1da226f2",
+      "revId": "31b7f3ebd83faabce7a7d113d6607ec76adcddb5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52a1b7a7_baa08432",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdb2bd9_7dabb0d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-05T16:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a1b7a7_baa08432",
+      "revId": "31b7f3ebd83faabce7a7d113d6607ec76adcddb5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5872ae1_7cbb44f5",
@@ -48,6 +84,30 @@
       "writtenOn": "2025-11-05T15:49:46Z",
       "side": 1,
       "message": "\u0027L\u0027",
+      "range": {
+        "startLine": 217,
+        "startChar": 29,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "31b7f3ebd83faabce7a7d113d6607ec76adcddb5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8cf975_deb0fde1",
+        "filename": "arm-sysregs/src/fake.rs",
+        "patchSetId": 27
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-05T16:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5872ae1_7cbb44f5",
       "range": {
         "startLine": 217,
         "startChar": 29,
