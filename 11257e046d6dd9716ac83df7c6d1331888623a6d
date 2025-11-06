@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001b97bc_57a71a11",
+        "filename": "src/context.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-06T15:38:58Z",
+      "side": 1,
+      "message": "And some per-world EL3 system registers.",
+      "range": {
+        "startLine": 567,
+        "startChar": 70,
+        "endLine": 567,
+        "endChar": 94
+      },
+      "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
