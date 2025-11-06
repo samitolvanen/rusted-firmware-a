@@ -50,6 +50,24 @@
       "message": "What does this have to do with PSTATE?",
       "revId": "afd15b0a80d88624e2af238514752f19205b8f5f",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a93fb0_fce8d516",
+        "filename": "src/context.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-06T13:07:34Z",
+      "side": 1,
+      "message": "Writing this register sets PSTATE.DIT https://developer.arm.com/documentation/ddi0601/2025-09/AArch64-Registers/DIT--Data-Independent-Timing?lang\u003den\n\nI followed the TF-A implementation, just minus the conditions https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a/+/refs/heads/master/lib/el3_runtime/aarch64/context.S#276",
+      "parentUuid": "415d08e3_67c541cb",
+      "revId": "afd15b0a80d88624e2af238514752f19205b8f5f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
