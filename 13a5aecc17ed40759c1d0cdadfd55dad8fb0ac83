@@ -22,6 +22,30 @@
       },
       "revId": "13a5aecc17ed40759c1d0cdadfd55dad8fb0ac83",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28a125d_cc065f84",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-06T12:29:32Z",
+      "side": 1,
+      "message": "MPAMCTL_EL3 -- \"This register is present only when FEAT_MPAMv2 is implemented. Otherwise, direct accesses to MPAMCTL_EL3 are UNDEFINED.\"\n\nprobably some time in the future mpam3_el3.MPAMEN will be deprecated, but we dont need to worry about that for ARMv9",
+      "parentUuid": "331f588d_23b192d3",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 31
+      },
+      "revId": "13a5aecc17ed40759c1d0cdadfd55dad8fb0ac83",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
