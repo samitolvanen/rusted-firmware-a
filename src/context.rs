@@ -486,10 +486,11 @@ pub struct PerWorldContext {
 impl PerWorldContext {
     /// By default trap accesses to extensions' sysregs. The configuration may be
     /// overwritten if a platform supports an extension.
-    ///
-    /// TODO: configure the defaults.
-    const DEFAULT: Self = Self {
-        cptr_el3: CptrEl3::empty(),
+    const EMPTY: Self = Self {
+        cptr_el3: CptrEl3::TCPAC
+            .union(CptrEl3::TAM)
+            .union(CptrEl3::TTA)
+            .union(CptrEl3::TFP),
         mpam3_el3: Mpam3El3::TRAPLOWER,
         zcr_el3: 0,
     };
