@@ -24,7 +24,7 @@ use crate::context::{PerWorldContext, World};
 use arm_sysregs::{Mpam3El3, read_id_aa64pfr0_el1};
 
 /// FEAT_MPAM support
-/// 
+///
 /// Enables MPAM configuration adn disables MPAM system register traps for NS and Realm worlds.
 pub struct Mpam;
 
