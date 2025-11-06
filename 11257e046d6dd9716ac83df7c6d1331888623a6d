@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce0e3848_cefaa927",
+        "filename": "src/context.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-06T15:44:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "001b97bc_57a71a11",
+      "range": {
+        "startLine": 567,
+        "startChar": 70,
+        "endLine": 567,
+        "endChar": 94
+      },
+      "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3914aca_2412f5a0",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-11-06T15:40:52Z",
       "side": 1,
       "message": "Here and below, you could call `read_mpamidr_el1()` just once and save the result in a local variable, rather than twice.",
+      "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92dd10bc_5d6616a0",
+        "filename": "src/cpu_extensions/mpam/mpam_sel2.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-06T15:44:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3914aca_2412f5a0",
       "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
