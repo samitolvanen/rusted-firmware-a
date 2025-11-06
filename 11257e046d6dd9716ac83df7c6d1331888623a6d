@@ -22,6 +22,23 @@
       },
       "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3914aca_2412f5a0",
+        "filename": "src/cpu_extensions/mpam/mpam_sel2.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-06T15:40:52Z",
+      "side": 1,
+      "message": "Here and below, you could call `read_mpamidr_el1()` just once and save the result in a local variable, rather than twice.",
+      "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
