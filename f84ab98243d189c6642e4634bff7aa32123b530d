@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38baae64_b037b81b",
+        "filename": "arm-sysregs/src/fake.rs",
+        "patchSetId": 34
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-06T10:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "402093f2_c10a8673",
+      "revId": "f84ab98243d189c6642e4634bff7aa32123b530d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "704bb6d4_12b35199",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-05T18:06:15Z",
       "side": 1,
       "message": "Add a doc comment on this struct explaining what enabling it does for a platform.",
+      "revId": "f84ab98243d189c6642e4634bff7aa32123b530d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "124563af_57d39bd9",
+        "filename": "src/cpu_extensions/pmuv3.rs",
+        "patchSetId": 34
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-06T10:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704bb6d4_12b35199",
       "revId": "f84ab98243d189c6642e4634bff7aa32123b530d",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
