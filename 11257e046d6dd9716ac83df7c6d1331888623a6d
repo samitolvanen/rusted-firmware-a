@@ -81,6 +81,24 @@
       "parentUuid": "e3914aca_2412f5a0",
       "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66a0f81_07ad1c11",
+        "filename": "src/cpu_extensions/mpam/mpam_sel2.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-06T15:47:25Z",
+      "side": 1,
+      "message": "Also in `restore_context` below.",
+      "parentUuid": "92dd10bc_5d6616a0",
+      "revId": "11257e046d6dd9716ac83df7c6d1331888623a6d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
