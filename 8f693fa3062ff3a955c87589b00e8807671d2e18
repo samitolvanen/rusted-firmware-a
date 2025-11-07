@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395ce840_cc7155aa",
+        "filename": "secure_test_framework/src/tests/psci.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-07T17:23:50Z",
+      "side": 1,
+      "message": "Nit: unused import.",
+      "revId": "8f693fa3062ff3a955c87589b00e8807671d2e18",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
