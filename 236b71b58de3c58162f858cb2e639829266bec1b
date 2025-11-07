@@ -71,6 +71,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4fb8373_78993080",
+        "filename": "src/context.rs",
+        "patchSetId": 48
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-07T11:16:47Z",
+      "side": 1,
+      "message": "`MPAM3_EL3` is only present if `FEAT_MPAM` is implemented, otherwise this write causes an exception. TF-A is doing the write conditionally in the `restore_mpam3_el3` macro (if `ENABLE_FEAT_MPAM \u003e\u003d 2`).",
+      "revId": "236b71b58de3c58162f858cb2e639829266bec1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dded5ac_eba2b00e",
         "filename": "src/cpu_extensions/mpam.rs",
         "patchSetId": 48
