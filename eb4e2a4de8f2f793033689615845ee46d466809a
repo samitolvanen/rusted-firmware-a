@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18f06ac_00a3011d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T18:08:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f865835f_a94dd033",
+      "revId": "eb4e2a4de8f2f793033689615845ee46d466809a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c95a841f_6dd4bf26",
@@ -53,6 +71,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ba8de8_b362fd40",
+        "filename": "src/cpu_extensions/vhe.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T18:08:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8c02c96d_b89db61d",
+      "revId": "eb4e2a4de8f2f793033689615845ee46d466809a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1e8b536_b4934f4d",
@@ -66,6 +102,24 @@
       "writtenOn": "2025-11-07T15:00:36Z",
       "side": 1,
       "message": "Shouldn\u0027t the save and restore check `is_present` first?",
+      "revId": "eb4e2a4de8f2f793033689615845ee46d466809a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8ca14e_92f5b8e5",
+        "filename": "src/cpu_extensions/vhe.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T18:08:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d1e8b536_b4934f4d",
       "revId": "eb4e2a4de8f2f793033689615845ee46d466809a",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
