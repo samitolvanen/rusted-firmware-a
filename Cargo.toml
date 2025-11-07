@@ -50,6 +50,7 @@ arm-gic = "0.7.1"
 uuid = { version = "1.18.1", default-features = false }
 zerocopy = { version = "0.8.27", features = ["derive"] }
 num_enum = { version = "0.7.4", default-features = false }
+arm-gpt = { version = "0.1.0", path = "arm-gpt", optional = true }
 
 [dev-dependencies]
 arm-gic = { version = "0.7.1", features = ["fakes"] }
@@ -57,7 +58,7 @@ arm-sysregs = { version = "0.1.0", features = ["fakes"], path = "arm-sysregs" }
 
 [features]
 default = ["sel2"]
-rme = []
+rme = ["arm-sysregs/rme", "dep:arm-gpt"]
 sel2 = []
 max_log_error = ["log/max_level_error"]
 max_log_warn = ["log/max_level_warn"]

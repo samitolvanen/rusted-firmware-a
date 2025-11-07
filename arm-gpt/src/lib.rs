@@ -698,11 +698,13 @@ mod test {
         };
     }
 
+    #[derive(Debug)]
     enum L0Matcher<'a> {
         Block(GPIAccessType),
         Table(&'a [(usize, L1Matcher<'a>)]),
     }
 
+    #[derive(Debug)]
     enum L1Matcher<'a> {
         Contig(ContigSize, GPIAccessType),
         GranulePart(&'a [(usize, GPIAccessType)]),
@@ -1158,4 +1160,6 @@ mod test {
 
         Ok(())
     }
+
+    // TODO: regression test for matching Contig too small in compute_rewrite
 }

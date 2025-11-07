@@ -128,6 +128,9 @@ pub unsafe trait Platform {
     ) -> Result<(usize, usize), ()>;
 
     #[cfg(feature = "rme")]
+    fn setup_gpt();
+
+    #[cfg(feature = "rme")]
     /// Platform dependent part of the RME Boot Manifest. Entries within the range `0..RMM_<NAME>`
     /// (see above) are allocated to be filled by this function. Any extra entry is reserved for
     /// platform independent data.
