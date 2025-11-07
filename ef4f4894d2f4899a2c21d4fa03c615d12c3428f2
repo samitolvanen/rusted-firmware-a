@@ -16,6 +16,24 @@
       "message": "If the platform doesn\u0027t support MPAM, how does this get written to the system register?",
       "revId": "ef4f4894d2f4899a2c21d4fa03c615d12c3428f2",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60f645b_58596da7",
+        "filename": "src/context.rs",
+        "patchSetId": 51
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T12:20:44Z",
+      "side": 1,
+      "message": "good point, rolled back to the original design and added check for Mpam presence.\n\nHopefully that covers all cases 🫣",
+      "parentUuid": "35aae0bb_1ba0c171",
+      "revId": "ef4f4894d2f4899a2c21d4fa03c615d12c3428f2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
