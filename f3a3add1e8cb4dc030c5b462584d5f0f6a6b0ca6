@@ -34,6 +34,24 @@
       "parentUuid": "5afca7d7_02f769ae",
       "revId": "f3a3add1e8cb4dc030c5b462584d5f0f6a6b0ca6",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca9fe2e_318f4d0b",
+        "filename": "src/cpu_extensions/mpam/mpam_sel2.rs",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-07T12:40:07Z",
+      "side": 1,
+      "message": "These functions should be independent of how exactly the context is stored. This is true for other extensions too.\nNow that I\u0027ve spent some time with performance optimization, I am a bit concerned that doing a `PerCore` access and an `exception_free` for each extension may not scale well if a platform has many extension. So I would prefer to keep the context saving functions in higher abstraction layers to accommodate any future change.",
+      "parentUuid": "80cd978d_6bcb2a61",
+      "revId": "f3a3add1e8cb4dc030c5b462584d5f0f6a6b0ca6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
