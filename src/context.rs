@@ -29,13 +29,15 @@ use arm_sysregs::{
 use arm_sysregs::{
     HcrEl2, IccSre, MdcrEl2, SctlrEl2, read_actlr_el2, read_afsr0_el2, read_afsr1_el2,
     read_amair_el2, read_cnthctl_el2, read_cntvoff_el2, read_contextidr_el2, read_cptr_el2,
-    read_elr_el2, read_esr_el2, read_far_el2, read_hacr_el2, read_hcr_el2, read_hpfar_el2,
+    read_elr_el2, read_esr_el2, read_far_el2, read_hacr_el2, read_hcr_el2, read_hdfgrtr_el2,
+    read_hdfgwtr_el2, read_hfgitr_el2, read_hfgrtr_el2, read_hfgwtr_el2, read_hpfar_el2,
     read_hstr_el2, read_icc_sre_el2, read_ich_hcr_el2, read_ich_vmcr_el2, read_id_aa64mmfr1_el1,
     read_mair_el2, read_mdcr_el2, read_sctlr_el2, read_sp_el2, read_spsr_el2, read_tcr_el2,
     read_tpidr_el2, read_ttbr0_el2, read_ttbr1_el2, read_vbar_el2, read_vmpidr_el2, read_vpidr_el2,
     read_vtcr_el2, read_vttbr_el2, write_actlr_el2, write_afsr0_el2, write_afsr1_el2,
     write_amair_el2, write_cnthctl_el2, write_cntvoff_el2, write_contextidr_el2, write_cptr_el2,
-    write_elr_el2, write_esr_el2, write_far_el2, write_hacr_el2, write_hcr_el2, write_hpfar_el2,
+    write_elr_el2, write_esr_el2, write_far_el2, write_hacr_el2, write_hcr_el2, write_hdfgrtr_el2,
+    write_hdfgwtr_el2, write_hfgitr_el2, write_hfgrtr_el2, write_hfgwtr_el2, write_hpfar_el2,
     write_hstr_el2, write_icc_sre_el2, write_ich_hcr_el2, write_mair_el2, write_mdcr_el2,
     write_sctlr_el2, write_sp_el2, write_spsr_el2, write_tcr_el2, write_tpidr_el2, write_ttbr0_el2,
     write_ttbr1_el2, write_vbar_el2, write_vmpidr_el2, write_vpidr_el2, write_vtcr_el2,
@@ -329,6 +331,11 @@ pub struct El2Sysregs {
     far_el2: u64,
     hacr_el2: u64,
     hcr_el2: HcrEl2,
+    hdfgrtr_el2: u64,
+    hdfgwtr_el2: u64,
+    hfgitr_el2: u64,
+    hfgrtr_el2: u64,
+    hfgwtr_el2: u64,
     hpfar_el2: u64,
     hstr_el2: u64,
     icc_sre_el2: IccSre,
@@ -366,6 +373,11 @@ impl El2Sysregs {
         far_el2: 0,
         hacr_el2: 0,
         hcr_el2: HcrEl2::empty(),
+        hdfgrtr_el2: 0,
+        hdfgwtr_el2: 0,
+        hfgitr_el2: 0,
+        hfgrtr_el2: 0,
+        hfgwtr_el2: 0,
         hpfar_el2: 0,
         hstr_el2: 0,
         icc_sre_el2: IccSre::empty(),
@@ -403,6 +415,11 @@ impl El2Sysregs {
         self.hacr_el2 = read_hacr_el2();
         self.hcr_el2 = read_hcr_el2();
         self.hpfar_el2 = read_hpfar_el2();
+        self.hdfgrtr_el2 = read_hdfgrtr_el2();
+        self.hdfgwtr_el2 = read_hdfgwtr_el2();
+        self.hfgitr_el2 = read_hfgitr_el2();
+        self.hfgrtr_el2 = read_hfgrtr_el2();
+        self.hfgwtr_el2 = read_hfgwtr_el2();
         self.hstr_el2 = read_hstr_el2();
         self.icc_sre_el2 = read_icc_sre_el2();
         self.ich_hcr_el2 = read_ich_hcr_el2();
@@ -440,6 +457,11 @@ impl El2Sysregs {
         write_far_el2(self.far_el2);
         write_hacr_el2(self.hacr_el2);
         write_hcr_el2(self.hcr_el2);
+        write_hdfgrtr_el2(self.hdfgrtr_el2);
+        write_hdfgwtr_el2(self.hdfgwtr_el2);
+        write_hfgitr_el2(self.hfgitr_el2);
+        write_hfgrtr_el2(self.hfgrtr_el2);
+        write_hfgwtr_el2(self.hfgwtr_el2);
         write_hpfar_el2(self.hpfar_el2);
         write_hstr_el2(self.hstr_el2);
         write_icc_sre_el2(self.icc_sre_el2);
@@ -683,14 +705,27 @@ fn initialise_common(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     //
     // SCR_EL3.EEL2: Set to one if S-EL2 is present and enabled.
     //
+    // SCR_EL3.FGTEN: Do not trap FGT register accesses to EL3. FEAT_FGT is mandatory since ARMv8.6.
+    //
     // NOTE: Modifying EEL2 bit along with EA bit ensures that we mitigate
     // against ERRATA_V2_3099206.
-    context.el3_state.scr_el3 = ScrEl3::RES1 | ScrEl3::HCE | ScrEl3::SIF | ScrEl3::RW;
+    context.el3_state.scr_el3 =
+        ScrEl3::RES1 | ScrEl3::HCE | ScrEl3::SIF | ScrEl3::RW | ScrEl3::FGTEN;
     #[cfg(feature = "sel2")]
     {
         context.el3_state.scr_el3 |= ScrEl3::EEL2;
         // TODO: Initialise the rest of the context.el2_sysregs too.
         context.el2_sysregs.icc_sre_el2 = IccSre::DIB | IccSre::DFB | IccSre::EN | IccSre::SRE;
+
+        // Initialize HFG*_EL2 registers with a default value so legacy
+        // systems unaware of FEAT_FGT do not get trapped due to their lack
+        // of initialization for this feature.
+        const HFGITR_EL2_INIT_VAL: u64 = 0x0180_0000_0000_0000;
+        const HFGRTR_EL2_INIT_VAL: u64 = 0x00C4_0000_0000_0000;
+        const HFGWTR_EL2_INIT_VAL: u64 = 0x00C4_0000_0000_0000;
+        context.el2_sysregs.hfgitr_el2 = HFGITR_EL2_INIT_VAL;
+        context.el2_sysregs.hfgrtr_el2 = HFGRTR_EL2_INIT_VAL;
+        context.el2_sysregs.hfgwtr_el2 = HFGWTR_EL2_INIT_VAL;
     }
     #[cfg(not(feature = "sel2"))]
     {

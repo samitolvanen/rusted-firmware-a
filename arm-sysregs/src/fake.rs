@@ -177,6 +177,16 @@ pub struct SystemRegisters {
     pub hcr_el2: HcrEl2,
     /// Fake value for the HCRX_EL2 system register.
     pub hcrx_el2: HcrxEl2,
+    /// Fake value for the HDFGRTR_EL2 system register.
+    pub hdfgrtr_el2: u64,
+    /// Fake value for the HDFGWTR_EL2 system register.
+    pub hdfgwtr_el2: u64,
+    /// Fake value for the HFGITR_EL2 system register.
+    pub hfgitr_el2: u64,
+    /// Fake value for the HFGWTR_EL2 system register.
+    pub hfgrtr_el2: u64,
+    /// Fake value for the HFGWTR_EL2 system register.
+    pub hfgwtr_el2: u64,
     /// Fake value for the HPFAR_EL2 system register.
     pub hpfar_el2: u64,
     /// Fake value for the HSTR_EL2 system register.
@@ -345,6 +355,11 @@ impl SystemRegisters {
             hacr_el2: 0,
             hcr_el2: HcrEl2::empty(),
             hcrx_el2: HcrxEl2::empty(),
+            hdfgrtr_el2: 0,
+            hdfgwtr_el2: 0,
+            hfgitr_el2: 0,
+            hfgrtr_el2: 0,
+            hfgwtr_el2: 0,
             hpfar_el2: 0,
             hstr_el2: 0,
             icc_sre_el1: IccSre::empty(),
