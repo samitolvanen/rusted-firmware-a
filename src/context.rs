@@ -646,9 +646,12 @@ fn initialise_common(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     //
     // SCR_EL3.EEL2: Set to one if S-EL2 is present and enabled.
     //
+    // SCR_EL3.FGTEN: Do not trap FGT register accesses to EL3. FEAT_FGT is mandatory since ARMv8.6.
+    //
     // NOTE: Modifying EEL2 bit along with EA bit ensures that we mitigate
     // against ERRATA_V2_3099206.
-    context.el3_state.scr_el3 = ScrEl3::RES1 | ScrEl3::HCE | ScrEl3::SIF | ScrEl3::RW;
+    context.el3_state.scr_el3 =
+        ScrEl3::RES1 | ScrEl3::HCE | ScrEl3::SIF | ScrEl3::RW | ScrEl3::FGTEN;
     #[cfg(feature = "sel2")]
     {
         context.el3_state.scr_el3 |= ScrEl3::EEL2;
