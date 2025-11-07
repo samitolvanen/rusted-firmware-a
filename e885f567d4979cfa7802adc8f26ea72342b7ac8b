@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468d01a6_5fdc75d7",
+        "filename": "src/cpu_extensions/vhe.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-07T12:35:14Z",
+      "side": 1,
+      "message": "Using `read_id_aa64mmfr1_el1().is_feat_vhe_present()` is probably preferable since it can cover versions greater than 1 if they are added in the future.",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "e885f567d4979cfa7802adc8f26ea72342b7ac8b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
