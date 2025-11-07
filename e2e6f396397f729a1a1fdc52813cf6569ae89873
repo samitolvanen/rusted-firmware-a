@@ -35,6 +35,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b222b8_f3109915",
+        "filename": "build-and-run.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-07T14:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d1f393_c1c02cc3",
+      "revId": "e2e6f396397f729a1a1fdc52813cf6569ae89873",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12b36db7_67a545ee",
