@@ -10,7 +10,7 @@ use crate::{
     smccc::SmcReturn,
 };
 use arm_psci::EntryPoint;
-use arm_sysregs::{CptrEl3, Esr, MdcrEl3, ScrEl3, Spsr, read_mpidr_el1, write_scr_el3};
+use arm_sysregs::{CptrEl3, Esr, MdcrEl3, Mpam3El3, ScrEl3, Spsr, read_mpidr_el1, write_scr_el3};
 #[cfg(not(feature = "sel2"))]
 use arm_sysregs::{
     CsselrEl1, SctlrEl1, read_actlr_el1, read_afsr0_el1, read_afsr1_el1, read_amair_el1,
@@ -479,12 +479,18 @@ impl El2Sysregs {
 #[repr(C)]
 pub struct PerWorldContext {
     pub cptr_el3: CptrEl3,
+    pub mpam3_el3: Mpam3El3,
     zcr_el3: u64,
 }
 
 impl PerWorldContext {
-    const EMPTY: Self = Self {
+    /// By default trap accesses to extensions' sysregs. The configuration may be
+    /// overwritten if a platform supports an extension.
+    ///
+    /// TODO: configure the defaults.
+    const DEFAULT: Self = Self {
         cptr_el3: CptrEl3::empty(),
+        mpam3_el3: Mpam3El3::TRAPLOWER,
         zcr_el3: 0,
     };
 }
@@ -600,7 +606,7 @@ pub fn cpu_state(token: ExceptionFree) -> RefMut<CpuState> {
 /// Initialises the per-world contexts.
 pub fn initialise_per_world_contexts() {
     PER_WORLD_CONTEXT.call_once(|| {
-        let mut per_world = PerWorld([PerWorldContext::EMPTY; CPU_DATA_CONTEXT_NUM]);
+        let mut per_world = PerWorld([PerWorldContext::DEFAULT; CPU_DATA_CONTEXT_NUM]);
 
         for ext in PlatformImpl::CPU_EXTENSIONS {
             if ext.is_present() {
