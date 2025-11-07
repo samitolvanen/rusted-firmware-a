@@ -19,7 +19,7 @@ use crate::{
     logger::{self, LockedWriter},
     naked_asm,
     pagetable::{
-        IdMap, MT_DEVICE, MT_MEMORY,
+        IdMap, MT_DEVICE, MT_MEMORY, MT_MEMORY_NS,
         early_pagetable::{EarlyRegion, define_early_mapping},
         map_region,
     },
@@ -47,10 +47,16 @@ use arm_gic::{
         registers::{Gicd, GicrSgi},
     },
 };
+#[cfg(feature = "rme")]
+use arm_gpt::GPIAccessType;
 use arm_pl011_uart::{Uart, UniqueMmioPointer};
 use arm_psci::{EntryPoint, ErrorCode, HwState, Mpidr, PowerState};
 use arm_sysregs::{IccSre, MpidrEl1, Spsr, read_mpidr_el1, write_cntfrq_el0};
+#[cfg(feature = "rme")]
+use core::ops::Range;
 use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
+#[cfg(feature = "rme")]
+use log::{debug, info};
 use percore::Cores;
 use spin::mutex::SpinMutex;
 
@@ -76,9 +82,14 @@ const DEVICE2_BASE: usize = 0x2a00_0000;
 const DEVICE2_SIZE: usize = 0x10000;
 
 const ARM_TRUSTED_SRAM_BASE: usize = 0x0400_0000;
-const ARM_TRUSTED_SRAM_SIZE: usize = 0x0080_0000;
+const ARM_TRUSTED_SRAM_SIZE: usize = 0x0008_0000;
 const ARM_SHARED_RAM_BASE: usize = ARM_TRUSTED_SRAM_BASE;
 const ARM_SHARED_RAM_SIZE: usize = 0x0000_1000; /* 4 KB */
+
+const ARM_GPT_L0_BASE: usize = ARM_TRUSTED_SRAM_BASE + ARM_TRUSTED_SRAM_SIZE - ARM_GPT_L0_SIZE;
+const ARM_GPT_L0_SIZE: usize = 0x0000_2000;
+const ARM_GPT_L1_BASE: usize = 0xfff0_0000;
+const ARM_GPT_L1_SIZE: usize = 0x0010_0000;
 
 const UART_BASE: usize = 0x1c09_0000;
 const UART_SIZE: usize = 0x0001_0000;
@@ -93,6 +104,9 @@ const SHARED_RAM: MemoryRegion = MemoryRegion::new(
     ARM_SHARED_RAM_BASE,
     ARM_SHARED_RAM_BASE + ARM_SHARED_RAM_SIZE,
 );
+
+const GPT_L0: MemoryRegion = MemoryRegion::new(ARM_GPT_L0_BASE, ARM_GPT_L0_BASE + ARM_GPT_L0_SIZE);
+const GPT_L1: MemoryRegion = MemoryRegion::new(ARM_GPT_L1_BASE, ARM_GPT_L1_BASE + ARM_GPT_L1_SIZE);
 
 const DEVICE_REGIONS: [MemoryRegion; 4] = [
     MemoryRegion::new(V2M_IOFPGA_BASE, V2M_IOFPGA_BASE + V2M_IOFPGA_SIZE),
@@ -269,13 +283,25 @@ const ATTESTATION_TOKEN: [u8; 1518] = [
     0x11, 0xd8, 0x3e, 0x23, 0xe3, 0x1f, 0x7f, 0x62, 0x32, 0x9d, 0xe3, 0x0c, 0x1c, 0xc8,
 ];
 
+const GPT_REGIONS: &[(Range<usize>, GPIAccessType)] = &[
+    (0..0x4000_0000, GPIAccessType::Any),
+    (0x4000_0000..0x8000_0000, GPIAccessType::Any),
+    (0x4000_0000..0x5000_0000, GPIAccessType::NonSecure),
+    (0x8000_0000..0xfc00_0000, GPIAccessType::NonSecure),
+    (0xfc00_0000..0xfdc0_0000, GPIAccessType::Secure),
+    (0xfdc0_0000..0xffc0_0000, GPIAccessType::Realm),
+    (0xffc0_0000..0x1_0000_0000, GPIAccessType::Root),
+    (0x8_8000_0000..0x9_0000_0000, GPIAccessType::NonSecure),
+    (0x40_0000_0000..0x40_c000_0000, GPIAccessType::NonSecure),
+];
+
 // SAFETY: `core_position` is indeed a naked function, doesn't access the stack or any other memory,
 // only clobbers x0-x5, and returns a unique core index as long as `FVP_MAX_CPUS_PER_CLUSTER` and
 // `FVP_MAX_PE_PER_CPU` are correct.
 unsafe impl Platform for Fvp {
     const CORE_COUNT: usize = PLATFORM_CORE_COUNT;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
-    const PAGE_HEAP_PAGE_COUNT: usize = 6;
+    const PAGE_HEAP_PAGE_COUNT: usize = 10;
 
     #[cfg(feature = "rme")]
     const RMM_SHARED_BUFFER_START: usize = 0xffbf_f000;
@@ -311,6 +337,50 @@ unsafe impl Platform for Fvp {
         buf[0..hunk_size].copy_from_slice(&ATTESTATION_TOKEN[start_index..end_index]);
 
         Ok((hunk_size, ATTESTATION_TOKEN.len() - end_index))
+    }
+
+    #[cfg(feature = "rme")]
+    fn setup_gpt() {
+        use arm_gpt::{GpccConfig, declare_granule_protection};
+        use arm_sysregs::rme::{Cacheability, Shareability};
+        use core::slice::from_raw_parts_mut;
+
+        let (l0, l1) = unsafe {
+            (
+                from_raw_parts_mut(ARM_GPT_L0_BASE as *mut u8, ARM_GPT_L0_SIZE),
+                from_raw_parts_mut(ARM_GPT_L1_BASE as *mut u8, ARM_GPT_L1_SIZE),
+            )
+        };
+
+        declare_granule_protection!(GPT, PPS = 40, L0GPTSZ = 30, PGS = 12);
+
+        GPT.init(l0, l1).unwrap();
+
+        debug!("GPT initialized");
+
+        for (range, gpi) in GPT_REGIONS {
+            debug!("Mapping range {range:#x?} into GPT with GPI {gpi:?}",);
+            GPT.set(range.clone(), *gpi).unwrap();
+        }
+
+        debug!("GPT mapping done");
+
+        unsafe {
+            GPT.enable(Some(GpccConfig {
+                appsaa: false,
+                nso: false,
+                tbgpcd: false,
+                gpcp: false,
+                sh: Shareability::Inner,
+                orgn: Cacheability::WriteBackAllocate,
+                irgn: Cacheability::WriteBackAllocate,
+                nspad: false,
+                rlpad: false,
+            }))
+            .unwrap();
+        }
+
+        info!("GPT enabled!");
     }
 
     #[cfg(feature = "rme")]
@@ -392,6 +462,10 @@ unsafe impl Platform for Fvp {
 
     fn map_extra_regions(idmap: &mut IdMap) {
         map_region(idmap, &SHARED_RAM, MT_DEVICE);
+
+        map_region(idmap, &GPT_L0, MT_MEMORY);
+        map_region(idmap, &GPT_L1, MT_MEMORY_NS);
+
         for region in &DEVICE_REGIONS {
             map_region(idmap, region, MT_DEVICE);
         }

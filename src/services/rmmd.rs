@@ -62,6 +62,8 @@ pub fn rme_prepare() {
 
     PlatformImpl::rme_prepare_manifest(buf);
 
+    PlatformImpl::setup_gpt();
+
     info!("RME Boot Manifest ready")
 }
 
