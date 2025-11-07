@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95a841f_6dd4bf26",
+        "filename": "src/cpu_extensions/vhe.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-07T15:00:36Z",
+      "side": 1,
+      "message": "When would a platform not want to enable this extension? If the hardware support is present but a platform chooses not to, doesn\u0027t that mean that S-EL2 state gets leaked to NS-EL2 and potentially corrupted?",
+      "revId": "eb4e2a4de8f2f793033689615845ee46d466809a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e8b536_b4934f4d",
+        "filename": "src/cpu_extensions/vhe.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-07T15:00:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the save and restore check `is_present` first?",
+      "revId": "eb4e2a4de8f2f793033689615845ee46d466809a",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
