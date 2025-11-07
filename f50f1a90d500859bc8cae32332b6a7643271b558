@@ -1,0 +1,10 @@
+Verified+1: ci-bot
+Unsafe-Review+1: Andrew Walbran <qwandor@google.com>
+Code-Review+2: Andrew Walbran <qwandor@google.com>
+Code-Review+1: Kis Imre <imre.kis@arm.com>
+Submitted-by: Mateusz Sulimowicz <matsul@google.com>
+Submitted-at: Fri, 07 Nov 2025 14:32:45 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/44551
+Comments-Total: 27
+Project: RF-A/rusted-firmware-a
+Branch: refs/heads/main
