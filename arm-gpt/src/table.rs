@@ -22,7 +22,7 @@ macro_rules! field {
     };
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum LeafDescriptorType {
     Block,
     Granule,
@@ -255,6 +255,10 @@ impl<'a> GranuleDescriptorRef<'a> {
         let start = idx * 4;
 
         ((self.0.0 >> start) & 0xF).try_into().ok()
+    }
+
+    pub fn is_all(&self) -> bool {
+        (0..16).all(|idx| self.gpi(idx).is_some_and(|v| v == GPIAccessType::Any))
     }
 
     /// Whether all Granules are mapped with [`GPIAccessType::NoAccess`].
