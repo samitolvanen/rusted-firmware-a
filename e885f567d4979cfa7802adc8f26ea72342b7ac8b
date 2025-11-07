@@ -22,6 +22,30 @@
       },
       "revId": "e885f567d4979cfa7802adc8f26ea72342b7ac8b",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3e3ab0_25a54167",
+        "filename": "src/cpu_extensions/vhe.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T14:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468d01a6_5fdc75d7",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "e885f567d4979cfa7802adc8f26ea72342b7ac8b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

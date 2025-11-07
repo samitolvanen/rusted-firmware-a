@@ -16,6 +16,24 @@
       "message": "There\u0027s already a `IdAa64mmfr1El1::is_feat_vhe_present` function, please use that instead.",
       "revId": "c65d2da2325eeb706cce293ff31f501b5c5bf2bf",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76ce0d8_0871353f",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T14:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b4c8f2_0054e7fc",
+      "revId": "c65d2da2325eeb706cce293ff31f501b5c5bf2bf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

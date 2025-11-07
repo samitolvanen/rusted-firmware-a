@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9c776c_0381288f",
+        "filename": "arm-sysregs/src/fake.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T14:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b16f73_a37c513b",
+      "revId": "9a0ad5a735feec1be9bb4c96d01123c6927d0119",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3f48c76_e3bc5bcb",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-07T13:21:38Z",
       "side": 1,
       "message": "I have the same concern with using `PerCore` here as I had with the MPAM extension. I started a discussion on Discord.",
+      "revId": "9a0ad5a735feec1be9bb4c96d01123c6927d0119",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed5dba19_7d0dbc5e",
+        "filename": "src/cpu_extensions/vhe/vhe_sel2.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-07T14:36:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d3f48c76_e3bc5bcb",
       "revId": "9a0ad5a735feec1be9bb4c96d01123c6927d0119",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
