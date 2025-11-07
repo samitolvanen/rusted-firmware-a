@@ -6,6 +6,8 @@
 
 use core::{fmt::Debug, ops::Range};
 
+#[cfg(all(target_arch = "aarch64", not(test)))]
+use arm_sysregs::rme::*;
 use spin::mutex::SpinMutex;
 use thiserror::Error;
 
@@ -394,8 +396,9 @@ impl<'life, const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize>
 /// See [`declare_granule_protection`] for instantiating it.
 ///
 /// Before any other operation, the [`GranuleProtection`] object must be initialized exactly once
-/// with two backing buffers by the [`GranuleProtection::init`] function. After that, the memory
-/// regions can be mapped using [`GranuleProtection::set`].
+/// with two backing buffers by the [`GranuleProtection::init`] function. Once the memory regions
+/// are mapped using [`GranuleProtection::set`], [`GranuleProtection::enable`] can be used to update
+/// the sytem registers accordingly.
 pub struct GranuleProtection<'life, const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize>(
     SpinMutex<Option<GranuleProtectionState<'life, L0_COUNT, L1_COUNT, PGS>>>,
 );
@@ -472,6 +475,36 @@ pub(crate) const fn pps(l1_count: usize, l0_count: usize, pgs: usize) -> usize {
 }
 pub(crate) const fn l0gptsz(l1_count: usize, pgs: usize) -> usize {
     l1_count.trailing_zeros() as usize + pgs + 4
+}
+
+#[cfg(all(target_arch = "aarch64", not(test)))]
+pub struct GpccConfig {
+    pub appsaa: bool,
+    pub nso: bool,
+    pub tbgpcd: bool,
+    pub gpcp: bool,
+    pub sh: Shareability,
+    pub orgn: Cacheability,
+    pub irgn: Cacheability,
+    pub nspad: bool,
+    pub rlpad: bool,
+}
+
+#[cfg(all(target_arch = "aarch64", not(test)))]
+impl GpccConfig {
+    fn to_reg(&self) -> GpccReg {
+        let mut reg = GpccReg(0);
+        reg.set_appsaa(self.appsaa);
+        reg.set_nso(self.nso);
+        reg.set_tbgpcd(self.tbgpcd);
+        reg.set_gpcp(self.gpcp);
+        reg.set_sh(self.sh);
+        reg.set_orgn(self.orgn);
+        reg.set_irgn(self.irgn);
+        reg.set_nspad(self.nspad);
+        reg.set_rlpad(self.rlpad);
+        reg
+    }
 }
 
 impl<const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize> Debug
