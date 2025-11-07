@@ -16,6 +16,24 @@
       "message": "At this point x15 can still hold the incoming argument of the SMC call. Please use x18 instead to prevent overwriting the argument. I think this is the cause of the CI failure.",
       "revId": "117d08a5684e9d93609f1206ffc30ffd07d0b281",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb07c98c_99e8cc37",
+        "filename": "src/context.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-07T16:40:21Z",
+      "side": 1,
+      "message": "Thanks for spotting this!",
+      "parentUuid": "2e8b5b31_145de63d",
+      "revId": "117d08a5684e9d93609f1206ffc30ffd07d0b281",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
