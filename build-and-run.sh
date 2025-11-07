@@ -78,7 +78,7 @@ case "$PLAT" in
     # build flag is required to stop TF-A from complaining that RF-A does not fit.
     if [[ "${RME:-}" == 1 ]]; then
         RMM=${RMM:-"$REALM"}
-        make PLAT=fvp FEATURES=sel2,rme ${DEBUG} CARGO="${CARGO}" BTI_EL3=${BTI_EL3} all
+        make PLAT=fvp FEATURES="sel2 rme" ${DEBUG} CARGO="${CARGO}" BTI_EL3=${BTI_EL3} all
         make -C $TFA PLAT=fvp ${DEBUG} FVP_TRUSTED_SRAM_SIZE=512 ENABLE_RME=1 BL31="$BL31" BL32="$BL32" \
             BL33="$BL33" RMM="$RMM" SPD=spmd SPMD_SPM_AT_SEL2=0 all fip
         FVP_Base_RevC-2xAEMvA \

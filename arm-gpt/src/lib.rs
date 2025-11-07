@@ -4,8 +4,12 @@
 
 #![cfg_attr(not(test), no_std)]
 
+#[cfg(all(target_arch = "aarch64", not(test)))]
+use core::arch::asm;
 use core::{fmt::Debug, ops::Range};
 
+#[cfg(all(target_arch = "aarch64", not(test)))]
+use arm_sysregs::{read_gpccr_el3, rme::*, write_gpccr_el3, write_gptbr_el3};
 use spin::mutex::SpinMutex;
 use thiserror::Error;
 
@@ -394,8 +398,9 @@ impl<'life, const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize>
 /// See [`declare_granule_protection`] for instantiating it.
 ///
 /// Before any other operation, the [`GranuleProtection`] object must be initialized exactly once
-/// with two backing buffers by the [`GranuleProtection::init`] function. After that, the memory
-/// regions can be mapped using [`GranuleProtection::set`].
+/// with two backing buffers by the [`GranuleProtection::init`] function. Once the memory regions
+/// are mapped using [`GranuleProtection::set`], [`GranuleProtection::enable`] can be used to update
+/// the sytem registers accordingly.
 pub struct GranuleProtection<'life, const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize>(
     SpinMutex<Option<GranuleProtectionState<'life, L0_COUNT, L1_COUNT, PGS>>>,
 );
@@ -454,6 +459,70 @@ impl<'life, const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize>
     }
 }
 
+#[cfg(all(target_arch = "aarch64", not(test)))]
+impl<const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize>
+    GranuleProtection<'static, L0_COUNT, L1_COUNT, PGS>
+{
+    /// Enables the Granule Protection Checks using this Granule Protection Table.
+    ///
+    /// # Safety
+    ///
+    /// Before calling this function, the caller must ensure that the table grants access to the
+    /// Root World for the whole RF-A address space.
+    pub unsafe fn enable(&self, config: Option<GpccConfig>) -> Result<(), Error> {
+        let mut gpcc = match config {
+            Some(c) => c.to_reg(),
+            None => GpccReg(read_gpccr_el3()),
+        };
+
+        gpcc.set_pps(Self::PPS as u64);
+        gpcc.set_l0gptsz(Self::L0GPTSZ as u64);
+        gpcc.set_pgs(PGS as u64);
+
+        let base = self
+            .0
+            .lock()
+            .as_ref()
+            .ok_or(Error::GPTNotInitialized)?
+            .level0 as *const Level0Table<L0_COUNT, L1_COUNT, PGS> as u64;
+
+        let gptbr = (base >> 12) & mask!(52);
+
+        // Writes the register, except for the Granule Protection Check enabled bit.
+        // SAFETY: since the GPC bit is off, this operation has no effect (todo).
+        unsafe {
+            write_gptbr_el3(gptbr);
+            write_gpccr_el3(gpcc.0);
+        }
+
+        // Invalidate any stale TLB entries and any cached register fields.
+        // Safety: TLB/Cache invalidation does not violate Rust safety.
+        unsafe { asm!("isb", "tlbi paallos", "dsb sy", "isb") }
+
+        gpcc.set_gpc(true);
+
+        // Safety: Root World access is ensured by the caller. The pointer in `GPTBR_EL3` was
+        // previously configured with the address of a valid Level 0 Table.
+        unsafe {
+            write_gpccr_el3(gpcc.0);
+        }
+
+        // Invalidate TLB entries (todo: needed?).
+        // Safety: TLB/Cache invalidation does not violate Rust safety.
+        unsafe { asm!("isb", "tlbi paallos", "dsb sy", "isb") }
+
+        Ok(())
+    }
+}
+
+impl<'life, const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize> Default
+    for GranuleProtection<'life, L0_COUNT, L1_COUNT, PGS>
+{
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[macro_export]
 /// Declares a static instance of [`GranuleProtection`], using the given size parameters.
 macro_rules! declare_granule_protection {
@@ -472,6 +541,36 @@ pub(crate) const fn pps(l1_count: usize, l0_count: usize, pgs: usize) -> usize {
 }
 pub(crate) const fn l0gptsz(l1_count: usize, pgs: usize) -> usize {
     l1_count.trailing_zeros() as usize + pgs + 4
+}
+
+#[cfg(all(target_arch = "aarch64", not(test)))]
+pub struct GpccConfig {
+    pub appsaa: bool,
+    pub nso: bool,
+    pub tbgpcd: bool,
+    pub gpcp: bool,
+    pub sh: Shareability,
+    pub orgn: Cacheability,
+    pub irgn: Cacheability,
+    pub nspad: bool,
+    pub rlpad: bool,
+}
+
+#[cfg(all(target_arch = "aarch64", not(test)))]
+impl GpccConfig {
+    fn to_reg(&self) -> GpccReg {
+        let mut reg = GpccReg(0);
+        reg.set_appsaa(self.appsaa);
+        reg.set_nso(self.nso);
+        reg.set_tbgpcd(self.tbgpcd);
+        reg.set_gpcp(self.gpcp);
+        reg.set_sh(self.sh);
+        reg.set_orgn(self.orgn);
+        reg.set_irgn(self.irgn);
+        reg.set_nspad(self.nspad);
+        reg.set_rlpad(self.rlpad);
+        reg
+    }
 }
 
 impl<const L0_COUNT: usize, const L1_COUNT: usize, const PGS: usize> Debug

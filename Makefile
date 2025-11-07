@@ -42,7 +42,7 @@ endif
 
 STF_CARGO_FLAGS := --release
 STF_IMAGES_FLAGS := $(patsubst target/%.bin, "--bin" "%", $(STF_IMAGES))
-RFA_CARGO_FLAGS := --no-default-features --features "$(FEATURES)"
+RFA_CARGO_FLAGS = --no-default-features --features "$(FEATURES)"
 
 # Make a release build by default.
 DEBUG ?= 0
@@ -68,6 +68,10 @@ BTI_EL3 ?= 0
 ifeq ($(BTI_EL3), 1)
 	BUILD_STD = 1
 	TARGET_RUSTFLAGS += -Zbranch-protection=bti --cfg bti
+endif
+
+ifeq ($(filter rme,$(FEATURES)),rme)
+	TARGET_RUSTFLAGS += -C target-feature=+rme
 endif
 
 ifeq ($(BUILD_STD), 1)
@@ -130,7 +134,7 @@ list_features:
 ifeq (${PLAT}, qemu)
 	@echo "''  'sel2'"
 else ifeq (${PLAT}, fvp)
-	@echo "'' 'sel2' 'rme' 'sel2,rme'"
+	@echo "'' 'sel2' 'rme' 'sel2 rme'"
 endif
 
 help:
