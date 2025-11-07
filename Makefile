@@ -12,6 +12,7 @@ endif
 BL31_BIN := $(OUT)/bl31.bin
 BL32 := $(OUT)/bl32.bin
 BL33 := $(OUT)/bl33.bin
+REALM := $(OUT)/realm.bin
 FIP := $(OUT)/fip.bin
 BL31_ELF := $(OUT)/bl31.elf
 
@@ -30,6 +31,13 @@ ifndef PLAT
     $(foreach p, $(PLATFORMS_AVAILABLE), $(info * $(p)))
     $(error Please run `make PLAT=...`)
   endif
+endif
+
+# List of test images that can be built for that platform.
+STF_IMAGES := $(BL32) $(BL33)
+
+ifeq (${PLAT}, fvp)
+STF_IMAGES += $(REALM)
 endif
 
 STF_CARGO_FLAGS := --release
@@ -79,11 +87,17 @@ build:
 	$(OBJCOPY) $(BL31_ELF) -O binary $(BL31_BIN)
 
 build-stf:
-	$(STF_CARGO) build --package rf-a-secure-test-framework $(CARGO_FLAGS) $(STF_CARGO_FLAGS)
+	$(STF_CARGO) build \
+		--package rf-a-secure-test-framework \
+		$(CARGO_FLAGS) \
+		$(STF_CARGO_FLAGS) \
+		$(patsubst target/%.bin, "--bin" "%", $(STF_IMAGES))
 $(BL32): build-stf
 	$(OBJCOPY) $(OUT)/$(TARGET)/release/bl32 -O binary $@
 $(BL33): build-stf
 	$(OBJCOPY) $(OUT)/$(TARGET)/release/bl33 -O binary $@
+$(REALM): build-stf
+	$(OBJCOPY) $(OUT)/$(TARGET)/release/realm -O binary $@
 
 clippy-test:
 	$(CARGO) clippy --tests --features "$(FEATURES)"
@@ -95,7 +109,7 @@ cargo-doc:
 clippy:
 	$(TARGET_CARGO) clippy $(CARGO_FLAGS)
 
-images: $(BL32) $(BL33) build
+images: $(STF_IMAGES) build
 
 clean:
 	$(CARGO) clean

@@ -44,6 +44,10 @@ path = "src/bl32.rs"
 name = "bl33"
 path = "src/bl33.rs"
 
+[[bin]]
+name = "realm"
+path = "src/realm.rs"
+
 [lints.clippy]
 missing_safety_doc = "deny"
 undocumented_unsafe_blocks = "deny"
