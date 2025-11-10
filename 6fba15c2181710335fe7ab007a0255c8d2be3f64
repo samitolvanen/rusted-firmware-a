@@ -16,6 +16,24 @@
       "message": "We might also need `pure` here. See thread on Discord.",
       "revId": "6fba15c2181710335fe7ab007a0255c8d2be3f64",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3d527f_db217773",
+        "filename": "arm-sysregs/src/aarch64.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-10T15:59:35Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure `pure` is not correct here, as the system register value can change so running this multiple times might give different results.",
+      "parentUuid": "3dc7412d_1071df84",
+      "revId": "6fba15c2181710335fe7ab007a0255c8d2be3f64",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
