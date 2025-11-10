@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65471e2_cad0d611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "Some early comments. I am not done reading everything there so apologies if some of my questions are already answered in the patch...",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b163371_50932d67",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "According to https://trustedfirmware-a.readthedocs.io/en/latest/components/rmm-el3-comms-spec.html, the latest version of the RMM Boot Manifest is 0.5. The comments for `struct RmmBootManifest` also refer to version 0.5. Yet, we seem to be using v0.4 on FVP, is that a mistake? If no, what is the reason for using the previous version?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c1cf0d_a44bdf75",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "Define consts for these, like other platform addresses in this file.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 35
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11602cd_1029c3ef",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "Replace with `UART_BASE`.",
+      "range": {
+        "startLine": 196,
+        "startChar": 18,
+        "endLine": 196,
+        "endChar": 29
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08ab718_258784c8",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "Could we do this as part of `Rmmd::new()` instead of introducing this new `rme_prepare()` function?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548f8fcb_83ea3b06",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "\"RMM Boot Manifest\" would be better.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d09324d0_7e2adcb5",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "Is this information important? Or could we remove it from this comment? I am concerned about the risk of forgetting to update this size information when upgrading to a new version. This is a maintenance hazard.",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bd24f1_d63ada18",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "Should this rather be a usize?\n\nAccording to RF-A code style guide [1]:\n\u003e usize and isize are the Rust types for values that will become pointers, sequence indices, and memory object counts.\n\u003e \n\u003e u32, i32, u64, and i64 are the right types for other register values, bit fields and bit masks, and other integer values.\n\n[1] https://git.trustedfirmware.org/plugins/gitiles/RF-A/rusted-firmware-a/+/refs/heads/main/docs/style-guide.md#using-the-primitive-integral-types",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179d334f_b5ae7dd2",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "Why do we need to make this assumption (I see it here and in `layout.rs`, `rmmd.rs`, ...)? The RMM Boot Manifest has to fit in the RMM/EL3 shared buffer but is there anything preventing the latter from being bigger than a page? Does TF-A make that assumption too?\n\nIf there is a good reason for this restriction, then could we enforce that in the type of `buf`? changing from the current array of bytes type to array of 1024 bytes type? Or even defining a new struct type for a page-sized buffer which embeds the page alignment restriction.",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 54
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf39c58_7069bf5d",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 212,
+        "startChar": 11,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bdc5b47_74aa2806",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "This will *silently* remove the most-significant bit of the major revision number. Although I understand why you\u0027re doing this (because the doc says this bit is RES0!), I wonder whether this is the right thing to do, or whether this should be treated as an error. We could define proper types for a major (and a minor) version number instead of simply using `u16`, and enforce by construction that a `RmmMajorVersion` value always has bit#15 as zero.\n\nI am not saying this is necessarily the right thing to do but wondered if you had considered this and had any thoughts around that.",
+      "range": {
+        "startLine": 268,
+        "startChar": 14,
+        "endLine": 268,
+        "endChar": 35
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d466caf_4ca3b827",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-10T15:25:58Z",
+      "side": 1,
+      "message": "If `self` got constructed through `RmmBootManifestVersion::new()` then there should not be any need to mask out bit#31 because it should already be zero by construction. I guess there is an issue if instead `self` comes from an integer conversion? But then I suppose we could implement the `From`/`Into` traits to enforce that as well?",
+      "range": {
+        "startLine": 272,
+        "startChar": 22,
+        "endLine": 272,
+        "endChar": 30
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
