@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c8d7a7_f254c955",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-10T15:52:23Z",
+      "side": 1,
+      "message": "Please add description including the implemented features, interface changes and the motivation for adding this peripheral.",
+      "revId": "8efab1dd55828c42f053190a5f92eb34827cac2c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "54961f2f_6b10d69b",
@@ -14,6 +31,40 @@
       "writtenOn": "2025-11-05T16:35:03Z",
       "side": 1,
       "message": "RUN_CI",
+      "revId": "8efab1dd55828c42f053190a5f92eb34827cac2c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa983e6_fec97aa5",
+        "filename": "src/delay_timer.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-10T15:52:23Z",
+      "side": 1,
+      "message": "We have an arm-generic-timer driver: https://git.trustedfirmware.org/plugins/gitiles/arm-firmware-crates/arm-generic-timer/+/refs/heads/main\nCurrently it only implements the memory mapped version of the timer, because arm-sysregs is still not a standalone crate.\nIdeally this driver should be part of the arm-generic-timer crate, so other projects can use it. STF already has its own version of this (`secure_test_framework/src/util/timer.rs`).",
+      "revId": "8efab1dd55828c42f053190a5f92eb34827cac2c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ab7222_8f938a2a",
+        "filename": "src/platform.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-10T15:52:23Z",
+      "side": 1,
+      "message": "This should be function, equivalent with TF-A\u0027s `plat_get_syscnt_freq2`. There are platforms that retrieve the frequency value from peripheral registers.",
       "revId": "8efab1dd55828c42f053190a5f92eb34827cac2c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
