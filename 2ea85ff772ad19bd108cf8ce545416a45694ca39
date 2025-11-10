@@ -16,6 +16,24 @@
       "message": "Can we just derive `Debug` now?",
       "revId": "2ea85ff772ad19bd108cf8ce545416a45694ca39",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95715731_dc18c476",
+        "filename": "src/exceptions.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-10T15:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f383dfc3_860db7fe",
+      "revId": "2ea85ff772ad19bd108cf8ce545416a45694ca39",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
