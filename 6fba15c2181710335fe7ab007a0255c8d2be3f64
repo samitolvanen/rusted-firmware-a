@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc7412d_1071df84",
+        "filename": "arm-sysregs/src/aarch64.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-10T12:48:00Z",
+      "side": 1,
+      "message": "We might also need `pure` here. See thread on Discord.",
+      "revId": "6fba15c2181710335fe7ab007a0255c8d2be3f64",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
