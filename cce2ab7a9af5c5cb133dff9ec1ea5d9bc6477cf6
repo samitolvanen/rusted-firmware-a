@@ -22,6 +22,30 @@
       },
       "revId": "cce2ab7a9af5c5cb133dff9ec1ea5d9bc6477cf6",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e6655d2_3e2c8bba",
+        "filename": "secure_test_framework/src/secondary.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-10T12:13:49Z",
+      "side": 1,
+      "message": "`enable_mmu` only uses x8-x12, so that shouldn\u0027t be necessary, but done anyway.",
+      "parentUuid": "28b1abe1_5fba8535",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "cce2ab7a9af5c5cb133dff9ec1ea5d9bc6477cf6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
