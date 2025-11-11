@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d93099_11e18a19",
+        "filename": "src/smccc.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-11T11:46:28Z",
+      "side": 1,
+      "message": "Rather than a macro, would it be possible to do this with a trait? Something like\n\n```rust\npub trait SetFrom\u003cT\u003e {\n    fn set_from(\u0026mut self, value: T);\n}\n\nimpl SetFrom\u003cu64\u003e for SmcReturn {\n    fn set_from(\u0026mut self, value: u64) {\n        self.used \u003d 1;\n        self.values[0] \u003d value;\n    }\n}\n```\n\nAnd so on for the other relevant primitive and array types, like the `From` implementations we had before.",
+      "revId": "ec51a49ca7f98465be75a78b1e8efd18dcd7eef9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
