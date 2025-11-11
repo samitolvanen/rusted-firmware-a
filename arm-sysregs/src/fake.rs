@@ -193,6 +193,8 @@ pub struct SystemRegisters {
     pub ich_vmcr_el2: u64,
     /// Fake value for the ID_AA64DFR0_EL1 system register.
     pub id_aa64dfr0_el1: IdAa64dfr0El1,
+    /// Fake value for the ID_AA64MMFR0_EL1 system register.
+    pub id_aa64mmfr0_el1: IdAa64mmfr0El1,
     /// Fake value for the ID_AA64MMFR1_EL1 system register.
     pub id_aa64mmfr1_el1: IdAa64mmfr1El1,
     /// Fake value for the ID_AA64MMFR2_EL1 system register.
@@ -249,6 +251,16 @@ pub struct SystemRegisters {
     pub tcr2_el1: u64,
     /// Fake value for the TCR2_EL2 system register.
     pub tcr2_el2: u64,
+    // Fake value for the HFGITR2_EL2 system register.
+    pub hfgitr2_el2: u64,
+    // Fake value for the HFGRTR2_EL2 system register.
+    pub hfgrtr2_el2: u64,
+    // Fake value for the HFGWTR_EL2 system register.
+    pub hfgwtr_el2: u64,
+    // Fake value for the HDFGRTR2_EL2 system register.
+    pub hdfgrtr2_el2: u64,
+    // Fake value for the HDFGWTR2_EL2 system register.
+    pub hdfgwtr2_el2: u64,
     /// Fake value for THETPIDR_EL0 system register.
     pub tpidr_el0: u64,
     /// Fake value for THETPIDR_EL1 system register.
