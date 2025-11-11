@@ -20,6 +20,97 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4349c96_b5f95f72",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "Generally we prefer types that are easy to use in Rust, rather than types matching the binary representation in a protocol. So this type should have `major` and `minor` fields and `From`/`TryFrom` implementation for converting between the raw type and `Self`. See arm-ffa\u0027s and arm-psci\u0027s `Version` types.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db208a5_53954300",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "`0x7fff`",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ce9b15_d059be69",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "Please check the alignment of the address too.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa5c4d5_425b458f",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "This has to be mapped first into R-EL2.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98641385_f24d697f",
+        "filename": "src/layout.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "I don\u0027t think we need these functions here and in the `layout_fake.rs`. The goal of this file is to make the linker defined values available for Rust. The RMM shared memory is not like this.\nThe code should use `Platform::RMM_SHARED_BUFFER_START` directly.\nThe RMM module should also define a `pub const` for the shared buffer size.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b163371_50932d67",
         "filename": "src/platform/fvp.rs",
         "patchSetId": 14
@@ -43,6 +134,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "926810f2_db07b5af",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "Please introduce constants for these values.",
+      "range": {
+        "startLine": 182,
+        "startChar": 49,
+        "endLine": 182,
+        "endChar": 67
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8c1cf0d_a44bdf75",
         "filename": "src/platform/fvp.rs",
         "patchSetId": 14
@@ -54,6 +168,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "Define consts for these, like other platform addresses in this file.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 35
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9a36cd_ae5f6a5a",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "These are available in the `arm_fvp_base_pac::MemoryMap` type. I think this is DRAM2.",
+      "parentUuid": "b8c1cf0d_a44bdf75",
       "range": {
         "startLine": 190,
         "startChar": 0,
@@ -89,6 +227,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f810022b_8c582738",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "`b\"pl011\\0\\0\\0\"`",
+      "range": {
+        "startLine": 200,
+        "startChar": 18,
+        "endLine": 200,
+        "endChar": 75
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b881a4b0_9a201277",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "This value is typically represented as decimal 115200.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 31
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2f1a40_77f1bfd8",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "The standard comment format is `# Safety`.",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e939a160_4d4bf6a2",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "`core::slice::from_raw_parts_mut` creates slice instead of a raw a slice.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b08ab718_258784c8",
         "filename": "src/services/rmmd.rs",
         "patchSetId": 14
@@ -100,6 +324,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "Could we do this as part of `Rmmd::new()` instead of introducing this new `rme_prepare()` function?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93de2cbf_4d93af23",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "+1 for `Rmmd::new()`.",
+      "parentUuid": "b08ab718_258784c8",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -181,6 +429,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40250c93_0bb49e58",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "Too many steps are happening all at once here. This should be separated into two parts:\n* `RmmBootManifestHeader` should match the binary representation of the manifest header.\n* `RmmBootManifest`\n  * `pack/serialize/build` function for generating the binary format manifest based on the lists, passed as argument.\n \nThere are very similar patterns in arm-ffa for handling the boot info and the memory transaction descriptor: https://review.trustedfirmware.org/plugins/gitiles/arm-firmware-crates/arm-ffa/+/refs/heads/main/src/boot_info.rs#236\nhttps://review.trustedfirmware.org/plugins/gitiles/arm-firmware-crates/arm-ffa/+/refs/heads/main/src/memory_management.rs#538\n\nIt should be dead simple, just adding the structures into a mutable `u8` slice and moving the pointer. This should be possible without converting back and forth between slices and raw pointers (`ManifestList::{as_slice, as_slice_mut}()`).",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "179d334f_b5ae7dd2",
         "filename": "src/services/rmmd/manifest.rs",
         "patchSetId": 14
@@ -228,6 +493,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48baea1a_96c8b72a",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "`ptr.is_multiple_of([shared memory size])`",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9202f409_0a3f8637",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "Use the const for the shared buffer size.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbf39c58_7069bf5d",
         "filename": "src/services/rmmd/manifest.rs",
         "patchSetId": 14
@@ -245,6 +544,23 @@
         "endLine": 212,
         "endChar": 22
       },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fdd22f2_da25edf8",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-11T16:31:27Z",
+      "side": 1,
+      "message": "Same comment as at secure_test_framework/src/realm.rs:38.",
       "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
