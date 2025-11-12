@@ -41,6 +41,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b0133b_81be61a7",
+        "filename": "Makefile",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T08:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e977975a_b6bae78c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "d96be2d804030bc40442653d12fe66721936a978",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66cb98c9_12bc8768",
@@ -58,6 +82,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b99379_b00f2102",
+        "filename": "build-and-run.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T08:40:09Z",
+      "side": 1,
+      "message": "I used a command that Olivier provided me with, as far as I can tell it\u0027s from the shrinkwrap configuration for running 4 worlds.",
+      "parentUuid": "66cb98c9_12bc8768",
+      "revId": "d96be2d804030bc40442653d12fe66721936a978",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b18e0fd1_ec7dcf83",
@@ -71,6 +113,30 @@
       "writtenOn": "2025-11-10T09:46:33Z",
       "side": 1,
       "message": "Remove. There are duplicates of lines 89 \u0026 95.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "d96be2d804030bc40442653d12fe66721936a978",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "979a5414_5d9d60ca",
+        "filename": "build-and-run.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T08:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b18e0fd1_ec7dcf83",
       "range": {
         "startLine": 128,
         "startChar": 0,
@@ -104,6 +170,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1d4fd6_7624f2cd",
+        "filename": "secure_test_framework/build.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T08:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5de6f5a_e895822c",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "d96be2d804030bc40442653d12fe66721936a978",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2317aa44_8528b9bd",
@@ -117,6 +207,30 @@
       "writtenOn": "2025-11-10T09:46:33Z",
       "side": 1,
       "message": "RMM_BOOT_COMPLETE",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "d96be2d804030bc40442653d12fe66721936a978",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c32750_1f0e9d1f",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T08:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2317aa44_8528b9bd",
       "range": {
         "startLine": 51,
         "startChar": 15,
