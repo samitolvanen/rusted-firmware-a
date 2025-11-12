@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9393ec_5cc2c336",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T15:00:53Z",
+      "side": 1,
+      "message": "Can you use `\u0026mut msg` here rather than matching on a mutable reference to a `Result`? The latter is more difficult to follow I think.",
+      "range": {
+        "startLine": 78,
+        "startChar": 61,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "75437527ccc820edaf23e4a90fd9a6ad7551062e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2caf64_e3898ec6",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T15:00:53Z",
+      "side": 1,
+      "message": "Add a doc comment explaining what the return values mean, the `bool` in particular is not immediately obvious.",
+      "revId": "75437527ccc820edaf23e4a90fd9a6ad7551062e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
