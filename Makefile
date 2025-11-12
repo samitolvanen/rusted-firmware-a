@@ -35,6 +35,7 @@ ifndef PLAT
 endif
 
 STF_CARGO_FLAGS = --release  --features "$(STF_FEATURES)"
+STF_IMAGES_FLAGS = $(patsubst target/%.bin, "--bin" "%", $(STF_IMAGES))
 RFA_CARGO_FLAGS := --no-default-features --features "$(FEATURES)"
 
 # List of test images that can be built for that platform.
@@ -92,7 +93,7 @@ build-stf:
 		--package rf-a-secure-test-framework \
 		$(CARGO_FLAGS) \
 		$(STF_CARGO_FLAGS) \
-		$(patsubst target/%.bin, "--bin" "%", $(STF_IMAGES))
+		$(STF_IMAGES_FLAGS)
 $(BL32): build-stf
 	$(OBJCOPY) $(OUT)/$(TARGET)/release/bl32 -O binary $@
 $(BL33): build-stf
@@ -108,7 +109,12 @@ cargo-doc:
 	--features "$(FEATURES)"
 
 clippy:
-	$(TARGET_CARGO) clippy $(CARGO_FLAGS)
+	$(TARGET_CARGO) clippy $(CARGO_FLAGS)  --features "$(FEATURES)"
+	$(STF_CARGO) clippy \
+		--package rf-a-secure-test-framework \
+		$(CARGO_FLAGS) \
+		$(STF_CARGO_FLAGS) \
+		$(STF_IMAGES_FLAGS)
 
 images: $(STF_IMAGES) build
 
