@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c59b23_b1bfa2eb",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-12T15:15:13Z",
+      "side": 1,
+      "message": "nit: `FeatureFlagsCpuSuspend::EXTENDED_POWER_STATE` is always set, it can be moved out if the if/else branches.",
+      "range": {
+        "startLine": 754,
+        "startChar": 24,
+        "endLine": 754,
+        "endChar": 68
+      },
+      "revId": "bbefc08af6191618c96601908b6215dc2633f9a3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71abb292_d23a419d",
+        "filename": "src/services/psci/power_domain_tree.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-12T15:15:13Z",
+      "side": 1,
+      "message": "A deadlock can happen here if an other core is in the middle of handling a `CPU_SUSPEND/CPU_OFF`. These calls first lock the `CpuPowerNode`, then its ancestor `NonCpuPowerNode`, while this locking happens in the opposite order here.\nThis function should lock all `CpuPowerNodes` in one sequence without locking `NonCpuPowerNodes`.",
+      "range": {
+        "startLine": 361,
+        "startChar": 47,
+        "endLine": 361,
+        "endChar": 51
+      },
+      "revId": "bbefc08af6191618c96601908b6215dc2633f9a3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
