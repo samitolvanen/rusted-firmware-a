@@ -17,26 +17,14 @@ fn main() {
     );
     println!("cargo:rustc-link-arg=-Timage.ld");
     let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-    println!(
-        "cargo:rustc-link-arg-bin=bl32=-T{}/{}_bl32.ld",
-        crate_dir, platform
-    );
-    println!(
-        "cargo:rustc-link-arg-bin=bl33=-T{}/{}_bl33.ld",
-        crate_dir, platform
-    );
-    println!("cargo:rerun-if-changed={}/{}_bl32.ld", crate_dir, platform);
-    println!("cargo:rerun-if-changed={}/{}_bl33.ld", crate_dir, platform);
+    println!("cargo:rustc-link-arg-bin=bl32=-T{crate_dir}/{platform}_bl32.ld");
+    println!("cargo:rustc-link-arg-bin=bl33=-T{crate_dir}/{platform}_bl33.ld");
+    println!("cargo:rerun-if-changed={crate_dir}/{platform}_bl32.ld");
+    println!("cargo:rerun-if-changed={crate_dir}/{platform}_bl33.ld");
 
     #[cfg(feature = "rme")]
     {
-        println!(
-            "cargo:rustc-link-arg-bin=stf_rmm=-T{}/{}_stf_rmm.ld",
-            crate_dir, platform
-        );
-        println!(
-            "cargo:rerun-if-changed={}/{}_stf_rmm.ld",
-            crate_dir, platform
-        );
+        println!("cargo:rustc-link-arg-bin=stf_rmm=-T{crate_dir}/{platform}_stf_rmm.ld");
+        println!("cargo:rerun-if-changed={crate_dir}/{platform}_stf_rmm.ld");
     }
 }
