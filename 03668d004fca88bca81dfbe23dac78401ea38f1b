@@ -35,6 +35,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d79204e_f2162882",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4349c96_b5f95f72",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2db208a5_53954300",
@@ -48,6 +66,30 @@
       "writtenOn": "2025-11-11T16:31:27Z",
       "side": 1,
       "message": "`0x7fff`",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7294ba5_1acc81ef",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2db208a5_53954300",
       "range": {
         "startLine": 41,
         "startChar": 29,
@@ -75,6 +117,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27ab56c2_1c301334",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85ce9b15_d059be69",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa5c4d5_425b458f",
@@ -92,6 +152,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b102ea90_4f8fcce0",
+        "filename": "secure_test_framework/src/realm.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa5c4d5_425b458f",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98641385_f24d697f",
@@ -105,6 +183,24 @@
       "writtenOn": "2025-11-11T16:31:27Z",
       "side": 1,
       "message": "I don\u0027t think we need these functions here and in the `layout_fake.rs`. The goal of this file is to make the linker defined values available for Rust. The RMM shared memory is not like this.\nThe code should use `Platform::RMM_SHARED_BUFFER_START` directly.\nThe RMM module should also define a `pub const` for the shared buffer size.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea5c5f1_45dfcba3",
+        "filename": "src/layout.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98641385_f24d697f",
       "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -132,6 +228,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6981789f_1ee93945",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b163371_50932d67",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926810f2_db07b5af",
@@ -145,6 +265,30 @@
       "writtenOn": "2025-11-11T16:31:27Z",
       "side": 1,
       "message": "Please introduce constants for these values.",
+      "range": {
+        "startLine": 182,
+        "startChar": 49,
+        "endLine": 182,
+        "endChar": 67
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40485f45_92e7a601",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "926810f2_db07b5af",
       "range": {
         "startLine": 182,
         "startChar": 49,
@@ -202,6 +346,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4414613a_d23e5329",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "I think this is rather DRAM1. Done.",
+      "parentUuid": "1d9a36cd_ae5f6a5a",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 35
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d11602cd_1029c3ef",
@@ -215,6 +383,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "Replace with `UART_BASE`.",
+      "range": {
+        "startLine": 196,
+        "startChar": 18,
+        "endLine": 196,
+        "endChar": 29
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47984800_89540326",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11602cd_1029c3ef",
       "range": {
         "startLine": 196,
         "startChar": 18,
@@ -248,6 +440,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0e1f2a_33016618",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f810022b_8c582738",
+      "range": {
+        "startLine": 200,
+        "startChar": 18,
+        "endLine": 200,
+        "endChar": 75
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b881a4b0_9a201277",
@@ -261,6 +477,30 @@
       "writtenOn": "2025-11-11T16:31:27Z",
       "side": 1,
       "message": "This value is typically represented as decimal 115200.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 31
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed22c524_f9a4d160",
+        "filename": "src/platform/fvp.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b881a4b0_9a201277",
       "range": {
         "startLine": 202,
         "startChar": 0,
@@ -294,6 +534,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e90887f_30f91d4f",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d2f1a40_77f1bfd8",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e939a160_4d4bf6a2",
@@ -307,6 +571,24 @@
       "writtenOn": "2025-11-11T16:31:27Z",
       "side": 1,
       "message": "`core::slice::from_raw_parts_mut` creates slice instead of a raw a slice.",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a0a4ce_4906fd1d",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e939a160_4d4bf6a2",
       "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -358,6 +640,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e637cd_d49cdbf4",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93de2cbf_4d93af23",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "548f8fcb_83ea3b06",
@@ -371,6 +677,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "\"RMM Boot Manifest\" would be better.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "548390b2_30f34f44",
+        "filename": "src/services/rmmd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "548f8fcb_83ea3b06",
       "range": {
         "startLine": 56,
         "startChar": 11,
@@ -404,6 +734,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e151b4e_86bb3208",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "It\u0027s not important indeed. I think I just copy pasted it from the reference. Done.",
+      "parentUuid": "d09324d0_7e2adcb5",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3bd24f1_d63ada18",
@@ -417,6 +771,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "Should this rather be a usize?\n\nAccording to RF-A code style guide [1]:\n\u003e usize and isize are the Rust types for values that will become pointers, sequence indices, and memory object counts.\n\u003e \n\u003e u32, i32, u64, and i64 are the right types for other register values, bit fields and bit masks, and other integer values.\n\n[1] https://git.trustedfirmware.org/plugins/gitiles/RF-A/rusted-firmware-a/+/refs/heads/main/docs/style-guide.md#using-the-primitive-integral-types",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce861f8e_f74933d1",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done. I also updated all the fields pointer and size fields of the other structures.",
+      "parentUuid": "e3bd24f1_d63ada18",
       "range": {
         "startLine": 151,
         "startChar": 19,
@@ -493,6 +871,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40ab4205_53bd0856",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "I\u0027ve updated the check to instead use the `RMM_SHARED_BUFFER_SIZE` constant, so there is no magic value anymore. Do you think that is enough?",
+      "parentUuid": "52629280_6d9b6ade",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 54
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48baea1a_96c8b72a",
         "filename": "src/services/rmmd/manifest.rs",
         "patchSetId": 14
@@ -504,6 +906,24 @@
       "writtenOn": "2025-11-11T16:31:27Z",
       "side": 1,
       "message": "`ptr.is_multiple_of([shared memory size])`",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c74570_2124a412",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48baea1a_96c8b72a",
       "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -525,6 +945,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf2690d_e01050d8",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9202f409_0a3f8637",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf39c58_7069bf5d",
@@ -538,6 +976,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 212,
+        "startChar": 11,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece75af0_ed636a05",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf39c58_7069bf5d",
       "range": {
         "startLine": 212,
         "startChar": 11,
@@ -567,6 +1029,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "885b531c_7b139451",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done. I copy pasted the implementation from STF, is there any way for STF to access this implementation to avoid duplication? Also, maybe it is possible to use the `TryFromBytes` trait from `zerocopy` to return an error when converting an invalid version, but I could not find documentation on how to implement custom validity checks.",
+      "parentUuid": "4fdd22f2_da25edf8",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bdc5b47_74aa2806",
         "filename": "src/services/rmmd/manifest.rs",
         "patchSetId": 14
@@ -578,6 +1058,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "This will *silently* remove the most-significant bit of the major revision number. Although I understand why you\u0027re doing this (because the doc says this bit is RES0!), I wonder whether this is the right thing to do, or whether this should be treated as an error. We could define proper types for a major (and a minor) version number instead of simply using `u16`, and enforce by construction that a `RmmMajorVersion` value always has bit#15 as zero.\n\nI am not saying this is necessarily the right thing to do but wondered if you had considered this and had any thoughts around that.",
+      "range": {
+        "startLine": 268,
+        "startChar": 14,
+        "endLine": 268,
+        "endChar": 35
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08970140_22df4bb4",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bdc5b47_74aa2806",
       "range": {
         "startLine": 268,
         "startChar": 14,
@@ -601,6 +1105,30 @@
       "writtenOn": "2025-11-10T15:25:58Z",
       "side": 1,
       "message": "If `self` got constructed through `RmmBootManifestVersion::new()` then there should not be any need to mask out bit#31 because it should already be zero by construction. I guess there is an issue if instead `self` comes from an integer conversion? But then I suppose we could implement the `From`/`Into` traits to enforce that as well?",
+      "range": {
+        "startLine": 272,
+        "startChar": 22,
+        "endLine": 272,
+        "endChar": 30
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e99af4d_93a2afc7",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-12T15:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d466caf_4ca3b827",
       "range": {
         "startLine": 272,
         "startChar": 22,
