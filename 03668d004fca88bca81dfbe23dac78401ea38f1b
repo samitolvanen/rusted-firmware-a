@@ -895,6 +895,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4196c7ae_6585745b",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-12T16:27:18Z",
+      "side": 1,
+      "message": "Thank you for the context, Olivier. Then I think it\u0027s OK to keep this restriction in RF-A too. Actually I had missed that this is clearly documented in https://trustedfirmware-a.readthedocs.io/en/latest/components/rmm-el3-comms-spec.html#cold-boot-interface\n\nThanks for defining the `RMM_SHARED_BUFFER_SIZE` constant, Ludovic, this looks fine to me.\n\nAlthough I have a related question... Why do we check the size of the buffer at runtime (using `assert!()`) if it\u0027s known at compile time? Could we not change the signature of this method to receive a `RMM_SHARED_BUFFER_SIZE`-byte fixed-size array, instead of the current variable-size array (`\u0026\u0027a mut [u8]`)?",
+      "parentUuid": "52629280_6d9b6ade",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 54
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48baea1a_96c8b72a",
         "filename": "src/services/rmmd/manifest.rs",
         "patchSetId": 14

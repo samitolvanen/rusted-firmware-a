@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e3cb205_55e91cef",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 20
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-12T16:27:18Z",
+      "side": 1,
+      "message": "must be",
+      "range": {
+        "startLine": 166,
+        "startChar": 28,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "83ce2032df2f7fb7bcb0e6c5ea0d4e9a6ea411e2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
