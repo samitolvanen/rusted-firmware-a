@@ -5,9 +5,9 @@
 //! Fake implementations of system register getters and setters for unit tests.
 
 use super::{
-    ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, HcrxEl2, IccSre, IdAa64dfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, MdcrEl2, Mpam3El3, MpamIdrEl1, MpidrEl1, Pmcr,
-    ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, Spsr,
+    ClidrEl1, CsselrEl1, CtrEl0, Esr, HcrEl2, HcrxEl2, IccSre, IdAa64dfr0El1, IdAa64mmfr0El1,
+    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, MdcrEl2, Mpam3El3, MpamIdrEl1,
+    MpidrEl1, Pmcr, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, Spsr,
 };
 use std::sync::Mutex;
 
@@ -193,6 +193,8 @@ pub struct SystemRegisters {
     pub ich_vmcr_el2: u64,
     /// Fake value for the ID_AA64DFR0_EL1 system register.
     pub id_aa64dfr0_el1: IdAa64dfr0El1,
+    /// Fake value for the ID_AA64MMFR0_EL1 system register.
+    pub id_aa64mmfr0_el1: IdAa64mmfr0El1,
     /// Fake value for the ID_AA64MMFR1_EL1 system register.
     pub id_aa64mmfr1_el1: IdAa64mmfr1El1,
     /// Fake value for the ID_AA64MMFR2_EL1 system register.
@@ -277,6 +279,16 @@ pub struct SystemRegisters {
     pub tcr2_el1: u64,
     /// Fake value for the TCR2_EL2 system register.
     pub tcr2_el2: u64,
+    /// Fake value for the HFGITR2_EL2 system register.
+    pub hfgitr2_el2: u64,
+    /// Fake value for the HFGRTR2_EL2 system register.
+    pub hfgrtr2_el2: u64,
+    /// Fake value for the HFGWTR_EL2 system register.
+    pub hfgwtr_el2: u64,
+    /// Fake value for the HDFGRTR2_EL2 system register.
+    pub hdfgrtr2_el2: u64,
+    /// Fake value for the HDFGWTR2_EL2 system register.
+    pub hdfgwtr2_el2: u64,
     /// Fake value for THETPIDR_EL0 system register.
     pub tpidr_el0: u64,
     /// Fake value for THETPIDR_EL1 system register.
@@ -353,6 +365,7 @@ impl SystemRegisters {
             ich_hcr_el2: 0,
             ich_vmcr_el2: 0,
             id_aa64dfr0_el1: IdAa64dfr0El1::empty(),
+            id_aa64mmfr0_el1: IdAa64mmfr0El1::empty(),
             id_aa64mmfr1_el1: IdAa64mmfr1El1::empty(),
             id_aa64mmfr2_el1: IdAa64mmfr2El1::empty(),
             id_aa64mmfr3_el1: IdAa64mmfr3El1::empty(),
@@ -412,6 +425,11 @@ impl SystemRegisters {
             vsesr_el2: 0,
             vtcr_el2: 0,
             vttbr_el2: 0,
+            hfgitr2_el2: 0,
+            hfgrtr2_el2: 0,
+            hfgwtr_el2: 0,
+            hdfgrtr2_el2: 0,
+            hdfgwtr2_el2: 0,
         }
     }
 

@@ -194,7 +194,16 @@ unsafe impl Platform for Fvp {
         ],
     };
 
-    const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension] = &[];
+    const CPU_EXTENSIONS: &'static [&'static dyn CpuExtension] = &[
+        #[cfg(feature = "rme")]
+        &crate::cpu_extensions::hcx::Hcx,
+        // #[cfg(feature = "rme")]
+        // &crate::cpu_extensions::fgt::Fgt,
+        #[cfg(feature = "rme")]
+        &crate::cpu_extensions::fgt2::Fgt2,
+        #[cfg(feature = "rme")]
+        &crate::cpu_extensions::tcr2::Tcr2,
+    ];
 
     fn init(_arg0: u64, _arg1: u64, _arg2: u64, _arg3: u64) {
         let peripherals = Peripherals::take().unwrap();
