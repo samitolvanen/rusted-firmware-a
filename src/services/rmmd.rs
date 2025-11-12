@@ -8,7 +8,13 @@ use crate::{
     context::World,
     info,
     platform::{Platform, PlatformImpl},
-    services::{Service, owns},
+    services::{
+        Service, owns,
+        rmmd::smc::{
+            EccCurve, RecAttestGetRealmKeyResponse, RecCall, RecCommandReturnCode,
+            RecEl3FeaturesResponse,
+        },
+    },
     smccc::{FunctionId, NOT_SUPPORTED, OwningEntityNumber, SmcReturn},
 };
 
@@ -29,7 +35,7 @@ mod smc;
 /// - After calling `get_shared_buffer`, the return reference must be dropped before any other call
 ///   to it is made.
 /// - The reference must be dropped before switching to Realm World.
-unsafe fn get_shared_buffer() -> &'static mut [u8] {
+const unsafe fn get_shared_buffer() -> &'static mut [u8] {
     // Safety: (relative to [`slice::from_raw_parts_mut`][https://doc.rust-lang.org/stable/core/slice/fn.from_raw_parts_mut.html])
     // - The first condition of `get_shared_buffer()` ensures that the location is valid, and as it
     //   occupies exactly one page, it will always be aligned.
@@ -47,7 +53,6 @@ unsafe fn get_shared_buffer() -> &'static mut [u8] {
 }
 
 const RMM_BOOT_COMPLETE: u32 = 0xC400_01CF;
-const RMM_RMI_REQ_COMPLETE: u32 = 0xC400_018F;
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub enum RmmBootReturn {
@@ -94,17 +99,76 @@ impl Service for Rmmd {
         let mut function = FunctionId(regs[0] as u32);
         function.clear_sve_hint();
 
-        match function.0 {
-            RMM_BOOT_COMPLETE => {
-                info!("Realm boot completed with code 0x{:x}", regs[1]);
-                (rmm_boot_complete(regs[1] as i32), World::NonSecure)
+        if function.0 == RMM_BOOT_COMPLETE {
+            info!("Realm boot completed with code 0x{:x}", regs[1]);
+
+            if regs[1] != 0 {
+                panic!()
             }
-            RMM_RMI_REQ_COMPLETE => {
-                // Only x1-x6 are used for RMI return values, the remaining ones MBZ.
-                let forwarded_regs: [u64; 6] = regs[1..7].try_into().unwrap();
-                (forwarded_regs.into(), World::NonSecure)
+
+            return (rmm_boot_complete(regs[1] as i32), World::NonSecure);
+        }
+
+        let Ok(command) = RecCall::from_regs(regs) else {
+            return (NOT_SUPPORTED.into(), World::Realm);
+        };
+
+        let sb_address = PlatformImpl::RMM_SHARED_BUFFER_START
+            ..PlatformImpl::RMM_SHARED_BUFFER_START + RMM_SHARED_BUFFER_SIZE;
+        match command {
+            RecCall::RmiReqComplete { regs } => (regs.into(), World::NonSecure),
+            RecCall::GtsiDelegate { .. } => todo!(),
+            RecCall::GtsiUndelegate { .. } => todo!(),
+            // TODO(firme): equivalent to MFI_ATTEST_RAK_GET, will have to take into account the
+            // write offset and continued request.
+            RecCall::AttestGetRealmKey {
+                buf_pa,
+                buf_size,
+                ecc_curve,
+            } => {
+                let buf_pa = buf_pa as usize;
+                let buf_size = buf_size as usize;
+
+                // Perform sanity checks on the received buffer range.
+                if !sb_address.contains(&buf_pa) {
+                    return RecCommandReturnCode::BadAddress.into();
+                }
+                if !sb_address.contains(&(buf_pa + buf_size - 1)) {
+                    return RecCommandReturnCode::InvalidValue.into();
+                }
+
+                // Safety:
+                // - This function can only be reached after having setup the Realm World, which
+                //   requires the MMU and pagetables to be setup.
+                // - This function never calls again `get_shared_buffer()`, thus the reference will
+                //   be dropped upon return, before another call is made.
+                // - Similarly to the above, this function does not switch to the Realm World.
+                let shared_buffer = unsafe { get_shared_buffer() };
+
+                let key_size = match ecc_curve {
+                    EccCurve::EccSecp384r1 => {
+                        match PlatformImpl::write_attestion_key_ecc_secp384r1(shared_buffer, 0) {
+                            Ok(size) => size,
+                            Err(_) => return RecCommandReturnCode::Unk.into(),
+                        }
+                    }
+                };
+
+                RecAttestGetRealmKeyResponse {
+                    key_size: key_size as u64,
+                }
+                .into()
             }
-            _ => (NOT_SUPPORTED.into(), World::Realm),
+            RecCall::AttestGetPlatToken { .. } => todo!(),
+            RecCall::El3Features { .. } => RecEl3FeaturesResponse { feat_reg: 0 }.into(),
+            RecCall::El3TokenSign { .. } => todo!(),
+            // Hacky trick to avoid TF-RMM from enabling encryption (not implemented yet).
+            RecCall::MecRefresh { .. } => (NOT_SUPPORTED.into(), World::Realm),
+            RecCall::IdeKeyProg { .. } => todo!(),
+            RecCall::IdeKeySetGo { .. } => todo!(),
+            RecCall::IdeKeySetStop { .. } => todo!(),
+            RecCall::IdeKmPullResponse { .. } => todo!(),
+            RecCall::ReserveMemory { .. } => todo!(),
         }
     }
 }
