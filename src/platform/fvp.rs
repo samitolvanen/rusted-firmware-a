@@ -6,6 +6,10 @@ mod config;
 
 use self::config::{FVP_CLUSTER_COUNT, FVP_MAX_CPUS_PER_CLUSTER, FVP_MAX_PE_PER_CPU};
 use super::{DummyService, Platform};
+#[cfg(feature = "rme")]
+use crate::services::rmmd::manifest::{
+    ManifestList, RmmBootManifest, RmmConsoleInfo, RmmMemoryBank,
+};
 use crate::{
     aarch64::{dsb_ish, dsb_sy, wfi},
     context::{CoresImpl, EntryPointInfo},
@@ -106,14 +110,9 @@ const NT_FW_CONFIG_ADDRESS: u64 = 0x8000_0000;
 const HW_CONFIG_ADDRESS: u64 = 0x07f0_0000;
 const HW_CONFIG_ADDRESS_NS: u64 = 0x8200_0000;
 
-// TODO: Use the correct values here (see services/std_svc/rmmd/rmmd_main.c).
 /// Version of the RMM Boot Interface.
 #[cfg(feature = "rme")]
-const RMM_BOOT_VERSION: u64 = 0;
-/// Base address for the EL3 - RMM shared area. The boot manifest should be stored at the beginning
-/// of this area.
-#[cfg(feature = "rme")]
-const RMM_SHARED_AREA_BASE_ADDRESS: u64 = 0;
+const RMM_BOOT_VERSION: u64 = 0x5;
 
 const EARLY_REGIONS: [EarlyRegion; 2] = [
     EarlyRegion {
@@ -167,12 +166,58 @@ define_cpu_ops!(AemGeneric);
 /// Fixed Virtual Platform
 pub struct Fvp;
 
+const RMM_MANIFEST_DRAM_REGION_COUNT: usize = 2;
+const RMM_MANIFEST_CONSOLE_COUNT: usize = 1;
+const RMM_MANIFEST_NCOH_REGION_COUNT: usize = 0;
+const RMM_MANIFEST_COH_REGION_COUNT: usize = 0;
+const RMM_MANIFEST_SMMU_COUNT: usize = 0;
+const RMM_MANIFEST_ROOT_COMPLEX_COUNT: &[&[usize]] = &[];
+
 // SAFETY: `core_position` is indeed a naked function, doesn't access the stack or any other memory,
 // only clobbers x0-x5, and returns a unique core index as long as `FVP_MAX_CPUS_PER_CLUSTER` and
 // `FVP_MAX_PE_PER_CPU` are correct.
 unsafe impl Platform for Fvp {
     const CORE_COUNT: usize = PLATFORM_CORE_COUNT;
     const CACHE_WRITEBACK_GRANULE: usize = 1 << 6;
+    const PAGE_HEAP_PAGE_COUNT: usize = 6;
+
+    #[cfg(feature = "rme")]
+    const RMM_SHARED_BUFFER_START: usize = 0xffbf_f000;
+
+    #[cfg(feature = "rme")]
+    fn rme_prepare_manifest(buf: &mut [u8]) {
+        let manifest = RmmBootManifest::new(
+            buf,
+            RMM_MANIFEST_DRAM_REGION_COUNT,
+            RMM_MANIFEST_CONSOLE_COUNT,
+            RMM_MANIFEST_NCOH_REGION_COUNT,
+            RMM_MANIFEST_COH_REGION_COUNT,
+            RMM_MANIFEST_SMMU_COUNT,
+            &[],
+        );
+
+        // TODO: These addresses should be parsed from FW_CONFIG
+        manifest.plat_dram.as_slice_mut()[0] = RmmMemoryBank {
+            base: NT_FW_CONFIG_ADDRESS as usize,
+            size: 0x7c00_0000,
+        };
+        manifest.plat_dram.as_slice_mut()[1] = RmmMemoryBank {
+            base: *MemoryMap::DRAM1.start(),
+            size: 0x8000_0000,
+        };
+
+        manifest.plat_console.as_slice_mut()[0] = RmmConsoleInfo {
+            // Value from the pl011_uart crate.
+            base: UART_BASE,
+
+            // Values from TF-A.
+            map_pages: 0x1,
+            name: *b"pl011\0\0\0",
+            clk_in_hz: 0x00e1_0000,
+            baud_rate: 115_200,
+            flags: 0,
+        };
+    }
 
     type LogSinkImpl = LockedWriter<Uart<'static>>;
     type PsciPlatformImpl = FvpPsciPlatformImpl<'static>;
@@ -298,7 +343,7 @@ unsafe impl Platform for Fvp {
                 core_linear_id,
                 RMM_BOOT_VERSION,
                 Self::CORE_COUNT as u64,
-                RMM_SHARED_AREA_BASE_ADDRESS,
+                Self::RMM_SHARED_BUFFER_START as u64,
                 0,
                 0,
                 0,

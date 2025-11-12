@@ -103,6 +103,16 @@ pub unsafe trait Platform {
     /// The number of pages to reserve for the page heap.
     const PAGE_HEAP_PAGE_COUNT: usize = 5;
 
+    #[cfg(feature = "rme")]
+    /// Base address for the EL3 - RMM shared area.
+    const RMM_SHARED_BUFFER_START: usize;
+
+    #[cfg(feature = "rme")]
+    /// Platform dependent part of the RME Boot Manifest. Entries within the range `0..RMM_<NAME>`
+    /// (see above) are allocated to be filled by this function. Any extra entry is reserved for
+    /// platform independent data.
+    fn rme_prepare_manifest(_buf: &mut [u8]) {}
+
     /// Platform dependent LogSink implementation type for Logger.
     type LogSinkImpl: LogSink;
 
