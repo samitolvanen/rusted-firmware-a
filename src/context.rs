@@ -685,7 +685,7 @@ fn initialise_common(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     //
     // NOTE: Modifying EEL2 bit along with EA bit ensures that we mitigate
     // against ERRATA_V2_3099206.
-    context.el3_state.scr_el3 = ScrEl3::RES1 | ScrEl3::HCE | ScrEl3::SIF | ScrEl3::RW;
+    context.el3_state.scr_el3 = ScrEl3::RES1 | ScrEl3::HCE | ScrEl3::EA | ScrEl3::SIF | ScrEl3::RW;
     #[cfg(feature = "sel2")]
     {
         context.el3_state.scr_el3 |= ScrEl3::EEL2;
@@ -744,7 +744,8 @@ fn initialise_secure(context: &mut CpuContext, entry_point: &EntryPointInfo) {
 fn initialise_realm(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     initialise_common(context, entry_point);
     // SCR_NS + SCR_NSE = Realm state
-    context.el3_state.scr_el3 |= ScrEl3::NS | ScrEl3::NSE;
+    context.el3_state.scr_el3 |=
+        ScrEl3::NS | ScrEl3::NSE | /* TODO: replace with a CPU extension */ ScrEl3::FGTEN;
 
     // Configure CPU extensions for the Realm world.
     for ext in PlatformImpl::CPU_EXTENSIONS {
