@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12c5194_1e2f7dba",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Nit: fix indentation to match the surrounding lines, here and below.\n\nAlso, how did you choose at what point in the boot flow to call this?",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7a9a53_b4ef3cfb",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Is there a definition somewhere of how big CVE IDs can be? I guess this should either be `u32` or `u64` rather than usize, as it\u0027s not really an index or pointer-like thing.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0001f7d4_d8f9c5eb",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Derive `Copy`, `Clone`, `Eq` and `PartialEq` too.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78930107_8d2fdd5e",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Are there other errors you expect to add in the future? If not, this doesn\u0027t need to be an enum.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44e9ae9_93021931",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "When at runtime?",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1288d8e8_a054c896",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Let\u0027s add the comments now, and especially some safety documentation specifying the safety requirements for implementing this unsafe trait. I guess the main point is that `check` and `workaround` must be naked functions that don\u0027t require a stack? Maybe they also shouldn\u0027t access memory at all?",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10de081a_d9e1d280",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Nit: Add a blank line between the consts and the functions.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fffb0d_5f5ca4bd",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "This unsafe function needs safety documentation.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76aad994_b603a65f",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Can this derive `Debug` at least?",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e8eb6c3_5b44c134",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Add a doc comment for this function.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0349b51d_c296af82",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "Add a doc comment for this function, including safety documentation.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47170a3_f868d220",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-12T14:35:22Z",
+      "side": 1,
+      "message": "No need for full paths for all these symbols, most of them are already in scope. For the rest just add use statements where necessary.",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
