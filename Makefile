@@ -12,6 +12,7 @@ endif
 BL31_BIN := $(OUT)/bl31.bin
 BL32 := $(OUT)/bl32.bin
 BL33 := $(OUT)/bl33.bin
+STF_RMM := $(OUT)/stf_rmm.bin
 FIP := $(OUT)/fip.bin
 BL31_ELF := $(OUT)/bl31.elf
 
@@ -19,6 +20,7 @@ OBJCOPY ?= rust-objcopy
 
 # cargo features to enable. See Cargo.toml for available features.
 FEATURES ?= sel2
+STF_FEATURES ?=
 
 .PHONY: all cargo-doc clean clippy clippy-test build build-stf list_platforms list_features
 
@@ -32,8 +34,15 @@ ifndef PLAT
   endif
 endif
 
-STF_CARGO_FLAGS := --release
+STF_CARGO_FLAGS = --release  --features "$(STF_FEATURES)"
 RFA_CARGO_FLAGS := --no-default-features --features "$(FEATURES)"
+
+# List of test images that can be built for that platform.
+STF_IMAGES := $(BL32) $(BL33)
+ifeq (${RME}, 1)
+	STF_FEATURES += rme
+	STF_IMAGES += $(STF_RMM)
+endif
 
 # Make a release build by default.
 DEBUG ?= 0
@@ -79,11 +88,17 @@ build:
 	$(OBJCOPY) $(BL31_ELF) -O binary $(BL31_BIN)
 
 build-stf:
-	$(STF_CARGO) build --package rf-a-secure-test-framework $(CARGO_FLAGS) $(STF_CARGO_FLAGS)
+	$(STF_CARGO) build \
+		--package rf-a-secure-test-framework \
+		$(CARGO_FLAGS) \
+		$(STF_CARGO_FLAGS) \
+		$(patsubst target/%.bin, "--bin" "%", $(STF_IMAGES))
 $(BL32): build-stf
 	$(OBJCOPY) $(OUT)/$(TARGET)/release/bl32 -O binary $@
 $(BL33): build-stf
 	$(OBJCOPY) $(OUT)/$(TARGET)/release/bl33 -O binary $@
+$(STF_RMM): build-stf
+	$(OBJCOPY) $(OUT)/$(TARGET)/release/stf_rmm -O binary $@
 
 clippy-test:
 	$(CARGO) clippy --tests --features "$(FEATURES)"
@@ -95,7 +110,7 @@ cargo-doc:
 clippy:
 	$(TARGET_CARGO) clippy $(CARGO_FLAGS)
 
-images: $(BL32) $(BL33) build
+images: $(STF_IMAGES) build
 
 clean:
 	$(CARGO) clean
