@@ -77,6 +77,9 @@ unsafe impl Platform for TestPlatform {
         Ok((0, 0))
     }
 
+    #[cfg(feature = "rme")]
+    fn setup_gpt() {}
+
     type LogSinkImpl = StdOutSink;
     type PsciPlatformImpl = TestPsciPlatformImpl;
     type TrngPlatformImpl = TestTrngPlatformImpl;
