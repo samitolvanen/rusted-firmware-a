@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d50682_10fb93fd",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-12T14:14:23Z",
+      "side": 1,
+      "message": "This should check for an exact match, as all other values are reserved. Same for GCS and NMI below.",
+      "range": {
+        "startLine": 890,
+        "startChar": 60,
+        "endLine": 890,
+        "endChar": 62
+      },
+      "revId": "9df539fabdb04c8ea82a3427a54dd4a1c04a73bb",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
