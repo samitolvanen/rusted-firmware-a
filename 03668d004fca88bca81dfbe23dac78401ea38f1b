@@ -824,6 +824,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "592891d7_a72eed96",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-13T08:08:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure to understand exactly what you mean? Are you saying I should get rid of all the `ManifestList` traits and write a `pack()` function that would write into the buffer using a logic similar to `buf[a..b].copy_from_slice(drams.as_byte())` ?\n\nI can see that my implementation offers maybe too much flexibility for what it\u0027s used, but I was also thinking about it as being potentially used for other purposes, especially since this specification may end up in FIRME. But maybe then we could simply have `pack/unpack` functions, I don\u0027t know what would be best?",
+      "parentUuid": "40250c93_0bb49e58",
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "179d334f_b5ae7dd2",
         "filename": "src/services/rmmd/manifest.rs",
         "patchSetId": 14
@@ -907,6 +925,30 @@
       "side": 1,
       "message": "Thank you for the context, Olivier. Then I think it\u0027s OK to keep this restriction in RF-A too. Actually I had missed that this is clearly documented in https://trustedfirmware-a.readthedocs.io/en/latest/components/rmm-el3-comms-spec.html#cold-boot-interface\n\nThanks for defining the `RMM_SHARED_BUFFER_SIZE` constant, Ludovic, this looks fine to me.\n\nAlthough I have a related question... Why do we check the size of the buffer at runtime (using `assert!()`) if it\u0027s known at compile time? Could we not change the signature of this method to receive a `RMM_SHARED_BUFFER_SIZE`-byte fixed-size array, instead of the current variable-size array (`\u0026\u0027a mut [u8]`)?",
       "parentUuid": "52629280_6d9b6ade",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 54
+      },
+      "revId": "03668d004fca88bca81dfbe23dac78401ea38f1b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e88772_b2fe6b63",
+        "filename": "src/services/rmmd/manifest.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-13T08:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4196c7ae_6585745b",
       "range": {
         "startLine": 199,
         "startChar": 8,
