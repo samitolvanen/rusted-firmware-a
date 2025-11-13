@@ -199,7 +199,9 @@ RMM_IDMAP:
 1:
     .fill 494, 8, 0x0
     .quad {MEMORY_ATTRIBUTES} | 0xfdc00000
-    .fill 17, 8, 0x0
+    .fill 14, 8, 0x0
+    .quad {MEMORY_ATTRIBUTES} | 0xffb00000
+    .fill 2, 8, 0x0
 ",
     DEVICE_ATTRIBUTES = const DEVICE_ATTRIBUTES.bits(),
     MEMORY_ATTRIBUTES = const MEMORY_ATTRIBUTES.bits(),
