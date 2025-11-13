@@ -248,6 +248,7 @@ impl Rmmd {
         let buf = unsafe { get_shared_buffer() };
 
         PlatformImpl::rme_prepare_manifest(buf);
+        PlatformImpl::setup_gpt();
 
         info!("RMM Boot Manifest ready");
 
