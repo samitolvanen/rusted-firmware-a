@@ -16,6 +16,23 @@
       "message": "RUN_CI",
       "revId": "19369316334467060f0b1174f23b5357d87540bd",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582b44d2_7650b5be",
+        "filename": "src/context.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-13T11:49:16Z",
+      "side": 1,
+      "message": "Do all platforms with S-EL2 want to enable FGT in both secure and non-secure world, and hence need this extra context switching? 5 more system registers is not quite a trivial amount of extra context to switch.",
+      "revId": "19369316334467060f0b1174f23b5357d87540bd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
