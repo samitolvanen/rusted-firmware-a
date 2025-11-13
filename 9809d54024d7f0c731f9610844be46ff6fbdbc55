@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899e1bf1_961fc36e",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-13T17:39:46Z",
+      "side": 1,
+      "message": "Technically speaking, since `FIXED_IN` is `u8::MAX`, we don\u0027t have to do this check, since revision and variant are always going to be smaller. Thoughts?",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 75
+      },
+      "revId": "9809d54024d7f0c731f9610844be46ff6fbdbc55",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
