@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c56cbfb4_a1572704",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "It depends what the errata implementations are expecting, but maybe we can start with this and change it later if we need to. Do any reset errata need to modify bits in system registers set by later parts of the cold boot flow?",
+      "parentUuid": "bb62e1b5_53476da3",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd7a9a53_b4ef3cfb",
         "filename": "src/errata_framework.rs",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "cd7a9a53_b4ef3cfb",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866c2b2f_bbcdefd7",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "So did you find a definition for how big CVE IDs can be? And what about erratum IDs, how big can they be?",
+      "parentUuid": "51331842_3316f4f5",
       "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -399,6 +435,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f47170a3_f868d220",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c84c2f5_f6780647",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "You fixed some of these, but still left a bunch, e.g. `core::mem::size_of` and `core::mem::offset_of` a few lines up.",
+      "parentUuid": "34bf1769_a23f191c",
       "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }

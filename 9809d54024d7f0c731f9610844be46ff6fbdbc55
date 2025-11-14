@@ -22,6 +22,30 @@
       },
       "revId": "9809d54024d7f0c731f9610844be46ff6fbdbc55",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a75c892_cf24553e",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s save the code and not check explicitly for `NOT_FIXED`.",
+      "parentUuid": "899e1bf1_961fc36e",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 75
+      },
+      "revId": "9809d54024d7f0c731f9610844be46ff6fbdbc55",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

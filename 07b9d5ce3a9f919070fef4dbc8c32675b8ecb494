@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6accbe17_40651583",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "Make this `#[repr(C)]`, because you\u0027re using it from assembly so it needs to have a defined layout (but see my other comment about whether it\u0027s really needed at all).",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14aacb43_607194c3",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "These should be in the arm-sysregs crate.",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82d2f23_c1c9079b",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "Nit: add a use statement rather than using the full path here.",
+      "range": {
+        "startLine": 37,
+        "startChar": 48,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938d28a0_afa395b0",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "So what does that mean for the caller? The safety documentation for a function needs to explain what the caller is required to do for the call to be safe.",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfb0f8d_2c8fdbca",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "Do these actually need to be stored here, are they used anywhere else than in `implement_erratum_check`? If they are only for `implement_erratum_check`, then you could just pass them as parameters to the macro, as errata which don\u0027t use `implement_erratum_check` won\u0027t need them.",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ed639a_23c59066",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "Add a use statement for this rather than using the full path here.\n\nThough shouldn\u0027t it be using `naked_asm`?",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91172321_ebb3b76c",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "It being a naked function doesn\u0027t necessarily mean that it\u0027s unsafe. What exactly does the caller need to when calling this function to avoid undefined behaviour?",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991255d9_93a20702",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "What is the \"TF-A reset vector calling convention\", and what does that have to do with this function being unsafe?",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c82256b_33d93d73",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "Sure, but that\u0027s nothing to do with the caller, that\u0027s up to you to write the assembly code correctly.",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86446946_67a1e4b0",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "If there are details of the implementations of those functions that are necessary to avoid undefined behaviour here, you need to document that on the safety documentation of the `Erratum` trait, not here. But it should be specific and precise; exactly what requirements must the implementer fulfil to ensure safety?",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6499da1e_13485367",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-14T18:22:23Z",
+      "side": 1,
+      "message": "Nit: Again, add a use statement rather than using the full path.",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 25
+      },
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
