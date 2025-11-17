@@ -31,7 +31,7 @@ use crate::{
     },
     platform::{BL33_IDMAP, Platform, PlatformImpl},
     secondary::secondary_entry,
-    util::{NORMAL_WORLD_ID, SECURE_WORLD_ID, current_el},
+    util::{NORMAL_WORLD_ID, SECURE_WORLD_ID, current_el, enable_pauth},
 };
 use aarch64_rt::{enable_mmu, entry};
 use arm_ffa::Interface;
@@ -57,6 +57,10 @@ enable_mmu!(BL33_IDMAP);
 
 entry!(bl33_main, 4);
 fn bl33_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
+    // Enable PAuth with a dummy key.
+    #[cfg(pauth)]
+    enable_pauth(0xC0DED00D_C0DED00D_C0DED00D_C0DED00D);
+
     let log_sink = PlatformImpl::make_log_sink();
     logger::init(log_sink).unwrap();
 

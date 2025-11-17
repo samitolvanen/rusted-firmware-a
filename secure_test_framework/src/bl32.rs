@@ -32,7 +32,7 @@ use crate::{
     secondary::secondary_entry,
     util::{
         NORMAL_WORLD_ID, SECURE_WORLD_ID, SPMC_DEFAULT_ID, SPMD_DEFAULT_ID, current_el,
-        expect_ffa_success,
+        enable_pauth, expect_ffa_success,
     },
 };
 use aarch64_rt::{enable_mmu, entry};
@@ -64,6 +64,10 @@ fn current_test_index() -> Option<usize> {
 
 entry!(bl32_main, 4);
 fn bl32_main(x0: u64, x1: u64, x2: u64, x3: u64) -> ! {
+    // Enable PAuth with a dummy key.
+    #[cfg(pauth)]
+    enable_pauth(0xCAFEF00D_CAFEF00D_CAFEF00D_CAFEF00D);
+
     let log_sink = PlatformImpl::make_log_sink();
     logger::init(log_sink).unwrap();
 
