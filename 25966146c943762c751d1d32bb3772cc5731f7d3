@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2615970_6222c028",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-17T20:03:28Z",
+      "side": 1,
+      "message": "Pushed a change for that here: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/45385\n\nIn local testing it works, and removing the context switching breaks it, which is a good sign.",
+      "parentUuid": "b91e8a67_158abdc6",
+      "revId": "25966146c943762c751d1d32bb3772cc5731f7d3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0171fd71_1ccacba1",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-17T11:42:49Z",
       "side": 1,
       "message": "Why does this need to be done in assembly rather than in Rust? If it\u0027s because the EL3 Rust code might also be using PAuth, don\u0027t we need to restore its keys after saving the lower EL keys?",
+      "revId": "25966146c943762c751d1d32bb3772cc5731f7d3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf5407c_e629f666",
+        "filename": "src/context.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-17T20:03:28Z",
+      "side": 1,
+      "message": "Yes, the restoring of EL3 keys will need to be done here as well before calling any Rust functions, as they will have the `paciasp` instruction in their prologue. I wanted to add lower-EL support first but in a way that wouldn\u0027t have to be replaced once EL3 support is added too.",
+      "parentUuid": "0171fd71_1ccacba1",
       "revId": "25966146c943762c751d1d32bb3772cc5731f7d3",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -66,6 +102,24 @@
       "side": 1,
       "message": "It looks like they are separate system registers though, so it makes sense to have separate fields.",
       "parentUuid": "e233db75_49720461",
+      "revId": "25966146c943762c751d1d32bb3772cc5731f7d3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ff3dcf_069aab8f",
+        "filename": "src/context.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-17T20:03:28Z",
+      "side": 1,
+      "message": "Yeah it made more sense to me for the saved context to exactly match the registers.",
+      "parentUuid": "99178961_efbcb7f0",
       "revId": "25966146c943762c751d1d32bb3772cc5731f7d3",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
