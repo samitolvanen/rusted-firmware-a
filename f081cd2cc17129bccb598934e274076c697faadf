@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81481f06_dfee496c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001020
+      },
+      "writtenOn": "2025-11-17T19:29:39Z",
+      "side": 1,
+      "message": "friendly ping @imre.kis@arm.com",
+      "revId": "f081cd2cc17129bccb598934e274076c697faadf",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
