@@ -122,6 +122,24 @@
       "parentUuid": "99178961_efbcb7f0",
       "revId": "25966146c943762c751d1d32bb3772cc5731f7d3",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db17ac50_f508862c",
+        "filename": "src/context.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000157
+      },
+      "writtenOn": "2025-11-17T20:33:43Z",
+      "side": 1,
+      "message": "Yeah, the thing that bothers me here is that:\n1. You don\u0027t actually care about the alignment of the struct, you care about the alignment of `apiakey_lo`/`apiakey_hi` pairs for the 128-bit wide `stp`\n2. It implicitly depends on C layout rules. These are static, so it\u0027s safe, but you\u0027re relying on how C says you have to lay out struct fields rather than having direct restrictions on how they\u0027re laid out.\n\nI don\u0027t know that we can do a ton better though if you think they make most sense as separate registers.",
+      "parentUuid": "f4ff3dcf_069aab8f",
+      "revId": "25966146c943762c751d1d32bb3772cc5731f7d3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
