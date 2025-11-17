@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb10a8b2_94280dba",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-17T14:40:10Z",
+      "side": 1,
+      "message": "That\u0027s not something the caller controls, that\u0027s what the implementer of the trait needs to do.",
+      "revId": "16df0f0ae4e1ddf98d0d8e1bb679b63609a0d833",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
