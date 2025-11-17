@@ -75,6 +75,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f949fa5c_89d8f817",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-17T13:55:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "938d28a0_afa395b0",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdfb0f8d_2c8fdbca",
@@ -105,6 +123,30 @@
       "writtenOn": "2025-11-14T18:22:23Z",
       "side": 1,
       "message": "Add a use statement for this rather than using the full path here.\n\nThough shouldn\u0027t it be using `naked_asm`?",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515dbbe2_0b179944",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-17T13:55:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ed639a_23c59066",
       "range": {
         "startLine": 145,
         "startChar": 12,
@@ -196,6 +238,30 @@
       "writtenOn": "2025-11-14T18:22:23Z",
       "side": 1,
       "message": "Nit: Again, add a use statement rather than using the full path.",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 25
+      },
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9ef501_434a616e",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-17T13:55:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6499da1e_13485367",
       "range": {
         "startLine": 231,
         "startChar": 5,

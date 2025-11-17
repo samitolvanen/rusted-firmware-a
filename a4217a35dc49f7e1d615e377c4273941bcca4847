@@ -107,6 +107,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc8e399_5aa3a288",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-17T13:55:48Z",
+      "side": 1,
+      "message": "I found this in the \"Arm compiler for embedded user guide\": \"Vulnerabilities are identified by IDs with the format CVE-\u003cyyyy\u003e-\u003cxxxxx\u003e, where \u003cyyyy\u003e is the year the vulnerability is disclosed.\".",
+      "parentUuid": "866c2b2f_bbcdefd7",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0001f7d4_d8f9c5eb",
