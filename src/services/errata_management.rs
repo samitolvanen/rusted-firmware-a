@@ -4,6 +4,7 @@
 
 use crate::{
     context::World,
+    platform::ERRATA_LIST,
     services::{Service, owns},
     smccc::{FunctionId, NOT_SUPPORTED, OwningEntityNumber, SmcReturn},
 };
@@ -114,12 +115,19 @@ fn cpu_erratum_features(regs: &[u64; 18], world: World) -> Status {
         cpu_erratum_id, effective_originator,
     );
 
+    for erratum in ERRATA_LIST {
+        if erratum.id == cpu_erratum_id {
+            return Status::HigherElMitigation;
+        }
+    }
+
     Status::UnknownErratum
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::{errata_framework::Erratum, platform::test::TestErratum};
 
     #[test]
     fn em_version_non_secure() {
@@ -352,6 +360,33 @@ mod tests {
                 0
             ]),
             (SmcReturn::from(-3), World::NonSecure)
+        );
+    }
+
+    #[test]
+    fn em_cpu_erratum_features_mitigated() {
+        assert_eq!(
+            ErrataManagement.handle_non_secure_smc(&[
+                EM_CPU_ERRATUM_FEATURES.into(),
+                TestErratum::ID.into(),
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]),
+            (SmcReturn::from(3), World::NonSecure)
         );
     }
 }

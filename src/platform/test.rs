@@ -8,7 +8,7 @@ use crate::{
     context::EntryPointInfo,
     cpu::{Cpu, define_cpu_ops},
     cpu_extensions::CpuExtension,
-    errata_framework::define_errata_list,
+    errata_framework::{CVE, Erratum, ErratumID, ErratumType, RevisionVariant, define_errata_list},
     gicv3::{Gic, GicConfig},
     logger::{self, LogSink},
     pagetable::{
@@ -408,6 +408,24 @@ unsafe impl Cpu for TestCpu {
 }
 
 define_cpu_ops!(TestCpu);
+
+pub struct TestErratum;
+
+unsafe impl Erratum for TestErratum {
+    const ID: ErratumID = 7;
+    const CVE: CVE = 1234;
+    const APPLY_ON: ErratumType = ErratumType::Reset;
+    const FIXED_IN: RevisionVariant = RevisionVariant::NOT_FIXED;
+    const APPLY_FROM: RevisionVariant = RevisionVariant::new(0, 0);
+
+    extern "C" fn check() -> bool {
+        true
+    }
+
+    unsafe extern "C" fn workaround() {}
+}
+
+define_errata_list!(TestErratum);
 
 #[cfg(test)]
 mod tests {
