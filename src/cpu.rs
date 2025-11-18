@@ -13,7 +13,7 @@ add_cpu_mod!(aem_generic);
 add_cpu_mod!(qemu_max);
 
 use crate::platform::CPU_OPS;
-use arm_sysregs::read_midr_el1;
+use arm_sysregs::{MidrEl1, read_midr_el1};
 
 /// The `Cpu` trait captures low level CPU specific operations.
 ///
@@ -49,7 +49,7 @@ pub unsafe trait Cpu {
 #[repr(C)]
 #[derive(Debug)]
 pub struct CpuOps {
-    midr: u64,
+    midr: MidrEl1,
     reset_handler: extern "C" fn(),
     dump_registers: extern "C" fn(),
     power_down_level0: fn(),
@@ -61,8 +61,8 @@ impl CpuOps {
     const MIDR_MASK: u64 = 0xff00_fff0;
 
     /// Check if the instance has an MIDR with matching Implementer and PartNum fields.
-    fn has_matching_midr(&self, midr: u64) -> bool {
-        self.midr == (midr & Self::MIDR_MASK)
+    fn has_matching_midr(&self, midr: MidrEl1) -> bool {
+        self.midr == MidrEl1::from_bits_retain(midr.bits() & Self::MIDR_MASK)
     }
 }
 
@@ -70,7 +70,7 @@ impl CpuOps {
     /// Create [CpuOps] from [Cpu] implementation.
     pub const fn from_cpu<T: Cpu>() -> Self {
         Self {
-            midr: T::MIDR & Self::MIDR_MASK,
+            midr: MidrEl1::from_bits_retain(T::MIDR & Self::MIDR_MASK),
             reset_handler: T::reset_handler,
             dump_registers: T::dump_registers,
             power_down_level0: T::power_down_level0,
