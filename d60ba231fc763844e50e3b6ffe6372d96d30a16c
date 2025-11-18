@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4f34fd_c68e0d49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-18T18:08:58Z",
+      "side": 1,
+      "message": "In C TFA this is not optional (FP accesses are never trapped), but maybe it fits the CpuExtension framework nicely?\n\n@qwandor@google.com, @imre.kis@arm.com what do you think?",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
