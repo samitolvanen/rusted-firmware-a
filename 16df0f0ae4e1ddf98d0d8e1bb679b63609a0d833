@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a6925c6_99d729ff",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-18T13:58:31Z",
+      "side": 1,
+      "message": "Why a `usize`, where does this come from?",
+      "revId": "16df0f0ae4e1ddf98d0d8e1bb679b63609a0d833",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb10a8b2_94280dba",
         "filename": "src/errata_framework.rs",
         "patchSetId": 9
