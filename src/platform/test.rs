@@ -8,7 +8,7 @@ use crate::{
     context::EntryPointInfo,
     cpu::{Cpu, define_cpu_ops},
     cpu_extensions::CpuExtension,
-    errata_framework::define_errata_list,
+    errata_framework::{CVE, Erratum, ErratumID, ErratumType, RevisionVariant, define_errata_list},
     gicv3::{Gic, GicConfig},
     logger::{self, LogSink},
     pagetable::{
@@ -45,7 +45,6 @@ const CORES_PER_CLUSTER: usize = 3;
 const CORES_PER_CLUSTER_LAST: usize = 4;
 
 define_early_mapping!([]);
-define_errata_list!();
 
 /// A fake platform for unit tests.
 pub struct TestPlatform;
@@ -408,6 +407,36 @@ unsafe impl Cpu for TestCpu {
 }
 
 define_cpu_ops!(TestCpu);
+
+pub struct TestMitigatedErratum;
+
+unsafe impl Erratum for TestMitigatedErratum {
+    const ID: ErratumID = 7;
+    const CVE: CVE = 1234;
+    const APPLY_ON: ErratumType = ErratumType::Reset;
+
+    extern "C" fn check() -> bool {
+        true
+    }
+
+    extern "C" fn workaround() {}
+}
+
+pub struct TestUnneededErratum;
+
+unsafe impl Erratum for TestUnneededErratum {
+    const ID: ErratumID = 8;
+    const CVE: CVE = 4321;
+    const APPLY_ON: ErratumType = ErratumType::Reset;
+
+    extern "C" fn check() -> bool {
+        false
+    }
+
+    extern "C" fn workaround() {}
+}
+
+define_errata_list!(TestMitigatedErratum, TestUnneededErratum);
 
 #[cfg(test)]
 mod tests {

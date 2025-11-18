@@ -3,10 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 use crate::platform::ERRATA_LIST;
-use core::{
-    arch::naked_asm,
-    mem::{offset_of, size_of},
-};
+use core::{arch::naked_asm, mem::offset_of};
 
 /// A unique identifier for an erratum.
 pub type ErratumID = u32;
@@ -61,6 +58,7 @@ pub unsafe trait Erratum {
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 #[repr(C)]
 pub struct ErratumEntry {
+    pub id: ErratumID,
     pub apply_on: ErratumType,
     pub check: extern "C" fn() -> bool,
     pub workaround: extern "C" fn(),
@@ -70,6 +68,7 @@ impl ErratumEntry {
     /// Creates an ErratumEntry struct from an implementation of the Erratum trait.
     pub const fn from_erratum<T: Erratum>() -> Self {
         Self {
+            id: T::ID,
             apply_on: T::APPLY_ON,
             check: T::check,
             workaround: T::workaround,
