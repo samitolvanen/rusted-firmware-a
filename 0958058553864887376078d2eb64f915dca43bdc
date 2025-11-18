@@ -33,6 +33,24 @@
       "message": "This unsafe block needs a safety comment.",
       "revId": "0958058553864887376078d2eb64f915dca43bdc",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116fdd95_d9f07f3a",
+        "filename": "secure_test_framework/src/util.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2025-11-18T15:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d42f142_f9463bee",
+      "revId": "0958058553864887376078d2eb64f915dca43bdc",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
