@@ -8,6 +8,8 @@ pub mod hcx;
 pub mod mpam;
 pub mod pmuv3;
 pub mod ras;
+#[cfg(target_arch = "aarch64")]
+pub mod simd;
 pub mod sys_reg_trace;
 pub mod tcr2;
 pub mod trbe;
