@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce872bcd_b1222e5e",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-19T14:10:29Z",
+      "side": 1,
+      "message": "This is still not right. `REVISION_MASK` and `VARIANT_MASK` as shifted values, so they should be either applied before bit shifting `self.bits()` or changed to non-shifted consts.",
+      "revId": "5fbb25999968353a2006d2cd4923e50f613429b4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7eb5555_5e7700fe",
         "filename": "src/cpu.rs",
         "patchSetId": 3
