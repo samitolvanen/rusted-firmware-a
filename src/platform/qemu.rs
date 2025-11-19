@@ -7,7 +7,7 @@ use crate::{
     aarch64::{dsb_sy, sev, wfi},
     context::{CoresImpl, EntryPointInfo},
     cpu::{define_cpu_ops, qemu_max::QemuMax},
-    cpu_extensions::simd::Simd,
+    cpu_extensions::simd::{Simd},
     debug::DEBUG,
     dram::zeroed_mut,
     gicv3::{Gic, GicConfig},
