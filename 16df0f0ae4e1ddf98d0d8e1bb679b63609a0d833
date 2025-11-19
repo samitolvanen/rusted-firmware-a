@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "917b763d_2abee881",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e36baf01_d322f472",
+      "revId": "16df0f0ae4e1ddf98d0d8e1bb679b63609a0d833",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a6925c6_99d729ff",
