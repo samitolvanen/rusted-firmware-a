@@ -83,6 +83,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7e3e56_8aa7f62c",
+        "filename": "src/cpu.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T16:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a33d82_8a422778",
+      "range": {
+        "startLine": 61,
+        "startChar": 21,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "5fbb25999968353a2006d2cd4923e50f613429b4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "073e20d4_e52555ea",
