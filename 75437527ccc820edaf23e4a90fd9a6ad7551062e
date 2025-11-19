@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "048a83ee_6b7ab9d4",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-19T16:39:49Z",
+      "side": 1,
+      "message": "Unfortunately no, because it will copy the whole `msg` when it unwraps it from the `Result`. This was the only solution to avoid this copy.",
+      "parentUuid": "6d9393ec_5cc2c336",
+      "range": {
+        "startLine": 78,
+        "startChar": 61,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "75437527ccc820edaf23e4a90fd9a6ad7551062e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf2caf64_e3898ec6",
         "filename": "src/services/ffa.rs",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2025-11-12T15:00:53Z",
       "side": 1,
       "message": "Add a doc comment explaining what the return values mean, the `bool` in particular is not immediately obvious.",
+      "revId": "75437527ccc820edaf23e4a90fd9a6ad7551062e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82512fb_a5fed63d",
+        "filename": "src/services/ffa.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-19T16:39:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2caf64_e3898ec6",
       "revId": "75437527ccc820edaf23e4a90fd9a6ad7551062e",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
