@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72544631_ef77433a",
+        "filename": "src/smccc.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-19T16:50:14Z",
+      "side": 1,
+      "message": "This should be a `SetFrom` implementation.",
+      "revId": "76730f0602d540c49596246119dd744e28d3f0ae",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
