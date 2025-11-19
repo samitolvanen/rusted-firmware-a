@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d662dcb_532965b4",
+        "filename": "src/services/psci/power_domain_tree.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1001714
+      },
+      "writtenOn": "2025-11-19T22:27:45Z",
+      "side": 1,
+      "message": "Nit: Should we use `PlatformPowerState::RUN` in the tests too, even though `::On` works with the test platform currently?",
+      "range": {
+        "startLine": 668,
+        "startChar": 47,
+        "endLine": 668,
+        "endChar": 69
+      },
+      "revId": "a0337e0eeb2f5d8940584c5945cb26d39be27e57",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
