@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e25213_58b42780",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-19T16:59:58Z",
+      "side": 1,
+      "message": "This needs `#[cfg(all(target_arch \u003d \"aarch64\", not(test)))]`, so that it doesn\u0027t get built for unit tests.",
+      "revId": "227fd2acfc43c67f40db7aa384e10155c69115c9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
