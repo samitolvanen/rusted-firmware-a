@@ -41,6 +41,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c29285_b49c360b",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2df8e0b9_55cc3b0f",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa93486f_028ce163",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-11-18T19:42:33Z",
       "side": 1,
       "message": "This should be `inout`, as it moves the pointer.",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc56fe14_c13b2bdf",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa93486f_028ce163",
       "range": {
         "startLine": 43,
         "startChar": 19,
@@ -87,6 +135,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff314e0_881b1684",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100a9fdb_dabd73a0",
+      "range": {
+        "startLine": 74,
+        "startChar": 18,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34b95fa7_d91b474e",
@@ -100,6 +172,24 @@
       "writtenOn": "2025-11-18T19:42:33Z",
       "side": 1,
       "message": "That\u0027s only true if every test which uses them zeroes them afterwards. Either we shouldn\u0027t assume anything about the initial state, or this test (and any more added in future) should clean up after itself.",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "304c6c10_a8806eda",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "lets not assume anything about the initial state of FP registers.",
+      "parentUuid": "34b95fa7_d91b474e",
       "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -121,6 +211,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d00788a_aa6ca9c5",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3dacc6ac_a47854ae",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ce01974_f19f0a11",
@@ -134,6 +242,24 @@
       "writtenOn": "2025-11-18T19:42:33Z",
       "side": 1,
       "message": "It would be good to add another call to the helper here to check that the secure-world state is preserved too. It can also handle the cleanup on the secure-world side.",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4cf7c4_d824868f",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ce01974_f19f0a11",
       "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -155,6 +281,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d886c374_abd40472",
+        "filename": "src/cpu_extensions/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ac1ec8c_35b08c62",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "483d499f_d7d936cd",
@@ -168,6 +312,24 @@
       "writtenOn": "2025-11-18T19:42:33Z",
       "side": 1,
       "message": "Why does only this function have the `cfg` attribute?",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4127662c_9e9ecffa",
+        "filename": "src/cpu_extensions/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483d499f_d7d936cd",
       "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -189,6 +351,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf1f192e_06a467fd",
+        "filename": "src/cpu_extensions/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ccf8b3a_8eacf9a4",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e11507bc_8d1b1dec",
@@ -202,6 +382,24 @@
       "writtenOn": "2025-11-18T19:42:33Z",
       "side": 1,
       "message": "Why the separate functions for context versus state, couldn\u0027t they all be in the same function?",
+      "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcca773_3b7e3644",
+        "filename": "src/cpu_extensions/simd.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T14:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e11507bc_8d1b1dec",
       "revId": "d60ba231fc763844e50e3b6ffe6372d96d30a16c",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
