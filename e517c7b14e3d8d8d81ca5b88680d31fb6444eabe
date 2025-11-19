@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d531e79d_59e5774b",
+        "filename": "arm-sysregs/src/fake.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-19T17:18:36Z",
+      "side": 1,
+      "message": "Put this import with the others a line below.",
+      "revId": "e517c7b14e3d8d8d81ca5b88680d31fb6444eabe",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
