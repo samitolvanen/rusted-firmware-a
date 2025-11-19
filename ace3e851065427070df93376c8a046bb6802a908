@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41dc9306_70c089d3",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T15:49:00Z",
+      "side": 1,
+      "message": "When I ran the pre-push script I got an error saying \"error: avoid using labels containing only the digits `0` and `1` in inline assembly\". The LLVM bug that\u0027s linked (https://github.com/llvm/llvm-project/issues/99547) doesn\u0027t affect us I guess but my understanding was that if the pre-push script fails then the CI is going to fail too?",
+      "parentUuid": "a3dd228e_1e153575",
+      "revId": "ace3e851065427070df93376c8a046bb6802a908",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9464c097_233ed69b",
         "filename": "src/errata_framework.rs",
         "patchSetId": 12
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-19T13:44:42Z",
       "side": 1,
       "message": "Ditto, why are the labels 2, 4, 3?",
+      "revId": "ace3e851065427070df93376c8a046bb6802a908",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99fa4b8b_51de90e6",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T15:49:00Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "9464c097_233ed69b",
       "revId": "ace3e851065427070df93376c8a046bb6802a908",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
