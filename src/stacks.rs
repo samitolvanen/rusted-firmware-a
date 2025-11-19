@@ -11,6 +11,9 @@ use core::arch::global_asm;
 /// The number of bytes of stack space to reserve for each core.
 const STACK_SIZE: usize = 0x2000;
 
+// The alignment we expect for TTBR_EL3 for 4KB page size is 2^12
+const PAGE_ALIGNMENT: u32 = 12;
+
 global_asm!(
     include_str!("asm_macros_common.S"),
 
@@ -60,9 +63,14 @@ global_asm!(
     // Reusing secondary core stacks as the early page tables. Early page tables are only used
     // during the primary core early boot, so the secondary cores are still turned off, and it is
     // safe to use their stack for other purpuses.
+    ".global secondary_stacks_start",
+    "secondary_stacks_start:",
+
+    // Make sure that the early page tables are page aligned.
+    ".align {PAGE_ALIGNMENT}",
     ".global early_page_table_start",
     "early_page_table_start:",
-    ".space (({PLATFORM_CORE_COUNT} - 1) * ({STACK_SIZE})), 0",
+    ".space (({PLATFORM_CORE_COUNT} - 1) * ({STACK_SIZE})) - (early_page_table_start - secondary_stacks_start), 0",
     ".global early_page_table_end",
     "early_page_table_end:",
     include_str!("asm_macros_common_purge.S"),
@@ -71,6 +79,7 @@ global_asm!(
     STACK_SIZE = const STACK_SIZE,
     PLATFORM_CORE_COUNT = const PlatformImpl::CORE_COUNT,
     CACHE_WRITEBACK_GRANULE = const PlatformImpl::CACHE_WRITEBACK_GRANULE,
+    PAGE_ALIGNMENT = const PAGE_ALIGNMENT,
 );
 
 const _: () = assert!(
