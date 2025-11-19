@@ -336,9 +336,18 @@ bitflags! {
 }
 
 impl IdAa64pfr0El1 {
+    const SVE_SHIFT: u64 = 32;
+    const SVE_MASK: u64 = 0b1111;
+    const SVE_SUPPORTED: u64 = 1;
+
     const MPAM_SHIFT: u64 = 40;
     const MPAM_MASK: u64 = 0b1111;
     const MPAM_SUPPORTED: u64 = 1;
+
+    /// Indicates whether SVE is implemented.
+    pub fn is_feat_sve_present(self) -> bool {
+        (self.bits() >> Self::SVE_SHIFT) & Self::SVE_MASK == Self::SVE_SUPPORTED
+    }
 
     /// Indicates whether MPAM Extension is implemented.
     pub fn is_feat_mpam_present(self) -> bool {

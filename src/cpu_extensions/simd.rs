@@ -53,3 +53,35 @@ impl CpuExtension for Simd {
         })
     }
 }
+
+/// TODO: SVE is a superset of FP. What to do if SVE is supported by platform but not enabled by hardware? fallback to FP?
+pub struct Sve;
+
+impl CpuExtension for Sve {
+    fn is_present(&self) -> bool {
+        read_id_aa64pfr0_el1().is_feat_sve_present()
+    }
+
+    fn configure_per_world(&self, _world: World, ctx: &mut PerWorldContext) {
+        // Allow SVE register access in every world.
+        ctx.cptr_el3 |= CptrEl3::EZ;
+    }
+
+    #[cfg(not(feature = "sel2"))]
+    fn save_context(&self, world: World) {
+        // exception_free(|token| {
+        //     let ctx = &mut simd_sel1::SIMD_CTX.get().borrow_mut(token)[world];
+
+        //     ctx.save();
+        // })
+    }
+
+    #[cfg(not(feature = "sel2"))]
+    fn restore_context(&self, world: World) {
+        // exception_free(|token| {
+        //     let ctx = &simd_sel1::SIMD_CTX.get().borrow_mut(token)[world];
+
+        //     ctx.restore();
+        // })
+    }
+}
