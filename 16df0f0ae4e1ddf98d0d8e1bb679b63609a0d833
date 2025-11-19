@@ -35,6 +35,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "040720a0_f11388ea",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6925c6_99d729ff",
+      "revId": "16df0f0ae4e1ddf98d0d8e1bb679b63609a0d833",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "269b22bc_362511ce",
@@ -52,6 +70,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e501c5f_4e14770a",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "269b22bc_362511ce",
+      "revId": "16df0f0ae4e1ddf98d0d8e1bb679b63609a0d833",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb10a8b2_94280dba",
@@ -65,6 +101,24 @@
       "writtenOn": "2025-11-17T14:40:10Z",
       "side": 1,
       "message": "That\u0027s not something the caller controls, that\u0027s what the implementer of the trait needs to do.",
+      "revId": "16df0f0ae4e1ddf98d0d8e1bb679b63609a0d833",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711ae9c6_84c14e70",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb10a8b2_94280dba",
       "revId": "16df0f0ae4e1ddf98d0d8e1bb679b63609a0d833",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }

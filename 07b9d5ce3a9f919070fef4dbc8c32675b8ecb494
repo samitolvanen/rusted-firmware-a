@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "410b8c24_25c0f9a3",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "We\u0027re not using offsets to access the fields anymore, as per your comment further down, so can be not repr(C).",
+      "parentUuid": "6accbe17_40651583",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14aacb43_607194c3",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "397c0893_c98f8b61",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14aacb43_607194c3",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e82d2f23_c1c9079b",
@@ -48,6 +84,30 @@
       "writtenOn": "2025-11-14T18:22:23Z",
       "side": 1,
       "message": "Nit: add a use statement rather than using the full path here.",
+      "range": {
+        "startLine": 37,
+        "startChar": 48,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a291fe5_211d52a7",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82d2f23_c1c9079b",
       "range": {
         "startLine": 37,
         "startChar": 48,
@@ -106,6 +166,24 @@
       "writtenOn": "2025-11-14T18:22:23Z",
       "side": 1,
       "message": "Do these actually need to be stored here, are they used anywhere else than in `implement_erratum_check`? If they are only for `implement_erratum_check`, then you could just pass them as parameters to the macro, as errata which don\u0027t use `implement_erratum_check` won\u0027t need them.",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16e82b9_186aa5c6",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdfb0f8d_2c8fdbca",
       "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -174,6 +252,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd0d592_55bb4a5b",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91172321_ebb3b76c",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "991255d9_93a20702",
@@ -187,6 +283,24 @@
       "writtenOn": "2025-11-14T18:22:23Z",
       "side": 1,
       "message": "What is the \"TF-A reset vector calling convention\", and what does that have to do with this function being unsafe?",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0911a3_e73a1c0a",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "991255d9_93a20702",
       "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -208,6 +322,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c05131_08e1ad76",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c82256b_33d93d73",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86446946_67a1e4b0",
@@ -221,6 +353,24 @@
       "writtenOn": "2025-11-14T18:22:23Z",
       "side": 1,
       "message": "If there are details of the implementations of those functions that are necessary to avoid undefined behaviour here, you need to document that on the safety documentation of the `Erratum` trait, not here. But it should be specific and precise; exactly what requirements must the implementer fulfil to ensure safety?",
+      "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7ec24b_2dd1fe57",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86446946_67a1e4b0",
       "revId": "07b9d5ce3a9f919070fef4dbc8c32675b8ecb494",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },

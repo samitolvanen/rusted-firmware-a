@@ -54,6 +54,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30df355c_1fc8f983",
+        "filename": "src/bl31_entrypoint.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "This is basically where CTF-A applies the errata, I\u0027ll have discussions with others to better understand the reasoning behind the \"as early as possible\" requirement for applying errata and we can come back to this later.",
+      "parentUuid": "c56cbfb4_a1572704",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd7a9a53_b4ef3cfb",
@@ -208,6 +226,24 @@
       "writtenOn": "2025-11-12T14:35:22Z",
       "side": 1,
       "message": "When at runtime?",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56096283_bf50d3a5",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Runtime errata will be called directly by the platform implementation. I\u0027ll add the comment, as discussed.",
+      "parentUuid": "f44e9ae9_93021931",
       "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -471,6 +507,24 @@
       "side": 1,
       "message": "You fixed some of these, but still left a bunch, e.g. `core::mem::size_of` and `core::mem::offset_of` a few lines up.",
       "parentUuid": "34bf1769_a23f191c",
+      "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ee294b_12f3dd26",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T07:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c84c2f5_f6780647",
       "revId": "a4217a35dc49f7e1d615e377c4273941bcca4847",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
