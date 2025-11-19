@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "345017f5_afbb1f41",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T18:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86705ee9_18a03aaa",
+      "revId": "9dff39ceaecaa8105d691ab9765858d0e7133ae4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f748f7da_56693646",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c6d4798_25eaf6aa",
+        "filename": "secure_test_framework/src/tests/simd.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T18:54:42Z",
+      "side": 1,
+      "message": "right, moved it to the secure side (tmp workaround)",
+      "parentUuid": "f748f7da_56693646",
+      "revId": "9dff39ceaecaa8105d691ab9765858d0e7133ae4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2be32764_4d68f2bd",
         "filename": "src/cpu_extensions/simd/simd_sel1.rs",
         "patchSetId": 8
@@ -48,6 +84,24 @@
       "writtenOn": "2025-11-19T17:13:59Z",
       "side": 1,
       "message": "Nit: usually we put static variable before struct definitions in the file.",
+      "revId": "9dff39ceaecaa8105d691ab9765858d0e7133ae4",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01583f2b_65f0857f",
+        "filename": "src/cpu_extensions/simd/simd_sel1.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-19T18:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be32764_4d68f2bd",
       "revId": "9dff39ceaecaa8105d691ab9765858d0e7133ae4",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
