@@ -16,6 +16,24 @@
       "message": "Rather than a macro, would it be possible to do this with a trait? Something like\n\n```rust\npub trait SetFrom\u003cT\u003e {\n    fn set_from(\u0026mut self, value: T);\n}\n\nimpl SetFrom\u003cu64\u003e for SmcReturn {\n    fn set_from(\u0026mut self, value: u64) {\n        self.used \u003d 1;\n        self.values[0] \u003d value;\n    }\n}\n```\n\nAnd so on for the other relevant primitive and array types, like the `From` implementations we had before.",
       "revId": "ec51a49ca7f98465be75a78b1e8efd18dcd7eef9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce50ed32_aabb9eb5",
+        "filename": "src/smccc.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-19T16:10:02Z",
+      "side": 1,
+      "message": "Added `SetFrom` trait, it makes it easier to return single values, which is a common use case.\n\nHowever the macro is still necessary. In earlier versions of this patch I had methods in `SmcReturn` for setting multiple arguments. It had an an impact on the performance, because the caller had to shuffle around/save the registers to be able to make the function call.\n\nThe only way set multiple arguments in `SmcReturn` efficiently is to expose the internal `args` structure to the caller as a reference to an array and write the values directly into that.\n\nWhen exposing the `args` via `mark_used()`, there\u0027s a risk of the caller not setting all items, so I made this macro to keep this consistent.",
+      "parentUuid": "72d93099_11e18a19",
+      "revId": "ec51a49ca7f98465be75a78b1e8efd18dcd7eef9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
