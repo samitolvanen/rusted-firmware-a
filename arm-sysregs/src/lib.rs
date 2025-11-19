@@ -370,7 +370,8 @@ impl IdAa64pfr1El1 {
 
     const MTE_SHIFT: u64 = 8;
     const MTE_MASK: u64 = 0b1111;
-    const MTE_IMPLEMENTED: u64 = 0b1;
+    const MTE_IMPLEMENTED: u64 = 0b0001;
+    const MTE2_IMPLEMENTED: u64 = 0b0010;
 
     const NMI_SHIFT: u64 = 36;
     const NMI_MASK: u64 = 0b1111;
@@ -388,6 +389,11 @@ impl IdAa64pfr1El1 {
     /// Indicates whether FEAT_MTE is implemented.
     pub fn is_feat_mte_present(self) -> bool {
         (self.bits() >> Self::MTE_SHIFT) & Self::MTE_MASK >= Self::MTE_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_MTE2 is implemented.
+    pub fn is_feat_mte2_present(self) -> bool {
+        (self.bits() >> Self::MTE_SHIFT) & Self::MTE_MASK >= Self::MTE2_IMPLEMENTED
     }
 
     /// Indicates whether FEAT_NMI is implemented.
