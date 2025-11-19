@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d223770_5a464baf",
+        "filename": "src/cpu_extensions/spe.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-19T17:23:45Z",
+      "side": 1,
+      "message": "Add a doc comment to this struct explaining what enabling the feature for a platform does, e.g. that it enables the extension only for NS world. It might be more helpful to move the module doc comment to the struct too, as people are more likely to see it that way if their IDE shows the docs when they hover over the struct name in some platform\u0027s list of extensions.",
+      "revId": "a2223160cf5172ad06d026f8f1782566ee3d65d1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
