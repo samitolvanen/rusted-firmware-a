@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf74296_452ddb71",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-19T12:41:12Z",
+      "side": 1,
+      "message": "Please wire the `PAUTH_EL3` option into `build-and-run.sh` too.",
+      "revId": "7cacc3360d2eabbfe2f3cb3f4f9e4840bf73d4c6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
