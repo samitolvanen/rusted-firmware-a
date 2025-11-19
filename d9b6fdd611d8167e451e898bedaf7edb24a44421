@@ -16,6 +16,24 @@
       "message": "Please mask the value in `revision()` and in `variant()`.",
       "revId": "d9b6fdd611d8167e451e898bedaf7edb24a44421",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44079c01_a8ece526",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T12:48:00Z",
+      "side": 1,
+      "message": "Done, thanks for spotting this...",
+      "parentUuid": "54308ebb_56255ecb",
+      "revId": "d9b6fdd611d8167e451e898bedaf7edb24a44421",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
