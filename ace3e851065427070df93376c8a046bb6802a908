@@ -90,6 +90,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "350e22a1_f6e76e94",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-19T17:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37f83a0_a430b412",
+      "revId": "ace3e851065427070df93376c8a046bb6802a908",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9464c097_233ed69b",
