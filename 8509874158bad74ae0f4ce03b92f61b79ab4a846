@@ -152,6 +152,48 @@
       "parentUuid": "45bc0827_aa5b10d0",
       "revId": "8509874158bad74ae0f4ce03b92f61b79ab4a846",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d64d9834_0b1090f2",
+        "filename": "src/stacks.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-11-20T12:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dfb8dde_daad5b9d",
+      "range": {
+        "startLine": 14,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "8509874158bad74ae0f4ce03b92f61b79ab4a846",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "508594cc_d7e8aaa6",
+        "filename": "src/stacks.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001105
+      },
+      "writtenOn": "2025-11-20T12:10:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d7c90a51_161927f1",
+      "revId": "8509874158bad74ae0f4ce03b92f61b79ab4a846",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
