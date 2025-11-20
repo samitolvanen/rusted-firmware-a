@@ -331,6 +331,24 @@
       "parentUuid": "a6d58e49_08b6749b",
       "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2ac62e_6927d28b",
+        "filename": "src/platform.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T16:23:44Z",
+      "side": 1,
+      "message": "First, we have to identify the CPU type based on `MIDR_EL1.{Implementer, PartNum}`. This logic currently lives in `cpu.rs`. Then we can iterate the erratas of the particular CPU type and check whether it has an affected `{Variant, Revision}`.\nNote that an SoC may include multiple CPU types.\nI think C TF-A has an errata list in the cpu_ops structure and we may need something similar here. Let me confirm this with others.",
+      "parentUuid": "6338a520_72441e12",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
