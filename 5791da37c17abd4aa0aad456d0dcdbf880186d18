@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab90e20_dff14d15",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-20T15:03:59Z",
+      "side": 1,
+      "message": "Oh actually, I thought we agreed to remove `FIXED_IN` and `APPLY_FROM` from the trait, as they are passed to the check macro instead?",
+      "revId": "5791da37c17abd4aa0aad456d0dcdbf880186d18",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
