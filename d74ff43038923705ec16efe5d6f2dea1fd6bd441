@@ -3,6 +3,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10b212a3_e7a47979",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "There must be requirements set for the `check()` and `workaround()` function to prevent them overwriting the registers used by `apply_reset_errata()`.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd8399a_fec596ec",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "Please list the clobbered registers.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34492132_cb069f54",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "Include `#[unsafe(naked)]` here too.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7f8051_f4144de7",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "If I understand correctly, this assembly makes this comparison:\n`apply_from \u003c\u003d midr \u003c fixed_in` where revision has priority over the variant.\nIf we pack both the `midr_el1` value and `RevisionVariant` as `(revision \u003c\u003c 4) | variant` this whole logic can be simplified into two integer comparisons.\nYou can extract `midr_el1` into the described format with something like this:\n```\nubfx    x2, x1, #{VARIANT_SHIFT}, #{VARIANT_LEN}\nbfi     x2, x1, #{VARIANT_LEN}, #{REVISION_LEN}\n```",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64003a16_db0cbbf2",
         "filename": "src/errata_framework.rs",
         "patchSetId": 16
@@ -38,6 +106,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d252aaf0_1763a3f6",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "It doesn\u0027t perform a tail call.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774c29d3_4c9f316f",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "How to interpret these options for naked asm? What happens when options are set for a naked asm? `noreturn` seems strange here, since the function returns.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f480023a_8834fe68",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "Please list the clobbered registers.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d459488_e11c0bca",
         "filename": "src/errata_framework.rs",
         "patchSetId": 16
@@ -67,6 +186,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "0d459488_e11c0bca",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d58e49_08b6749b",
+        "filename": "src/platform.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T14:55:02Z",
+      "side": 1,
+      "message": "I though the erratas as tied to the `Cpu`s and not to the `Platform`. Wasn\u0027t this the plan that we came up with in October?",
       "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
