@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d0e276_50831cbc",
+        "filename": "src/cpu_extensions/simd.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T11:39:37Z",
+      "side": 1,
+      "message": "`///` -\u003e `//`",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 93
+      },
+      "revId": "2ce8da9dc7abb9e63097f5f030a76e5f567e3df6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
