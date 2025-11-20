@@ -313,6 +313,24 @@
       "message": "I though the erratas as tied to the `Cpu`s and not to the `Platform`. Wasn\u0027t this the plan that we came up with in October?",
       "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6338a520_72441e12",
+        "filename": "src/platform.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:38:00Z",
+      "side": 1,
+      "message": "So, errata are still tied to cpus, they\u0027ll be implemented in the relevant cpu files, they\u0027re just selected by the platform in the `define_errata_list` macro. And the `Platform` certainly needs an `ERRATA_LIST` too, so this seemed like a natural way of implementing what we discussed at the summit. Please let me know if you think this isn\u0027t the case",
+      "parentUuid": "a6d58e49_08b6749b",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

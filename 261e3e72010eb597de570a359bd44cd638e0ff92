@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d006f76_73891a42",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ff8aad2_34e16f44",
+      "revId": "261e3e72010eb597de570a359bd44cd638e0ff92",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d450172_88dbe967",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-20T15:22:05Z",
       "side": 1,
       "message": "It also clobbers whatever any of the `check` and `workaround` methods clobber, because it calls them.",
+      "revId": "261e3e72010eb597de570a359bd44cd638e0ff92",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600a067b_bda97431",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 19
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:38:00Z",
+      "side": 1,
+      "message": "Understood. This means we should define exactly whant `workaronund` and `check` can clobber. I think in C they could clobber x0-x5, I\u0027ll double check that.",
+      "parentUuid": "6d450172_88dbe967",
       "revId": "261e3e72010eb597de570a359bd44cd638e0ff92",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
