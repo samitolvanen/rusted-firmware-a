@@ -84,7 +84,7 @@ pub struct Services {
     pub arch: arch::Arch,
     pub psci: psci::Psci,
     pub platform: platform::PlatformServiceImpl,
-    pub spmd: ffa::Spmd,
+    pub spmd: ffa::spmd::Spmd,
     #[cfg(feature = "rme")]
     pub rmmd: rmmd::Rmmd,
     pub trng: trng::Trng,
@@ -103,7 +103,7 @@ impl Services {
             arch: arch::Arch::new(),
             psci: psci::Psci::new(PlatformImpl::psci_platform().unwrap()),
             platform: PlatformImpl::create_service(),
-            spmd: ffa::Spmd::new(),
+            spmd: ffa::spmd::Spmd::new(),
             #[cfg(feature = "rme")]
             rmmd: rmmd::Rmmd::new(),
             trng: trng::Trng::new(),
