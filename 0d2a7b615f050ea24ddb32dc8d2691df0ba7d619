@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e75de03d_116df5df",
+        "filename": "src/cpu_extensions/simd.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-20T11:59:53Z",
+      "side": 1,
+      "message": "These two can be a single `cfg` attribute. But what happens if you run `cargo test --no-default-features`?",
+      "revId": "0d2a7b615f050ea24ddb32dc8d2691df0ba7d619",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
