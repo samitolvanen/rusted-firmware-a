@@ -134,6 +134,24 @@
       "parentUuid": "fe514638_5f6b7f1e",
       "revId": "8509874158bad74ae0f4ce03b92f61b79ab4a846",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c90a51_161927f1",
+        "filename": "src/stacks.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-20T12:00:59Z",
+      "side": 1,
+      "message": "I looked into the early pagetable algorithm and it always creates a full-sized table on the top level. It uses `GRANULE_SIZE` internally for doing this, so we should use it here as well to be consistent.",
+      "parentUuid": "45bc0827_aa5b10d0",
+      "revId": "8509874158bad74ae0f4ce03b92f61b79ab4a846",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
