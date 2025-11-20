@@ -70,6 +70,24 @@
       "parentUuid": "e4d526e2_6a1861dd",
       "revId": "ec51a49ca7f98465be75a78b1e8efd18dcd7eef9",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ea7423_eb5aedb4",
+        "filename": "src/smccc.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-20T11:35:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "95567e83_ac0610bf",
+      "revId": "ec51a49ca7f98465be75a78b1e8efd18dcd7eef9",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
