@@ -485,6 +485,40 @@ impl MdcrEl3 {
 }
 
 bitflags! {
+    /// MIDR_EL1 system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct MidrEl1: u64 {}
+}
+
+impl MidrEl1 {
+    /// Mask for the Revision field.
+    pub const REVISION_MASK: u64 = 0xf << Self::REVISION_SHIFT;
+    /// Position of the lowest bit in the Revision field.
+    pub const REVISION_SHIFT: u32 = 0;
+
+    /// Mask for the Variant field.
+    pub const VARIANT_MASK: u64 = 0xf << Self::VARIANT_SHIFT;
+    /// Position of the lowest bit in the Variant field.
+    pub const VARIANT_SHIFT: u32 = 20;
+
+    /// Returns a new MidrEl1.
+    pub const fn new(bits: u64) -> Self {
+        Self::from_bits_retain(bits)
+    }
+
+    /// Returns the value of the Revision field.
+    pub fn revision(self) -> u8 {
+        ((self.bits() & Self::REVISION_MASK) >> Self::REVISION_SHIFT) as u8
+    }
+
+    /// Returns the value of the Variant field.
+    pub fn variant(self) -> u8 {
+        ((self.bits() & Self::VARIANT_MASK) >> Self::VARIANT_SHIFT) as u8
+    }
+}
+
+bitflags! {
     /// Indicates the maximum PARTID and PMG values supported in the implementation and the support
     /// for other optional features.
     #[derive(Clone, Copy, Debug, Eq, PartialEq, Default)]
@@ -871,38 +905,6 @@ impl Spsr {
             1 => StackPointer::ElX,
             _ => unreachable!(),
         }
-    }
-}
-
-bitflags! {
-    /// MIDR_EL1 system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct MidrEl1: u64 {}
-}
-
-impl MidrEl1 {
-    /// Mask for the Revision field.
-    pub const REVISION_MASK: u64 = 0xf << Self::REVISION_SHIFT;
-    /// Position of the lowest bit in the Revision field.
-    pub const REVISION_SHIFT: u32 = 0;
-
-    /// Mask for the Variant field.
-    pub const VARIANT_MASK: u64 = 0xf << Self::VARIANT_SHIFT;
-    /// Position of the lowest bit in the Variant field.
-    pub const VARIANT_SHIFT: u32 = 20;
-
-    /// Returns a new MidrEl1.
-    pub const fn new(bits: u64) -> Self {
-        Self::from_bits_retain(bits)
-    }
-    /// Returns the value of the Revision field.
-    pub fn revision(self) -> u8 {
-        ((self.bits() & Self::REVISION_MASK) >> Self::REVISION_SHIFT) as u8
-    }
-    /// Returns the value of the Variant field.
-    pub fn variant(self) -> u8 {
-        ((self.bits() & Self::VARIANT_MASK) >> Self::VARIANT_SHIFT) as u8
     }
 }
 
