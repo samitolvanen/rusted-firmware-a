@@ -22,6 +22,30 @@
       },
       "revId": "2ce8da9dc7abb9e63097f5f030a76e5f567e3df6",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84eb170b_f7ec875f",
+        "filename": "src/cpu_extensions/simd.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-20T11:49:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41d0e276_50831cbc",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 93
+      },
+      "revId": "2ce8da9dc7abb9e63097f5f030a76e5f567e3df6",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
