@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "301ac8ce_a64cbc01",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b212a3_e7a47979",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cd8399a_fec596ec",
@@ -35,6 +53,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2a37b4_6fc02e67",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd8399a_fec596ec",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34492132_cb069f54",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-11-20T14:55:02Z",
       "side": 1,
       "message": "Include `#[unsafe(naked)]` here too.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae2cbe6a_59d1f72b",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34492132_cb069f54",
       "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -121,6 +175,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd44c45_73778043",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d252aaf0_1763a3f6",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "774c29d3_4c9f316f",
@@ -138,6 +210,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1157f6da_86725b6d",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "774c29d3_4c9f316f",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f480023a_8834fe68",
@@ -151,6 +241,24 @@
       "writtenOn": "2025-11-20T14:55:02Z",
       "side": 1,
       "message": "Please list the clobbered registers.",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16adc1cd_ce1f0a96",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-20T15:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f480023a_8834fe68",
       "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
