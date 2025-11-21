@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f69f472_167d4a36",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 23
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:16:16Z",
+      "side": 1,
+      "message": "Why is there an unsafe block here?",
+      "revId": "7675594edb1361849c7c3dbc2387d65f7a6b6158",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3db1d8_2bb7990d",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 23
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:16:16Z",
+      "side": 1,
+      "message": "Don\u0027t you also need to check the implementer and partnum fields to see whether the erratum is relevant for this CPU core at all? As you\u0027re iterating through all errata for the platform, not just those for the current core.",
+      "revId": "7675594edb1361849c7c3dbc2387d65f7a6b6158",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ddb493d_b422311d",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 23
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:16:16Z",
+      "side": 1,
+      "message": "`APPLY_FROM` and `FIXED_IN` are both constants, so you can do this logic at const-eval time and just load a single constant value for each in the assembly code here. I think the value is even small enough that you can just `cmp` with an immediate value and avoid loading it into a register at all.",
+      "revId": "7675594edb1361849c7c3dbc2387d65f7a6b6158",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
