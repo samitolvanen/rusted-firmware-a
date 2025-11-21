@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c927416_80d33fd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:51:16Z",
+      "side": 1,
+      "message": "I don\u0027t know PSCI well enough to comment on the logic.",
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7393aab1_5556a308",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:51:16Z",
+      "side": 1,
+      "message": "Add this use statement within the `tests` submodule below, not here. Then you don\u0027t need the `cfg(test)` either.",
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c312c7_c9af0c52",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:51:16Z",
+      "side": 1,
+      "message": "Nit: just set this directly like `last_at_power_level: None` the same as the constants above do, no need for a local variable.",
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd60a9e_05b10de4",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:51:16Z",
+      "side": 1,
+      "message": "nodes",
+      "range": {
+        "startLine": 319,
+        "startChar": 83,
+        "endLine": 319,
+        "endChar": 87
+      },
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd6626f_d3196e97",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-21T14:51:16Z",
+      "side": 1,
+      "message": "One level of `//` is enough.",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 17
+      },
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
