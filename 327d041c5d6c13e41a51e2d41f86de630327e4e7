@@ -22,6 +22,30 @@
       },
       "revId": "327d041c5d6c13e41a51e2d41f86de630327e4e7",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d8aa86_1d7caf20",
+        "filename": "src/errata_framework.rs",
+        "patchSetId": 22
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-21T13:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "655f73fc_31b65d08",
+      "range": {
+        "startLine": 182,
+        "startChar": 51,
+        "endLine": 182,
+        "endChar": 53
+      },
+      "revId": "327d041c5d6c13e41a51e2d41f86de630327e4e7",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
