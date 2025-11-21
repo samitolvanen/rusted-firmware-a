@@ -35,6 +35,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f21818f_13f810ed",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001020
+      },
+      "writtenOn": "2025-11-21T22:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7393aab1_5556a308",
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88c312c7_c9af0c52",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-11-21T14:51:16Z",
       "side": 1,
       "message": "Nit: just set this directly like `last_at_power_level: None` the same as the constants above do, no need for a local variable.",
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea11321d_89eae8d3",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001020
+      },
+      "writtenOn": "2025-11-21T22:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c312c7_c9af0c52",
       "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
@@ -75,6 +111,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bbd201f_4d1d9c47",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1001020
+      },
+      "writtenOn": "2025-11-21T22:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd60a9e_05b10de4",
+      "range": {
+        "startLine": 319,
+        "startChar": 83,
+        "endLine": 319,
+        "endChar": 87
+      },
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfd6626f_d3196e97",
@@ -88,6 +148,30 @@
       "writtenOn": "2025-11-21T14:51:16Z",
       "side": 1,
       "message": "One level of `//` is enough.",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 17
+      },
+      "revId": "e436ff2a6383b69c1a73edb8183fca6fc7625e67",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e79841_124061fa",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1001020
+      },
+      "writtenOn": "2025-11-21T22:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd6626f_d3196e97",
       "range": {
         "startLine": 458,
         "startChar": 12,
