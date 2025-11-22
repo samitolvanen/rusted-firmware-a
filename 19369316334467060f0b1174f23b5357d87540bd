@@ -51,6 +51,24 @@
       "parentUuid": "582b44d2_7650b5be",
       "revId": "19369316334467060f0b1174f23b5357d87540bd",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8e796a_abc20ff0",
+        "filename": "src/context.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1001405
+      },
+      "writtenOn": "2025-11-22T17:56:31Z",
+      "side": 1,
+      "message": "okay, i\u0027ll make FGT enabled by default in NS, and I\u0027ll add a CpuExtension to optionally enable it for other worlds. The CpuExtension will perform FGT-related context switch if SEL2 is present.",
+      "parentUuid": "7ea76811_0e9bdd12",
+      "revId": "19369316334467060f0b1174f23b5357d87540bd",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
