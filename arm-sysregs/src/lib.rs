@@ -12,6 +12,8 @@ mod aarch64;
 pub mod fake;
 mod macros;
 mod manual;
+/// RME-related register types.
+pub mod rme;
 
 use bitflags::bitflags;
 pub use manual::{CacheLevel, CacheType, ExceptionLevel, StackPointer};
@@ -1079,6 +1081,22 @@ read_write_sysreg!(vsesr_el2: s3_4_c5_c2_3, u64, safe_read, safe_write, fake::SY
 read_write_sysreg!(vtcr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vttbr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(zcr_el3: s3_6_c1_c2_0, u64, safe_read, safe_write, fake::SYSREGS);
+
+read_write_sysreg!(
+    /// # Safety
+    ///
+    /// The caller must ensure that `value` is a valid configuration for the `GPCC_EL3` register and
+    /// that the `GPTBR_EL3` register points to a valid Level 0 Table entry.
+    gpccr_el3: s3_6_c2_c1_6, u64: rme::GpccEl3, safe_read, fake::SYSREGS);
+read_write_sysreg!(
+    /// # Safety
+    ///
+    /// The caller must ensure that `value` contains the address of a valid Granule Protection
+    /// Table: it must be aligned on the size of a Level 0 Table (in accordance with the L0GPTSZ
+    /// specified in GPCCR_EL3) and must point to a valid Level 0 Table. This table must also grant
+    /// access to the Root World for the whole RF-A address space.
+    gptbr_el3: s3_6_c2_c1_4, u64, safe_read, fake::SYSREGS
+);
 
 #[cfg(test)]
 mod tests {

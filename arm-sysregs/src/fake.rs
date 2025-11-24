@@ -184,6 +184,10 @@ pub struct SystemRegisters {
     pub gcscr_el1: Gcscr,
     /// Fake value for the GCSCR_EL2 system register.
     pub gcscr_el2: Gcscr,
+    /// Fake value for GPCCR_EL3 system register.
+    pub gpccr_el3: GpccEl3,
+    /// Fake value for GPTBR_EL3 system register.
+    pub gptbr_el3: u64,
     /// Fake value for the HACR_EL2 system register.
     pub hacr_el2: u64,
     /// Fake value for the HCR_EL2 system register.
@@ -387,6 +391,8 @@ impl SystemRegisters {
             gcr_el1: 0,
             gcscr_el1: Gcscr::empty(),
             gcscr_el2: Gcscr::empty(),
+            gpccr_el3: GpccEl3::empty(),
+            gptbr_el3: 0,
             hacr_el2: 0,
             hcr_el2: HcrEl2::empty(),
             hcrx_el2: HcrxEl2::empty(),
