@@ -48,6 +48,7 @@ unsafe fn get_shared_buffer() -> &'static mut [u8; RMM_SHARED_BUFFER_SIZE] {
 }
 
 const RMM_BOOT_COMPLETE: u32 = 0xC400_01CF;
+const RMM_RMI_REQ_COMPLETE: u32 = 0xC400_018F;
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub enum RmmBootReturn {
@@ -86,6 +87,10 @@ pub struct Rmmd;
 impl Service for Rmmd {
     owns! {OwningEntityNumber::STANDARD_SECURE, 0x0150..=0x01CF}
 
+    fn handle_non_secure_smc(&self, _: &mut SmcReturn) -> World {
+        World::Realm
+    }
+
     fn handle_realm_smc(&self, regs: &mut SmcReturn) -> World {
         let in_regs = regs.values();
         let mut function = FunctionId(in_regs[0] as u32);
@@ -95,6 +100,14 @@ impl Service for Rmmd {
             RMM_BOOT_COMPLETE => {
                 info!("Realm boot completed with code 0x{:x}", regs.values()[1]);
                 rmm_boot_complete(regs);
+                World::NonSecure
+            }
+
+            RMM_RMI_REQ_COMPLETE => {
+                // Only x1-x6 are used for RMI return values, the remaining ones MBZ.
+                regs.values_mut().copy_within(1..7, 0);
+                regs.values_mut()[6..].fill(0);
+
                 World::NonSecure
             }
             _ => {
