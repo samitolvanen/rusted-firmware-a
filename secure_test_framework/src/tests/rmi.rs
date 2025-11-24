@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+use log::debug;
 use smccc::smc64;
 
 use crate::framework::normal_world_test;
@@ -14,6 +15,7 @@ fn test_rmm_version() -> Result<(), ()> {
     args[0] = REQUESTED_VERSION;
 
     let ret = smc64(0xC400_0150u32, args);
+    debug!("{ret:?}");
 
     // Call not supported, i.e. there is no RMMD.
     if ret[0] == u64::MAX {
