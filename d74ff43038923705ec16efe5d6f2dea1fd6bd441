@@ -403,6 +403,24 @@
       "parentUuid": "8c2ac62e_6927d28b",
       "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec359ff3_8819eb94",
+        "filename": "src/platform.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-24T15:21:07Z",
+      "side": 1,
+      "message": "Why does it need to be a field? Can\u0027t it just be a constant passed to the macro, the same as the revision and variant?",
+      "parentUuid": "45762f8c_6ed40483",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
