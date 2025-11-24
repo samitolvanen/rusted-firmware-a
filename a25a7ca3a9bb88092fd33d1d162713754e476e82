@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e997212_f60bab3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-24T15:07:16Z",
+      "side": 1,
+      "message": "Please add description including the extension\u0027s name and its configuration.",
+      "revId": "a25a7ca3a9bb88092fd33d1d162713754e476e82",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ddbd122_990c9f4b",
         "filename": "src/cpu_extensions/fgt2.rs",
         "patchSetId": 2
