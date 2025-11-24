@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae44962b_d7152f51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-24T14:03:48Z",
+      "side": 1,
+      "message": "Nit: \"to achieve\".",
+      "range": {
+        "startLine": 21,
+        "startChar": 37,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "3001e66514621b1ca5f0f182b19a92cc4863f8aa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131ec666_89c8de9f",
+        "filename": "src/services/psci.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1001414
+      },
+      "writtenOn": "2025-11-24T14:03:48Z",
+      "side": 1,
+      "message": "Nit: typo.",
+      "revId": "3001e66514621b1ca5f0f182b19a92cc4863f8aa",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
