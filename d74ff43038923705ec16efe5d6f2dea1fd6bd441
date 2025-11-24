@@ -367,6 +367,24 @@
       "parentUuid": "6338a520_72441e12",
       "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42fcadd0_33fb3a05",
+        "filename": "src/platform.rs",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000043
+      },
+      "writtenOn": "2025-11-24T14:45:26Z",
+      "side": 1,
+      "message": "I would think that the platform should not have to explicitly select its CPU errata. The platform only lists its CPUs (by way of pulling the right CPU modules) and it should get all errata affecting these CPUs.\n\nHowever, it\u0027s unclear to me\n1) whether the `{Variant, Revision}` information should be specified statically by the platform\n2) or whether it should be dynamically detected by reading the CPU ID registers, as I think Imre is suggesting.\nI guess there are use cases for both...\nDo 1) if you only envisage to run this firmware on one platform and want to optimize out the `{Variant, Revision}` checks (as these would be resolved at build time).\nOr do 2) if you envisage to run the same firmware binary unchanged on a range of platforms and thus need the firmware to run the IDs every time and apply only the errata that apply to this revision of the CPU.\n\nI believe we may need a way to specify non-CPU errata at some point. TF-A has provision for DSU and GIC errata for example, see https://trustedfirmware-a.readthedocs.io/en/latest/design/cpu-specific-build-macros.html#dsu-errata-workarounds and https://trustedfirmware-a.readthedocs.io/en/latest/design/cpu-specific-build-macros.html#gic-errata-workarounds\n\nAnd similarly I could imagine platform-level errata. So perhaps we will need providing a list of errata here in the future, but my understanding was that we wanted to focus on CPU errata first.\n\nI think the reason why these questions are raised is because this patch provides the framework but it doesn\u0027t show how a particular platform would use it, as both FVP and QEMU right now have no errata (and will never have, given these are just software platforms). Implementing some fake errata in the `test` platform would be helpful, both from an understanding PoV, as well as to make sure this code is tested upstream.",
+      "parentUuid": "8c2ac62e_6927d28b",
+      "revId": "d74ff43038923705ec16efe5d6f2dea1fd6bd441",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
