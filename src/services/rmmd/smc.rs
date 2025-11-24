@@ -4,7 +4,10 @@
 
 use num_enum::{TryFromPrimitive, TryFromPrimitiveError};
 
-use crate::{context::World, smccc::SmcReturn};
+use crate::{
+    context::World,
+    smccc::{SetFrom, SmcReturn},
+};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Error {
@@ -209,12 +212,12 @@ pub trait ToSmcReturn {
     fn to_regs(&self, _regs: &mut [u64]);
 }
 
-macro_rules! derive_to_smc_return {
+macro_rules! derive_setfrom {
     ($name:ident $(,$field:ident)*) => {
-        impl From<$name> for (SmcReturn, World) {
+        impl SetFrom<$name> for SmcReturn {
             #[allow(unused_variables)]
-            fn from(value: $name) -> Self {
-                let mut regs = [0; 18];
+            fn set_from(&mut self, value: $name) {
+                let regs = self.values_mut();
                 regs[0] = RecCommandReturnCode::Ok as u64;
 
                 #[allow(unused)]
@@ -225,7 +228,7 @@ macro_rules! derive_to_smc_return {
                     let rem_regs = &mut rem_regs[1..];
                 )*
 
-                (regs.into(), World::Realm)
+                rem_regs.fill(0);
             }
         }
     };
@@ -236,29 +239,27 @@ impl ToSmcReturn for RecCommandReturnCode {
         regs[0] = *self as u64;
     }
 }
-impl From<RecCommandReturnCode> for (SmcReturn, World) {
-    fn from(value: RecCommandReturnCode) -> Self {
-        let mut regs = [0; 18];
-        value.to_regs(&mut regs);
-        (regs.into(), World::Realm)
+impl SetFrom<RecCommandReturnCode> for SmcReturn {
+    fn set_from(&mut self, value: RecCommandReturnCode) {
+        value.to_regs(self.values_mut());
     }
 }
 
 pub struct RecEmptyResponse;
-derive_to_smc_return!(RecEmptyResponse);
+derive_setfrom!(RecEmptyResponse);
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RecAttestGetRealmKeyResponse {
     pub key_size: u64,
 }
-derive_to_smc_return!(RecAttestGetRealmKeyResponse, key_size);
+derive_setfrom!(RecAttestGetRealmKeyResponse, key_size);
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RecAttestGetPlatTokenResponse {
     pub token_hunk_size: u64,
     pub remaining_size: u64,
 }
-derive_to_smc_return!(
+derive_setfrom!(
     RecAttestGetPlatTokenResponse,
     token_hunk_size,
     remaining_size
@@ -268,13 +269,13 @@ derive_to_smc_return!(
 pub struct RecEl3FeaturesResponse {
     pub feat_reg: u64,
 }
-derive_to_smc_return!(RecEl3FeaturesResponse, feat_reg);
+derive_setfrom!(RecEl3FeaturesResponse, feat_reg);
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RecEl3TokenSignGetRakResponse {
     pub key_size: u64,
 }
-derive_to_smc_return!(RecEl3TokenSignGetRakResponse, key_size);
+derive_setfrom!(RecEl3TokenSignGetRakResponse, key_size);
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RecIdeKmPullResponse {
@@ -282,10 +283,10 @@ pub struct RecIdeKmPullResponse {
     pub r1: u64,
     pub r2: u64,
 }
-derive_to_smc_return!(RecIdeKmPullResponse, previous, r1, r2);
+derive_setfrom!(RecIdeKmPullResponse, previous, r1, r2);
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RecReserveMemoryResponse {
     pub address: u64,
 }
-derive_to_smc_return!(RecReserveMemoryResponse, address);
+derive_setfrom!(RecReserveMemoryResponse, address);
