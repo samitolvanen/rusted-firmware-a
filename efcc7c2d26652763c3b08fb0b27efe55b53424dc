@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32cdb550_616a5698",
+        "filename": "src/services.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-24T11:54:15Z",
+      "side": 1,
+      "message": "Nit: Why not add a use statement for this struct, and the others here?",
+      "revId": "efcc7c2d26652763c3b08fb0b27efe55b53424dc",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
