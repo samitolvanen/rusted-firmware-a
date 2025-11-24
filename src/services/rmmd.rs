@@ -4,6 +4,7 @@
 
 use crate::{
     context::World,
+    info,
     services::{Service, owns},
     smccc::{FunctionId, NOT_SUPPORTED, OwningEntityNumber, SetFrom, SmcReturn},
 };
@@ -54,6 +55,7 @@ impl Service for Rmmd {
 
         match function.0 {
             RMM_BOOT_COMPLETE => {
+                info!("Realm boot completed with code 0x{:x}", regs.values()[1]);
                 rmm_boot_complete(regs);
                 World::NonSecure
             }

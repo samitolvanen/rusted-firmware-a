@@ -818,7 +818,8 @@ fn initialise_secure(context: &mut CpuContext, entry_point: &EntryPointInfo) {
 fn initialise_realm(context: &mut CpuContext, entry_point: &EntryPointInfo) {
     initialise_common(context, entry_point);
     // SCR_NS + SCR_NSE = Realm state
-    context.el3_state.scr_el3 |= ScrEl3::NS | ScrEl3::NSE;
+    context.el3_state.scr_el3 |=
+        ScrEl3::NS | ScrEl3::NSE | /* TODO: replace with a CPU extension */ ScrEl3::FGTEN;
 
     // Configure CPU extensions for the Realm world.
     for ext in PlatformImpl::CPU_EXTENSIONS {

@@ -43,17 +43,22 @@ BL1=${TFA}/build/${PLAT}/${BUILDTYPE}/bl1.bin
 BL2=${TFA}/build/${PLAT}/${BUILDTYPE}/bl2.bin
 FIP=${TFA}/build/${PLAT}/${BUILDTYPE}/fip.bin
 
+BL31=$OUT/bl31.bin
+BL32=$OUT/bl32.bin
+BL33=$OUT/bl33.bin
+STF_RMM=$OUT/stf_rmm.bin
+
 CURRDIR=$(readlink -f "$(dirname "$0")")
 pushd $CURRDIR
 
 QEMU=${QEMU:-qemu-system-aarch64}
 GDB_PORT=${GDB_PORT:-1234}
 QEMU_FLAGS=${QEMU_FLAGS:--machine virt,gic-version=3,secure=on,virtualization=on -cpu max -m 1204M \
-	-chardev stdio,signal=off,mux=on,id=char0 -monitor chardev:char0 \
-	-serial chardev:char0 -serial chardev:char0 -semihosting-config enable=on,target=native \
-	-gdb tcp:localhost:${GDB_PORT} \
-	-display none -bios ${BL1} \
-	-smp 4}
+    -chardev stdio,signal=off,mux=on,id=char0 -monitor chardev:char0 \
+    -serial chardev:char0 -serial chardev:char0 -semihosting-config enable=on,target=native \
+    -gdb tcp:localhost:${GDB_PORT} \
+    -display none -bios ${BL1} \
+    -smp 4}
 
 case "$PLAT" in
   qemu)
@@ -78,82 +83,41 @@ case "$PLAT" in
     # (because a debug build of RF-A is too big to fit in 256 kB). The `FVP_TRUSTED_SRAM_SIZE=512` TF-A
     # build flag is required to stop TF-A from complaining that RF-A does not fit.
     if [[ "${RME:-}" == 1 ]]; then
+        RMM=${RMM:-"$STF_RMM"}
         make PLAT=fvp FEATURES=sel2,rme ${DEBUG} CARGO="${CARGO}" PAUTH_EL3=${PAUTH_EL3} BTI_EL3=${BTI_EL3} all
-        make -C $TFA PLAT=fvp ${DEBUG} FVP_TRUSTED_SRAM_SIZE=512 ENABLE_RME=1 BL31="${OUT}/bl31.bin" \
-            BL32="${OUT}/bl32.bin" BL33="${OUT}/bl33.bin" all fip
+        make -C $TFA PLAT=fvp ${DEBUG} FVP_TRUSTED_SRAM_SIZE=512 ENABLE_RME=1 BL31="$BL31" BL32="$BL32" \
+            BL33="$BL33" RMM="$RMM" SPD=spmd SPMD_SPM_AT_SEL2=0 all fip
         FVP_Base_RevC-2xAEMvA \
             -C bp.ve_sysregs.exit_on_shutdown=1 \
-            -C pctl.startup=0.0.0.0 \
+            -C bp.dram_size=4 \
             -C bp.secure_memory=0 \
-            -C cache_state_modelled=1 \
-            -Q 1000 \
-            -C gic_distributor.ARE-fixed-to-one=1 \
-            -C gic_distributor.extended-ppi-count=64 \
-            -C gic_distributor.extended-spi-count=1024 \
-            -C bp.refcounter.non_arch_start_at_default=1 \
-            -C bp.has_rme=1 \
-            -C bp.dram_metadata.is_enabled=1 \
-            -C bp.ls64_testing_fifo.op_type=0 \
-            -C cluster0.has_amu=1 \
-            -C cluster0.memory_tagging_support_level=2 \
-            -C cluster0.has_branch_target_exception=1 \
-            -C cluster0.restriction_on_speculative_execution=2 \
-            -C cluster0.restriction_on_speculative_execution_aarch32=2 \
-            -C cluster0.gicv3.extended-interrupt-range-support=1 \
-            -C cluster0.cpu0.etm-present=0 \
-            -C cluster0.cpu1.etm-present=0 \
-            -C cluster0.cpu2.etm-present=0 \
-            -C cluster0.cpu3.etm-present=0 \
-            -C cluster0.stage12_tlb_size=1024 \
-            -C cluster0.check_memory_attributes=0 \
-            -C pci.pci_smmuv3.mmu.SMMU_AIDR=2 \
-            -C pci.pci_smmuv3.mmu.SMMU_IDR1=0x00600002 \
-            -C pci.pci_smmuv3.mmu.SMMU_IDR3=0x1714 \
-            -C pci.pci_smmuv3.mmu.SMMU_S_IDR1=0xA0000002 \
-            -C pci.pci_smmuv3.mmu.SMMU_S_IDR2=0 \
-            -C pci.pci_smmuv3.mmu.SMMU_S_IDR3=0 \
             -C cci550.force_on_from_start=1 \
-            -C pci.pci_smmuv3.mmu.SMMU_IDR0=0x4046123b \
-            -C pci.pci_smmuv3.mmu.SMMU_IDR5=0xFFFF0475 \
-            -C pci.pci_smmuv3.mmu.SMMU_ROOT_IDR0=3 \
-            -C pci.pci_smmuv3.mmu.SMMU_ROOT_IIDR=0x43B \
-            -C pci.pci_smmuv3.mmu.root_register_page_offset=0x20000 \
+            -C cluster0.NUM_CORES=4 \
+            -C cluster0.PA_SIZE=48 \
+            -C cluster0.gicv3.cpuintf-mmap-access-level=2 \
+            -C cluster0.gicv3.without-DS-support=1 \
+            -C cluster0.gicv4.mask-virtual-interrupt=1 \
+            -C cluster0.rme_support_level=2 \
+            -C cluster1.NUM_CORES=4 \
+            -C cluster1.PA_SIZE=48 \
+            -C cluster1.gicv3.cpuintf-mmap-access-level=2 \
+            -C cluster1.gicv3.without-DS-support=1 \
+            -C cluster1.gicv4.mask-virtual-interrupt=1 \
+            -C cluster1.rme_support_level=2 \
+            -C cluster0.has_rndr=1 \
+            -C cluster1.has_rndr=1 \
+            -C cluster0.pmb_idr_external_abort=1 \
+            -C cluster1.pmb_idr_external_abort=1 \
+            -C cluster0.has_arm_v8-8=1 \
+            -C cluster1.has_arm_v8-8=1 \
             -C cluster0.has_arm_v9-2=1 \
             -C cluster1.has_arm_v9-2=1 \
-            -C cluster0.rme_support_level=2 \
-            -C cluster0.gicv3.cpuintf-mmap-access-level=2 \
-            -C cluster0.gicv4.mask-virtual-interrupt=1 \
-            -C cluster0.gicv3.without-DS-support=1 \
-            -C cluster0.max_32bit_el=-1 \
-            -C cluster0.PA_SIZE=48 \
-            -C cluster0.output_attributes=ExtendedID[62:55]=MPAM_PMG,ExtendedID[54:39]=MPAM_PARTID,ExtendedID[38:37]=MPAM_SP \
-            -C cluster0.has_rndr=1 \
-            -C cluster0.arm_v8_7_accelerator_support_level="" \
-            -C cluster1.has_amu=1 \
-            -C cluster1.memory_tagging_support_level=2 \
-            -C cluster1.has_branch_target_exception=1 \
-            -C cluster1.restriction_on_speculative_execution=2 \
-            -C cluster1.restriction_on_speculative_execution_aarch32=2 \
-            -C cluster1.gicv3.extended-interrupt-range-support=1 \
-            -C cluster1.cpu0.etm-present=0 \
-            -C cluster1.cpu1.etm-present=0 \
-            -C cluster1.cpu2.etm-present=0 \
-            -C cluster1.cpu3.etm-present=0 \
-            -C cluster1.stage12_tlb_size=1024 \
-            -C cluster1.check_memory_attributes=0 \
-            -C cluster1.rme_support_level=2 \
-            -C cluster1.gicv3.cpuintf-mmap-access-level=2 \
-            -C cluster1.gicv4.mask-virtual-interrupt=1 \
-            -C cluster1.gicv3.without-DS-support=1 \
-            -C cluster1.max_32bit_el=-1 \
-            -C cluster1.PA_SIZE=48 \
-            -C cluster1.output_attributes=ExtendedID[62:55]=MPAM_PMG,ExtendedID[54:39]=MPAM_PARTID,ExtendedID[38:37]=MPAM_SP \
-            -C cluster1.has_rndr=1 \
-            -C cluster1.arm_v8_7_accelerator_support_level="" \
-            -C bp.terminal_0.start_port=5000 \
-            -C bp.terminal_1.start_port=5001 \
-            -C bp.terminal_2.start_port=5002 \
-            -C bp.terminal_3.start_port=5003 \
+            -C cluster0.max_32bit_el=0 \
+            -C cluster1.max_32bit_el=0 \
+            -C cluster0.has_tcr2=2 \
+            -C cluster1.has_tcr2=2 \
+            -C cluster0.has_fgt2=2 \
+            -C cluster1.has_fgt2=2 \
             -C bp.vis.disable_visualisation=1 \
             -C bp.pl011_uart0.unbuffered_output=1 \
             -C bp.pl011_uart0.out_file=- \
@@ -163,11 +127,23 @@ case "$PLAT" in
             -C bp.terminal_1.start_telnet=0 \
             -C bp.terminal_2.start_telnet=0 \
             -C bp.terminal_3.start_telnet=0 \
+            -C pci.pci_smmuv3.mmu.SMMU_AIDR=2 \
+            -C pci.pci_smmuv3.mmu.SMMU_IDR0=0x080FF6BF \
+            -C pci.pci_smmuv3.mmu.SMMU_IDR1=0x0CE73D20 \
+            -C pci.pci_smmuv3.mmu.SMMU_IDR3=0x1714 \
+            -C pci.pci_smmuv3.mmu.SMMU_IDR5=0xFFFF0475 \
+            -C pci.pci_smmuv3.mmu.SMMU_S_IDR1=0xA0000002 \
+            -C pci.pci_smmuv3.mmu.SMMU_S_IDR2=0 \
+            -C pci.pci_smmuv3.mmu.SMMU_S_IDR3=0 \
+            -C pci.pci_smmuv3.mmu.SMMU_ROOT_IDR0=0x3 \
+            -C pci.pci_smmuv3.mmu.SMMU_ROOT_IIDR=0x43B \
+            -C pci.pci_smmuv3.mmu.root_register_page_offset=0x20000 \
             -C pctl.startup=0.0.0.0 \
-            -C cluster0.NUM_CORES=4 \
-            -C cluster1.NUM_CORES=4 \
             -C cluster0.cpu0.semihosting-cwd=${OUT} \
             -C cluster1.cpu0.semihosting-cwd=${OUT} \
+            -C bp.has_rme=1 \
+            -C cluster0.output_attributes="ExtendedID[62:55]=MPAM_PMG,ExtendedID[54:39]=MPAM_PARTID,ExtendedID[38]=MPAM_SP[0],ExtendedID[37]=MPAM_SP[1]" \
+            -C cluster1.output_attributes="ExtendedID[62:55]=MPAM_PMG,ExtendedID[54:39]=MPAM_PARTID,ExtendedID[38]=MPAM_SP[0],ExtendedID[37]=MPAM_SP[1]" \
             -C bp.secureflashloader.fname=${BL1} \
             -C bp.flashloader0.fname=${FIP}
     else
@@ -178,7 +154,7 @@ case "$PLAT" in
         # layout file.
         make PLAT=fvp ${DEBUG} CARGO="${CARGO}" PAUTH_EL3=${PAUTH_EL3} BTI_EL3=${BTI_EL3} all
         make -C $TFA PLAT=fvp ${DEBUG} FVP_TRUSTED_SRAM_SIZE=512 SPD=spmd SPMD_SPM_AT_SEL2=0 \
-            BL31="${OUT}/bl31.bin" BL32="${OUT}/bl32.bin" BL33="${OUT}/bl33.bin" CTX_INCLUDE_AARCH32_REGS=0 all fip
+            BL31="$BL31" BL32="$BL32" BL33="$BL33" CTX_INCLUDE_AARCH32_REGS=0 all fip
         FVP_Base_RevC-2xAEMvA \
             -C cluster0.has_arm_v9-0=1 \
             -C cluster1.has_arm_v9-0=1 \
