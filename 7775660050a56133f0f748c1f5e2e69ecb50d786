@@ -16,6 +16,23 @@
       "message": "It looks like this patch won\u0027t be enough, setup is needed for other EL2 sysregs as well, not just GIC-related: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/45046/10/src/context.rs#726",
       "revId": "7775660050a56133f0f748c1f5e2e69ecb50d786",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a2ce964_639914ef",
+        "filename": "src/gicv3.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-24T12:01:30Z",
+      "side": 1,
+      "message": "Doesn\u0027t NS-EL2 do its own initialisation of the GIC?",
+      "revId": "7775660050a56133f0f748c1f5e2e69ecb50d786",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
