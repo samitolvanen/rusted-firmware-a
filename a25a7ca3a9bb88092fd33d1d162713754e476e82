@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddbd122_990c9f4b",
+        "filename": "src/cpu_extensions/fgt2.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-24T14:42:22Z",
+      "side": 1,
+      "message": "Add a Rustdoc comment on this struct explaining what enabling it in a platform does.",
+      "revId": "a25a7ca3a9bb88092fd33d1d162713754e476e82",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
