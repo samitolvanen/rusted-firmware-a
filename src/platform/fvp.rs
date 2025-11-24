@@ -46,7 +46,7 @@ use arm_gic::{
 };
 use arm_pl011_uart::{Uart, UniqueMmioPointer};
 use arm_psci::{EntryPoint, ErrorCode, HwState, Mpidr, PowerState};
-use arm_sysregs::{IccSre, MpidrEl1, Spsr, read_mpidr_el1, write_cntfrq_el0};
+use arm_sysregs::{CntfrqEl0, IccSreEl3, MpidrEl1, SpsrEl3, read_mpidr_el1, write_cntfrq_el0};
 use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
 use percore::Cores;
 use spin::mutex::SpinMutex;
@@ -256,9 +256,9 @@ unsafe impl Platform for Fvp {
         EntryPointInfo {
             pc: 0x0600_0000,
             #[cfg(feature = "sel2")]
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
+            spsr: SpsrEl3::D | SpsrEl3::A | SpsrEl3::I | SpsrEl3::F | SpsrEl3::M_AARCH64_EL2H,
             #[cfg(not(feature = "sel2"))]
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL1H,
+            spsr: SpsrEl3::D | SpsrEl3::A | SpsrEl3::I | SpsrEl3::F | SpsrEl3::M_AARCH64_EL1H,
             args: [
                 TOS_FW_CONFIG_ADDRESS,
                 HW_CONFIG_ADDRESS,
@@ -275,7 +275,7 @@ unsafe impl Platform for Fvp {
     fn non_secure_entry_point() -> EntryPointInfo {
         EntryPointInfo {
             pc: 0x8800_0000,
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
+            spsr: SpsrEl3::D | SpsrEl3::A | SpsrEl3::I | SpsrEl3::F | SpsrEl3::M_AARCH64_EL2H,
             args: [NT_FW_CONFIG_ADDRESS, HW_CONFIG_ADDRESS_NS, 0, 0, 0, 0, 0, 0],
         }
     }
@@ -285,7 +285,7 @@ unsafe impl Platform for Fvp {
         let core_linear_id = CoresImpl::core_index() as u64;
         EntryPointInfo {
             pc: 0xfdc0_0000,
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
+            spsr: SpsrEl3::D | SpsrEl3::A | SpsrEl3::I | SpsrEl3::F | SpsrEl3::M_AARCH64_EL2H,
             args: [
                 core_linear_id,
                 RMM_BOOT_VERSION,
@@ -442,7 +442,7 @@ unsafe impl Platform for Fvp {
             include_str!("../arm_macros_purge.S"),
             include_str!("../asm_macros_common_purge.S"),
             DEBUG = const DEBUG as i32,
-            ICC_SRE_SRE_BIT = const IccSre::SRE.bits(),
+            ICC_SRE_SRE_BIT = const IccSreEl3::SRE.bits(),
             GICD_ISPENDR = const offset_of!(Gicd, ispendr),
             V2M_SYSREGS_BASE = const V2M_SYSREGS_BASE,
             V2M_SYS_ID = const V2M_SYS_ID,
@@ -551,7 +551,7 @@ impl FvpPsciPlatformImpl<'_> {
         self.power_controller.lock().disable_wakeup_requests(mpidr);
 
         let frequency = self.timer_control.lock().base_frequency();
-        write_cntfrq_el0(frequency.into());
+        write_cntfrq_el0(CntfrqEl0::from_bits_retain(frequency.into()));
     }
 
     // Enable and initialize the system level generic timer
@@ -568,7 +568,7 @@ impl FvpPsciPlatformImpl<'_> {
         timer_ctl.set_non_secure_access(Self::NS_TIMER_INDEX, true);
         timer_ctl.set_frequency(frequency);
 
-        write_cntfrq_el0(frequency.into());
+        write_cntfrq_el0(CntfrqEl0::from_bits_retain(frequency.into()));
     }
 
     fn save_system_power_domain() {

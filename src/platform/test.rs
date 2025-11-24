@@ -25,7 +25,7 @@ use crate::{
 use aarch64_paging::paging::MemoryRegion;
 use arm_gic::IntId;
 use arm_psci::{Cookie, ErrorCode, HwState, Mpidr, PowerState, SystemOff2Type};
-use arm_sysregs::{MidrEl1, MpidrEl1, Spsr};
+use arm_sysregs::{MidrEl1, MpidrEl1, SpsrEl3};
 use core::fmt;
 use percore::ExceptionFree;
 use std::io::{Write, stdout};
@@ -91,9 +91,9 @@ unsafe impl Platform for TestPlatform {
         EntryPointInfo {
             pc: 0x4000_0000,
             #[cfg(feature = "sel2")]
-            spsr: Spsr::M_AARCH64_EL2H,
+            spsr: SpsrEl3::M_AARCH64_EL2H,
             #[cfg(not(feature = "sel2"))]
-            spsr: Spsr::M_AARCH64_EL1H,
+            spsr: SpsrEl3::M_AARCH64_EL1H,
             args: Default::default(),
         }
     }
@@ -101,7 +101,7 @@ unsafe impl Platform for TestPlatform {
     fn non_secure_entry_point() -> EntryPointInfo {
         EntryPointInfo {
             pc: 0x6000_0000,
-            spsr: Spsr::M_AARCH64_EL2H,
+            spsr: SpsrEl3::M_AARCH64_EL2H,
             args: Default::default(),
         }
     }

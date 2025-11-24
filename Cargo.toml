@@ -4,7 +4,7 @@
 
 [workspace]
 resolver = "3"
-members = ["secure_test_framework", "arm-sysregs"]
+members = ["secure_test_framework"]
 
 [package]
 name = "rf-a-bl31"
@@ -34,7 +34,7 @@ codegen-units = 1
 aarch64-paging = { version = "0.10.0", default-features = false }
 arrayvec = { version = "0.7.6", default-features = false }
 arm-psci = "0.2.0"
-arm-sysregs = { version = "0.1.0", path = "arm-sysregs" }
+arm-sysregs = { version = "0.1.0", path = "../../rust/arm-sysregs/arm-sysregs" }
 bitflags = "2.9.4"
 log = "0.4.28"
 percore = "0.1.0"
@@ -52,7 +52,9 @@ zerocopy = { version = "0.8.27", features = ["derive"] }
 
 [dev-dependencies]
 arm-gic = { version = "0.7.1", features = ["fakes"] }
-arm-sysregs = { version = "0.1.0", features = ["fakes"], path = "arm-sysregs" }
+arm-sysregs = { version = "0.1.0", features = [
+  "fakes",
+], path = "../../rust/arm-sysregs/arm-sysregs" }
 
 [features]
 default = ["sel2"]

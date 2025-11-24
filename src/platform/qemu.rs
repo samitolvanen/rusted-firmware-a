@@ -37,7 +37,7 @@ use arm_gic::{
 };
 use arm_pl011_uart::{PL011Registers, Uart, UniqueMmioPointer};
 use arm_psci::{ErrorCode, Mpidr, PowerState};
-use arm_sysregs::{IccSre, MpidrEl1, Spsr};
+use arm_sysregs::{IccSreEl3, MpidrEl1, SpsrEl3};
 use core::{arch::global_asm, mem::offset_of, ptr::NonNull};
 use percore::Cores;
 use spin::mutex::SpinMutexGuard;
@@ -193,9 +193,9 @@ unsafe impl Platform for Qemu {
         EntryPointInfo {
             pc: 0x0e10_0000,
             #[cfg(feature = "sel2")]
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
+            spsr: SpsrEl3::D | SpsrEl3::A | SpsrEl3::I | SpsrEl3::F | SpsrEl3::M_AARCH64_EL2H,
             #[cfg(not(feature = "sel2"))]
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL1H,
+            spsr: SpsrEl3::D | SpsrEl3::A | SpsrEl3::I | SpsrEl3::F | SpsrEl3::M_AARCH64_EL1H,
             args: [
                 TOS_FW_CONFIG_ADDRESS,
                 HW_CONFIG_ADDRESS,
@@ -212,7 +212,7 @@ unsafe impl Platform for Qemu {
     fn non_secure_entry_point() -> EntryPointInfo {
         EntryPointInfo {
             pc: 0x6000_0000,
-            spsr: Spsr::D | Spsr::A | Spsr::I | Spsr::F | Spsr::M_AARCH64_EL2H,
+            spsr: SpsrEl3::D | SpsrEl3::A | SpsrEl3::I | SpsrEl3::F | SpsrEl3::M_AARCH64_EL2H,
             args: Default::default(),
         }
     }
@@ -323,7 +323,7 @@ unsafe impl Platform for Qemu {
             include_str!("../arm_macros_purge.S"),
             include_str!("../asm_macros_common_purge.S"),
             DEBUG = const DEBUG as i32,
-            ICC_SRE_SRE_BIT = const IccSre::SRE.bits(),
+            ICC_SRE_SRE_BIT = const IccSreEl3::SRE.bits(),
             GICD_BASE = const GICD_BASE,
             GICD_ISPENDR = const offset_of!(Gicd, ispendr),
         );
